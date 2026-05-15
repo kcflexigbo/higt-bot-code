@@ -188,27 +188,43 @@ def normalize_iot23_label(raw: str) -> str:
 def load_iot23_conn(path: Path) -> pd.DataFrame:
     """Load a single IoT-23 conn.log.labeled file.
 
-    Quirk: the original 21 Zeek columns are tab-separated, but the appended
-    `label` and `detailed-label` are space-separated from the preceding
-    `tunnel_parents`. Pandas with sep=r'\\s+' treats both consistently — safe
-    here because no field contains internal whitespace.
+    Quirk: the original 21 Zeek columns are tab-separated, but `label` and
+    `detailed-label` are appended after `tunnel_parents` with 3-space
+    separation. To stay on pandas' C engine (10-30× faster than the python
+    engine on these multi-million-row files), we:
+      1. Read with sep='\\t' — this collapses `tunnel_parents   label   detailed-label`
+         into one trailing string column.
+      2. Split that string by whitespace into the three real fields.
     """
+    # The line has 20 tabs (21 fields). The first 20 fields are ts..resp_ip_bytes;
+    # the 21st field is "<tunnel_parents>   <label>   <detailed-label>".
+    raw_cols = IOT23_ZEEK_COLUMNS[:-3] + ["tunnel_label_blob"]  # 21 cols
     df = pd.read_csv(
         path,
-        sep=r"\s+",
+        sep="\t",
         comment="#",
         header=None,
-        names=IOT23_ZEEK_COLUMNS,
-        engine="python",
+        names=raw_cols,
+        engine="c",
         na_values=["-", "(empty)"],
         dtype={
             "id.orig_h": str, "id.resp_h": str,
             "id.orig_p": str, "id.resp_p": str,
             "proto": str, "service": str, "conn_state": str,
-            "history": str, "tunnel_parents": str,
-            "label": str, "detailed-label": str,
+            "history": str, "tunnel_label_blob": str,
         },
+        low_memory=False,
     )
+
+    # Split "<tunnel_parents>   <label>   <detailed-label>" by whitespace.
+    split = df["tunnel_label_blob"].fillna("-   -   -").str.split(r"\s+", n=2, expand=True, regex=True)
+    df["tunnel_parents"] = split[0]
+    df["label"] = split[1].fillna("-")
+    df["detailed-label"] = split[2].fillna("-")
+    df = df.drop(columns=["tunnel_label_blob"])
+    # Restore canonical column order
+    df = df[IOT23_ZEEK_COLUMNS]
+
     df["ts"] = pd.to_datetime(df["ts"], unit="s", utc=True, errors="coerce")
     df["class"] = df["label"].map(normalize_iot23_label)
     return df

@@ -93,7 +93,7 @@ def _parse_one_conn(path: Path, scenario_id: str) -> pd.DataFrame:
         "dst_ip": raw["id.resp_h"].values,
         "src_port": pd.to_numeric(raw["id.orig_p"], errors="coerce").fillna(0).astype("int32").values,
         "dst_port": pd.to_numeric(raw["id.resp_p"], errors="coerce").fillna(0).astype("int32").values,
-        "protocol": [_normalize_protocol(p) for p in raw["proto"].values],
+        "protocol": raw["proto"].fillna("other").astype(str).str.lower().map(PROTO_MAP).fillna("other").values,
         "start_time": start.values,
         "end_time": end.values,
         "duration_s": duration.values,

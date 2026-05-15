@@ -57,6 +57,19 @@ def _port_to_int(raw: object) -> int:
         return 0
 
 
+def _ports_vectorized(series: pd.Series) -> np.ndarray:
+    """Vectorized port parser. Handles decimal and 0x-hex strings; bad → 0."""
+    s = series.fillna("0").astype(str).str.strip()
+    # Try plain decimal first via pd.to_numeric.
+    dec = pd.to_numeric(s, errors="coerce")
+    # Hex fallback for the ones that failed.
+    hex_mask = dec.isna() & s.str.startswith(("0x", "0X"), na=False)
+    if hex_mask.any():
+        hex_vals = s.where(hex_mask).dropna().apply(lambda v: int(v, 16))
+        dec.loc[hex_mask] = hex_vals
+    return dec.fillna(0).clip(0, 65535).astype("int32").values
+
+
 def parse_ctu13_scenario(scenario_dir: Path, scenario_id: str | None = None) -> pd.DataFrame:
     """Parse all .binetflow files in a CTU-13 scenario directory.
 
@@ -132,9 +145,9 @@ def _parse_one_binetflow(path: Path, scenario_id: str) -> pd.DataFrame:
         "scenario": scenario_id,
         "src_ip": raw["SrcAddr"].values,
         "dst_ip": raw["DstAddr"].values,
-        "src_port": [_port_to_int(p) for p in raw["Sport"].values],
-        "dst_port": [_port_to_int(p) for p in raw["Dport"].values],
-        "protocol": [_normalize_protocol(p) for p in raw["Proto"].values],
+        "src_port": _ports_vectorized(raw["Sport"]),
+        "dst_port": _ports_vectorized(raw["Dport"]),
+        "protocol": raw["Proto"].fillna("other").astype(str).str.lower().map(PROTO_MAP).fillna("other").values,
         "start_time": start.values,
         "end_time": end.values,
         "duration_s": duration.values.astype("float64"),
