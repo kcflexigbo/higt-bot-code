@@ -1,0 +1,63 @@
+
+=== Bot traffic profile: 147.32.84.205 ===
+  packets matched          199,401
+  time span                3,819.9 s (63.7 min)
+  mean packet rate         52.20 pkts/s
+
+  Protocol breakdown:
+    udp            99,591  (49.95%)
+    proto-17       99,482  (49.89%)
+    tcp               314  ( 0.16%)
+    icmp               10  ( 0.01%)
+    proto-2             4  ( 0.00%)
+
+  Packet size (IP-layer bytes):
+    min          39
+    p25          43
+    median       48
+    p75        1500
+    p99        1500
+    max        1500
+    mean      770.3
+    std       728.2
+
+  Inter-arrival times (consecutive packets from this bot):
+    p1          0.003 ms
+    p25         0.010 ms
+    median      0.079 ms
+    p75         8.555 ms
+    p99        10.029 ms
+    max       242.138 s
+    mean       19.191 ms
+    CV         76.576  (bursty)
+
+  Distinct destinations contacted   13
+  Top 10 destination IPs:
+    147.32.96.69              198,969
+    85.190.0.3                    138
+    89.16.176.16                  102
+    147.32.84.255                  82
+    147.32.84.171                  44
+    147.32.80.9                    12
+    184.95.33.250                  12
+    195.113.232.75                 10
+    147.32.84.79                   10
+    74.125.232.199                  8
+
+  Top 10 destination ports:
+    0          99,496
+    161        99,487
+    6667           96
+    137            60
+    139            44
+    138            22
+    80             18
+    53             12
+    3597            6
+    3596            6
+
+  Peer churn (cumulative distinct peers over time):
+    after  25% of packets ( 3443.4 s)  →  12 distinct peers
+    after  50% of packets ( 3570.1 s)  →  12 distinct peers
+    after  75% of packets ( 3695.0 s)  →  13 distinct peers
+    after 100% of packets ( 3819.9 s)  →  13 distinct peers
