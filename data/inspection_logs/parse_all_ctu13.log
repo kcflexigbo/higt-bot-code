@@ -1,0 +1,77 @@
+
+[ctu13] data/raw/CTU-13-Dataset/1
+  parsed in 38.4s — bot 40,961  benign 30,387  background 2,753,288
+  → data/processed/ctu13-1.parquet  (2,824,636 flows, 113.4 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/10
+  parsed in 10.3s — bot 106,352  benign 15,847  background 1,187,592
+  → data/processed/ctu13-10.parquet  (1,309,791 flows, 50.6 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/11
+  parsed in 0.6s — bot 8,164  benign 2,718  background 96,369
+  → data/processed/ctu13-11.parquet  (107,251 flows, 5.0 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/12
+  parsed in 2.0s — bot 2,168  benign 7,628  background 315,675
+  → data/processed/ctu13-12.parquet  (325,471 flows, 13.4 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/13
+  parsed in 17.5s — bot 40,003  benign 31,939  background 1,853,207
+  → data/processed/ctu13-13.parquet  (1,925,149 flows, 74.2 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/2
+  parsed in 15.9s — bot 20,941  benign 9,120  background 1,778,061
+  → data/processed/ctu13-2.parquet  (1,808,122 flows, 72.7 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/3
+  parsed in 40.3s — bot 26,822  benign 116,887  background 4,566,929
+  → data/processed/ctu13-3.parquet  (4,710,638 flows, 164.6 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/4
+  parsed in 9.0s — bot 2,580  benign 25,268  background 1,093,228
+  → data/processed/ctu13-4.parquet  (1,121,076 flows, 44.3 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/5
+  parsed in 2.3s — bot 901  benign 4,679  background 124,252
+  → data/processed/ctu13-5.parquet  (129,832 flows, 5.9 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/6
+  parsed in 3.4s — bot 4,630  benign 7,494  background 546,795
+  → data/processed/ctu13-6.parquet  (558,919 flows, 21.4 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/7
+  parsed in 0.6s — bot 63  benign 1,677  background 112,337
+  → data/processed/ctu13-7.parquet  (114,077 flows, 5.3 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/8
+  parsed in 21.8s — bot 6,127  benign 72,822  background 2,875,281
+  → data/processed/ctu13-8.parquet  (2,954,230 flows, 110.5 MB)
+
+[ctu13] data/raw/CTU-13-Dataset/9
+  parsed in 15.6s — bot 184,987  benign 29,967  background 1,872,554
+  → data/processed/ctu13-9.parquet  (2,087,508 flows, 82.5 MB)
+
+--- spot-check medbiot-torii_mal_all.parquet ---
+  columns: list(df.columns) == FLOW_COLUMNS=True
+  bot rows: 102
+            src_ip          dst_ip  dst_port protocol  bytes_fwd  bytes_bwd       detailed_label
+0   192.168.10.107    66.85.157.95       443      tcp     328646     343188  torii-torii_mal_all
+1   192.168.10.109  192.168.10.145        23      tcp       9500       6819  torii-torii_mal_all
+2   192.168.10.145    66.85.157.95       443      tcp     322017     335979  torii-torii_mal_all
+3   192.168.10.109  192.168.10.155        23      tcp       7575       5672  torii-torii_mal_all
+4   192.168.10.109  192.168.10.165        23      tcp       5078       4476  torii-torii_mal_all
+5   192.168.10.109  192.168.10.175        23      tcp       6129       4888  torii-torii_mal_all
+6   192.168.10.109  192.168.10.185        23      tcp       5235       4505  torii-torii_mal_all
+7   192.168.10.109  192.168.10.195        23      tcp       5079       4349  torii-torii_mal_all
+8   192.168.10.109  192.168.10.205        23      tcp       5078       4401  torii-torii_mal_all
+9   192.168.10.109  192.168.10.135        23      tcp       4606       3972  torii-torii_mal_all
+10  192.168.10.135    66.85.157.95       443      tcp     318711     332502  torii-torii_mal_all
+11  192.168.10.109  192.168.10.165        23      tcp       4817       4571  torii-torii_mal_all
+12  192.168.10.109  192.168.10.166        23      tcp       6811       5369  torii-torii_mal_all
+13  192.168.10.109  192.168.10.142        23      tcp       4974       4268  torii-torii_mal_all
+14  192.168.10.142    66.85.157.95       443      tcp     314904     328871  torii-torii_mal_all
+15  192.168.10.109  192.168.10.150        23      tcp       5185       4476  torii-torii_mal_all
+16  192.168.10.150    66.85.157.95       443      tcp     313024     326991  torii-torii_mal_all
+17  192.168.10.109  192.168.10.151        23      tcp       5606       4693  torii-torii_mal_all
+18  192.168.10.151    66.85.157.95       443      tcp     313995     327519  torii-torii_mal_all
+19  192.168.10.109  192.168.10.153        23      tcp       5131       4401  torii-torii_mal_all
