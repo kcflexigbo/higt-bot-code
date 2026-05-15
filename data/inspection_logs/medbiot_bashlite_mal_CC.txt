@@ -1,0 +1,38 @@
+Found 1 pcap file(s) under data/raw/medbiot/bulk/raw_dataset/malware/bashlite_mal_CC_all.pcap
+
+=== bashlite_mal_CC_all.pcap ===
+  flows                 3,879
+  inferred class        bot  (family: bashlite)
+  distinct src IPs      52
+  distinct dst IPs      77
+  distinct IPs (union)  77
+  time range            2019-03-09 13:07:07.020054102+00:00  →  2019-03-10 19:37:03.003707886+00:00  (UTC)
+  duration              109,796 s (30.50 h)
+  total bytes           217,134,143
+  total packets         627,498
+
+  Top 10 source IPs (by flow count):
+    src_ip                      flows       pkts          bytes
+    192.168.10.61               1,845    129,542      9,182,134
+    192.168.10.199                253     37,270     23,942,552
+    192.168.10.128                133     23,417     13,299,337
+    192.168.10.169                126     22,544     12,636,787
+    192.168.10.172                125     22,352     12,487,833
+    192.168.10.188                118     21,471     11,762,136
+    192.168.10.182                108     20,228     10,878,849
+    192.168.10.157                107     20,131     10,776,882
+    192.168.10.152                 96     12,360      9,538,375
+    192.168.10.161                 63     14,572      6,493,795
+
+  Top 10 destination ports:
+    23           2,051
+    80           1,790
+    51446            5
+    0                2
+    37310            1
+    39862            1
+    50020            1
+    37986            1
+    42768            1
+    33850            1
+

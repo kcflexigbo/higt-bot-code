@@ -102,7 +102,7 @@ We only need bulk for graph construction.
 
 ### Quirks
 
-- **Pcaps must be parsed with NFStream** — there are no pre-extracted bidirectional flows. Add `nfstream` to deps in Phase 2.
+- **Phase 1 inspector uses `dpkt`, not NFStream.** NFStream's bundled nDPI binding fails on Apple Silicon macOS (flat-namespace symbol `_ndpi_category_get_name` not found, even after `brew install ndpi`). dpkt is pure-Python at the inner loop, fast enough (225 MB pcap in 6.5 s), and adequate for Phase 1 because labels come from filenames — no L7 classification needed. Phase 2 can reconsider on the Linux trainers if richer per-flow statistics are wanted.
 - **`leg` traffic captured *during* malware deployment is still benign.** The infection is on a separate set of hosts. Do not relabel.
 - **Device-type emulation** means many "devices" share characteristics. Treat each `(pcap_file, src_ip)` as a unique node identity, not just `src_ip`.
 

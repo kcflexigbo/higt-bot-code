@@ -333,42 +333,109 @@ def medbiot_family_from_filename(filename: str) -> str:
     return "unknown"
 
 
-def load_medbiot_pcap(path: Path, max_flows: int | None = None) -> pd.DataFrame:
-    """Stream flows from a MedBIoT pcap via NFStream into a DataFrame.
+def load_medbiot_pcap(
+    path: Path, max_flows: int | None = None, max_packets: int | None = None
+) -> pd.DataFrame:
+    """Stream packets from a MedBIoT pcap via dpkt, group into 5-tuple
+    bidirectional flows, return a DataFrame.
 
-    NFStream emits one row per bidirectional flow. We keep a minimal subset
-    of columns for Phase 1 inspection (full feature extraction is Phase 2).
+    We use dpkt (not NFStream) because nfstream's bundled nDPI binding is
+    broken on Apple Silicon macOS — flat-namespace symbol resolution fails
+    even with `brew install ndpi`. dpkt is pure Python where it matters,
+    fast in the inner loop, and adequate for Phase 1 inspection (no L7
+    classification needed — labels come from the filename).
 
     Args:
-        path: pcap file.
-        max_flows: optional cap for very large pcaps (e.g. bashlite_leg is 6 GB).
-            None = read all flows.
+        path: pcap file (classic pcap or pcapng).
+        max_flows: cap on emitted flows (None = no cap).
+        max_packets: cap on packets read (None = no cap, useful for the
+            6 GB bashlite_leg pcap).
     """
-    from nfstream import NFStreamer  # local import — heavy dep
+    import socket
 
-    rows = []
-    streamer = NFStreamer(source=str(path), statistical_analysis=False, decode_tunnels=False)
-    for i, flow in enumerate(streamer):
-        if max_flows is not None and i >= max_flows:
-            break
-        rows.append({
-            "src_ip": flow.src_ip,
-            "dst_ip": flow.dst_ip,
-            "src_port": flow.src_port,
-            "dst_port": flow.dst_port,
-            "protocol": flow.protocol,
-            "first_seen_ms": flow.bidirectional_first_seen_ms,
-            "last_seen_ms": flow.bidirectional_last_seen_ms,
-            "duration_ms": flow.bidirectional_duration_ms,
-            "packets": flow.bidirectional_packets,
-            "bytes": flow.bidirectional_bytes,
-        })
-    df = pd.DataFrame(rows)
-    if len(df):
-        df["first_seen"] = pd.to_datetime(df["first_seen_ms"], unit="ms", utc=True)
-        df["last_seen"] = pd.to_datetime(df["last_seen_ms"], unit="ms", utc=True)
-        df["class"] = medbiot_label_from_filename(path.name)
-        df["family"] = medbiot_family_from_filename(path.name)
+    import dpkt
+
+    flows: dict[tuple, dict] = {}
+    n_pkts = 0
+    n_skipped = 0
+
+    with open(path, "rb") as f:
+        # Try classic pcap first; fall back to pcapng on magic mismatch.
+        try:
+            reader = dpkt.pcap.Reader(f)
+        except ValueError:
+            f.seek(0)
+            reader = dpkt.pcapng.Reader(f)
+
+        linktype = reader.datalink()
+        # 1 = DLT_EN10MB (Ethernet), 113 = DLT_LINUX_SLL, 276 = DLT_LINUX_SLL2
+        for ts, buf in reader:
+            if max_packets is not None and n_pkts >= max_packets:
+                break
+            n_pkts += 1
+            try:
+                if linktype == 1:
+                    eth = dpkt.ethernet.Ethernet(buf)
+                    ip = eth.data
+                elif linktype == 113:
+                    sll = dpkt.sll.SLL(buf)
+                    ip = sll.data
+                elif linktype == 276:
+                    sll2 = dpkt.sll2.SLL2(buf)
+                    ip = sll2.data
+                else:
+                    n_skipped += 1
+                    continue
+                if not isinstance(ip, dpkt.ip.IP):
+                    n_skipped += 1
+                    continue
+
+                src = socket.inet_ntoa(ip.src)
+                dst = socket.inet_ntoa(ip.dst)
+                proto = ip.p
+                if isinstance(ip.data, (dpkt.tcp.TCP, dpkt.udp.UDP)):
+                    sport, dport = int(ip.data.sport), int(ip.data.dport)
+                else:
+                    sport = dport = 0
+
+                # Canonical bidirectional 5-tuple key (sort endpoints).
+                a, b = (src, sport), (dst, dport)
+                if a > b:
+                    a, b = b, a
+                key = (a, b, proto)
+
+                flow = flows.get(key)
+                if flow is None:
+                    if max_flows is not None and len(flows) >= max_flows:
+                        n_skipped += 1
+                        continue
+                    flow = flows[key] = {
+                        "src_ip": src, "dst_ip": dst,
+                        "src_port": sport, "dst_port": dport,
+                        "protocol": int(proto),
+                        "first_seen_s": ts, "last_seen_s": ts,
+                        "packets": 0, "bytes": 0,
+                    }
+                flow["first_seen_s"] = min(flow["first_seen_s"], ts)
+                flow["last_seen_s"] = max(flow["last_seen_s"], ts)
+                flow["packets"] += 1
+                flow["bytes"] += int(ip.len)
+            except (dpkt.dpkt.UnpackError, AttributeError):
+                n_skipped += 1
+                continue
+
+    if n_skipped:
+        print(f"  (skipped {n_skipped:,} non-IP / malformed packets)")
+
+    if not flows:
+        return pd.DataFrame()
+
+    df = pd.DataFrame(list(flows.values()))
+    df["first_seen"] = pd.to_datetime(df["first_seen_s"], unit="s", utc=True)
+    df["last_seen"] = pd.to_datetime(df["last_seen_s"], unit="s", utc=True)
+    df["duration_s"] = df["last_seen_s"] - df["first_seen_s"]
+    df["class"] = medbiot_label_from_filename(path.name)
+    df["family"] = medbiot_family_from_filename(path.name)
     return df
 
 
@@ -394,8 +461,8 @@ def summarize_medbiot(df: pd.DataFrame, source: str) -> None:
     all_ips = pd.concat([df["src_ip"], df["dst_ip"]]).nunique()
     t_min, t_max = df["first_seen"].min(), df["last_seen"].max()
     duration = (t_max - t_min).total_seconds() if pd.notna(t_min) and pd.notna(t_max) else None
-    cls = df["class"].iloc[0]
-    family = df["family"].iloc[0]
+    cls = str(df["class"].iloc[0])
+    family = str(df["family"].iloc[0])
 
     print(f"=== {source} ===")
     print(f"  flows                 {n:,}")
@@ -431,15 +498,19 @@ def summarize_medbiot(df: pd.DataFrame, source: str) -> None:
     print()
 
 
-def inspect_medbiot(path: Path, max_flows: int | None = None) -> None:
+def inspect_medbiot(
+    path: Path, max_flows: int | None = None, max_packets: int | None = None
+) -> None:
     files = find_medbiot_pcaps(path)
     print(f"Found {len(files)} pcap file(s) under {path}")
     if max_flows is not None:
-        print(f"  (sampling first {max_flows:,} flows per file)")
+        print(f"  (capping at {max_flows:,} flows per file)")
+    if max_packets is not None:
+        print(f"  (capping at {max_packets:,} packets per file)")
     print()
 
     for f in files:
-        df = load_medbiot_pcap(f, max_flows=max_flows)
+        df = load_medbiot_pcap(f, max_flows=max_flows, max_packets=max_packets)
         rel = f.relative_to(path) if path.is_dir() else f.name
         summarize_medbiot(df, source=str(rel))
 
@@ -455,7 +526,9 @@ def main() -> None:
     p.add_argument("--format", choices=["ctu13", "iot23", "medbiot"], default="ctu13",
                    help="Dataset format")
     p.add_argument("--max-flows", type=int, default=None,
-                   help="MedBIoT only: cap flows per pcap (useful for the 6 GB legitimate captures)")
+                   help="MedBIoT only: cap flows per pcap")
+    p.add_argument("--max-packets", type=int, default=None,
+                   help="MedBIoT only: cap packets read per pcap (useful for the 6 GB legitimate captures)")
     args = p.parse_args()
 
     if not args.path.exists():
@@ -466,7 +539,7 @@ def main() -> None:
     elif args.format == "iot23":
         inspect_iot23(args.path)
     elif args.format == "medbiot":
-        inspect_medbiot(args.path, max_flows=args.max_flows)
+        inspect_medbiot(args.path, max_flows=args.max_flows, max_packets=args.max_packets)
 
 
 if __name__ == "__main__":
