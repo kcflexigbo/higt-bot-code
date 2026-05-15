@@ -33,8 +33,16 @@ download_iot23() {
 
     echo ">> Extracting IoT-23 lighter"
     tar -xzf "$out" -C "$DEST"
+
+    # The tar packs everything under opt/Malware-Project/BigDataset/IoTScenarios/.
+    # Symlink to a sane path so code can reference data/raw/IoT-23/...
+    if [ -d "$DEST/opt/Malware-Project/BigDataset/IoTScenarios" ] && [ ! -e "$DEST/IoT-23" ]; then
+        ln -sfn opt/Malware-Project/BigDataset/IoTScenarios "$DEST/IoT-23"
+        echo ">> Created symlink $DEST/IoT-23"
+    fi
+
     echo ">> IoT-23 done. Layout:"
-    ls "$DEST/" | grep -i iot | head
+    ls "$DEST/IoT-23/" 2>/dev/null | head
 }
 
 case "${1:-all}" in

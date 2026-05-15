@@ -1,0 +1,39 @@
+Found 1 conn.log.labeled file(s) under data/raw/IoT-23/CTU-IoT-Malware-Capture-48-1
+
+=== bro/conn.log.labeled ===
+  rows                  3,394,338
+  distinct src IPs      2,150
+  distinct dst IPs      1,685,416
+  distinct IPs (union)  1,686,769
+  time range            2019-02-28 18:15:33.981529951+00:00  →  2019-03-01 04:01:54.022135973+00:00  (UTC)
+  duration              35,180 s (9.77 h)
+
+  Label distribution (normalized class):
+    bot           3,390,604  (99.89%)
+    benign            3,734  ( 0.11%)
+    background            0  ( 0.00%)
+
+  Top detailed-labels (bot flows only):
+    PartOfAHorizontalPortScan                 3,386,119
+    Attack                                        2,752
+    C&C-PartOfAHorizontalPortScan                   888
+    C&C-HeartBeat-Attack                            834
+    C&C-HeartBeat-FileDownload                       11
+
+  Top 10 source IPs (by flow count):
+    src_ip                      flows  bot_flows  dominant
+    192.168.1.200           3,392,003  3,390,604  bot
+    192.168.1.1                    11          0  benign
+    198.71.46.196                   9          0  benign
+    216.220.35.217                  7          0  benign
+    116.213.53.130                  6          0  benign
+    218.45.246.154                  6          0  benign
+    218.248.235.161                 5          0  benign
+    198.161.9.236                   5          0  benign
+    150.199.51.30                   5          0  benign
+    150.200.5.253                   4          0  benign
+
+  Bot source IPs        1
+    src_ip                  bot_flows
+    192.168.1.200           3,390,604
+

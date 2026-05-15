@@ -8,11 +8,16 @@ All raw data is gitignored. Re-downloading is reproducible via `scripts/download
 data/
   raw/                                 # original downloads — never modified
     CTU-13-Dataset/{1..13}/            # 13 scenarios; binetflow + pcap
-    iot_23_datasets_small/             # IoT-23 lighter (Zeek conn.log only)
+    IoT-23 -> opt/.../IoTScenarios/    # symlink to the IoT-23 extraction
+    opt/Malware-Project/BigDataset/    # actual IoT-23 path from the tar
+      IoTScenarios/CTU-IoT-Malware-Capture-<N>-1/bro/conn.log.labeled
     medbiot/bulk/                      # MedBIoT bulk pcaps
   processed/                           # parsed flows (parquet) — Phase 2
   graphs/                              # PyG Data objects (.pt) — Phase 3
+  inspection_logs/                     # Phase 1 inspection outputs (tracked in git)
 ```
+
+**Note on IoT-23 path:** the tar packs with an `/opt/Malware-Project/BigDataset/IoTScenarios/` prefix. We symlink `data/raw/IoT-23` to that directory so paths in code stay readable. The symlink is created by `scripts/download_data.sh iot23`.
 
 ## CTU-13 — primary dataset (~1.9 GB)
 
