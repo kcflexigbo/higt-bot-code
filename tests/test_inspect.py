@@ -11,6 +11,8 @@ from src.data.inspect import (
     CTU13_BINETFLOW_COLUMNS,
     load_ctu13_binetflow,
     load_iot23_conn,
+    medbiot_family_from_filename,
+    medbiot_label_from_filename,
     normalize_ctu13_label,
     normalize_iot23_label,
 )
@@ -159,3 +161,36 @@ def test_load_iot23_conn_detailed_label(tiny_iot23: Path) -> None:
     bot_detail = df.loc[df["class"] == "bot", "detailed-label"].tolist()
     assert "C&C-HeartBeat" in bot_detail
     assert "PartOfAHorizontalPortScan" in bot_detail
+
+
+# --------------------------------------------------------------------------- #
+# MedBIoT pcap (label-from-filename only — real NFStream parsing requires    #
+# actual pcap and is exercised by the manual inspector run on real data)     #
+# --------------------------------------------------------------------------- #
+
+
+@pytest.mark.parametrize("filename,expected", [
+    ("mirai_mal_CC_all.pcap", "bot"),
+    ("mirai_mal_spread_all.pcap", "bot"),
+    ("bashlite_mal_CC_all.pcap", "bot"),
+    ("torii_mal_all.pcap", "bot"),
+    ("mirai_leg.pcap", "benign"),
+    ("bashlite_leg.pcap", "benign"),
+    ("torii_leg.pcap", "benign"),
+    ("/some/path/mirai_mal_lock.pcap", "bot"),  # full path
+    ("MIRAI_MAL_LOCK.PCAP", "bot"),             # case-insensitive
+    ("random.pcap", "background"),
+    ("noextension", "background"),
+])
+def test_medbiot_label_from_filename(filename: str, expected: str) -> None:
+    assert medbiot_label_from_filename(filename) == expected
+
+
+@pytest.mark.parametrize("filename,expected", [
+    ("mirai_mal_CC_all.pcap", "mirai"),
+    ("bashlite_leg.pcap", "bashlite"),
+    ("torii_mal_all.pcap", "torii"),
+    ("random.pcap", "unknown"),
+])
+def test_medbiot_family_from_filename(filename: str, expected: str) -> None:
+    assert medbiot_family_from_filename(filename) == expected

@@ -7,12 +7,13 @@ file or directory, print:
   - label distribution
   - top-10 most communicative source IPs and their roles
 
-Supports CTU-13 binetflow CSVs and IoT-23 Zeek conn.log.labeled files.
-MedBIoT (pcap) is added when Phase 2 needs it.
+Supports CTU-13 binetflow, IoT-23 Zeek conn.log.labeled, and MedBIoT pcap
+(via NFStream — labels inferred from filename).
 
 Usage:
     uv run python -m src.data.inspect --path data/raw/CTU-13-Dataset/10 --format ctu13
     uv run python -m src.data.inspect --path data/raw/IoT-23/CTU-IoT-Malware-Capture-48-1 --format iot23
+    uv run python -m src.data.inspect --path data/raw/medbiot/bulk/raw_dataset/malware/torii_mal_all.pcap --format medbiot
 """
 
 from __future__ import annotations
@@ -300,6 +301,150 @@ def inspect_iot23(path: Path) -> None:
 
 
 # --------------------------------------------------------------------------- #
+# MedBIoT pcap (via NFStream)                                                 #
+# --------------------------------------------------------------------------- #
+
+# Label rule from data/README.md:
+#   <malware>_mal_*.pcap  → all flows are bot (the malware family)
+#   <malware>_leg_*.pcap  → all flows are benign (legitimate traffic captured
+#                            during malware deployment, on uninfected hosts)
+
+
+def medbiot_label_from_filename(filename: str) -> str:
+    """Map MedBIoT pcap filename to class label.
+
+    Returns 'bot' for *_mal_*.pcap and 'benign' for *_leg_*.pcap.
+    Returns 'background' if the filename matches neither convention.
+    """
+    name = Path(filename).name.lower()
+    if "_mal_" in name or name.endswith("_mal.pcap") or "_mal." in name:
+        return "bot"
+    if "_leg_" in name or name.endswith("_leg.pcap") or "_leg." in name:
+        return "benign"
+    return "background"
+
+
+def medbiot_family_from_filename(filename: str) -> str:
+    """Extract malware family (mirai/bashlite/torii) from pcap filename."""
+    name = Path(filename).name.lower()
+    for family in ("mirai", "bashlite", "torii"):
+        if name.startswith(family):
+            return family
+    return "unknown"
+
+
+def load_medbiot_pcap(path: Path, max_flows: int | None = None) -> pd.DataFrame:
+    """Stream flows from a MedBIoT pcap via NFStream into a DataFrame.
+
+    NFStream emits one row per bidirectional flow. We keep a minimal subset
+    of columns for Phase 1 inspection (full feature extraction is Phase 2).
+
+    Args:
+        path: pcap file.
+        max_flows: optional cap for very large pcaps (e.g. bashlite_leg is 6 GB).
+            None = read all flows.
+    """
+    from nfstream import NFStreamer  # local import — heavy dep
+
+    rows = []
+    streamer = NFStreamer(source=str(path), statistical_analysis=False, decode_tunnels=False)
+    for i, flow in enumerate(streamer):
+        if max_flows is not None and i >= max_flows:
+            break
+        rows.append({
+            "src_ip": flow.src_ip,
+            "dst_ip": flow.dst_ip,
+            "src_port": flow.src_port,
+            "dst_port": flow.dst_port,
+            "protocol": flow.protocol,
+            "first_seen_ms": flow.bidirectional_first_seen_ms,
+            "last_seen_ms": flow.bidirectional_last_seen_ms,
+            "duration_ms": flow.bidirectional_duration_ms,
+            "packets": flow.bidirectional_packets,
+            "bytes": flow.bidirectional_bytes,
+        })
+    df = pd.DataFrame(rows)
+    if len(df):
+        df["first_seen"] = pd.to_datetime(df["first_seen_ms"], unit="ms", utc=True)
+        df["last_seen"] = pd.to_datetime(df["last_seen_ms"], unit="ms", utc=True)
+        df["class"] = medbiot_label_from_filename(path.name)
+        df["family"] = medbiot_family_from_filename(path.name)
+    return df
+
+
+def find_medbiot_pcaps(path: Path) -> list[Path]:
+    """If file, return [path]. If directory, find all .pcap files recursively."""
+    if path.is_file():
+        return [path]
+    files = sorted(path.rglob("*.pcap"))
+    if not files:
+        raise FileNotFoundError(f"No .pcap files under {path}")
+    return files
+
+
+def summarize_medbiot(df: pd.DataFrame, source: str) -> None:
+    """Print a one-page overview of a MedBIoT pcap flow dataframe."""
+    n = len(df)
+    if n == 0:
+        print(f"=== {source} ===  (empty)")
+        return
+
+    src_ips = df["src_ip"].nunique()
+    dst_ips = df["dst_ip"].nunique()
+    all_ips = pd.concat([df["src_ip"], df["dst_ip"]]).nunique()
+    t_min, t_max = df["first_seen"].min(), df["last_seen"].max()
+    duration = (t_max - t_min).total_seconds() if pd.notna(t_min) and pd.notna(t_max) else None
+    cls = df["class"].iloc[0]
+    family = df["family"].iloc[0]
+
+    print(f"=== {source} ===")
+    print(f"  flows                 {n:,}")
+    print(f"  inferred class        {cls}  (family: {family})")
+    print(f"  distinct src IPs      {src_ips:,}")
+    print(f"  distinct dst IPs      {dst_ips:,}")
+    print(f"  distinct IPs (union)  {all_ips:,}")
+    print(f"  time range            {t_min}  →  {t_max}  (UTC)")
+    if duration is not None:
+        print(f"  duration              {duration:,.0f} s ({duration / 3600:.2f} h)")
+    print(f"  total bytes           {int(df['bytes'].sum()):,}")
+    print(f"  total packets         {int(df['packets'].sum()):,}")
+    print()
+
+    top_src = (
+        df.groupby("src_ip")
+          .agg(flows=("src_ip", "size"),
+               pkts=("packets", "sum"),
+               bytes_=("bytes", "sum"))
+          .sort_values("flows", ascending=False)
+          .head(10)
+    )
+    print("  Top 10 source IPs (by flow count):")
+    print(f"    {'src_ip':<22s} {'flows':>10s} {'pkts':>10s} {'bytes':>14s}")
+    for ip, row in top_src.iterrows():
+        print(f"    {ip:<22s} {int(row['flows']):>10,} {int(row['pkts']):>10,} {int(row['bytes_']):>14,}")
+    print()
+
+    top_ports = df["dst_port"].value_counts().head(10)
+    print("  Top 10 destination ports:")
+    for port, c in top_ports.items():
+        print(f"    {int(port):<6d}  {int(c):>10,}")
+    print()
+
+
+def inspect_medbiot(path: Path, max_flows: int | None = None) -> None:
+    files = find_medbiot_pcaps(path)
+    print(f"Found {len(files)} pcap file(s) under {path}")
+    if max_flows is not None:
+        print(f"  (sampling first {max_flows:,} flows per file)")
+    print()
+
+    for f in files:
+        df = load_medbiot_pcap(f, max_flows=max_flows)
+        rel = f.relative_to(path) if path.is_dir() else f.name
+        summarize_medbiot(df, source=str(rel))
+
+
+# --------------------------------------------------------------------------- #
 # CLI                                                                         #
 # --------------------------------------------------------------------------- #
 
@@ -307,8 +452,10 @@ def inspect_iot23(path: Path) -> None:
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--path", type=Path, required=True, help="File or directory to inspect")
-    p.add_argument("--format", choices=["ctu13", "iot23"], default="ctu13",
+    p.add_argument("--format", choices=["ctu13", "iot23", "medbiot"], default="ctu13",
                    help="Dataset format")
+    p.add_argument("--max-flows", type=int, default=None,
+                   help="MedBIoT only: cap flows per pcap (useful for the 6 GB legitimate captures)")
     args = p.parse_args()
 
     if not args.path.exists():
@@ -318,6 +465,8 @@ def main() -> None:
         inspect_ctu13(args.path)
     elif args.format == "iot23":
         inspect_iot23(args.path)
+    elif args.format == "medbiot":
+        inspect_medbiot(args.path, max_flows=args.max_flows)
 
 
 if __name__ == "__main__":
