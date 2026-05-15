@@ -1,0 +1,39 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Data — keep tree, ignore contents
+data/raw/*
+data/processed/*
+data/graphs/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/graphs/.gitkeep
+
+# Experiment artifacts
+experiments/
+wandb/
+outputs/
+multirun/
+*.pt
+*.ckpt
+*.parquet
+
+# Notebook checkpoints
+.ipynb_checkpoints/
