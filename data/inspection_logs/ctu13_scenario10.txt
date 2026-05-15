@@ -1,0 +1,41 @@
+Found 1 binetflow file(s) under data/raw/CTU-13-Dataset/10
+
+=== capture20110818.binetflow ===
+  rows                  1,309,791
+  distinct src IPs      151,256
+  distinct dst IPs      72,957
+  distinct IPs (union)  197,824
+  time range            2011-08-18 09:56:29.146156  →  2011-08-18 15:04:59.744388
+  duration              18,511 s (5.14 h)
+
+  Label distribution (normalized class):
+    bot             106,352  ( 8.12%)
+    benign           15,847  ( 1.21%)
+    background    1,187,592  (90.67%)
+
+  Top 10 source IPs (by flow count):
+    src_ip                      flows  bot_flows  dominant
+    147.32.84.138             211,967          0  background
+    147.32.84.59              190,698          0  background
+    147.32.84.229              68,325          0  background
+    147.32.85.25               43,411          0  background
+    147.32.84.118              25,228          0  background
+    147.32.85.34               23,399          0  background
+    147.32.86.20               22,870          0  background
+    147.32.86.135              19,598          0  background
+    147.32.86.223              15,114          0  background
+    147.32.84.205              11,875     11,874  bot
+
+  Bot source IPs        10
+    src_ip                  bot_flows
+    147.32.84.205              11,874
+    147.32.84.206              11,287
+    147.32.84.204              11,159
+    147.32.84.208              11,118
+    147.32.84.207              10,581
+    147.32.84.191              10,454
+    147.32.84.192              10,397
+    147.32.84.193              10,009
+    147.32.84.209               9,894
+    147.32.84.165               9,579
+

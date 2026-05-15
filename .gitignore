@@ -25,6 +25,8 @@ data/graphs/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/graphs/.gitkeep
+# But DO keep inspection logs — they're cheap text snapshots, useful as evidence
+!data/inspection_logs/
 
 # Experiment artifacts
 experiments/
