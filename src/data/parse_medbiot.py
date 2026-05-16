@@ -65,6 +65,15 @@ def parse_medbiot_pcap(
     family = medbiot_family_from_filename(path.name)
     detailed = f"{family}-{Path(path.name).stem}"
 
+    # Constant-memory per-flow state. We keep online aggregates instead of
+    # per-packet lists so RAM scales with unique flows, not total packets —
+    # critical for the 6 GB bashlite_leg.pcap.
+    #
+    # IAT statistics use Welford's online algorithm on consecutive packet
+    # deltas. Note: dpkt yields packets in capture order, not sorted by
+    # timestamp; if we encounter an out-of-order packet we skip its IAT
+    # contribution (the count would be misleading otherwise — true sort
+    # would require buffering, which is what we're trying to avoid).
     flows: dict[tuple, dict] = {}
     n_pkts = 0
 
@@ -80,6 +89,8 @@ def parse_medbiot_pcap(
             if max_packets is not None and n_pkts >= max_packets:
                 break
             n_pkts += 1
+            if n_pkts % 5_000_000 == 0:
+                print(f"  ...{n_pkts:,} packets, {len(flows):,} flows so far", flush=True)
             try:
                 if linktype == 1:
                     ip = dpkt.ethernet.Ethernet(buf).data
@@ -116,8 +127,11 @@ def parse_medbiot_pcap(
                         "first_ts": ts, "last_ts": ts,
                         "bytes_fwd": 0, "bytes_bwd": 0,
                         "pkts_fwd": 0, "pkts_bwd": 0,
-                        "sizes": [],
-                        "timestamps": [],
+                        # Online size stats
+                        "min_size": size, "max_size": size,
+                        # Online IAT stats (Welford on consecutive deltas)
+                        "iat_n": 0, "iat_mean": 0.0, "iat_M2": 0.0,
+                        "prev_ts": ts,
                     }
                 # Direction relative to the first-seen src/dst.
                 is_fwd = (src == flow["src_ip"]) and (sport == flow["src_port"])
@@ -131,9 +145,20 @@ def parse_medbiot_pcap(
                 if ts < flow["first_ts"]:
                     flow["first_ts"] = ts
                 if ts > flow["last_ts"]:
-                    flow["last_ts"] = ts
-                flow["sizes"].append(size)
-                flow["timestamps"].append(ts)
+                    # Update IAT online stats on the delta from previous packet.
+                    delta_ms = (ts - flow["prev_ts"]) * 1000.0
+                    flow["iat_n"] += 1
+                    n = flow["iat_n"]
+                    delta = delta_ms - flow["iat_mean"]
+                    flow["iat_mean"] += delta / n
+                    delta2 = delta_ms - flow["iat_mean"]
+                    flow["iat_M2"] += delta * delta2
+                    flow["prev_ts"] = ts
+                # Size min/max
+                if size < flow["min_size"]:
+                    flow["min_size"] = size
+                if size > flow["max_size"]:
+                    flow["max_size"] = size
             except (dpkt.dpkt.UnpackError, AttributeError):
                 continue
 
@@ -145,14 +170,12 @@ def parse_medbiot_pcap(
 
     rows = []
     for flow in flows.values():
-        sizes = np.asarray(flow["sizes"], dtype=np.int64)
-        ts_arr = np.asarray(flow["timestamps"], dtype=np.float64)
-        ts_arr.sort()
-        if ts_arr.size >= 2:
-            iat_s = np.diff(ts_arr)
-            iat_ms = iat_s * 1000.0
-            mean_iat = float(iat_ms.mean())
-            std_iat = float(iat_ms.std()) if iat_ms.size >= 2 else 0.0
+        n_iat = flow["iat_n"]
+        if n_iat >= 1:
+            mean_iat = flow["iat_mean"]
+            # Welford gives sample variance via M2/(n-1); use M2/n for population
+            # variance, matching the previous numpy std(ddof=0) semantics.
+            std_iat = (flow["iat_M2"] / n_iat) ** 0.5 if n_iat >= 2 else 0.0
         else:
             mean_iat = std_iat = float("nan")
         rows.append({
@@ -164,8 +187,8 @@ def parse_medbiot_pcap(
             "pkts_fwd": flow["pkts_fwd"], "pkts_bwd": flow["pkts_bwd"],
             "mean_iat_ms": mean_iat,
             "std_iat_ms": std_iat,
-            "min_pkt_size": float(sizes.min()),
-            "max_pkt_size": float(sizes.max()),
+            "min_pkt_size": float(flow["min_size"]),
+            "max_pkt_size": float(flow["max_size"]),
         })
 
     df = pd.DataFrame(rows)

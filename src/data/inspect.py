@@ -230,6 +230,44 @@ def load_iot23_conn(path: Path) -> pd.DataFrame:
     return df
 
 
+def iter_iot23_conn_chunks(path: Path, chunksize: int = 1_000_000):
+    """Stream a conn.log.labeled in row chunks. Yields the same per-chunk
+    DataFrame shape that `load_iot23_conn` returns for the whole file.
+
+    Use this for huge scenarios (e.g. IoT-23 17-1, 33-1 at 7+ GB) where
+    a single read would blow up RAM.
+    """
+    raw_cols = IOT23_ZEEK_COLUMNS[:-3] + ["tunnel_label_blob"]
+    reader = pd.read_csv(
+        path,
+        sep="\t",
+        comment="#",
+        header=None,
+        names=raw_cols,
+        engine="c",
+        na_values=["-", "(empty)"],
+        dtype={
+            "id.orig_h": str, "id.resp_h": str,
+            "id.orig_p": str, "id.resp_p": str,
+            "proto": str, "service": str, "conn_state": str,
+            "history": str, "tunnel_label_blob": str,
+        },
+        low_memory=False,
+        chunksize=chunksize,
+        iterator=True,
+    )
+    for df in reader:
+        split = df["tunnel_label_blob"].fillna("-   -   -").str.split(r"\s+", n=2, expand=True, regex=True)
+        df["tunnel_parents"] = split[0]
+        df["label"] = split[1].fillna("-")
+        df["detailed-label"] = split[2].fillna("-")
+        df = df.drop(columns=["tunnel_label_blob"])
+        df = df[IOT23_ZEEK_COLUMNS]
+        df["ts"] = pd.to_datetime(df["ts"], unit="s", utc=True, errors="coerce")
+        df["class"] = df["label"].map(normalize_iot23_label)
+        yield df
+
+
 def find_iot23_conn_files(path: Path) -> list[Path]:
     """If file, return [path]. If scenario dir, look in bro/. If parent, recurse."""
     if path.is_file():

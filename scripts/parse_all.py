@@ -32,7 +32,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.data.parse_ctu13 import parse_ctu13_scenario
-from src.data.parse_iot23 import parse_iot23_scenario
+from src.data.parse_iot23 import parse_iot23_scenario, parse_iot23_scenario_streaming
 from src.data.parse_medbiot import parse_medbiot_pcap
 from src.data.schema import FLOW_COLUMNS
 
@@ -59,17 +59,23 @@ def _parse_ctu13_one(scenario: str) -> None:
     _write(df, out)
 
 
-def _parse_iot23_one(scenario: str) -> None:
+def _parse_iot23_one(scenario: str, streaming: bool = False) -> None:
     src = RAW / "IoT-23" / f"CTU-IoT-Malware-Capture-{scenario}"
     out = OUT / f"iot23-{scenario}.parquet"
-    print(f"\n[iot23] {src}")
+    print(f"\n[iot23] {src}  (streaming={streaming})")
     t0 = time.perf_counter()
-    df = parse_iot23_scenario(src, scenario_id=f"iot23-{scenario}")
-    dt = time.perf_counter() - t0
-    print(f"  parsed in {dt:.1f}s — bot {(df['label']=='bot').sum():,}  "
-          f"benign {(df['label']=='benign').sum():,}  "
-          f"background {(df['label']=='background').sum():,}")
-    _write(df, out)
+    if streaming:
+        n_rows = parse_iot23_scenario_streaming(src, out, scenario_id=f"iot23-{scenario}")
+        dt = time.perf_counter() - t0
+        size_mb = out.stat().st_size / 1e6
+        print(f"  streamed in {dt:.1f}s — {n_rows:,} rows  → {out}  ({size_mb:.1f} MB)")
+    else:
+        df = parse_iot23_scenario(src, scenario_id=f"iot23-{scenario}")
+        dt = time.perf_counter() - t0
+        print(f"  parsed in {dt:.1f}s — bot {(df['label']=='bot').sum():,}  "
+              f"benign {(df['label']=='benign').sum():,}  "
+              f"background {(df['label']=='background').sum():,}")
+        _write(df, out)
 
 
 def _parse_medbiot_pcap(pcap: Path, max_packets: int | None) -> None:
@@ -85,13 +91,18 @@ def _parse_medbiot_pcap(pcap: Path, max_packets: int | None) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--kind", choices=["ctu13", "iot23", "medbiot"], required=True)
-    ap.add_argument("--scenario", help="CTU-13: '1'..'13'; IoT-23: '48-1' etc.")
+    ap.add_argument("--scenario", action="append",
+                    help="CTU-13: '1'..'13'; IoT-23: '48-1' etc. "
+                         "Pass multiple times to parse several scenarios.")
     ap.add_argument("--pcap", type=Path, help="MedBIoT: path to a single .pcap")
     ap.add_argument("--all", action="store_true", help="Parse every scenario for the chosen kind")
     ap.add_argument("--all-malware", action="store_true",
                     help="MedBIoT only: parse every malware pcap")
     ap.add_argument("--max-packets", type=int, default=None,
                     help="MedBIoT only: cap packets read (useful for the 6 GB bashlite_leg)")
+    ap.add_argument("--streaming", action="store_true",
+                    help="IoT-23 only: stream large conn.log files in chunks "
+                         "(use for 7+ GB scenarios like 17-1, 33-1)")
     args = ap.parse_args()
 
     if args.kind == "ctu13":
@@ -100,7 +111,8 @@ def main() -> None:
                 if d.is_dir() and d.name.isdigit():
                     _parse_ctu13_one(d.name)
         elif args.scenario:
-            _parse_ctu13_one(args.scenario)
+            for s in args.scenario:
+                _parse_ctu13_one(s)
         else:
             ap.error("ctu13 requires --scenario or --all")
 
@@ -109,9 +121,10 @@ def main() -> None:
             for d in sorted((RAW / "IoT-23").iterdir()):
                 if d.is_dir() and "Malware-Capture-" in d.name:
                     short = d.name.split("Capture-")[-1]
-                    _parse_iot23_one(short)
+                    _parse_iot23_one(short, streaming=args.streaming)
         elif args.scenario:
-            _parse_iot23_one(args.scenario)
+            for s in args.scenario:
+                _parse_iot23_one(s, streaming=args.streaming)
         else:
             ap.error("iot23 requires --scenario or --all")
 
