@@ -1,0 +1,31 @@
+window=300s  max_nodes=400  files=29
+
+[ctu13-1                         ]  flows     71,348/ 2,824,636  graphs   74  bot  58  bot-nodes  2308    1.9s
+[ctu13-10                        ]  flows    122,199/ 1,309,791  graphs   58  bot  20  bot-nodes   147    1.1s
+[ctu13-11                        ]  flows     10,882/   107,251  graphs    5  bot   2  bot-nodes     8    0.1s
+[ctu13-12                        ]  flows      9,796/   325,471  graphs   16  bot   7  bot-nodes    74    0.3s
+[ctu13-13                        ]  flows     71,942/ 1,925,149  graphs  198  bot 196  bot-nodes  1384    2.5s
+[ctu13-2                         ]  flows     30,061/ 1,808,122  graphs   51  bot  43  bot-nodes   920    0.9s
+[ctu13-3                         ]  flows    143,709/ 4,710,638  graphs  803  bot  13  bot-nodes    29    7.4s
+[ctu13-4                         ]  flows     27,848/ 1,121,076  graphs   51  bot  24  bot-nodes   133    0.9s
+[ctu13-5                         ]  flows      5,580/   129,832  graphs    7  bot   5  bot-nodes    49    0.1s
+[ctu13-6                         ]  flows     12,124/   558,919  graphs   27  bot  25  bot-nodes   460    0.5s
+[ctu13-7                         ]  flows      1,740/   114,077  graphs    5  bot   2  bot-nodes     7    0.1s
+[ctu13-8                         ]  flows     78,949/ 2,954,230  graphs  235  bot 221  bot-nodes   513    3.1s
+[ctu13-9                         ]  flows    214,954/ 2,087,508  graphs   63  bot  39  bot-nodes  4894    4.5s
+[iot23-1-1                       ]  flows  1,008,748/ 1,008,748  graphs 1343  bot 1343  bot-nodes 166845   67.8s
+[iot23-17-1                      ]  flows 54,659,855/54,659,855  graphs  289  bot 289  bot-nodes  1745  301.9s
+[iot23-20-1                      ]  flows      3,209/     3,209  graphs   33  bot   3  bot-nodes     6    0.2s
+[iot23-21-1                      ]  flows      3,286/     3,286  graphs   53  bot   2  bot-nodes     4    0.3s
+[iot23-3-1                       ]  flows    156,103/   156,103  graphs  282  bot 282  bot-nodes   774    2.1s
+[iot23-33-1                      ]  flows 54,454,591/54,454,591  graphs  288  bot 288  bot-nodes   749  247.8s
+[iot23-35-1                      ]  flows 10,447,787/10,447,787  graphs  288  bot  23  bot-nodes    47   31.0s
+[iot23-48-1                      ]  flows  3,394,338/ 3,394,338  graphs  118  bot 118  bot-nodes 18126    9.6s
+[iot23-7-1                       ]  flows 11,454,714/11,454,714  graphs  288  bot 134  bot-nodes   279   21.2s
+[iot23-8-1                       ]  flows     10,403/    10,403  graphs  214  bot 214  bot-nodes   642    1.5s
+[iot23-9-1                       ]  flows  6,378,293/ 6,378,293  graphs  241  bot  51  bot-nodes   199    9.0s
+[medbiot-bashlite_mal_CC_all     ]  flows      3,879/     3,879  graphs   22  bot  21  bot-nodes   296    0.3s
+[medbiot-bashlite_mal_spread_all ]  flows    755,484/   755,484  graphs    3  bot   3  bot-nodes  1176    1.9s
+[medbiot-mirai_mal_CC_all        ]  flows      1,193/     1,193  graphs    8  bot   8  bot-nodes   150    0.2s
+[medbiot-mirai_mal_spread_all    ]  flows     35,652/    35,652  graphs    8  bot   8  bot-nodes   302    0.5s
+[medbiot-torii_mal_all           ]  flows        102/       102  graphs    2  bot   2  bot-nodes    16    0.0s

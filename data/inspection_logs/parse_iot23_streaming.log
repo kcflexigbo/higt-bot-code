@@ -1,0 +1,143 @@
+
+[iot23] data/raw/IoT-23/CTU-IoT-Malware-Capture-17-1  (streaming=True)
+  ...chunk +1,000,000 rows  (total 1,000,000)
+  ...chunk +1,000,000 rows  (total 2,000,000)
+  ...chunk +1,000,000 rows  (total 3,000,000)
+  ...chunk +1,000,000 rows  (total 4,000,000)
+  ...chunk +1,000,000 rows  (total 5,000,000)
+  ...chunk +1,000,000 rows  (total 6,000,000)
+  ...chunk +1,000,000 rows  (total 7,000,000)
+  ...chunk +1,000,000 rows  (total 8,000,000)
+  ...chunk +1,000,000 rows  (total 9,000,000)
+  ...chunk +1,000,000 rows  (total 10,000,000)
+  ...chunk +1,000,000 rows  (total 11,000,000)
+  ...chunk +1,000,000 rows  (total 12,000,000)
+  ...chunk +1,000,000 rows  (total 13,000,000)
+  ...chunk +1,000,000 rows  (total 14,000,000)
+  ...chunk +1,000,000 rows  (total 15,000,000)
+  ...chunk +1,000,000 rows  (total 16,000,000)
+  ...chunk +1,000,000 rows  (total 17,000,000)
+  ...chunk +1,000,000 rows  (total 18,000,000)
+  ...chunk +1,000,000 rows  (total 19,000,000)
+  ...chunk +1,000,000 rows  (total 20,000,000)
+  ...chunk +1,000,000 rows  (total 21,000,000)
+  ...chunk +1,000,000 rows  (total 22,000,000)
+  ...chunk +1,000,000 rows  (total 23,000,000)
+  ...chunk +1,000,000 rows  (total 24,000,000)
+  ...chunk +1,000,000 rows  (total 25,000,000)
+  ...chunk +1,000,000 rows  (total 26,000,000)
+  ...chunk +1,000,000 rows  (total 27,000,000)
+  ...chunk +1,000,000 rows  (total 28,000,000)
+  ...chunk +1,000,000 rows  (total 29,000,000)
+  ...chunk +1,000,000 rows  (total 30,000,000)
+  ...chunk +1,000,000 rows  (total 31,000,000)
+  ...chunk +1,000,000 rows  (total 32,000,000)
+  ...chunk +1,000,000 rows  (total 33,000,000)
+  ...chunk +1,000,000 rows  (total 34,000,000)
+  ...chunk +1,000,000 rows  (total 35,000,000)
+  ...chunk +1,000,000 rows  (total 36,000,000)
+  ...chunk +1,000,000 rows  (total 37,000,000)
+  ...chunk +1,000,000 rows  (total 38,000,000)
+  ...chunk +1,000,000 rows  (total 39,000,000)
+  ...chunk +1,000,000 rows  (total 40,000,000)
+  ...chunk +1,000,000 rows  (total 41,000,000)
+  ...chunk +1,000,000 rows  (total 42,000,000)
+  ...chunk +1,000,000 rows  (total 43,000,000)
+  ...chunk +1,000,000 rows  (total 44,000,000)
+  ...chunk +1,000,000 rows  (total 45,000,000)
+  ...chunk +1,000,000 rows  (total 46,000,000)
+  ...chunk +1,000,000 rows  (total 47,000,000)
+  ...chunk +1,000,000 rows  (total 48,000,000)
+  ...chunk +1,000,000 rows  (total 49,000,000)
+  ...chunk +1,000,000 rows  (total 50,000,000)
+  ...chunk +1,000,000 rows  (total 51,000,000)
+  ...chunk +1,000,000 rows  (total 52,000,000)
+  ...chunk +1,000,000 rows  (total 53,000,000)
+  ...chunk +1,000,000 rows  (total 54,000,000)
+  ...chunk +659,855 rows  (total 54,659,855)
+  sorting 54,659,855 rows by start_time...
+  streamed in 491.3s — 54,659,855 rows  → data/processed/iot23-17-1.parquet  (1417.4 MB)
+
+[iot23] data/raw/IoT-23/CTU-IoT-Malware-Capture-33-1  (streaming=True)
+  ...chunk +1,000,000 rows  (total 1,000,000)
+  ...chunk +1,000,000 rows  (total 2,000,000)
+  ...chunk +1,000,000 rows  (total 3,000,000)
+  ...chunk +1,000,000 rows  (total 4,000,000)
+  ...chunk +1,000,000 rows  (total 5,000,000)
+  ...chunk +1,000,000 rows  (total 6,000,000)
+  ...chunk +1,000,000 rows  (total 7,000,000)
+  ...chunk +1,000,000 rows  (total 8,000,000)
+  ...chunk +1,000,000 rows  (total 9,000,000)
+  ...chunk +1,000,000 rows  (total 10,000,000)
+  ...chunk +1,000,000 rows  (total 11,000,000)
+  ...chunk +1,000,000 rows  (total 12,000,000)
+  ...chunk +1,000,000 rows  (total 13,000,000)
+  ...chunk +1,000,000 rows  (total 14,000,000)
+  ...chunk +1,000,000 rows  (total 15,000,000)
+  ...chunk +1,000,000 rows  (total 16,000,000)
+  ...chunk +1,000,000 rows  (total 17,000,000)
+  ...chunk +1,000,000 rows  (total 18,000,000)
+  ...chunk +1,000,000 rows  (total 19,000,000)
+  ...chunk +1,000,000 rows  (total 20,000,000)
+  ...chunk +1,000,000 rows  (total 21,000,000)
+  ...chunk +1,000,000 rows  (total 22,000,000)
+  ...chunk +1,000,000 rows  (total 23,000,000)
+  ...chunk +1,000,000 rows  (total 24,000,000)
+  ...chunk +1,000,000 rows  (total 25,000,000)
+  ...chunk +1,000,000 rows  (total 26,000,000)
+  ...chunk +1,000,000 rows  (total 27,000,000)
+  ...chunk +1,000,000 rows  (total 28,000,000)
+  ...chunk +1,000,000 rows  (total 29,000,000)
+  ...chunk +1,000,000 rows  (total 30,000,000)
+  ...chunk +1,000,000 rows  (total 31,000,000)
+  ...chunk +1,000,000 rows  (total 32,000,000)
+  ...chunk +1,000,000 rows  (total 33,000,000)
+  ...chunk +1,000,000 rows  (total 34,000,000)
+  ...chunk +1,000,000 rows  (total 35,000,000)
+  ...chunk +1,000,000 rows  (total 36,000,000)
+  ...chunk +1,000,000 rows  (total 37,000,000)
+  ...chunk +1,000,000 rows  (total 38,000,000)
+  ...chunk +1,000,000 rows  (total 39,000,000)
+  ...chunk +1,000,000 rows  (total 40,000,000)
+  ...chunk +1,000,000 rows  (total 41,000,000)
+  ...chunk +1,000,000 rows  (total 42,000,000)
+  ...chunk +1,000,000 rows  (total 43,000,000)
+  ...chunk +1,000,000 rows  (total 44,000,000)
+  ...chunk +1,000,000 rows  (total 45,000,000)
+  ...chunk +1,000,000 rows  (total 46,000,000)
+  ...chunk +1,000,000 rows  (total 47,000,000)
+  ...chunk +1,000,000 rows  (total 48,000,000)
+  ...chunk +1,000,000 rows  (total 49,000,000)
+  ...chunk +1,000,000 rows  (total 50,000,000)
+  ...chunk +1,000,000 rows  (total 51,000,000)
+  ...chunk +1,000,000 rows  (total 52,000,000)
+  ...chunk +1,000,000 rows  (total 53,000,000)
+  ...chunk +1,000,000 rows  (total 54,000,000)
+  ...chunk +454,591 rows  (total 54,454,591)
+  sorting 54,454,591 rows by start_time...
+  streamed in 487.1s — 54,454,591 rows  → data/processed/iot23-33-1.parquet  (1385.5 MB)
+
+--- spot-check medbiot-torii_mal_all.parquet ---
+  columns: list(df.columns) == FLOW_COLUMNS=True
+  bot rows: 102
+            src_ip          dst_ip  dst_port protocol  bytes_fwd  bytes_bwd       detailed_label
+0   192.168.10.107    66.85.157.95       443      tcp     328646     343188  torii-torii_mal_all
+1   192.168.10.109  192.168.10.145        23      tcp       9500       6819  torii-torii_mal_all
+2   192.168.10.145    66.85.157.95       443      tcp     322017     335979  torii-torii_mal_all
+3   192.168.10.109  192.168.10.155        23      tcp       7575       5672  torii-torii_mal_all
+4   192.168.10.109  192.168.10.165        23      tcp       5078       4476  torii-torii_mal_all
+5   192.168.10.109  192.168.10.175        23      tcp       6129       4888  torii-torii_mal_all
+6   192.168.10.109  192.168.10.185        23      tcp       5235       4505  torii-torii_mal_all
+7   192.168.10.109  192.168.10.195        23      tcp       5079       4349  torii-torii_mal_all
+8   192.168.10.109  192.168.10.205        23      tcp       5078       4401  torii-torii_mal_all
+9   192.168.10.109  192.168.10.135        23      tcp       4606       3972  torii-torii_mal_all
+10  192.168.10.135    66.85.157.95       443      tcp     318711     332502  torii-torii_mal_all
+11  192.168.10.109  192.168.10.165        23      tcp       4817       4571  torii-torii_mal_all
+12  192.168.10.109  192.168.10.166        23      tcp       6811       5369  torii-torii_mal_all
+13  192.168.10.109  192.168.10.142        23      tcp       4974       4268  torii-torii_mal_all
+14  192.168.10.142    66.85.157.95       443      tcp     314904     328871  torii-torii_mal_all
+15  192.168.10.109  192.168.10.150        23      tcp       5185       4476  torii-torii_mal_all
+16  192.168.10.150    66.85.157.95       443      tcp     313024     326991  torii-torii_mal_all
+17  192.168.10.109  192.168.10.151        23      tcp       5606       4693  torii-torii_mal_all
+18  192.168.10.151    66.85.157.95       443      tcp     313995     327519  torii-torii_mal_all
+19  192.168.10.109  192.168.10.153        23      tcp       5131       4401  torii-torii_mal_all

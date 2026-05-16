@@ -20,6 +20,7 @@ dependencies = [
     "torchvision==0.26.0",
     "tqdm==4.66.5",
     "wandb==0.18.5",
+    "xgboost>=3.2.0",
 ]
 
 [build-system]

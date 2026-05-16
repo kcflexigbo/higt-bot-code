@@ -1,0 +1,63 @@
+# Per-scenario chronological train/val/test split.
+#
+# Rule: within each scenario's window sequence (already sorted by start_time),
+# take the first `train_frac` windows for training, the next `val_frac` for
+# validation, the rest for testing. NOT random — this tests generalization
+# to future time periods within a scenario.
+#
+# Scenarios with too few graphs (< 5) are reserved for cross-domain
+# evaluation only (they go in `holdout`).
+#
+# The same split spec is used by every Phase 4+ baseline so results are
+# directly comparable. Bumping split_version invalidates earlier runs.
+
+split_version: 1
+seed: 42
+train_frac: 0.60
+val_frac: 0.20
+# test_frac is the remainder.
+
+train:
+  # CTU-13 — the canonical P2P-bot benchmark.
+  - ctu13-1
+  - ctu13-2
+  - ctu13-3
+  - ctu13-4
+  - ctu13-6
+  - ctu13-8
+  - ctu13-9
+  - ctu13-13
+  # IoT-23 — realistic IoT malware (Mirai, Kenjiro, Linux.Hajime, ...).
+  - iot23-1-1
+  - iot23-3-1
+  - iot23-7-1
+  - iot23-9-1
+  - iot23-17-1
+  - iot23-33-1
+  - iot23-35-1
+  - iot23-48-1
+  # MedBIoT — malware propagation + C&C phases (covers lifecycle stages
+  # the other two miss).
+  - medbiot-bashlite_mal_spread_all
+  - medbiot-bashlite_mal_CC_all
+  - medbiot-mirai_mal_spread_all
+  - medbiot-mirai_mal_CC_all
+
+# CTU-13 sc 10 is the canonical P2P-bot held-out scenario for evaluation,
+# matching the way the 2024 GraphSAINT+GIN paper reports its CTU-13 number.
+# We also hold out IoT-23 8-1 (Hide-and-Seek malware, distinct family from
+# training) and MedBIoT torii (smallest family — won't fit well in train).
+holdout_test:
+  - ctu13-10
+  - iot23-8-1
+  - medbiot-torii_mal_all
+
+# Scenarios excluded because they're too small (< 10 windows) or
+# duplicate-ish. Available for ad-hoc sanity checks but not in splits.
+excluded:
+  - ctu13-5      # 7 graphs
+  - ctu13-7      # 5 graphs
+  - ctu13-11     # 5 graphs
+  - ctu13-12     # 16 graphs (kept out — borderline, used in robustness)
+  - iot23-20-1   # 33 graphs, only 3 bot
+  - iot23-21-1   # 53 graphs, only 2 bot

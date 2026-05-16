@@ -1,0 +1,116 @@
+device: cpu
+Loading split v1 ...
+  train graphs=2796  val graphs=926  test graphs=1232
+  node feature dim = 9  edge feature dim = 10
+  node scaler: mean range [0.01, 82824104.00]  std range [0.0878, 24315088896.00]
+  edge scaler: mean range [0.00, 12397508608.00]  std range [0.0034, 5152525254656.00]
+  model = GAT  hidden=64  params=79,106
+[gat] class weights (benign, bot) = (1.6985337590161995, 0.7085882004735596)
+[gat] epoch   1  train_loss 0.6077  val_F1 0.8753  best 0.8753  lr 1.0e-03  *  1.7s
+[gat] epoch   2  train_loss 0.5572  val_F1 0.8994  best 0.8994  lr 1.0e-03  *  1.7s
+[gat] epoch   3  train_loss 0.5284  val_F1 0.8880  best 0.8994  lr 1.0e-03     1.6s
+[gat] epoch   4  train_loss 0.5060  val_F1 0.8944  best 0.8994  lr 1.0e-03     1.7s
+[gat] epoch   5  train_loss 0.4797  val_F1 0.8937  best 0.8994  lr 1.0e-03     1.7s
+[gat] epoch   6  train_loss 0.4811  val_F1 0.8785  best 0.8994  lr 1.0e-03     1.7s
+[gat] epoch   7  train_loss 0.4614  val_F1 0.8890  best 0.8994  lr 1.0e-03     1.8s
+[gat] epoch   8  train_loss 0.4589  val_F1 0.8909  best 0.8994  lr 5.0e-04     1.7s
+[gat] epoch   9  train_loss 0.4519  val_F1 0.8981  best 0.8994  lr 5.0e-04     1.5s
+[gat] epoch  10  train_loss 0.4485  val_F1 0.8836  best 0.8994  lr 5.0e-04     1.6s
+[gat] epoch  11  train_loss 0.4362  val_F1 0.8939  best 0.8994  lr 5.0e-04     1.5s
+[gat] epoch  12  train_loss 0.4434  val_F1 0.8821  best 0.8994  lr 5.0e-04     1.7s
+[gat] epoch  13  train_loss 0.4354  val_F1 0.9014  best 0.9014  lr 5.0e-04  *  1.6s
+[gat] epoch  14  train_loss 0.4466  val_F1 0.8748  best 0.9014  lr 5.0e-04     1.6s
+[gat] epoch  15  train_loss 0.4398  val_F1 0.9008  best 0.9014  lr 5.0e-04     1.7s
+[gat] epoch  16  train_loss 0.4354  val_F1 0.9008  best 0.9014  lr 5.0e-04     1.6s
+[gat] epoch  17  train_loss 0.4380  val_F1 0.8914  best 0.9014  lr 5.0e-04     1.6s
+[gat] epoch  18  train_loss 0.4253  val_F1 0.8966  best 0.9014  lr 5.0e-04     1.9s
+[gat] epoch  19  train_loss 0.4419  val_F1 0.8786  best 0.9014  lr 2.5e-04     1.6s
+[gat] epoch  20  train_loss 0.4314  val_F1 0.8828  best 0.9014  lr 2.5e-04     1.5s
+[gat] epoch  21  train_loss 0.4179  val_F1 0.8960  best 0.9014  lr 2.5e-04     1.8s
+[gat] epoch  22  train_loss 0.4306  val_F1 0.8884  best 0.9014  lr 2.5e-04     1.9s
+[gat] epoch  23  train_loss 0.4264  val_F1 0.8863  best 0.9014  lr 2.5e-04     1.7s
+[gat] epoch  24  train_loss 0.4328  val_F1 0.8944  best 0.9014  lr 2.5e-04     1.6s
+[gat] epoch  25  train_loss 0.4085  val_F1 0.8941  best 0.9014  lr 1.3e-04     1.6s
+[gat] epoch  26  train_loss 0.4123  val_F1 0.8927  best 0.9014  lr 1.3e-04     1.8s
+[gat] epoch  27  train_loss 0.4283  val_F1 0.8855  best 0.9014  lr 1.3e-04     1.5s
+[gat] epoch  28  train_loss 0.4084  val_F1 0.8910  best 0.9014  lr 1.3e-04     1.6s
+[gat] epoch  29  train_loss 0.4107  val_F1 0.8875  best 0.9014  lr 1.3e-04     1.7s
+[gat] epoch  30  train_loss 0.4197  val_F1 0.8836  best 0.9014  lr 1.3e-04     1.7s
+[gat] epoch  31  train_loss 0.4188  val_F1 0.8900  best 0.9014  lr 6.3e-05     1.8s
+[gat] epoch  32  train_loss 0.4095  val_F1 0.8862  best 0.9014  lr 6.3e-05     1.6s
+[gat] epoch  33  train_loss 0.4197  val_F1 0.8824  best 0.9014  lr 6.3e-05     1.7s
+[gat] early stopping at epoch 33 (no val_F1 improvement for 20 epochs)
+
+total fit time 63.0s, best val F1 0.9014
+
+=== val (gat) ===
+  n           55,049    n_pos   39,439
+  accuracy  0.8555
+  precision 0.8816
+  recall    0.9222
+  F1        0.9014
+  PR-AUC    0.9261
+  ROC-AUC   0.8708
+  confusion [[tn=10724 fp=4886]
+             [fn=3070 tp=36369]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991    736  0.7621   0.9844
+  ctu13-13                             456    141  0.4068   0.9290
+  ctu13-2                              269    185  0.6833   0.9911
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314     17  0.3000   0.5225
+  ctu13-6                              136     95  0.1359   0.9182
+  ctu13-8                              518    100  0.0000   0.7321
+  ctu13-9                            2,463  2,247  0.3048   0.9873
+  iot23-1-1                         33,847  31,109  0.9605   0.9211
+  iot23-17-1                           499    369  0.5948   0.8383
+  iot23-3-1                            212    169  0.0118   0.6664
+  iot23-33-1                           236    153  0.3069   0.6568
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028  3,982  0.9943   0.9940
+  iot23-7-1                            113     28  0.0000   0.4397
+  iot23-9-1                            137      2  0.0000   0.0141
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     43  0.8974   1.0000
+
+=== test (gat) ===
+  n           59,210    n_pos   41,063
+  accuracy  0.8673
+  precision 0.8921
+  recall    0.9199
+  F1        0.9058
+  PR-AUC    0.9334
+  ROC-AUC   0.8995
+  confusion [[tn=13577 fp=4570]
+             [fn=3288 tp=37775]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860    620  0.7477   0.9773
+  ctu13-10                           1,048    147  0.4542   0.3649
+  ctu13-13                             654    159  0.3316   0.8139
+  ctu13-2                              298    216  0.6415   0.9886
+  ctu13-3                            1,869     25  0.0000   0.1824
+  ctu13-4                              351     90  0.1633   0.8967
+  ctu13-6                              167     71  0.1316   0.8905
+  ctu13-8                              724     95  0.0000   0.6686
+  ctu13-9                            2,611  2,256  0.7047   0.9826
+  iot23-1-1                         34,069  31,339  0.9605   0.9186
+  iot23-17-1                           484    388  0.5338   0.8815
+  iot23-3-1                            152    152  0.0000   1.0000
+  iot23-33-1                           142    120  0.0328   0.8736
+  iot23-35-1                         9,905     31  0.0168   0.0112
+  iot23-48-1                         3,711  3,663  0.9798   0.9928
+  iot23-7-1                             93     12  0.0000   0.3807
+  iot23-8-1                            879    642  0.0000   0.7179
+  iot23-9-1                            153     21  0.2500   0.3284
+  medbiot-bashlite_mal_CC_all           56     56  0.4225   1.0000
+  medbiot-bashlite_mal_spread_all      800    776  0.9889   1.0000
+  medbiot-mirai_mal_CC_all              52     52  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116    116  0.7979   1.0000
+  medbiot-torii_mal_all                 16     16  0.1176   1.0000
+
+wrote data/inspection_logs/baseline_gat.json
