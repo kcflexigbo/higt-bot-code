@@ -1,6 +1,6 @@
 # Datasets
 
-All raw data is gitignored. Re-downloading is reproducible via `scripts/download_data.sh` (CTU-13, IoT-23) and the manual instructions below (MedBIoT).
+All raw data is gitignored. Re-downloading is reproducible via `scripts/download_data.sh` (Linux/macOS/Git Bash) or `scripts/download_data.ps1` (Windows PowerShell) for CTU-13, IoT-23, and MedBIoT bulk files — same URLs and `curl -C -` resume semantics.
 
 ## Layout
 

@@ -99,7 +99,7 @@ def summarize_ctu13(df: pd.DataFrame, source: str) -> None:
     print(f"  distinct src IPs      {src_ips:,}")
     print(f"  distinct dst IPs      {dst_ips:,}")
     print(f"  distinct IPs (union)  {all_ips:,}")
-    print(f"  time range            {t_min}  →  {t_max}")
+    print(f"  time range            {t_min}  ->  {t_max}")
     if duration is not None:
         print(f"  duration              {duration:,.0f} s ({duration / 3600:.2f} h)")
     print()
@@ -292,7 +292,7 @@ def summarize_iot23(df: pd.DataFrame, source: str) -> None:
     print(f"  distinct src IPs      {src_ips:,}")
     print(f"  distinct dst IPs      {dst_ips:,}")
     print(f"  distinct IPs (union)  {all_ips:,}")
-    print(f"  time range            {t_min}  →  {t_max}  (UTC)")
+    print(f"  time range            {t_min}  ->  {t_max}  (UTC)")
     if duration is not None:
         print(f"  duration              {duration:,.0f} s ({duration / 3600:.2f} h)")
     print()
@@ -524,7 +524,7 @@ def summarize_medbiot(df: pd.DataFrame, source: str) -> None:
     print(f"  distinct src IPs      {src_ips:,}")
     print(f"  distinct dst IPs      {dst_ips:,}")
     print(f"  distinct IPs (union)  {all_ips:,}")
-    print(f"  time range            {t_min}  →  {t_max}  (UTC)")
+    print(f"  time range            {t_min}  ->  {t_max}  (UTC)")
     if duration is not None:
         print(f"  duration              {duration:,.0f} s ({duration / 3600:.2f} h)")
     print(f"  total bytes           {int(df['bytes'].sum()):,}")

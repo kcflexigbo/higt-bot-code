@@ -180,7 +180,7 @@ def print_profile(df: pd.DataFrame, src_ip: str) -> str:
     quarter = len(timeline) // 4 or 1
     p("  Peer churn (cumulative distinct peers over time):")
     for i, (t_rel, cum) in enumerate(timeline[quarter - 1::quarter][:4], start=1):
-        p(f"    after {i*25:3d}% of packets ({t_rel:>7.1f} s)  →  {cum:,} distinct peers")
+        p(f"    after {i*25:3d}% of packets ({t_rel:>7.1f} s)  ->  {cum:,} distinct peers")
     p("")
 
     out = "\n".join(lines)
@@ -233,7 +233,7 @@ def plot_profile(df: pd.DataFrame, src_ip: str, out_path: Path) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out_path, dpi=120)
     plt.close(fig)
-    print(f"  figure saved → {out_path}")
+    print(f"  figure saved -> {out_path}")
 
 
 def main() -> None:
@@ -267,7 +267,7 @@ def main() -> None:
     text = print_profile(df, args.src)
     log_out.parent.mkdir(parents=True, exist_ok=True)
     log_out.write_text(text)
-    print(f"\n  text profile saved → {log_out}")
+    print(f"\n  text profile saved -> {log_out}")
 
     plot_profile(df, args.src, fig_out)
 
