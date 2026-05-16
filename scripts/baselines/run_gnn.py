@@ -18,7 +18,12 @@ from pathlib import Path
 import torch
 from torch_geometric.loader import DataLoader
 
-from src.data.dataset import SplitSpec, load_split
+from src.data.dataset import (
+    SplitSpec,
+    apply_feature_scaler,
+    fit_feature_scaler,
+    load_split,
+)
 from src.models.gnn_baselines import build_model
 from src.training.evaluate import evaluate
 from src.training.loop import TrainConfig, predict, train_one_model
@@ -55,6 +60,16 @@ def main() -> None:
     print(f"  train graphs={len(tr)}  val graphs={len(va)}  test graphs={len(te)}")
     in_dim = int(tr[0].x.size(1))
     print(f"  node feature dim = {in_dim}")
+
+    # Standardize features using train-set stats. GIN/GAT are highly sensitive
+    # to feature scale (byte_rate can be 10^6 while port_entropy is ~10); RF
+    # is not, which is why Phase 3 sanity worked unscaled.
+    mean, std = fit_feature_scaler(tr)
+    apply_feature_scaler(tr, mean, std)
+    apply_feature_scaler(va, mean, std)
+    apply_feature_scaler(te, mean, std)
+    print(f"  feature scaler fit: mean range [{mean.min().item():.2f}, {mean.max().item():.2f}]  "
+          f"std range [{std.min().item():.4f}, {std.max().item():.2f}]")
 
     model_kw: dict = {"hidden": args.hidden, "dropout": args.dropout}
     if args.model == "gat":

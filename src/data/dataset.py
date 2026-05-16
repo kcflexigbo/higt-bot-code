@@ -81,6 +81,24 @@ def load_graphs(files: list[Path]) -> list[Data]:
     return [torch.load(fp, weights_only=False) for fp in files]
 
 
+def fit_feature_scaler(graphs: list[Data]) -> tuple[torch.Tensor, torch.Tensor]:
+    """Compute per-feature mean/std on the pooled node features of `graphs`
+    (typically the training split). Use these to standardize every split so
+    GNNs see comparable magnitudes across the byte_rate (millions) vs
+    port_entropy (0–10) range. Floors std at 1e-6 to avoid division blowup.
+    """
+    X = torch.cat([g.x for g in graphs], dim=0)
+    mean = X.mean(dim=0)
+    std = X.std(dim=0).clamp(min=1e-6)
+    return mean, std
+
+
+def apply_feature_scaler(graphs: list[Data], mean: torch.Tensor, std: torch.Tensor) -> None:
+    """Standardize in-place. Mutates each graph's `x`."""
+    for g in graphs:
+        g.x = ((g.x - mean) / std).float()
+
+
 def load_split(
     name: SplitName,
     spec: SplitSpec | None = None,
