@@ -57,7 +57,7 @@
     3596            6
 
   Peer churn (cumulative distinct peers over time):
-    after  25% of packets ( 3443.4 s)  →  12 distinct peers
-    after  50% of packets ( 3570.1 s)  →  12 distinct peers
-    after  75% of packets ( 3695.0 s)  →  13 distinct peers
-    after 100% of packets ( 3819.9 s)  →  13 distinct peers
+    after  25% of packets ( 3443.4 s)  ->  12 distinct peers
+    after  50% of packets ( 3570.1 s)  ->  12 distinct peers
+    after  75% of packets ( 3695.0 s)  ->  13 distinct peers
+    after 100% of packets ( 3819.9 s)  ->  13 distinct peers

@@ -43,7 +43,7 @@ OUT = Path("data/processed")
 def _write(df: pd.DataFrame, dest: Path) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(dest, index=False)
-    print(f"  → {dest}  ({len(df):,} flows, {dest.stat().st_size / 1e6:.1f} MB)")
+    print(f"  -> {dest}  ({len(df):,} flows, {dest.stat().st_size / 1e6:.1f} MB)")
 
 
 def _parse_ctu13_one(scenario: str) -> None:
@@ -68,7 +68,7 @@ def _parse_iot23_one(scenario: str, streaming: bool = False) -> None:
         n_rows = parse_iot23_scenario_streaming(src, out, scenario_id=f"iot23-{scenario}")
         dt = time.perf_counter() - t0
         size_mb = out.stat().st_size / 1e6
-        print(f"  streamed in {dt:.1f}s — {n_rows:,} rows  → {out}  ({size_mb:.1f} MB)")
+        print(f"  streamed in {dt:.1f}s — {n_rows:,} rows  -> {out}  ({size_mb:.1f} MB)")
     else:
         df = parse_iot23_scenario(src, scenario_id=f"iot23-{scenario}")
         dt = time.perf_counter() - t0
