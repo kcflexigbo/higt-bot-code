@@ -143,3 +143,48 @@ def test_build_node_sequences_random_sample_uses_seed() -> None:
                                        window_seconds=300.0, max_flows=8,
                                        seed=7, eval_mode=False)
     np.testing.assert_array_equal(flows_a, flows_b)
+
+
+def test_build_node_sequences_random_sample_different_seeds_differ() -> None:
+    """eval_mode=False: different seeds should (almost always) yield different samples.
+    Use distinct per-flow feature vectors so a permutation actually shows up in the output."""
+    ws = pd.Timestamp("2024-01-01T00:00:00", tz="UTC")
+    # 64 distinct outgoing flows from A → various destinations, spaced 1s apart.
+    rows = []
+    for k in range(64):
+        rows.append({
+            "flow_id": k, "scenario": "test", "src_ip": "A", "dst_ip": f"D{k}",
+            "src_port": 1000 + k, "dst_port": 80, "protocol": "tcp",
+            "start_time": ws + pd.Timedelta(seconds=k),
+            "end_time":   ws + pd.Timedelta(seconds=k + 1),
+            "duration_s": 1.0, "bytes_fwd": 100 + k, "bytes_bwd": 50,
+            "pkts_fwd": 2, "pkts_bwd": 1,
+            "mean_iat_ms": float(k), "std_iat_ms": 1.0,
+            "min_pkt_size": 60.0, "max_pkt_size": 1500.0,
+            "label": "benign", "detailed_label": ""})
+    big = pd.DataFrame(rows)
+    big["start_time"] = pd.to_datetime(big["start_time"], utc=True)
+    big["end_time"]   = pd.to_datetime(big["end_time"],   utc=True)
+    flows_a, _ = build_node_sequences(big, node_ips=["A"], window_start=ws,
+                                       window_seconds=300.0, max_flows=8,
+                                       seed=1, eval_mode=False)
+    flows_b, _ = build_node_sequences(big, node_ips=["A"], window_start=ws,
+                                       window_seconds=300.0, max_flows=8,
+                                       seed=2, eval_mode=False)
+    # With 64 flows sampled to 8 and per-node seed = seed+0, different seeds
+    # should produce different index sets → different feature arrays.
+    assert not np.array_equal(flows_a, flows_b)
+
+
+def test_build_node_sequences_node_with_no_flows() -> None:
+    """A node that touches no flows in the window must produce a fully-padded
+    row (mask all True, features all zero)."""
+    ws = pd.Timestamp("2024-01-01T00:00:00", tz="UTC")
+    df = _sample_flows(ws)
+    flows, mask = build_node_sequences(
+        df, node_ips=["A", "Z"], window_start=ws,
+        window_seconds=300.0, max_flows=4, seed=0,
+    )
+    # Node Z (index 1) touches no flows → entirely padded.
+    assert mask[1].all()
+    assert np.all(flows[1] == 0.0)
