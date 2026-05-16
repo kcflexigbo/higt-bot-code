@@ -1,0 +1,28 @@
+# Phase 5 hyperparameters. All defaults aligned to the implementation plan
+# (§"Phase 5 — Temporal Transformer for node features").
+encoder:
+  flow_feat_dim: 13
+  d_model: 64
+  nhead: 4
+  num_layers: 2
+  max_flows: 256
+  dropout: 0.1
+
+gin:
+  hidden: 64
+  num_layers: 3
+  dropout: 0.3
+
+train:
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  batch_size: 16          # smaller than Phase 4 (32) — temporal encoder is heavier
+  max_epochs: 120
+  patience: 20
+  grad_clip: 1.0
+  use_focal: true         # carried forward from the Phase 4 GINE recipe
+  focal_gamma: 2.0
+  focal_alpha: null
+
+data:
+  window_seconds: 300
