@@ -188,3 +188,33 @@ def test_build_node_sequences_node_with_no_flows() -> None:
     # Node Z (index 1) touches no flows → entirely padded.
     assert mask[1].all()
     assert np.all(flows[1] == 0.0)
+
+
+# --- additional tests for src/data/flow_seq_dataset.py ---
+
+import torch
+from torch_geometric.data import Data
+
+from src.data.flow_seq_dataset import attach_flow_sequences
+
+
+def test_attach_flow_sequences_aligns_to_node_ips() -> None:
+    """attach_flow_sequences mutates each Data with `.flows` and `.flow_mask`
+    aligned to data.node_ips."""
+    ws = pd.Timestamp("2024-01-01T00:00:00", tz="UTC")
+    df = _sample_flows(ws)
+    g = Data(
+        x=torch.zeros(3, 9), edge_index=torch.empty(2, 0, dtype=torch.long),
+        edge_attr=torch.empty(0, 10), y=torch.zeros(3, dtype=torch.long),
+        graph_y=torch.tensor([0]),
+    )
+    g.node_ips = ["A", "B", "C"]
+    g.scenario = "test"
+    g.window_idx = 0
+    g.window_start = ws.isoformat()
+    attach_flow_sequences([g], window_flows={(("test", 0)): df},
+                          window_seconds=300.0, max_flows=4, eval_mode=True)
+    assert g.flows.shape == (3, 4, 13)
+    assert g.flow_mask.shape == (3, 4)
+    # A has 3 real flows in this window
+    assert (~g.flow_mask[0]).sum().item() == 3
