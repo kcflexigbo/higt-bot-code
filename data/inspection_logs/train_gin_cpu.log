@@ -1,0 +1,183 @@
+device: cpu
+Loading split v1 ...
+  train graphs=2796  val graphs=926  test graphs=1232
+  node feature dim = 9  edge feature dim = 10
+  node scaler: mean range [0.01, 82824104.00]  std range [0.0878, 24315088896.00]
+  edge scaler: mean range [0.00, 12397508608.00]  std range [0.0034, 5152525254656.00]
+  model = GIN  hidden=64  params=30,277
+[gin] class weights (benign, bot) = (1.6985337590161995, 0.7085882004735596)
+[gin] epoch   1  train_loss 0.4985  val_F1 0.8861  best 0.8861  lr 1.0e-03  *  0.9s
+[gin] epoch   2  train_loss 0.4091  val_F1 0.8861  best 0.8861  lr 1.0e-03     0.9s
+[gin] epoch   3  train_loss 0.4067  val_F1 0.9034  best 0.9034  lr 1.0e-03  *  0.9s
+[gin] epoch   4  train_loss 0.3846  val_F1 0.9039  best 0.9039  lr 1.0e-03  *  0.9s
+[gin] epoch   5  train_loss 0.3823  val_F1 0.9124  best 0.9124  lr 1.0e-03  *  0.9s
+[gin] epoch   6  train_loss 0.3656  val_F1 0.8891  best 0.9124  lr 1.0e-03     0.9s
+[gin] epoch   7  train_loss 0.3730  val_F1 0.9108  best 0.9124  lr 1.0e-03     0.8s
+[gin] epoch   8  train_loss 0.3799  val_F1 0.9156  best 0.9156  lr 1.0e-03  *  0.8s
+[gin] epoch   9  train_loss 0.3551  val_F1 0.9116  best 0.9156  lr 1.0e-03     0.8s
+[gin] epoch  10  train_loss 0.3614  val_F1 0.9288  best 0.9288  lr 1.0e-03  *  0.9s
+[gin] epoch  11  train_loss 0.3486  val_F1 0.8996  best 0.9288  lr 1.0e-03     0.8s
+[gin] epoch  12  train_loss 0.3485  val_F1 0.9144  best 0.9288  lr 1.0e-03     0.9s
+[gin] epoch  13  train_loss 0.3399  val_F1 0.9296  best 0.9296  lr 1.0e-03  *  0.8s
+[gin] epoch  14  train_loss 0.3539  val_F1 0.9066  best 0.9296  lr 1.0e-03     0.9s
+[gin] epoch  15  train_loss 0.3620  val_F1 0.9010  best 0.9296  lr 1.0e-03     0.9s
+[gin] epoch  16  train_loss 0.3399  val_F1 0.9287  best 0.9296  lr 1.0e-03     0.8s
+[gin] epoch  17  train_loss 0.3317  val_F1 0.9182  best 0.9296  lr 1.0e-03     0.9s
+[gin] epoch  18  train_loss 0.3408  val_F1 0.9292  best 0.9296  lr 1.0e-03     0.8s
+[gin] epoch  19  train_loss 0.3323  val_F1 0.9280  best 0.9296  lr 5.0e-04     0.8s
+[gin] epoch  20  train_loss 0.3251  val_F1 0.9331  best 0.9331  lr 5.0e-04  *  0.9s
+[gin] epoch  21  train_loss 0.3334  val_F1 0.9363  best 0.9363  lr 5.0e-04  *  0.8s
+[gin] epoch  22  train_loss 0.3099  val_F1 0.9443  best 0.9443  lr 5.0e-04  *  0.9s
+[gin] epoch  23  train_loss 0.3129  val_F1 0.9296  best 0.9443  lr 5.0e-04     0.8s
+[gin] epoch  24  train_loss 0.3179  val_F1 0.9374  best 0.9443  lr 5.0e-04     0.8s
+[gin] epoch  25  train_loss 0.3117  val_F1 0.9352  best 0.9443  lr 5.0e-04     0.9s
+[gin] epoch  26  train_loss 0.3291  val_F1 0.9392  best 0.9443  lr 5.0e-04     0.8s
+[gin] epoch  27  train_loss 0.3092  val_F1 0.9359  best 0.9443  lr 5.0e-04     0.9s
+[gin] epoch  28  train_loss 0.3114  val_F1 0.9330  best 0.9443  lr 2.5e-04     0.8s
+[gin] epoch  29  train_loss 0.3056  val_F1 0.9347  best 0.9443  lr 2.5e-04     0.9s
+[gin] epoch  30  train_loss 0.3081  val_F1 0.9447  best 0.9447  lr 2.5e-04  *  0.8s
+[gin] epoch  31  train_loss 0.3105  val_F1 0.9342  best 0.9447  lr 2.5e-04     0.8s
+[gin] epoch  32  train_loss 0.3110  val_F1 0.9440  best 0.9447  lr 2.5e-04     0.8s
+[gin] epoch  33  train_loss 0.2924  val_F1 0.9360  best 0.9447  lr 2.5e-04     0.8s
+[gin] epoch  34  train_loss 0.3036  val_F1 0.9381  best 0.9447  lr 2.5e-04     0.9s
+[gin] epoch  35  train_loss 0.2936  val_F1 0.9428  best 0.9447  lr 2.5e-04     1.0s
+[gin] epoch  36  train_loss 0.2986  val_F1 0.9345  best 0.9447  lr 1.3e-04     0.9s
+[gin] epoch  37  train_loss 0.2981  val_F1 0.9478  best 0.9478  lr 1.3e-04  *  0.9s
+[gin] epoch  38  train_loss 0.2904  val_F1 0.9424  best 0.9478  lr 1.3e-04     0.8s
+[gin] epoch  39  train_loss 0.2973  val_F1 0.9433  best 0.9478  lr 1.3e-04     0.8s
+[gin] epoch  40  train_loss 0.3003  val_F1 0.9314  best 0.9478  lr 1.3e-04     0.8s
+[gin] epoch  41  train_loss 0.3008  val_F1 0.9439  best 0.9478  lr 1.3e-04     0.9s
+[gin] epoch  42  train_loss 0.2897  val_F1 0.9280  best 0.9478  lr 1.3e-04     0.9s
+[gin] epoch  43  train_loss 0.2950  val_F1 0.9439  best 0.9478  lr 6.3e-05     0.8s
+[gin] epoch  44  train_loss 0.3179  val_F1 0.9439  best 0.9478  lr 6.3e-05     0.9s
+[gin] epoch  45  train_loss 0.2877  val_F1 0.9386  best 0.9478  lr 6.3e-05     0.9s
+[gin] epoch  46  train_loss 0.2938  val_F1 0.9481  best 0.9481  lr 6.3e-05  *  0.9s
+[gin] epoch  47  train_loss 0.2997  val_F1 0.9460  best 0.9481  lr 6.3e-05     0.9s
+[gin] epoch  48  train_loss 0.2976  val_F1 0.9462  best 0.9481  lr 6.3e-05     0.8s
+[gin] epoch  49  train_loss 0.3062  val_F1 0.9280  best 0.9481  lr 6.3e-05     0.9s
+[gin] epoch  50  train_loss 0.2987  val_F1 0.9397  best 0.9481  lr 6.3e-05     0.9s
+[gin] epoch  51  train_loss 0.3019  val_F1 0.9438  best 0.9481  lr 6.3e-05     0.8s
+[gin] epoch  52  train_loss 0.2944  val_F1 0.9377  best 0.9481  lr 3.1e-05     0.8s
+[gin] epoch  53  train_loss 0.2977  val_F1 0.9482  best 0.9482  lr 3.1e-05  *  0.8s
+[gin] epoch  54  train_loss 0.2897  val_F1 0.9482  best 0.9482  lr 3.1e-05     0.9s
+[gin] epoch  55  train_loss 0.2954  val_F1 0.9443  best 0.9482  lr 3.1e-05     0.9s
+[gin] epoch  56  train_loss 0.2921  val_F1 0.9380  best 0.9482  lr 3.1e-05     0.9s
+[gin] epoch  57  train_loss 0.2987  val_F1 0.9468  best 0.9482  lr 3.1e-05     0.9s
+[gin] epoch  58  train_loss 0.2880  val_F1 0.9311  best 0.9482  lr 3.1e-05     0.9s
+[gin] epoch  59  train_loss 0.2988  val_F1 0.9353  best 0.9482  lr 1.6e-05     0.8s
+[gin] epoch  60  train_loss 0.2961  val_F1 0.9426  best 0.9482  lr 1.6e-05     0.8s
+[gin] epoch  61  train_loss 0.2939  val_F1 0.9350  best 0.9482  lr 1.6e-05     0.9s
+[gin] epoch  62  train_loss 0.3007  val_F1 0.9477  best 0.9482  lr 1.6e-05     0.8s
+[gin] epoch  63  train_loss 0.2900  val_F1 0.9488  best 0.9488  lr 1.6e-05  *  0.9s
+[gin] epoch  64  train_loss 0.2906  val_F1 0.9481  best 0.9488  lr 1.6e-05     0.9s
+[gin] epoch  65  train_loss 0.2894  val_F1 0.9374  best 0.9488  lr 1.6e-05     0.9s
+[gin] epoch  66  train_loss 0.2944  val_F1 0.9399  best 0.9488  lr 1.6e-05     0.9s
+[gin] epoch  67  train_loss 0.2970  val_F1 0.9371  best 0.9488  lr 1.6e-05     0.9s
+[gin] epoch  68  train_loss 0.2928  val_F1 0.9362  best 0.9488  lr 1.6e-05     0.8s
+[gin] epoch  69  train_loss 0.2900  val_F1 0.9415  best 0.9488  lr 7.8e-06     0.8s
+[gin] epoch  70  train_loss 0.2908  val_F1 0.9372  best 0.9488  lr 7.8e-06     0.8s
+[gin] epoch  71  train_loss 0.2829  val_F1 0.9360  best 0.9488  lr 7.8e-06     0.8s
+[gin] epoch  72  train_loss 0.2980  val_F1 0.9385  best 0.9488  lr 7.8e-06     0.9s
+[gin] epoch  73  train_loss 0.2992  val_F1 0.9496  best 0.9496  lr 7.8e-06  *  0.9s
+[gin] epoch  74  train_loss 0.2948  val_F1 0.9424  best 0.9496  lr 7.8e-06     0.9s
+[gin] epoch  75  train_loss 0.2976  val_F1 0.9486  best 0.9496  lr 7.8e-06     0.8s
+[gin] epoch  76  train_loss 0.3018  val_F1 0.9401  best 0.9496  lr 7.8e-06     0.8s
+[gin] epoch  77  train_loss 0.2941  val_F1 0.9482  best 0.9496  lr 7.8e-06     0.9s
+[gin] epoch  78  train_loss 0.2989  val_F1 0.9354  best 0.9496  lr 7.8e-06     0.9s
+[gin] epoch  79  train_loss 0.2936  val_F1 0.9443  best 0.9496  lr 3.9e-06     0.8s
+[gin] epoch  80  train_loss 0.2926  val_F1 0.9515  best 0.9515  lr 3.9e-06  *  0.9s
+[gin] epoch  81  train_loss 0.2915  val_F1 0.9483  best 0.9515  lr 3.9e-06     0.8s
+[gin] epoch  82  train_loss 0.2920  val_F1 0.9481  best 0.9515  lr 3.9e-06     0.8s
+[gin] epoch  83  train_loss 0.2879  val_F1 0.9468  best 0.9515  lr 3.9e-06     0.8s
+[gin] epoch  84  train_loss 0.2856  val_F1 0.9438  best 0.9515  lr 3.9e-06     0.8s
+[gin] epoch  85  train_loss 0.2884  val_F1 0.9419  best 0.9515  lr 3.9e-06     0.8s
+[gin] epoch  86  train_loss 0.2998  val_F1 0.9482  best 0.9515  lr 2.0e-06     0.9s
+[gin] epoch  87  train_loss 0.2901  val_F1 0.9345  best 0.9515  lr 2.0e-06     0.9s
+[gin] epoch  88  train_loss 0.2947  val_F1 0.9357  best 0.9515  lr 2.0e-06     0.9s
+[gin] epoch  89  train_loss 0.2914  val_F1 0.9409  best 0.9515  lr 2.0e-06     0.8s
+[gin] epoch  90  train_loss 0.2938  val_F1 0.9475  best 0.9515  lr 2.0e-06     0.8s
+[gin] epoch  91  train_loss 0.3005  val_F1 0.9490  best 0.9515  lr 2.0e-06     0.8s
+[gin] epoch  92  train_loss 0.2916  val_F1 0.9414  best 0.9515  lr 9.8e-07     0.8s
+[gin] epoch  93  train_loss 0.2896  val_F1 0.9386  best 0.9515  lr 9.8e-07     0.8s
+[gin] epoch  94  train_loss 0.2882  val_F1 0.9403  best 0.9515  lr 9.8e-07     0.9s
+[gin] epoch  95  train_loss 0.2934  val_F1 0.9371  best 0.9515  lr 9.8e-07     0.8s
+[gin] epoch  96  train_loss 0.3013  val_F1 0.9378  best 0.9515  lr 9.8e-07     1.0s
+[gin] epoch  97  train_loss 0.2954  val_F1 0.9426  best 0.9515  lr 9.8e-07     1.0s
+[gin] epoch  98  train_loss 0.2889  val_F1 0.9403  best 0.9515  lr 4.9e-07     0.9s
+[gin] epoch  99  train_loss 0.2933  val_F1 0.9305  best 0.9515  lr 4.9e-07     1.0s
+[gin] epoch 100  train_loss 0.2898  val_F1 0.9400  best 0.9515  lr 4.9e-07     0.9s
+[gin] early stopping at epoch 100 (no val_F1 improvement for 20 epochs)
+
+total fit time 98.9s, best val F1 0.9515
+
+=== val (gin) ===
+  n           55,049    n_pos   39,439
+  accuracy  0.9279
+  precision 0.9195
+  recall    0.9857
+  F1        0.9515
+  PR-AUC    0.9386
+  ROC-AUC   0.9028
+  confusion [[tn=12206 fp=3404]
+             [fn=563 tp=38876]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991    736  0.9049   0.9699
+  ctu13-13                             456    141  0.9892   0.9954
+  ctu13-2                              269    185  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314     17  0.2169   0.5479
+  ctu13-6                              136     95  1.0000   1.0000
+  ctu13-8                              518    100  0.0192   0.6608
+  ctu13-9                            2,463  2,247  0.9418   0.9947
+  iot23-1-1                         33,847  31,109  0.9582   0.9372
+  iot23-17-1                           499    369  0.8165   0.7390
+  iot23-3-1                            212    169  0.8871   0.8534
+  iot23-33-1                           236    153  0.6096   0.6912
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028  3,982  0.9957   0.9942
+  iot23-7-1                            113     28  0.7273   0.8929
+  iot23-9-1                            137      2  0.1333   0.0948
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  0.9804   1.0000
+  medbiot-mirai_mal_spread_all          43     43  0.9639   1.0000
+
+=== test (gin) ===
+  n           59,210    n_pos   41,063
+  accuracy  0.9078
+  precision 0.9143
+  recall    0.9567
+  F1        0.9350
+  PR-AUC    0.9331
+  ROC-AUC   0.9026
+  confusion [[tn=14465 fp=3682]
+             [fn=1776 tp=39287]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860    620  0.8577   0.9442
+  ctu13-10                           1,048    147  0.5460   0.6858
+  ctu13-13                             654    159  0.9060   0.9799
+  ctu13-2                              298    216  0.9977   1.0000
+  ctu13-3                            1,869     25  0.0000   0.0636
+  ctu13-4                              351     90  0.7692   0.9906
+  ctu13-6                              167     71  0.9714   0.9921
+  ctu13-8                              724     95  0.0325   0.2879
+  ctu13-9                            2,611  2,256  0.9312   0.9895
+  iot23-1-1                         34,069  31,339  0.9584   0.9378
+  iot23-17-1                           484    388  0.7917   0.8048
+  iot23-3-1                            152    152  1.0000   1.0000
+  iot23-33-1                           142    120  0.3200   0.8536
+  iot23-35-1                         9,905     31  0.0374   0.1080
+  iot23-48-1                         3,711  3,663  0.9217   0.9920
+  iot23-7-1                             93     12  0.2857   0.6266
+  iot23-8-1                            879    642  0.5292   0.9967
+  iot23-9-1                            153     21  0.1739   0.3954
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800    776  0.9876   0.9998
+  medbiot-mirai_mal_CC_all              52     52  0.9804   1.0000
+  medbiot-mirai_mal_spread_all         116    116  0.8627   1.0000
+  medbiot-torii_mal_all                 16     16  0.7200   1.0000
+
+wrote data/inspection_logs/baseline_gin.json

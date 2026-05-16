@@ -6,8 +6,13 @@ Features per the plan:
 - Gradient clipping (max_norm=1.0)
 - Early stopping on val F1 (patience=20)
 - W&B logging (optional, falls back to stdout)
+- Optional focal loss (γ, α) — fixes per-scenario weak spots where
+  class-weighted CE overcorrects under 70%-positive global imbalance
+- Optional DropEdge during training (PyG `dropout_edge`) — cheap
+  regularization, stabilizes training on dense windows
 
-Models output per-node logits [N, 2]. Loss is class-weighted cross-entropy.
+Models output per-node logits [N, 2]. Default loss is class-weighted CE;
+set `cfg.use_focal=True` to switch to focal.
 """
 
 from __future__ import annotations
@@ -18,11 +23,13 @@ from dataclasses import dataclass
 import numpy as np
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from sklearn.metrics import f1_score
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
+from torch_geometric.utils import dropout_edge
 
 
 @dataclass
@@ -34,6 +41,40 @@ class TrainConfig:
     patience: int = 20
     grad_clip: float = 1.0
     class_weight: tuple[float, float] | None = None  # (w_benign, w_bot); None => uniform
+    # Loss
+    use_focal: bool = False
+    focal_gamma: float = 2.0
+    focal_alpha: float | None = None   # None → use class_weight as α per class
+    # DropEdge
+    drop_edge_p: float = 0.0           # 0.0 = disabled
+
+
+class FocalLoss(nn.Module):
+    """Multi-class focal loss (Lin et al. 2017). FL = -α (1 - p_t)^γ log(p_t).
+
+    `alpha` is a per-class tensor (length C); if None, weighting matches CE.
+    This shifts gradient mass to hard examples and fixes the per-scenario
+    "predict the majority class" collapse seen with class-weighted CE on
+    rare-positive scenarios (e.g. ctu13-3, iot23-35-1).
+    """
+
+    def __init__(self, gamma: float = 2.0, alpha: torch.Tensor | None = None):
+        super().__init__()
+        self.gamma = gamma
+        self.alpha = alpha   # tensor of shape [C] or None
+
+    def forward(self, logits: torch.Tensor, target: torch.Tensor) -> torch.Tensor:
+        logp = F.log_softmax(logits, dim=-1)
+        # Per-sample log p_t
+        logp_t = logp.gather(1, target.unsqueeze(1)).squeeze(1)
+        p_t = logp_t.exp()
+        # Focal modulation
+        focal_term = (1.0 - p_t).pow(self.gamma)
+        loss = -focal_term * logp_t
+        if self.alpha is not None:
+            alpha_t = self.alpha.to(logits.device)[target]
+            loss = alpha_t * loss
+        return loss.mean()
 
 
 def _class_weights_from_train(train_graphs: list[Data]) -> tuple[float, float]:
@@ -100,7 +141,16 @@ def train_one_model(
     val_loader = DataLoader(val_graphs, batch_size=cfg.batch_size, shuffle=False)
 
     weight = torch.tensor(cfg.class_weight, dtype=torch.float32, device=device)
-    loss_fn = nn.CrossEntropyLoss(weight=weight)
+    if cfg.use_focal:
+        alpha = torch.tensor(cfg.class_weight if cfg.focal_alpha is None
+                              else (1.0 - cfg.focal_alpha, cfg.focal_alpha),
+                              dtype=torch.float32)
+        loss_fn = FocalLoss(gamma=cfg.focal_gamma, alpha=alpha)
+        print(f"{log_prefix}using focal loss γ={cfg.focal_gamma}  α={alpha.tolist()}")
+    else:
+        loss_fn = nn.CrossEntropyLoss(weight=weight)
+    if cfg.drop_edge_p > 0:
+        print(f"{log_prefix}DropEdge enabled, p={cfg.drop_edge_p}")
     optim = Adam(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     sched = ReduceLROnPlateau(optim, mode="max", factor=0.5, patience=5)
 
@@ -117,7 +167,15 @@ def train_one_model(
         for batch in train_loader:
             batch = batch.to(device)
             optim.zero_grad()
-            logits = model(batch.x, batch.edge_index, edge_attr=getattr(batch, "edge_attr", None))
+            ei = batch.edge_index
+            ea = getattr(batch, "edge_attr", None)
+            if cfg.drop_edge_p > 0:
+                # PyG dropout_edge returns (edge_index, edge_mask). Apply same
+                # mask to edge_attr so GINE still sees matching pairs.
+                ei, em = dropout_edge(ei, p=cfg.drop_edge_p, training=True)
+                if ea is not None:
+                    ea = ea[em]
+            logits = model(batch.x, ei, edge_attr=ea)
             loss = loss_fn(logits, batch.y)
             loss.backward()
             nn.utils.clip_grad_norm_(model.parameters(), max_norm=cfg.grad_clip)

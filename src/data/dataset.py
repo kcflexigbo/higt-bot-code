@@ -99,6 +99,23 @@ def apply_feature_scaler(graphs: list[Data], mean: torch.Tensor, std: torch.Tens
         g.x = ((g.x - mean) / std).float()
 
 
+def fit_edge_scaler(graphs: list[Data]) -> tuple[torch.Tensor, torch.Tensor]:
+    """Same as node scaler, but for `edge_attr`. Edge attrs include byte/packet
+    counts (can be millions) plus protocol one-hots (0/1), so the scale gap is
+    severe and unscaled edges send GINE into the same degenerate-collapse mode
+    that unscaled nodes caused for plain GIN."""
+    E = torch.cat([g.edge_attr for g in graphs if g.edge_attr is not None], dim=0)
+    mean = E.mean(dim=0)
+    std = E.std(dim=0).clamp(min=1e-6)
+    return mean, std
+
+
+def apply_edge_scaler(graphs: list[Data], mean: torch.Tensor, std: torch.Tensor) -> None:
+    for g in graphs:
+        if g.edge_attr is not None:
+            g.edge_attr = ((g.edge_attr - mean) / std).float()
+
+
 def load_split(
     name: SplitName,
     spec: SplitSpec | None = None,
