@@ -1,0 +1,28 @@
+device: cuda
+flow_seq windows: 4954
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+MaskedFlowSSL params: 101,965  mask_ratio=0.15
+[ssl] epoch   1  loss 0.1167  best 0.1167  *  123.2s
+[ssl] epoch   2  loss 0.0821  best 0.0821  *  92.8s
+[ssl] epoch   3  loss 0.0786  best 0.0786  *  89.7s
+[ssl] epoch   4  loss 0.0777  best 0.0777  *  90.8s
+[ssl] epoch   5  loss 0.0747  best 0.0747  *  91.0s
+[ssl] epoch   6  loss 0.0734  best 0.0734  *  90.8s
+[ssl] epoch   7  loss 0.0723  best 0.0723  *  91.8s
+[ssl] epoch   8  loss 0.0725  best 0.0723     90.6s
+[ssl] epoch   9  loss 0.0710  best 0.0710  *  90.7s
+[ssl] epoch  10  loss 0.0722  best 0.0710     91.9s
+[ssl] epoch  11  loss 0.0702  best 0.0702  *  90.9s
+[ssl] epoch  12  loss 0.0691  best 0.0691  *  91.9s
+[ssl] epoch  13  loss 0.0688  best 0.0688  *  91.6s
+[ssl] epoch  14  loss 0.0672  best 0.0672  *  92.4s
+[ssl] epoch  15  loss 0.0673  best 0.0672     92.6s
+[ssl] epoch  16  loss 0.0662  best 0.0662  *  93.3s
+[ssl] epoch  17  loss 0.0666  best 0.0662     91.9s
+[ssl] epoch  18  loss 0.0662  best 0.0662  *  91.7s
+[ssl] epoch  19  loss 0.0648  best 0.0648  *  92.3s
+[ssl] epoch  20  loss 0.0648  best 0.0648  *  92.0s
+
+total pretrain 1863.9s  best loss 0.0648
+saved experiments\phase6\encoder_ssl_pretrain.pt

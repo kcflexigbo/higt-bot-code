@@ -1,0 +1,24 @@
+# Phase 6 hyperparameters — DiffPool hierarchical pooling on top of cached
+# encoder embeddings from Phase 5 T-GINE-skip.
+model:
+  d_model: 64           # must match encoder output (Phase 5 cfg)
+  raw_feat_dim: 9       # raw scaled node features (matches graphs)
+  hidden: 128
+  max_nodes: 400        # dense pad target; matches max nodes observed in train
+  pool_ratio: 0.25      # K1 = ceil(max_nodes * ratio) super-nodes
+  dropout: 0.3
+
+train:
+  lr: 5.0e-4
+  weight_decay: 1.0e-5
+  batch_size: 4
+  grad_accum_steps: 4   # effective batch 16
+  amp: true
+  max_epochs: 80
+  patience: 15
+  grad_clip: 1.0
+  use_focal: true
+  focal_gamma: 2.0
+  focal_alpha: null
+  link_loss_weight: 0.1
+  ent_loss_weight: 0.1

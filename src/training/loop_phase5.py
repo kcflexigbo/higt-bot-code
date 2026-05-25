@@ -3,12 +3,13 @@ model is called as `model(batch)` instead of
 `model(batch.x, batch.edge_index, edge_attr=...)` — the hybrid model unpacks
 its own inputs (flows, flow_mask, edge_index, edge_attr) from the batch.
 
-All other behaviour (Adam + ReduceLROnPlateau, focal-loss option, early
-stopping on val F1, grad clipping, W&B logging) is reused from Phase 4."""
+Supports mixed precision and gradient accumulation to stay within 16 GB RAM /
+VRAM on laptop GPUs."""
 
 from __future__ import annotations
 
 import time
+from contextlib import nullcontext
 
 import numpy as np
 import torch
@@ -22,14 +23,21 @@ from torch_geometric.loader import DataLoader
 from src.training.loop import FocalLoss, TrainConfig, _class_weights_from_train
 
 
+def _amp_ctx(device: torch.device, use_amp: bool):
+    if use_amp and device.type == "cuda":
+        return torch.autocast(device_type="cuda")
+    return nullcontext()
+
+
 @torch.no_grad()
-def predict(model: nn.Module, loader: DataLoader, device: torch.device):
+def predict(model: nn.Module, loader: DataLoader, device: torch.device, *, use_amp: bool = False):
     model.eval()
     y_t, y_p, y_pr, scen = [], [], [], []
     for batch in loader:
         batch = batch.to(device)
-        logits = model(batch)
-        proba = torch.softmax(logits, dim=-1)[:, 1]
+        with _amp_ctx(device, use_amp):
+            logits = model(batch)
+        proba = torch.softmax(logits.float(), dim=-1)[:, 1]
         pred = logits.argmax(dim=-1)
         y_t.append(batch.y.cpu().numpy())
         y_p.append(pred.cpu().numpy())
@@ -44,8 +52,8 @@ def predict(model: nn.Module, loader: DataLoader, device: torch.device):
 
 def train_one_model(
     model: nn.Module,
-    train_graphs: list[Data],
-    val_graphs: list[Data],
+    train_graphs: list[Data] | torch.utils.data.Dataset,
+    val_graphs: list[Data] | torch.utils.data.Dataset,
     *,
     cfg: TrainConfig | None = None,
     device: torch.device | str = "cpu",
@@ -56,13 +64,27 @@ def train_one_model(
         cfg = TrainConfig()
     device = torch.device(device)
     model = model.to(device)
+    use_amp = cfg.use_amp and device.type == "cuda"
+    accum = max(int(cfg.grad_accum_steps), 1)
 
     if cfg.class_weight is None:
-        cfg.class_weight = _class_weights_from_train(train_graphs)
+        if isinstance(train_graphs, list):
+            cfg.class_weight = _class_weights_from_train(train_graphs)
+        else:
+            raise ValueError("class_weight must be set when using a Dataset")
     print(f"{log_prefix}class weights (benign, bot) = {cfg.class_weight}")
+    if use_amp:
+        print(f"{log_prefix}AMP enabled", flush=True)
+    if accum > 1:
+        print(f"{log_prefix}grad_accum_steps={accum}  "
+              f"effective_batch={cfg.batch_size * accum}", flush=True)
 
-    train_loader = DataLoader(train_graphs, batch_size=cfg.batch_size, shuffle=True)
-    val_loader = DataLoader(val_graphs, batch_size=cfg.batch_size, shuffle=False)
+    train_loader = DataLoader(
+        train_graphs, batch_size=cfg.batch_size, shuffle=True, num_workers=0,
+    )
+    val_loader = DataLoader(
+        val_graphs, batch_size=cfg.batch_size, shuffle=False, num_workers=0,
+    )
 
     weight = torch.tensor(cfg.class_weight, dtype=torch.float32, device=device)
     if cfg.use_focal:
@@ -72,12 +94,13 @@ def train_one_model(
             dtype=torch.float32,
         )
         loss_fn = FocalLoss(gamma=cfg.focal_gamma, alpha=alpha)
-        print(f"{log_prefix}using focal loss γ={cfg.focal_gamma}  α={alpha.tolist()}")
+        print(f"{log_prefix}using focal loss gamma={cfg.focal_gamma}  alpha={alpha.tolist()}")
     else:
         loss_fn = nn.CrossEntropyLoss(weight=weight)
 
     optim = Adam(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     sched = ReduceLROnPlateau(optim, mode="max", factor=0.5, patience=5)
+    scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
 
     best_f1 = -1.0
     best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
@@ -89,20 +112,32 @@ def train_one_model(
         epoch_loss = 0.0
         n_batches = 0
         t0 = time.perf_counter()
-        for batch in train_loader:
-            batch = batch.to(device)
-            optim.zero_grad()
-            logits = model(batch)
-            loss = loss_fn(logits, batch.y)
-            loss.backward()
-            nn.utils.clip_grad_norm_(model.parameters(), max_norm=cfg.grad_clip)
-            optim.step()
-            epoch_loss += float(loss.item())
+        optim.zero_grad(set_to_none=True)
+        for step, batch in enumerate(train_loader, start=1):
+            batch = batch.to(device, non_blocking=True)
+            with _amp_ctx(device, use_amp):
+                logits = model(batch)
+                loss = loss_fn(logits, batch.y) / accum
+            if use_amp:
+                scaler.scale(loss).backward()
+            else:
+                loss.backward()
+            epoch_loss += float(loss.item()) * accum
             n_batches += 1
+            if step % accum == 0 or step == len(train_loader):
+                if use_amp:
+                    scaler.unscale_(optim)
+                    nn.utils.clip_grad_norm_(model.parameters(), max_norm=cfg.grad_clip)
+                    scaler.step(optim)
+                    scaler.update()
+                else:
+                    nn.utils.clip_grad_norm_(model.parameters(), max_norm=cfg.grad_clip)
+                    optim.step()
+                optim.zero_grad(set_to_none=True)
         train_loss = epoch_loss / max(n_batches, 1)
         dt = time.perf_counter() - t0
 
-        yv_t, yv_p, _, _ = predict(model, val_loader, device)
+        yv_t, yv_p, _, _ = predict(model, val_loader, device, use_amp=use_amp)
         val_f1 = float(f1_score(yv_t, yv_p, zero_division=0))
         sched.step(val_f1)
 

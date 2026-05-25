@@ -40,6 +40,8 @@ class TrainConfig:
     max_epochs: int = 200
     patience: int = 20
     grad_clip: float = 1.0
+    grad_accum_steps: int = 1
+    use_amp: bool = False
     class_weight: tuple[float, float] | None = None  # (w_benign, w_bot); None => uniform
     # Loss
     use_focal: bool = False
@@ -146,7 +148,7 @@ def train_one_model(
                               else (1.0 - cfg.focal_alpha, cfg.focal_alpha),
                               dtype=torch.float32)
         loss_fn = FocalLoss(gamma=cfg.focal_gamma, alpha=alpha)
-        print(f"{log_prefix}using focal loss γ={cfg.focal_gamma}  α={alpha.tolist()}")
+        print(f"{log_prefix}using focal loss gamma={cfg.focal_gamma}  alpha={alpha.tolist()}")
     else:
         loss_fn = nn.CrossEntropyLoss(weight=weight)
     if cfg.drop_edge_p > 0:

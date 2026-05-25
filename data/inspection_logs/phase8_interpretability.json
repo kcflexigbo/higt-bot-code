@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "iot23-35-1",
+    "window": "window_00234.pt",
+    "n": 146,
+    "n_pos": 3,
+    "n_kept": 73,
+    "n_pos_kept": 0,
+    "bot_keep_rate": 0.0,
+    "benign_keep_rate": 0.5104895104895105,
+    "pred_tp": 2,
+    "pred_fn": 1,
+    "pred_fp": 0,
+    "figure": "data\\inspection_logs\\figures\\phase8_sagpool_iot23-35-1.png"
+  },
+  {
+    "scenario": "ctu13-10",
+    "window": "window_00004.pt",
+    "n": 12,
+    "n_pos": 2,
+    "n_kept": 6,
+    "n_pos_kept": 1,
+    "bot_keep_rate": 0.5,
+    "benign_keep_rate": 0.5,
+    "pred_tp": 0,
+    "pred_fn": 2,
+    "pred_fp": 0,
+    "figure": "data\\inspection_logs\\figures\\phase8_sagpool_ctu13-10.png"
+  },
+  {
+    "scenario": "iot23-7-1",
+    "window": "window_00241.pt",
+    "n": 2,
+    "n_pos": 2,
+    "n_kept": 1,
+    "n_pos_kept": 1,
+    "bot_keep_rate": 0.5,
+    "benign_keep_rate": 0.0,
+    "pred_tp": 0,
+    "pred_fn": 2,
+    "pred_fp": 0,
+    "figure": "data\\inspection_logs\\figures\\phase8_sagpool_iot23-7-1.png"
+  },
+  {
+    "scenario": "ctu13-9",
+    "window": "window_00049.pt",
+    "n": 217,
+    "n_pos": 172,
+    "n_kept": 109,
+    "n_pos_kept": 64,
+    "bot_keep_rate": 0.37209302325581395,
+    "benign_keep_rate": 1.0,
+    "pred_tp": 172,
+    "pred_fn": 0,
+    "pred_fp": 0,
+    "figure": "data\\inspection_logs\\figures\\phase8_sagpool_ctu13-9.png"
+  },
+  {
+    "scenario": "medbiot-bashlite_mal_spread_all",
+    "window": "window_00001.pt",
+    "n": 400,
+    "n_pos": 393,
+    "n_kept": 200,
+    "n_pos_kept": 193,
+    "bot_keep_rate": 0.4910941475826972,
+    "benign_keep_rate": 1.0,
+    "pred_tp": 393,
+    "pred_fn": 0,
+    "pred_fp": 7,
+    "figure": "data\\inspection_logs\\figures\\phase8_sagpool_medbiot-bashlite_mal_spread_all.png"
+  }
+]

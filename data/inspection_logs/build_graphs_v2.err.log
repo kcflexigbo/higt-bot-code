@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\scripts\build_graphs.py", line 165, in <module>
+    main()
+  File "C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\scripts\build_graphs.py", line 149, in main
+    res = build_for_parquet_streaming(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\data\build_graphs_streaming.py", line 132, in build_for_parquet_streaming
+    torch.save(g, out_dir / f"window_{idx:05d}.pt")
+  File "C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Lib\site-packages\torch\serialization.py", line 1003, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Lib\site-packages\torch\serialization.py", line 865, in _open_zipfile_writer
+    return container(name_or_buffer)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Lib\site-packages\torch\serialization.py", line 829, in __init__
+    torch._C.PyTorchFileWriter(
+RuntimeError: Parent directory data\graphs\iot23-33-1 does not exist.

@@ -116,17 +116,12 @@ def apply_edge_scaler(graphs: list[Data], mean: torch.Tensor, std: torch.Tensor)
             g.edge_attr = ((g.edge_attr - mean) / std).float()
 
 
-def load_split(
+def load_split_files(
     name: SplitName,
     spec: SplitSpec | None = None,
     graphs_dir: Path = GRAPHS_DIR,
-) -> list[Data]:
-    """Load all graphs belonging to one split of the canonical config.
-
-    `test` includes both the chronological tail of train scenarios AND every
-    graph from holdout_test scenarios. train and val draw only from
-    train_scenarios.
-    """
+) -> list[Path]:
+    """Paths to window_*.pt for one split (no I/O)."""
     if spec is None:
         spec = SplitSpec.load()
     files: list[Path] = []
@@ -138,7 +133,21 @@ def load_split(
     if name == "test":
         for sc in spec.holdout_test_scenarios:
             files.extend(_list_window_files(sc, graphs_dir))
-    return load_graphs(files)
+    return files
+
+
+def load_split(
+    name: SplitName,
+    spec: SplitSpec | None = None,
+    graphs_dir: Path = GRAPHS_DIR,
+) -> list[Data]:
+    """Load all graphs belonging to one split of the canonical config.
+
+    `test` includes both the chronological tail of train scenarios AND every
+    graph from holdout_test scenarios. train and val draw only from
+    train_scenarios.
+    """
+    return load_graphs(load_split_files(name, spec, graphs_dir))
 
 
 def split_summary(spec: SplitSpec, graphs_dir: Path = GRAPHS_DIR) -> dict:

@@ -16,7 +16,10 @@ gin:
 train:
   lr: 1.0e-3
   weight_decay: 1.0e-5
-  batch_size: 16          # smaller than Phase 4 (32) — temporal encoder is heavier
+  batch_size: 2           # graphs/window; keep low — each batch stacks all node sequences
+  grad_accum_steps: 8     # effective batch 16 (matches old default)
+  encoder_chunk_size: 64  # temporal encoder nodes per forward chunk (VRAM cap)
+  amp: true               # mixed precision on CUDA
   max_epochs: 120
   patience: 20
   grad_clip: 1.0

@@ -1,0 +1,40 @@
+window=300s  max_flows=256  skip_existing=True  scenarios=23
+
+[ctu13-1                         ]  windows    0     0.0s  [stream]  skip=74
+[ctu13-2                         ]  windows    0     0.0s  [mem]  skip=51
+[ctu13-3                         ]  windows    0     0.1s  [stream]  skip=803
+[ctu13-4                         ]  windows    0     0.0s  [mem]  skip=51
+[ctu13-6                         ]  windows    0     0.0s  [mem]  skip=27
+[ctu13-8                         ]  windows    0     0.0s  [stream]  skip=235
+[ctu13-9                         ]  windows    0     0.0s  [mem]  skip=63
+[ctu13-13                        ]  windows    0     0.0s  [mem]  skip=198
+[iot23-1-1                       ]  windows    0     0.1s  [mem]  skip=1343
+[iot23-3-1                       ]  windows    0     0.0s  [mem]  skip=282
+[iot23-7-1                       ]  windows    0     0.0s  [stream]  skip=288
+[iot23-9-1                       ]  windows    0     0.0s  [stream]  skip=241
+    ...50 flow_seqs saved (window 49)
+    ...100 flow_seqs saved (window 99)
+    ...150 flow_seqs saved (window 149)
+    ...200 flow_seqs saved (window 199)
+    ...250 flow_seqs saved (window 249)
+[iot23-17-1                      ]  windows  289   125.5s  [stream]
+    ...50 flow_seqs saved (window 49)
+    ...100 flow_seqs saved (window 99)
+    ...150 flow_seqs saved (window 149)
+    ...200 flow_seqs saved (window 199)
+    ...250 flow_seqs saved (window 249)
+[iot23-33-1                      ]  windows  288   115.3s  [stream]
+    ...50 flow_seqs saved (window 49)
+    ...100 flow_seqs saved (window 99)
+    ...150 flow_seqs saved (window 149)
+    ...200 flow_seqs saved (window 199)
+    ...250 flow_seqs saved (window 249)
+[iot23-35-1                      ]  windows  288   206.9s  [stream]
+[iot23-48-1                      ]  windows  118    57.6s  [mem]
+[medbiot-bashlite_mal_spread_all ]  windows    3    30.4s  [mem]
+[medbiot-bashlite_mal_CC_all     ]  windows   22     0.4s  [mem]
+[medbiot-mirai_mal_spread_all    ]  windows    8     0.5s  [mem]
+[medbiot-mirai_mal_CC_all        ]  windows    8     0.2s  [mem]
+[ctu13-10                        ]  windows   58     1.7s  [mem]
+[iot23-8-1                       ]  windows  214     1.3s  [mem]
+[medbiot-torii_mal_all           ]  windows    2     0.0s  [mem]

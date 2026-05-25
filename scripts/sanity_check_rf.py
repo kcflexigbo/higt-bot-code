@@ -15,11 +15,15 @@ Usage:
 
 from __future__ import annotations
 
+import os
+
+os.environ.setdefault("CUDA_MODULE_LOADING", "LAZY")
+import torch  # noqa: E402
+
 import argparse
 from pathlib import Path
 
 import numpy as np
-import torch
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (
     classification_report,

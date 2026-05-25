@@ -14,6 +14,11 @@ Usage:
 
 from __future__ import annotations
 
+import os
+
+os.environ.setdefault("CUDA_MODULE_LOADING", "LAZY")
+import torch  # noqa: E402
+
 import argparse
 from pathlib import Path
 
@@ -23,7 +28,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
-import torch
 
 GRAPHS = Path("data/graphs")
 
@@ -97,7 +101,7 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, dpi=120)
     plt.close(fig)
-    print(f"  saved → {out}")
+    print(f"  saved -> {out}")
 
 
 if __name__ == "__main__":

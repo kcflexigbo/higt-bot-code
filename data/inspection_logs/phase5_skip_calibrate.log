@@ -1,0 +1,39 @@
+device: cuda  ckpt=experiments\phase5\temporal_gine_skip.pt
+val=926 test=1232
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+running inference on val and test ...
+[global] val best tau=0.51  val_F1=0.9677
+
+strategy                 val_F1   test_F1   test_P   test_R
+argmax (tau=0.5)         0.9677    0.9661   0.9369   0.9973
+global tau=0.51          0.9677    0.9662   0.9371   0.9971
+per-scenario tau              -    0.9664   0.9368   0.9979
+
+per-scenario test F1 (argmax vs per-scenario tau):
+  scenario                            tau   argmax    tuned    delta
+  ctu13-1                            0.62   1.0000   0.9960  -0.0040
+  ctu13-10                           0.51   0.6019   0.5948  -0.0072
+  ctu13-13                           0.15   0.9938   0.9815  -0.0123
+  ctu13-2                            0.15   0.9977   0.9954  -0.0023
+  ctu13-3                            0.51   0.8333   0.8511  +0.0177
+  ctu13-4                            0.26   0.9888   0.9622  -0.0266
+  ctu13-6                            0.21   1.0000   0.9793  -0.0207
+  ctu13-8                            0.57   0.9947   0.9894  -0.0053
+  ctu13-9                            0.25   0.9969   0.9993  +0.0024
+  iot23-1-1                          0.22   0.9608   0.9608  -0.0000
+  iot23-17-1                         0.25   1.0000   1.0000  +0.0000
+  iot23-3-1                          0.05   0.9934   1.0000  +0.0066
+  iot23-33-1                         0.36   0.9148   0.9959  +0.0811
+  iot23-35-1                         0.51   0.2778   0.2857  +0.0079
+  iot23-48-1                         0.15   1.0000   1.0000  +0.0000
+  iot23-7-1                          0.13   0.8000   0.7826  -0.0174
+  iot23-8-1                          0.51   1.0000   1.0000  +0.0000
+  iot23-9-1                          0.50   0.9500   0.9500  +0.0000
+  medbiot-bashlite_mal_CC_all        0.05   1.0000   1.0000  +0.0000
+  medbiot-bashlite_mal_spread_all    0.51   0.9974   0.9974  +0.0000
+  medbiot-mirai_mal_CC_all           0.05   1.0000   1.0000  +0.0000
+  medbiot-mirai_mal_spread_all       0.05   1.0000   1.0000  +0.0000
+  medbiot-torii_mal_all              0.51   1.0000   1.0000  +0.0000
+
+wrote data\inspection_logs\phase5_skip_calibrated.json

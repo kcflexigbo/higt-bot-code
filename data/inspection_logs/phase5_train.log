@@ -1,0 +1,126 @@
+device: cuda
+train=2796 val=926 test=1232
+fitting edge scaler + class weights (graphs only) ...
+lazy flow_seq datasets ready (load per batch from disk)
+TemporalGINE params: 143,749  encoder_chunk=64
+[t-gine] class weights (benign, bot) = (1.6985337590161995, 0.7085882004735596)
+[t-gine] AMP enabled
+[t-gine] grad_accum_steps=8  effective_batch=16
+[t-gine] using focal loss gamma=2.0  alpha=[1.6985337734222412, 0.708588182926178]
+[t-gine] epoch   1  train_loss 0.1334  val_F1 0.8513  best 0.8513  lr 1.0e-03  *  65.2s
+[t-gine] epoch   2  train_loss 0.1105  val_F1 0.9490  best 0.9490  lr 1.0e-03  *  42.5s
+[t-gine] epoch   3  train_loss 0.0817  val_F1 0.9494  best 0.9494  lr 1.0e-03  *  45.6s
+[t-gine] epoch   4  train_loss 0.0629  val_F1 0.9591  best 0.9591  lr 1.0e-03  *  45.3s
+[t-gine] epoch   5  train_loss 0.0609  val_F1 0.9424  best 0.9591  lr 1.0e-03     45.4s
+[t-gine] epoch   6  train_loss 0.0555  val_F1 0.9606  best 0.9606  lr 1.0e-03  *  45.6s
+[t-gine] epoch   7  train_loss 0.0549  val_F1 0.8973  best 0.9606  lr 1.0e-03     45.6s
+[t-gine] epoch   8  train_loss 0.0537  val_F1 0.9496  best 0.9606  lr 1.0e-03     43.7s
+[t-gine] epoch   9  train_loss 0.0521  val_F1 0.8856  best 0.9606  lr 1.0e-03     43.9s
+[t-gine] epoch  10  train_loss 0.0538  val_F1 0.9546  best 0.9606  lr 1.0e-03     43.9s
+[t-gine] epoch  11  train_loss 0.0527  val_F1 0.9618  best 0.9618  lr 1.0e-03  *  42.2s
+[t-gine] epoch  12  train_loss 0.0509  val_F1 0.9531  best 0.9618  lr 1.0e-03     41.9s
+[t-gine] epoch  13  train_loss 0.0499  val_F1 0.8898  best 0.9618  lr 1.0e-03     41.9s
+[t-gine] epoch  14  train_loss 0.0513  val_F1 0.8637  best 0.9618  lr 1.0e-03     43.8s
+[t-gine] epoch  15  train_loss 0.0495  val_F1 0.8658  best 0.9618  lr 1.0e-03     43.9s
+[t-gine] epoch  16  train_loss 0.0487  val_F1 0.9628  best 0.9628  lr 1.0e-03  *  44.1s
+[t-gine] epoch  17  train_loss 0.0499  val_F1 0.8680  best 0.9628  lr 1.0e-03     44.1s
+[t-gine] epoch  18  train_loss 0.0510  val_F1 0.9644  best 0.9644  lr 1.0e-03  *  44.2s
+[t-gine] epoch  19  train_loss 0.0487  val_F1 0.9630  best 0.9644  lr 1.0e-03     44.2s
+[t-gine] epoch  20  train_loss 0.0481  val_F1 0.9489  best 0.9644  lr 1.0e-03     44.4s
+[t-gine] epoch  21  train_loss 0.0506  val_F1 0.8903  best 0.9644  lr 1.0e-03     44.3s
+[t-gine] epoch  22  train_loss 0.0501  val_F1 0.9659  best 0.9659  lr 1.0e-03  *  44.4s
+[t-gine] epoch  23  train_loss 0.0491  val_F1 0.9589  best 0.9659  lr 1.0e-03     46.2s
+[t-gine] epoch  24  train_loss 0.0469  val_F1 0.9640  best 0.9659  lr 1.0e-03     47.5s
+[t-gine] epoch  25  train_loss 0.0469  val_F1 0.9628  best 0.9659  lr 1.0e-03     43.1s
+[t-gine] epoch  26  train_loss 0.0482  val_F1 0.9585  best 0.9659  lr 1.0e-03     44.4s
+[t-gine] epoch  27  train_loss 0.0481  val_F1 0.8683  best 0.9659  lr 1.0e-03     44.5s
+[t-gine] epoch  28  train_loss 0.0489  val_F1 0.9034  best 0.9659  lr 5.0e-04     44.6s
+[t-gine] epoch  29  train_loss 0.0455  val_F1 0.9639  best 0.9659  lr 5.0e-04     44.5s
+[t-gine] epoch  30  train_loss 0.0455  val_F1 0.9637  best 0.9659  lr 5.0e-04     44.5s
+[t-gine] epoch  31  train_loss 0.0435  val_F1 0.8815  best 0.9659  lr 5.0e-04     44.6s
+[t-gine] epoch  32  train_loss 0.0446  val_F1 0.9623  best 0.9659  lr 5.0e-04     44.4s
+[t-gine] epoch  33  train_loss 0.0444  val_F1 0.9653  best 0.9659  lr 5.0e-04     44.5s
+[t-gine] epoch  34  train_loss 0.0443  val_F1 0.8638  best 0.9659  lr 2.5e-04     44.4s
+[t-gine] epoch  35  train_loss 0.0436  val_F1 0.9628  best 0.9659  lr 2.5e-04     44.5s
+[t-gine] epoch  36  train_loss 0.0443  val_F1 0.9616  best 0.9659  lr 2.5e-04     44.7s
+[t-gine] epoch  37  train_loss 0.0434  val_F1 0.8676  best 0.9659  lr 2.5e-04     44.6s
+[t-gine] epoch  38  train_loss 0.0447  val_F1 0.9655  best 0.9659  lr 2.5e-04     44.4s
+[t-gine] epoch  39  train_loss 0.0435  val_F1 0.9597  best 0.9659  lr 2.5e-04     44.6s
+[t-gine] epoch  40  train_loss 0.0434  val_F1 0.9605  best 0.9659  lr 1.3e-04     44.7s
+[t-gine] epoch  41  train_loss 0.0435  val_F1 0.9571  best 0.9659  lr 1.3e-04     44.5s
+[t-gine] epoch  42  train_loss 0.0434  val_F1 0.9655  best 0.9659  lr 1.3e-04     44.6s
+[t-gine] early stopping at epoch 42 (no val_F1 improvement for 20 epochs)
+
+total fit 2143.5s  best val F1 0.9659
+
+=== val (temporal-gine) ===
+  n           55,049    n_pos   39,439
+  accuracy  0.9496
+  precision 0.9370
+  recall    0.9967
+  F1        0.9659
+  PR-AUC    0.9630
+  ROC-AUC   0.9332
+  confusion [[tn=12968 fp=2642]
+             [fn=131 tp=39308]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991    736  0.9516   0.9997
+  ctu13-13                             456    141  1.0000   1.0000
+  ctu13-2                              269    185  0.9918   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314     17  0.3810   0.9737
+  ctu13-6                              136     95  1.0000   1.0000
+  ctu13-8                              518    100  0.9851   0.9988
+  ctu13-9                            2,463  2,247  0.9984   1.0000
+  iot23-1-1                         33,847  31,109  0.9611   0.9287
+  iot23-17-1                           499    369  1.0000   1.0000
+  iot23-3-1                            212    169  0.8667   0.9724
+  iot23-33-1                           236    153  0.9123   0.9909
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028  3,982  1.0000   1.0000
+  iot23-7-1                            113     28  0.5361   0.7058
+  iot23-9-1                            137      2  0.0571   0.0435
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     43  1.0000   1.0000
+
+=== test (temporal-gine) ===
+  n           59,210    n_pos   41,063
+  accuracy  0.9394
+  precision 0.9261
+  recall    0.9917
+  F1        0.9578
+  PR-AUC    0.9628
+  ROC-AUC   0.9382
+  confusion [[tn=14899 fp=3248]
+             [fn=342 tp=40721]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860    620  0.8821   0.9896
+  ctu13-10                           1,048    147  0.3429   0.5629
+  ctu13-13                             654    159  1.0000   1.0000
+  ctu13-2                              298    216  0.9930   1.0000
+  ctu13-3                            1,869     25  0.6190   0.6446
+  ctu13-4                              351     90  0.9775   0.9965
+  ctu13-6                              167     71  1.0000   1.0000
+  ctu13-8                              724     95  0.9947   1.0000
+  ctu13-9                            2,611  2,256  0.9915   1.0000
+  iot23-1-1                         34,069  31,339  0.9608   0.9275
+  iot23-17-1                           484    388  1.0000   1.0000
+  iot23-3-1                            152    152  0.9444   1.0000
+  iot23-33-1                           142    120  0.9874   0.9942
+  iot23-35-1                         9,905     31  0.0641   0.4809
+  iot23-48-1                         3,711  3,663  1.0000   1.0000
+  iot23-7-1                             93     12  0.1690   0.2966
+  iot23-8-1                            879    642  1.0000   1.0000
+  iot23-9-1                            153     21  0.3714   0.5089
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800    776  0.9848   0.9998
+  medbiot-mirai_mal_CC_all              52     52  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116    116  1.0000   1.0000
+  medbiot-torii_mal_all                 16     16  1.0000   1.0000
+saved experiments\phase5\temporal_gine.pt
+wrote data\inspection_logs\phase5_temporal_gine.json

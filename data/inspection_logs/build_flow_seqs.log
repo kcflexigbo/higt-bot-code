@@ -1,0 +1,14 @@
+window=300s  max_flows=256  scenarios=23
+
+[ctu13-1                         ]  windows   74     5.2s
+[ctu13-2                         ]  windows   51     2.0s
+[ctu13-3                         ]  windows  803    11.7s
+[ctu13-4                         ]  windows   51     1.8s
+[ctu13-6                         ]  windows   27     1.2s
+[ctu13-8                         ]  windows  235     5.8s
+[ctu13-9                         ]  windows   63    11.1s
+[ctu13-13                        ]  windows  198     4.4s
+[iot23-1-1                       ]  windows 1343   245.8s
+[iot23-3-1                       ]  windows  282     2.2s
+[iot23-7-1                       ]  windows  288    19.1s
+[iot23-9-1                       ]  windows  241    12.6s

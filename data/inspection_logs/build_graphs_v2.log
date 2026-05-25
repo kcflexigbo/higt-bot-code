@@ -1,0 +1,130 @@
+window=300s  max_nodes=400  files=44  streaming=auto>=100MB
+
+[skip] ctu13-1                           (74 graphs, complete)
+[skip] ctu13-10                          (58 graphs, complete)
+[skip] ctu13-11                          (5 graphs, complete)
+[skip] ctu13-12                          (16 graphs, complete)
+[skip] ctu13-13                          (198 graphs, complete)
+[skip] ctu13-2                           (51 graphs, complete)
+[skip] ctu13-3                           (803 graphs, complete)
+[skip] ctu13-4                           (51 graphs, complete)
+[skip] ctu13-5                           (7 graphs, complete)
+[skip] ctu13-6                           (27 graphs, complete)
+[skip] ctu13-7                           (5 graphs, complete)
+[skip] ctu13-8                           (235 graphs, complete)
+[skip] ctu13-9                           (63 graphs, complete)
+[skip] iot23-1-1                         (1343 graphs, complete)
+[skip] iot23-17-1                        (289 graphs, complete)
+[skip] iot23-20-1                        (33 graphs, complete)
+[skip] iot23-21-1                        (53 graphs, complete)
+[skip] iot23-3-1                         (282 graphs, complete)
+
+[iot23-33-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 189,644 flows)
+    ...50 graphs saved  (last window 189,811 flows)
+    ...75 graphs saved  (last window 189,436 flows)
+    ...100 graphs saved  (last window 189,653 flows)
+    ...125 graphs saved  (last window 189,482 flows)
+    ...150 graphs saved  (last window 189,355 flows)
+    ...175 graphs saved  (last window 190,250 flows)
+    ...200 graphs saved  (last window 189,510 flows)
+    ...225 graphs saved  (last window 189,454 flows)
+    ...250 graphs saved  (last window 189,613 flows)
+    ...275 graphs saved  (last window 189,622 flows)
+[iot23-33-1                      ]  flows 54,454,591/54,454,591  graphs  288  bot 288  bot-nodes   749  114.1s stream
+[iot23-34-1                      ]  flows      8,885/     8,885  graphs   79  bot  78  bot-nodes   157    0.8s
+
+[iot23-35-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 28,550 flows)
+    ...50 graphs saved  (last window 29,255 flows)
+    ...75 graphs saved  (last window 29,210 flows)
+    ...100 graphs saved  (last window 28,456 flows)
+    ...125 graphs saved  (last window 28,764 flows)
+    ...150 graphs saved  (last window 29,392 flows)
+    ...175 graphs saved  (last window 29,317 flows)
+    ...200 graphs saved  (last window 29,270 flows)
+    ...225 graphs saved  (last window 28,555 flows)
+    ...250 graphs saved  (last window 29,295 flows)
+    ...275 graphs saved  (last window 28,708 flows)
+[iot23-35-1                      ]  flows 10,447,774/10,447,787  graphs  288  bot  23  bot-nodes    47   56.3s stream
+
+[iot23-36-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 47,414 flows)
+    ...50 graphs saved  (last window 47,501 flows)
+    ...75 graphs saved  (last window 47,580 flows)
+    ...100 graphs saved  (last window 47,550 flows)
+    ...125 graphs saved  (last window 47,576 flows)
+    ...150 graphs saved  (last window 47,417 flows)
+    ...175 graphs saved  (last window 47,582 flows)
+    ...200 graphs saved  (last window 47,416 flows)
+    ...225 graphs saved  (last window 47,417 flows)
+    ...250 graphs saved  (last window 47,420 flows)
+    ...275 graphs saved  (last window 47,607 flows)
+[iot23-36-1                      ]  flows 13,645,098/13,645,098  graphs  289  bot 289  bot-nodes   583   40.3s stream
+
+[iot23-39-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 841,140 flows)
+    ...50 graphs saved  (last window 800,086 flows)
+    ...75 graphs saved  (last window 800,040 flows)
+[iot23-39-1                      ]  flows 73,568,981/73,568,981  graphs   92  bot  90  bot-nodes   635  184.1s stream
+[iot23-42-1                      ]  flows      4,426/     4,426  graphs   32  bot   1  bot-nodes     2    0.4s
+
+[iot23-43-1] streaming per-window reads ...
+[iot23-43-1                      ]  flows 67,321,809/67,321,809  graphs   14  bot  14  bot-nodes  4777  242.7s stream
+[iot23-44-1                      ]  flows        237/       237  graphs    1  bot   1  bot-nodes     2    0.0s
+[iot23-48-1                      ]  flows  3,394,338/ 3,394,338  graphs  118  bot 118  bot-nodes 18126   14.0s
+
+[iot23-49-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 61,566 flows)
+    ...50 graphs saved  (last window 61,370 flows)
+    ...75 graphs saved  (last window 61,642 flows)
+[iot23-49-1                      ]  flows  5,410,561/ 5,410,561  graphs   89  bot  88  bot-nodes   186   13.6s stream
+
+[iot23-52-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 111,752 flows)
+    ...50 graphs saved  (last window 111,366 flows)
+    ...75 graphs saved  (last window 112,145 flows)
+    ...100 graphs saved  (last window 112,522 flows)
+    ...125 graphs saved  (last window 111,369 flows)
+    ...150 graphs saved  (last window 111,369 flows)
+    ...175 graphs saved  (last window 111,373 flows)
+[iot23-52-1                      ]  flows 19,781,369/19,781,378  graphs  177  bot  10  bot-nodes    23   38.0s stream
+[iot23-60-1                      ]  flows        624/       624  graphs    0  bot   0  bot-nodes     0    0.0s
+
+[iot23-7-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 46,348 flows)
+    ...50 graphs saved  (last window 46,309 flows)
+    ...75 graphs saved  (last window 46,284 flows)
+    ...100 graphs saved  (last window 46,342 flows)
+    ...125 graphs saved  (last window 46,283 flows)
+    ...150 graphs saved  (last window 46,331 flows)
+    ...175 graphs saved  (last window 46,289 flows)
+    ...200 graphs saved  (last window 45,334 flows)
+    ...225 graphs saved  (last window 27,545 flows)
+    ...250 graphs saved  (last window 19,325 flows)
+    ...275 graphs saved  (last window 17,296 flows)
+[iot23-7-1                       ]  flows 11,454,695/11,454,714  graphs  288  bot 134  bot-nodes   279   32.9s stream
+[iot23-8-1                       ]  flows     10,403/    10,403  graphs  214  bot 214  bot-nodes   642    2.5s
+
+[iot23-9-1] streaming per-window reads ...
+    ...25 graphs saved  (last window 25,459 flows)
+    ...50 graphs saved  (last window 25,593 flows)
+    ...75 graphs saved  (last window 25,348 flows)
+    ...100 graphs saved  (last window 24,303 flows)
+    ...125 graphs saved  (last window 25,467 flows)
+    ...150 graphs saved  (last window 19,605 flows)
+    ...175 graphs saved  (last window 19,409 flows)
+    ...200 graphs saved  (last window 25,305 flows)
+    ...225 graphs saved  (last window 25,308 flows)
+[iot23-9-1                       ]  flows  6,378,143/ 6,378,293  graphs  241  bot  51  bot-nodes   199   27.4s stream
+[iot23-honeypot-4-1              ]  flows          0/       452  graphs    0  bot   0  bot-nodes     0    0.0s
+[iot23-honeypot-5-1              ]  flows          0/     1,374  graphs    0  bot   0  bot-nodes     0    0.0s
+[iot23-honeypot-7-1              ]  flows          0/       130  graphs    0  bot   0  bot-nodes     0    0.0s
+[medbiot-bashlite_leg            ]  flows     88,830/    88,830  graphs  936  bot   0  bot-nodes     0   13.7s
+[medbiot-bashlite_mal_CC_all     ]  flows      3,879/     3,879  graphs   22  bot  21  bot-nodes   296    0.6s
+[medbiot-bashlite_mal_spread_all ]  flows    755,484/   755,484  graphs    3  bot   3  bot-nodes  1176    3.0s
+[medbiot-mirai_leg               ]  flows     42,185/    42,185  graphs  543  bot   0  bot-nodes     0    7.6s
+[medbiot-mirai_mal_CC_all        ]  flows      1,193/     1,193  graphs    8  bot   8  bot-nodes   150    0.3s
+[medbiot-mirai_mal_spread_all    ]  flows     35,652/    35,652  graphs    8  bot   8  bot-nodes   302    0.8s
+[medbiot-torii_leg               ]  flows     38,557/    38,557  graphs  648  bot   0  bot-nodes     0    8.7s
+[medbiot-torii_mal_all           ]  flows        102/       102  graphs    2  bot   2  bot-nodes    16    0.0s

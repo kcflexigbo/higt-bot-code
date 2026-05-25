@@ -1,0 +1,56 @@
+[
+  {
+    "params": 144325,
+    "peak_vram_mb": 172.13,
+    "median_ms_per_graph": 0.752,
+    "p95_ms_per_graph": 1.529,
+    "graphs_measured": 200,
+    "label": "Phase 5 T-GINE+skip",
+    "ckpt": "experiments\\phase5\\temporal_gine_skip.pt"
+  },
+  {
+    "params": 225818,
+    "peak_vram_mb": 34.05,
+    "median_ms_per_graph": 0.661,
+    "p95_ms_per_graph": 1.006,
+    "graphs_measured": 200,
+    "label": "Phase 6 DiffPool",
+    "ckpt": "experiments\\phase6\\hgt_diffpool.pt"
+  },
+  {
+    "params": 211335,
+    "peak_vram_mb": 13.84,
+    "median_ms_per_graph": 0.565,
+    "p95_ms_per_graph": 0.713,
+    "graphs_measured": 200,
+    "label": "Phase 6.4 SAGPool",
+    "ckpt": "experiments\\phase6\\hgt_sparse_baseline.pt"
+  },
+  {
+    "params": 1355399,
+    "peak_vram_mb": 26.81,
+    "median_ms_per_graph": 0.943,
+    "p95_ms_per_graph": 1.405,
+    "graphs_measured": 200,
+    "label": "Phase 7 GT-edge",
+    "ckpt": "experiments\\phase7\\higt_bot_edge.pt"
+  },
+  {
+    "params": 607879,
+    "peak_vram_mb": 18.02,
+    "median_ms_per_graph": 0.918,
+    "p95_ms_per_graph": 1.414,
+    "graphs_measured": 200,
+    "label": "Phase 7 GT-global",
+    "ckpt": "experiments\\phase7\\higt_bot_global.pt"
+  },
+  {
+    "params": 981639,
+    "peak_vram_mb": 20.86,
+    "median_ms_per_graph": 1.016,
+    "p95_ms_per_graph": 1.451,
+    "graphs_measured": 200,
+    "label": "Phase 7 GT-hybrid 2L",
+    "ckpt": "experiments\\phase7\\higt_bot_hybrid.pt"
+  }
+]

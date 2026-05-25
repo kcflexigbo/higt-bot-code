@@ -35,6 +35,24 @@ class WindowConfig:
         return self.stride_s if self.stride_s is not None else self.window_s
 
 
+def iter_window_starts(
+    t_min: pd.Timestamp, t_max: pd.Timestamp, cfg: WindowConfig | None = None
+) -> Iterator[tuple[int, pd.Timestamp]]:
+    """Yield (window_idx, window_start) without materializing flow rows."""
+    if cfg is None:
+        cfg = WindowConfig()
+    start = t_min.floor(f"{cfg.window_s}s")
+    win_delta = pd.Timedelta(seconds=cfg.window_s)
+    stride_delta = pd.Timedelta(seconds=cfg.stride())
+
+    idx = 0
+    t0 = start
+    while t0 <= t_max:
+        yield idx, t0
+        idx += 1
+        t0 = t0 + stride_delta
+
+
 def iter_windows(
     flows: pd.DataFrame, cfg: WindowConfig | None = None
 ) -> Iterator[tuple[int, pd.Timestamp, pd.DataFrame]]:

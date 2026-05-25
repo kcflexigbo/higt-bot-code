@@ -19,6 +19,7 @@ from pathlib import Path
 
 import pandas as pd
 import torch
+from torch.utils.data import Dataset
 from torch_geometric.data import Data
 
 from src.data.flow_seq import FLOW_FEATURE_DIM, build_node_sequences
@@ -96,3 +97,47 @@ def load_flow_sequences_into(
         assert blob["flows"].shape[2] == FLOW_FEATURE_DIM
         g.flows = blob["flows"]
         g.flow_mask = blob["flow_mask"]
+
+
+class FlowSeqGraphDataset(Dataset):
+    """Lazy loader: graph structure + flow sequences read per batch from disk.
+
+    Avoids pinning ~4k windows x [N,256,13] float tensors in RAM at startup
+    (which can exceed 10 GB and freeze the machine before epoch 1).
+    """
+
+    def __init__(
+        self,
+        graph_files: list[Path],
+        *,
+        flow_root: Path = FLOW_SEQS_DIR,
+        edge_mean: torch.Tensor | None = None,
+        edge_std: torch.Tensor | None = None,
+        node_mean: torch.Tensor | None = None,
+        node_std: torch.Tensor | None = None,
+    ) -> None:
+        self.graph_files = list(graph_files)
+        self.flow_root = flow_root
+        self.edge_mean = edge_mean
+        self.edge_std = edge_std
+        self.node_mean = node_mean
+        self.node_std = node_std
+
+    def __len__(self) -> int:
+        return len(self.graph_files)
+
+    def __getitem__(self, idx: int) -> Data:
+        g = torch.load(self.graph_files[idx], weights_only=False)
+        p = cache_path(g.scenario, int(g.window_idx), self.flow_root)
+        blob = torch.load(p, weights_only=False)
+        if list(blob["node_ips"]) != list(g.node_ips):
+            raise ValueError(
+                f"flow_seq/graph node_ips mismatch for {g.scenario} w{g.window_idx}"
+            )
+        g.flows = blob["flows"]
+        g.flow_mask = blob["flow_mask"]
+        if self.edge_mean is not None and self.edge_std is not None and g.edge_attr is not None:
+            g.edge_attr = ((g.edge_attr - self.edge_mean) / self.edge_std).float()
+        if self.node_mean is not None and self.node_std is not None and g.x is not None:
+            g.x = ((g.x - self.node_mean) / self.node_std).float()
+        return g

@@ -1,0 +1,133 @@
+device: cuda  amp=True
+train=2796 val=926 test=1232
+fitting scalers + class weights ...
+d_model=64  raw_feat_dim=9  edge_dim=10
+HiGTBotDiffPool params: 225,818  K1=100
+TAM focal loss  gamma=2.0  alpha=[1.6985337734222412, 0.708588182926178]  pi_global=[0.5, 0.5]  tam_alpha=1.0  ccm_beta=0.0
+[hgt] epoch   1  ce 0.1935  link 0.0000  ent 0.5322  val_F1 0.9633  best 0.9633  lr 5.0e-04  *  24.6s
+[hgt] epoch   2  ce 0.0882  link 0.0001  ent 0.1773  val_F1 0.9670  best 0.9670  lr 5.0e-04  *  25.4s
+[hgt] epoch   3  ce 0.0819  link 0.0001  ent 0.0795  val_F1 0.9668  best 0.9670  lr 5.0e-04     25.5s
+[hgt] epoch   4  ce 0.0775  link 0.0002  ent 0.0536  val_F1 0.9677  best 0.9677  lr 5.0e-04  *  25.1s
+[hgt] epoch   5  ce 0.0657  link 0.0002  ent 0.0390  val_F1 0.9676  best 0.9677  lr 5.0e-04     23.4s
+[hgt] epoch   6  ce 0.0653  link 0.0002  ent 0.0292  val_F1 0.9671  best 0.9677  lr 5.0e-04     25.4s
+[hgt] epoch   7  ce 0.0696  link 0.0002  ent 0.0238  val_F1 0.9668  best 0.9677  lr 5.0e-04     24.9s
+[hgt] epoch   8  ce 0.0706  link 0.0002  ent 0.0189  val_F1 0.9676  best 0.9677  lr 5.0e-04     24.5s
+[hgt] epoch   9  ce 0.0620  link 0.0002  ent 0.0159  val_F1 0.9667  best 0.9677  lr 5.0e-04     25.6s
+[hgt] epoch  10  ce 0.0626  link 0.0002  ent 0.0137  val_F1 0.9675  best 0.9677  lr 2.5e-04     25.2s
+[hgt] epoch  11  ce 0.0580  link 0.0002  ent 0.0124  val_F1 0.9674  best 0.9677  lr 2.5e-04     25.4s
+[hgt] epoch  12  ce 0.0607  link 0.0002  ent 0.0112  val_F1 0.9680  best 0.9680  lr 2.5e-04  *  26.1s
+[hgt] epoch  13  ce 0.0592  link 0.0002  ent 0.0102  val_F1 0.9679  best 0.9680  lr 2.5e-04     25.9s
+[hgt] epoch  14  ce 0.0576  link 0.0002  ent 0.0095  val_F1 0.9680  best 0.9680  lr 2.5e-04     25.7s
+[hgt] epoch  15  ce 0.0569  link 0.0002  ent 0.0085  val_F1 0.9680  best 0.9680  lr 2.5e-04  *  25.1s
+[hgt] epoch  16  ce 0.0595  link 0.0002  ent 0.0080  val_F1 0.9668  best 0.9680  lr 2.5e-04     25.2s
+[hgt] epoch  17  ce 0.0599  link 0.0002  ent 0.0077  val_F1 0.9679  best 0.9680  lr 2.5e-04     25.3s
+[hgt] epoch  18  ce 0.0617  link 0.0002  ent 0.0075  val_F1 0.9678  best 0.9680  lr 1.3e-04     25.4s
+[hgt] epoch  19  ce 0.0553  link 0.0002  ent 0.0070  val_F1 0.9676  best 0.9680  lr 1.3e-04     25.4s
+[hgt] epoch  20  ce 0.0588  link 0.0002  ent 0.0066  val_F1 0.9679  best 0.9680  lr 1.3e-04     25.1s
+[hgt] epoch  21  ce 0.0551  link 0.0002  ent 0.0066  val_F1 0.9678  best 0.9680  lr 1.3e-04     25.4s
+[hgt] epoch  22  ce 0.0556  link 0.0002  ent 0.0063  val_F1 0.9679  best 0.9680  lr 1.3e-04     25.6s
+[hgt] epoch  23  ce 0.0591  link 0.0002  ent 0.0060  val_F1 0.9680  best 0.9680  lr 1.3e-04     25.6s
+[hgt] epoch  24  ce 0.0559  link 0.0002  ent 0.0059  val_F1 0.9679  best 0.9680  lr 6.3e-05     25.4s
+[hgt] epoch  25  ce 0.0597  link 0.0002  ent 0.0057  val_F1 0.9681  best 0.9681  lr 6.3e-05  *  25.4s
+[hgt] epoch  26  ce 0.0563  link 0.0002  ent 0.0057  val_F1 0.9679  best 0.9681  lr 6.3e-05     25.7s
+[hgt] epoch  27  ce 0.0577  link 0.0002  ent 0.0055  val_F1 0.9679  best 0.9681  lr 6.3e-05     26.0s
+[hgt] epoch  28  ce 0.0546  link 0.0002  ent 0.0054  val_F1 0.9680  best 0.9681  lr 6.3e-05     25.7s
+[hgt] epoch  29  ce 0.0535  link 0.0002  ent 0.0054  val_F1 0.9681  best 0.9681  lr 6.3e-05  *  25.2s
+[hgt] epoch  30  ce 0.0622  link 0.0002  ent 0.0053  val_F1 0.9681  best 0.9681  lr 6.3e-05     25.7s
+[hgt] epoch  31  ce 0.0554  link 0.0002  ent 0.0052  val_F1 0.9680  best 0.9681  lr 3.1e-05     25.9s
+[hgt] epoch  32  ce 0.0587  link 0.0002  ent 0.0050  val_F1 0.9680  best 0.9681  lr 3.1e-05     25.5s
+[hgt] epoch  33  ce 0.0546  link 0.0002  ent 0.0052  val_F1 0.9678  best 0.9681  lr 3.1e-05     25.0s
+[hgt] epoch  34  ce 0.0541  link 0.0002  ent 0.0050  val_F1 0.9677  best 0.9681  lr 3.1e-05     25.7s
+[hgt] epoch  35  ce 0.0537  link 0.0002  ent 0.0051  val_F1 0.9681  best 0.9681  lr 3.1e-05  *  20.7s
+[hgt] epoch  36  ce 0.0549  link 0.0002  ent 0.0049  val_F1 0.9680  best 0.9681  lr 3.1e-05     20.8s
+[hgt] epoch  37  ce 0.0537  link 0.0002  ent 0.0051  val_F1 0.9681  best 0.9681  lr 1.6e-05  *  25.4s
+[hgt] epoch  38  ce 0.0539  link 0.0002  ent 0.0049  val_F1 0.9681  best 0.9681  lr 1.6e-05     25.6s
+[hgt] epoch  39  ce 0.0548  link 0.0002  ent 0.0050  val_F1 0.9678  best 0.9681  lr 1.6e-05     25.5s
+[hgt] epoch  40  ce 0.0550  link 0.0002  ent 0.0048  val_F1 0.9680  best 0.9681  lr 1.6e-05     25.6s
+[hgt] epoch  41  ce 0.0553  link 0.0002  ent 0.0048  val_F1 0.9680  best 0.9681  lr 1.6e-05     25.4s
+[hgt] epoch  42  ce 0.0544  link 0.0002  ent 0.0048  val_F1 0.9680  best 0.9681  lr 1.6e-05     25.7s
+[hgt] epoch  43  ce 0.0558  link 0.0002  ent 0.0047  val_F1 0.9680  best 0.9681  lr 7.8e-06     25.6s
+[hgt] epoch  44  ce 0.0559  link 0.0002  ent 0.0048  val_F1 0.9681  best 0.9681  lr 7.8e-06     25.8s
+[hgt] epoch  45  ce 0.0540  link 0.0002  ent 0.0047  val_F1 0.9680  best 0.9681  lr 7.8e-06     25.8s
+[hgt] epoch  46  ce 0.0548  link 0.0002  ent 0.0048  val_F1 0.9678  best 0.9681  lr 7.8e-06     25.6s
+[hgt] epoch  47  ce 0.0538  link 0.0002  ent 0.0047  val_F1 0.9678  best 0.9681  lr 7.8e-06     25.4s
+[hgt] epoch  48  ce 0.0544  link 0.0002  ent 0.0048  val_F1 0.9681  best 0.9681  lr 7.8e-06     24.8s
+[hgt] epoch  49  ce 0.0541  link 0.0002  ent 0.0049  val_F1 0.9680  best 0.9681  lr 3.9e-06     25.0s
+[hgt] epoch  50  ce 0.0545  link 0.0002  ent 0.0047  val_F1 0.9681  best 0.9681  lr 3.9e-06     25.2s
+[hgt] epoch  51  ce 0.0552  link 0.0002  ent 0.0047  val_F1 0.9679  best 0.9681  lr 3.9e-06     25.3s
+[hgt] epoch  52  ce 0.0576  link 0.0002  ent 0.0047  val_F1 0.9678  best 0.9681  lr 3.9e-06     25.5s
+[hgt] early stop at epoch 52
+
+total fit 1649.1s  best val F1 0.9681
+
+=== val (hgt-diffpool) ===
+  n           55,049    n_pos   39,439
+  accuracy  0.9529
+  precision 0.9386
+  recall    0.9996
+  F1        0.9681
+  PR-AUC    0.9697
+  ROC-AUC   0.9441
+  confusion [[tn=13032 fp=2578]
+             [fn=17 tp=39422]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991    736  0.9980   0.9996
+  ctu13-13                             456    141  1.0000   1.0000
+  ctu13-2                              269    185  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314     17  0.4545   0.7878
+  ctu13-6                              136     95  1.0000   1.0000
+  ctu13-8                              518    100  1.0000   1.0000
+  ctu13-9                            2,463  2,247  0.9996   1.0000
+  iot23-1-1                         33,847  31,109  0.9611   0.9442
+  iot23-17-1                           499    369  1.0000   1.0000
+  iot23-3-1                            212    169  0.8871   0.9456
+  iot23-33-1                           236    153  0.9679   0.9868
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028  3,982  1.0000   1.0000
+  iot23-7-1                            113     28  0.9434   0.9893
+  iot23-9-1                            137      2  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     43  1.0000   1.0000
+
+=== test (hgt-diffpool) ===
+  n           59,210    n_pos   41,063
+  accuracy  0.9497
+  precision 0.9388
+  recall    0.9922
+  F1        0.9647
+  PR-AUC    0.9692
+  ROC-AUC   0.9497
+  confusion [[tn=15489 fp=2658]
+             [fn=320 tp=40743]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860    620  0.9960   1.0000
+  ctu13-10                           1,048    147  0.6007   0.5756
+  ctu13-13                             654    159  0.9969   1.0000
+  ctu13-2                              298    216  1.0000   1.0000
+  ctu13-3                            1,869     25  0.7500   0.9439
+  ctu13-4                              351     90  0.9888   0.9998
+  ctu13-6                              167     71  0.9859   0.9998
+  ctu13-8                              724     95  0.9794   0.9999
+  ctu13-9                            2,611  2,256  0.9993   0.9991
+  iot23-1-1                         34,069  31,339  0.9608   0.9429
+  iot23-17-1                           484    388  1.0000   1.0000
+  iot23-3-1                            152    152  1.0000   1.0000
+  iot23-33-1                           142    120  0.9959   0.9947
+  iot23-35-1                         9,905     31  0.1765   0.3611
+  iot23-48-1                         3,711  3,663  1.0000   1.0000
+  iot23-7-1                             93     12  0.8000   0.9685
+  iot23-8-1                            879    642  1.0000   1.0000
+  iot23-9-1                            153     21  0.9500   0.9784
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800    776  0.8261   0.9642
+  medbiot-mirai_mal_CC_all              52     52  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116    116  1.0000   1.0000
+  medbiot-torii_mal_all                 16     16  1.0000   1.0000
+saved experiments\phase6\hgt_diffpool_tam_bal.pt
+wrote data\inspection_logs\phase6_diffpool_tam_bal.json

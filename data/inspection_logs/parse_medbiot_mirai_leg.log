@@ -1,0 +1,30 @@
+
+[medbiot] data\raw\medbiot\bulk\raw_dataset\normal\mirai_leg.pcap
+  ...5,000,000 packets, 41,088 flows so far
+  parsed in 42.2s — 42,185 flows  label=benign
+  -> data\processed\medbiot-mirai_leg.parquet  (42,185 flows, 2.1 MB)
+
+--- spot-check medbiot-torii_mal_all.parquet ---
+  columns: list(df.columns) == FLOW_COLUMNS=True
+  bot rows: 102
+            src_ip          dst_ip  dst_port protocol  bytes_fwd  bytes_bwd       detailed_label
+0   192.168.10.107    66.85.157.95       443      tcp     328646     343188  torii-torii_mal_all
+1   192.168.10.109  192.168.10.145        23      tcp       9500       6819  torii-torii_mal_all
+2   192.168.10.145    66.85.157.95       443      tcp     322017     335979  torii-torii_mal_all
+3   192.168.10.109  192.168.10.155        23      tcp       7575       5672  torii-torii_mal_all
+4   192.168.10.109  192.168.10.165        23      tcp       5078       4476  torii-torii_mal_all
+5   192.168.10.109  192.168.10.175        23      tcp       6129       4888  torii-torii_mal_all
+6   192.168.10.109  192.168.10.185        23      tcp       5235       4505  torii-torii_mal_all
+7   192.168.10.109  192.168.10.195        23      tcp       5079       4349  torii-torii_mal_all
+8   192.168.10.109  192.168.10.205        23      tcp       5078       4401  torii-torii_mal_all
+9   192.168.10.109  192.168.10.135        23      tcp       4606       3972  torii-torii_mal_all
+10  192.168.10.135    66.85.157.95       443      tcp     318711     332502  torii-torii_mal_all
+11  192.168.10.109  192.168.10.165        23      tcp       4817       4571  torii-torii_mal_all
+12  192.168.10.109  192.168.10.166        23      tcp       6811       5369  torii-torii_mal_all
+13  192.168.10.109  192.168.10.142        23      tcp       4974       4268  torii-torii_mal_all
+14  192.168.10.142    66.85.157.95       443      tcp     314904     328871  torii-torii_mal_all
+15  192.168.10.109  192.168.10.150        23      tcp       5185       4476  torii-torii_mal_all
+16  192.168.10.150    66.85.157.95       443      tcp     313024     326991  torii-torii_mal_all
+17  192.168.10.109  192.168.10.151        23      tcp       5606       4693  torii-torii_mal_all
+18  192.168.10.151    66.85.157.95       443      tcp     313995     327519  torii-torii_mal_all
+19  192.168.10.109  192.168.10.153        23      tcp       5131       4401  torii-torii_mal_all

@@ -1,0 +1,129 @@
+device: cuda  amp=True  emb_dir=data\flow_embeddings  gt=hybrid layers=2 heads=4
+train=2796 val=926 test=1232
+fitting scalers + class weights ...
+HiGTBot params: 981,639
+focal loss gamma=2.0 alpha=[1.6985337734222412, 0.708588182926178]
+[higt-hybrid] epoch   1  ce 0.1068  val_F1 0.9607  best 0.9607  lr 5.0e-04  *  26.9s
+[higt-hybrid] epoch   2  ce 0.0681  val_F1 0.9657  best 0.9657  lr 5.0e-04  *  26.2s
+[higt-hybrid] epoch   3  ce 0.0619  val_F1 0.9629  best 0.9657  lr 5.0e-04     26.3s
+[higt-hybrid] epoch   4  ce 0.0575  val_F1 0.9628  best 0.9657  lr 5.0e-04     26.4s
+[higt-hybrid] epoch   5  ce 0.0595  val_F1 0.8996  best 0.9657  lr 5.0e-04     32.9s
+[higt-hybrid] epoch   6  ce 0.0596  val_F1 0.9678  best 0.9678  lr 5.0e-04  *  29.1s
+[higt-hybrid] epoch   7  ce 0.0584  val_F1 0.4226  best 0.9678  lr 5.0e-04     33.1s
+[higt-hybrid] epoch   8  ce 0.0572  val_F1 0.4623  best 0.9678  lr 5.0e-04     28.6s
+[higt-hybrid] epoch   9  ce 0.0580  val_F1 0.9676  best 0.9678  lr 5.0e-04     30.7s
+[higt-hybrid] epoch  10  ce 0.0579  val_F1 0.9674  best 0.9678  lr 5.0e-04     30.0s
+[higt-hybrid] epoch  11  ce 0.0549  val_F1 0.7098  best 0.9678  lr 5.0e-04     32.3s
+[higt-hybrid] epoch  12  ce 0.0561  val_F1 0.4455  best 0.9678  lr 2.5e-04     30.5s
+[higt-hybrid] epoch  13  ce 0.0542  val_F1 0.3802  best 0.9678  lr 2.5e-04     30.0s
+[higt-hybrid] epoch  14  ce 0.0551  val_F1 0.9670  best 0.9678  lr 2.5e-04     30.6s
+[higt-hybrid] epoch  15  ce 0.0543  val_F1 0.7454  best 0.9678  lr 2.5e-04     32.0s
+[higt-hybrid] epoch  16  ce 0.0537  val_F1 0.9681  best 0.9681  lr 2.5e-04  *  29.7s
+[higt-hybrid] epoch  17  ce 0.0532  val_F1 0.8762  best 0.9681  lr 2.5e-04     27.5s
+[higt-hybrid] epoch  18  ce 0.0529  val_F1 0.8291  best 0.9681  lr 2.5e-04     28.6s
+[higt-hybrid] epoch  19  ce 0.0544  val_F1 0.9502  best 0.9681  lr 2.5e-04     31.3s
+[higt-hybrid] epoch  20  ce 0.0537  val_F1 0.9679  best 0.9681  lr 2.5e-04     30.0s
+[higt-hybrid] epoch  21  ce 0.0554  val_F1 0.6062  best 0.9681  lr 2.5e-04     31.6s
+[higt-hybrid] epoch  22  ce 0.0549  val_F1 0.9241  best 0.9681  lr 1.3e-04     26.5s
+[higt-hybrid] epoch  23  ce 0.0550  val_F1 0.8365  best 0.9681  lr 1.3e-04     32.0s
+[higt-hybrid] epoch  24  ce 0.0526  val_F1 0.8589  best 0.9681  lr 1.3e-04     30.9s
+[higt-hybrid] epoch  25  ce 0.0544  val_F1 0.9445  best 0.9681  lr 1.3e-04     31.2s
+[higt-hybrid] epoch  26  ce 0.0548  val_F1 0.9656  best 0.9681  lr 1.3e-04     30.9s
+[higt-hybrid] epoch  27  ce 0.0543  val_F1 0.8514  best 0.9681  lr 1.3e-04     31.2s
+[higt-hybrid] epoch  28  ce 0.0582  val_F1 0.9681  best 0.9681  lr 6.3e-05  *  29.0s
+[higt-hybrid] epoch  29  ce 0.0541  val_F1 0.9681  best 0.9681  lr 6.3e-05     31.8s
+[higt-hybrid] epoch  30  ce 0.0534  val_F1 0.9681  best 0.9681  lr 6.3e-05     33.4s
+[higt-hybrid] epoch  31  ce 0.0529  val_F1 0.9677  best 0.9681  lr 6.3e-05     32.7s
+[higt-hybrid] epoch  32  ce 0.0527  val_F1 0.9680  best 0.9681  lr 6.3e-05     30.8s
+[higt-hybrid] epoch  33  ce 0.0524  val_F1 0.9681  best 0.9681  lr 6.3e-05     26.1s
+[higt-hybrid] epoch  34  ce 0.0539  val_F1 0.9681  best 0.9681  lr 3.1e-05  *  26.4s
+[higt-hybrid] epoch  35  ce 0.0529  val_F1 0.9681  best 0.9681  lr 3.1e-05     31.6s
+[higt-hybrid] epoch  36  ce 0.0522  val_F1 0.9681  best 0.9681  lr 3.1e-05     30.0s
+[higt-hybrid] epoch  37  ce 0.0524  val_F1 0.9681  best 0.9681  lr 3.1e-05     31.8s
+[higt-hybrid] epoch  38  ce 0.0527  val_F1 0.9680  best 0.9681  lr 3.1e-05     30.2s
+[higt-hybrid] epoch  39  ce 0.0531  val_F1 0.9680  best 0.9681  lr 3.1e-05     32.4s
+[higt-hybrid] epoch  40  ce 0.0531  val_F1 0.9681  best 0.9681  lr 1.6e-05     30.9s
+[higt-hybrid] epoch  41  ce 0.0531  val_F1 0.9681  best 0.9681  lr 1.6e-05     28.9s
+[higt-hybrid] epoch  42  ce 0.0538  val_F1 0.9679  best 0.9681  lr 1.6e-05     30.6s
+[higt-hybrid] epoch  43  ce 0.0529  val_F1 0.9669  best 0.9681  lr 1.6e-05     31.4s
+[higt-hybrid] epoch  44  ce 0.0551  val_F1 0.9681  best 0.9681  lr 1.6e-05     31.1s
+[higt-hybrid] epoch  45  ce 0.0535  val_F1 0.9681  best 0.9681  lr 1.6e-05     26.3s
+[higt-hybrid] epoch  46  ce 0.0529  val_F1 0.9679  best 0.9681  lr 7.8e-06     28.0s
+[higt-hybrid] epoch  47  ce 0.0528  val_F1 0.9670  best 0.9681  lr 7.8e-06     30.8s
+[higt-hybrid] epoch  48  ce 0.0529  val_F1 0.9680  best 0.9681  lr 7.8e-06     30.5s
+[higt-hybrid] epoch  49  ce 0.0526  val_F1 0.9681  best 0.9681  lr 7.8e-06     28.7s
+[higt-hybrid] early stop at epoch 49
+
+total fit 1818.5s  best val F1 0.9681
+
+=== val (higt-hybrid) ===
+  n           55,049    n_pos   39,439
+  accuracy  0.9529
+  precision 0.9388
+  recall    0.9994
+  F1        0.9681
+  PR-AUC    0.9696
+  ROC-AUC   0.9440
+  confusion [[tn=13041 fp=2569]
+             [fn=25 tp=39414]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991    736  0.9980   1.0000
+  ctu13-13                             456    141  1.0000   1.0000
+  ctu13-2                              269    185  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314     17  0.5217   0.7724
+  ctu13-6                              136     95  0.9947   1.0000
+  ctu13-8                              518    100  1.0000   1.0000
+  ctu13-9                            2,463  2,247  0.9996   1.0000
+  iot23-1-1                         33,847  31,109  0.9611   0.9439
+  iot23-17-1                           499    369  1.0000   1.0000
+  iot23-3-1                            212    169  0.8871   0.9327
+  iot23-33-1                           236    153  0.9739   0.9921
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028  3,982  0.9997   1.0000
+  iot23-7-1                            113     28  0.8800   1.0000
+  iot23-9-1                            137      2  0.5000   0.8333
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     43  1.0000   1.0000
+
+=== test (higt-hybrid) ===
+  n           59,210    n_pos   41,063
+  accuracy  0.9478
+  precision 0.9381
+  recall    0.9900
+  F1        0.9634
+  PR-AUC    0.9638
+  ROC-AUC   0.9481
+  confusion [[tn=15465 fp=2682]
+             [fn=411 tp=40652]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860    620  0.9017   0.9995
+  ctu13-10                           1,048    147  0.5519   0.4540
+  ctu13-13                             654    159  0.9969   1.0000
+  ctu13-2                              298    216  1.0000   1.0000
+  ctu13-3                            1,869     25  0.8936   0.9609
+  ctu13-4                              351     90  0.9888   0.9995
+  ctu13-6                              167     71  0.9930   0.9998
+  ctu13-8                              724     95  1.0000   1.0000
+  ctu13-9                            2,611  2,256  0.9998   1.0000
+  iot23-1-1                         34,069  31,339  0.9608   0.9428
+  iot23-17-1                           484    388  1.0000   1.0000
+  iot23-3-1                            152    152  1.0000   1.0000
+  iot23-33-1                           142    120  0.9959   0.9916
+  iot23-35-1                         9,905     31  0.7143   0.7421
+  iot23-48-1                         3,711  3,663  1.0000   1.0000
+  iot23-7-1                             93     12  0.8000   0.9812
+  iot23-8-1                            879    642  1.0000   1.0000
+  iot23-9-1                            153     21  0.8780   0.9822
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800    776  0.8241   0.9900
+  medbiot-mirai_mal_CC_all              52     52  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116    116  1.0000   1.0000
+  medbiot-torii_mal_all                 16     16  1.0000   1.0000
+saved experiments\phase7\higt_bot_hybrid.pt
+wrote data\inspection_logs\phase7_higt_bot_hybrid.json

@@ -1,7 +1,11 @@
 """Freeze the trained TemporalFlowEncoder and dump per-(scenario, window, node)
 embeddings to parquet so Phase 6 (DiffPool) loads `[N, d_model]` tensors
-without re-running the encoder. Per the plan, this trades ~3× wall-clock and
-~2× peak VRAM in Phase 6 for one-time disk I/O now.
+without re-running the encoder.
+
+Streams one window at a time — loads graph + flow_seq from disk, runs the
+encoder, writes parquet, frees the tensors. Skips windows whose parquet
+already exists so it is safely resumable. Avoids the ~10 GB RAM spike that
+happens when every graph + flow tensor is pinned in memory at once.
 
 Output layout: data/flow_embeddings/<scenario>/window_<NNNN>.parquet with
 columns: node_idx (int32), node_ip (string), dim_000 ... dim_<D-1> (float32).
@@ -12,12 +16,11 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+import torch  # MUST come before pandas on Windows to avoid DLL ordering issue
 import pandas as pd
-import torch
-from torch_geometric.loader import DataLoader
 
-from src.data.dataset import SplitSpec, load_split
-from src.data.flow_seq_dataset import load_flow_sequences_into
+from src.data.dataset import SplitSpec, load_split_files
+from src.data.flow_seq_dataset import cache_path as flow_cache_path
 from src.models.hybrid import TemporalGINE
 from src.utils.seeding import pick_device, set_seed
 
@@ -27,30 +30,24 @@ EMB_DIR = Path("data/flow_embeddings")
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--checkpoint", type=Path,
-                    default=Path("experiments/phase5/temporal_gine.pt"))
+                    default=Path("experiments/phase5/temporal_gine_skip.pt"))
+    ap.add_argument("--out-dir", type=Path, default=EMB_DIR)
     ap.add_argument("--device", type=str, default=None)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--print-every", type=int, default=50)
     args = ap.parse_args()
 
     set_seed(args.seed)
     device = torch.device(args.device) if args.device else pick_device()
-    print(f"device: {device}")
+    print(f"device: {device}", flush=True)
 
     blob = torch.load(args.checkpoint, map_location=device, weights_only=False)
     cfg = blob["cfg"]
-    spec = SplitSpec.load()
+    raw_feat_dim = blob.get("raw_feat_dim")
 
-    # We need every (scenario, window) — load every split.
-    all_graphs = (load_split("train", spec)
-                   + load_split("val", spec)
-                   + load_split("test", spec))
-    print(f"total graphs: {len(all_graphs)}")
-    load_flow_sequences_into(all_graphs)
-
-    edge_dim = int(all_graphs[0].edge_attr.size(1))
     model = TemporalGINE(
         flow_feat_dim=cfg["encoder"]["flow_feat_dim"],
-        edge_dim=edge_dim,
+        edge_dim=10,
         d_model=cfg["encoder"]["d_model"],
         nhead=cfg["encoder"]["nhead"],
         num_layers=cfg["encoder"]["num_layers"],
@@ -60,33 +57,52 @@ def main() -> None:
         gin_layers=cfg["gin"]["num_layers"],
         dropout=0.0,
         out_dim=2,
+        raw_feat_dim=raw_feat_dim,
     )
     model.load_state_dict(blob["state_dict"])
     model.to(device).eval()
 
-    loader = DataLoader(all_graphs, batch_size=8, shuffle=False)
+    spec = SplitSpec.load()
+    files = (load_split_files("train", spec)
+              + load_split_files("val", spec)
+              + load_split_files("test", spec))
+    print(f"total graphs: {len(files)}", flush=True)
+
     written = 0
+    skipped = 0
     with torch.no_grad():
-        cursor = 0
-        for batch in loader:
-            batch = batch.to(device)
-            emb = model.encoder(batch.flows, batch.flow_mask).cpu().numpy()
-            bi = batch.batch.cpu().numpy()
-            for g_in_batch in range(int(bi.max()) + 1):
-                node_rows = (bi == g_in_batch).nonzero()[0]
-                g = all_graphs[cursor]
-                cursor += 1
-                node_emb = emb[node_rows]
-                D = node_emb.shape[1]
-                df = pd.DataFrame(node_emb.astype("float32"),
-                                   columns=[f"dim_{d:03d}" for d in range(D)])
-                df.insert(0, "node_ip", list(g.node_ips))
-                df.insert(0, "node_idx", range(len(g.node_ips)))
-                out = EMB_DIR / g.scenario / f"window_{int(g.window_idx):05d}.parquet"
-                out.parent.mkdir(parents=True, exist_ok=True)
-                df.to_parquet(out, index=False)
-                written += 1
-    print(f"wrote {written} embedding files under {EMB_DIR}")
+        for i, gf in enumerate(files, start=1):
+            g = torch.load(gf, weights_only=False)
+            out = args.out_dir / g.scenario / f"window_{int(g.window_idx):05d}.parquet"
+            if out.exists():
+                skipped += 1
+                del g
+                continue
+            fs_path = flow_cache_path(g.scenario, int(g.window_idx))
+            fs_blob = torch.load(fs_path, weights_only=False)
+            if list(fs_blob["node_ips"]) != list(g.node_ips):
+                raise ValueError(
+                    f"flow_seq/graph node_ips mismatch for {g.scenario} w{g.window_idx}"
+                )
+            flows = fs_blob["flows"].to(device)
+            flow_mask = fs_blob["flow_mask"].to(device)
+            emb = model.encoder(flows, flow_mask).cpu().numpy()
+            D = emb.shape[1]
+            df = pd.DataFrame(emb.astype("float32"),
+                               columns=[f"dim_{d:03d}" for d in range(D)])
+            df.insert(0, "node_ip", list(g.node_ips))
+            df.insert(0, "node_idx", range(len(g.node_ips)))
+            out.parent.mkdir(parents=True, exist_ok=True)
+            df.to_parquet(out, index=False)
+            written += 1
+            del flows, flow_mask, emb, df, fs_blob, g
+
+            if i % args.print_every == 0:
+                print(f"  [{i}/{len(files)}] written={written} skipped={skipped}",
+                      flush=True)
+
+    print(f"done -- written={written} skipped={skipped} dir={args.out_dir}",
+          flush=True)
 
 
 if __name__ == "__main__":
