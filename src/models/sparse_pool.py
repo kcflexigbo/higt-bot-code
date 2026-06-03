@@ -55,6 +55,23 @@ class _GINEBlock(nn.Module):
         self.out_dim = hidden * num_layers if jk == "cat" else hidden
 
     def forward(self, x, edge_index, edge_attr):
+        # Degenerate-batch guard: BatchNorm1d inside the GINEConv MLP crashes
+        # when the batched node tensor has fewer than 2 rows in training mode
+        # (it cannot compute batch statistics). Surfaces on an odd last
+        # DataLoader batch (train_size % batch_size == 1) whose single graph
+        # contains a small number of nodes. Run in eval mode for this one
+        # forward (uses BN running stats) so training does not abort. Dropout
+        # is also disabled for that single call, which is harmless for a
+        # 1-node batch.
+        if x.size(0) < 2 and self.training:
+            self.eval()
+            try:
+                return self._forward_impl(x, edge_index, edge_attr)
+            finally:
+                self.train()
+        return self._forward_impl(x, edge_index, edge_attr)
+
+    def _forward_impl(self, x, edge_index, edge_attr):
         h = self.input_proj(x)
         e = self.edge_proj(edge_attr)
         outs = []
