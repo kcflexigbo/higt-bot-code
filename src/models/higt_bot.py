@@ -197,7 +197,14 @@ class HiGTBot(nn.Module):
             z, ei, edge_attr=ea, batch=b,
         )
 
-        z_pool2 = self.post_pool_gnn(z_pool, ei_pool, ea_pool)      # [K_total, h]
+        # Degenerate-batch guard: post-pool BatchNorm1d crashes when the
+        # coarsened batch has fewer than 2 nodes total (odd last batch +
+        # heavy SAGPool reduction). Eval is unaffected because BN uses
+        # running stats; only training mode needs the guard.
+        if z_pool.size(0) < 2 and self.training:
+            z_pool2 = z_pool
+        else:
+            z_pool2 = self.post_pool_gnn(z_pool, ei_pool, ea_pool)      # [K_total, h]
 
         # Apply the Graph Transformer block(s).
         if self.gt_variant == "edge":

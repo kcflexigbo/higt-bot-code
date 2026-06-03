@@ -126,7 +126,15 @@ class HiGTBotSparsePool(nn.Module):
         )
 
         # Post-pool GINE on coarsened sparse graph.
-        z_pool2 = self.post_pool_gnn(z_pool, ei_pool, ea_pool)  # [K, hidden]
+        # Degenerate-batch guard: the inner BatchNorm1d crashes when the
+        # coarsened batch has fewer than 2 nodes total. This surfaces on an
+        # odd last batch (train_size % batch_size == 1) whose single graph
+        # SAGPool-coarsens to a single surviving node. Eval uses BN running
+        # stats and is unaffected; only training mode needs the guard.
+        if z_pool.size(0) < 2 and self.training:
+            z_pool2 = z_pool
+        else:
+            z_pool2 = self.post_pool_gnn(z_pool, ei_pool, ea_pool)  # [K, hidden]
 
         # Graph readout (mean + max over surviving nodes per graph).
         gm = global_mean_pool(z_pool2, b_pool)                  # [B, hidden]
