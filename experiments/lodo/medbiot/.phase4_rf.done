@@ -1,0 +1,5 @@
+started_utc=2026-06-03T11:35:01Z
+finished_utc=2026-06-03T11:35:38Z
+duration_s=37.0
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_rf.py --split-config configs\split_lodo_medbiot.yaml --out experiments\lodo\medbiot\phase4\baseline_rf_lodo_medbiot.json

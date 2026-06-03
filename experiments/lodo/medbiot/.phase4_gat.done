@@ -1,0 +1,5 @@
+started_utc=2026-06-03T11:35:47Z
+finished_utc=2026-06-03T11:36:41Z
+duration_s=54.0
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_gnn.py --model gat --split-config configs\split_lodo_medbiot.yaml --out experiments\lodo\medbiot\phase4\baseline_gat_lodo_medbiot.json

@@ -1,0 +1,44 @@
+# phase4_xgb
+# started_utc=2026-06-03T11:35:38Z
+# cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_xgb.py --split-config configs\split_lodo_medbiot.yaml --out experiments\lodo\medbiot\phase4\baseline_xgb_lodo_medbiot.json
+
+Loading split vlodo-medbiot-v1 ...
+  train graphs=3921  val graphs=973  test graphs=43
+  nodes:  train=228,691  val=55,472  test=1,965
+  bot frac train=0.7049  val=0.6985  test=0.9873
+  scale_pos_weight = 0.4186
+
+Fitting XGBClassifier(n=500, depth=6, lr=0.1, early_stopping_rounds=20) ...
+  fit in 0.9s, best_iteration=142
+
+=== val ===
+  n           55,472    n_pos   38,745
+  accuracy  0.9465
+  precision 0.9366
+  recall    0.9904
+  F1        0.9628
+  PR-AUC    0.9579
+  ROC-AUC   0.9362
+  confusion [[tn=14129 fp=2598]
+             [fn=371 tp=38374]]
+
+=== test ===
+  n            1,965    n_pos    1,940
+  accuracy  0.8326
+  precision 1.0000
+  recall    0.8304
+  F1        0.9074
+  PR-AUC    1.0000
+  ROC-AUC   0.9979
+  confusion [[tn=25 fp=0]
+             [fn=329 tp=1611]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  medbiot-bashlite_mal_CC_all          297    296  0.7943   1.0000
+  medbiot-bashlite_mal_spread_all    1,200  1,176  0.9747   1.0000
+  medbiot-mirai_mal_CC_all             150    150  0.9247   1.0000
+  medbiot-mirai_mal_spread_all         302    302  0.7122   1.0000
+  medbiot-torii_mal_all                 16     16  0.2222   1.0000
+
+wrote experiments\lodo\medbiot\phase4\baseline_xgb_lodo_medbiot.json

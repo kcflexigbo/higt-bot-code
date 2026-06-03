@@ -1,0 +1,113 @@
+{
+  "holdout": "medbiot",
+  "split_config": "configs\\split_lodo_medbiot.yaml",
+  "ckpt_root": "experiments\\lodo\\medbiot",
+  "emb_dir": "data\\flow_embeddings_lodo\\medbiot",
+  "seeds": [
+    42,
+    1,
+    2
+  ],
+  "stages": [
+    {
+      "name": "phase4_rf",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase4_rf.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_xgb",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase4_xgb.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_gat",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase4_gat.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_gin",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase4_gin.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_gine",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase4_gine.log",
+      "skipped": true
+    },
+    {
+      "name": "phase5",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase5.log",
+      "skipped": true
+    },
+    {
+      "name": "cache",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T12:51:21Z",
+      "finished_utc": "2026-06-03T12:51:21Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\cache.log",
+      "skipped": true
+    },
+    {
+      "name": "phase6",
+      "rc": 0,
+      "duration_s": 1041.784476700006,
+      "started_utc": "2026-06-03T12:51:22Z",
+      "finished_utc": "2026-06-03T13:08:43Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase6.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed42",
+      "rc": 0,
+      "duration_s": 1642.5567602000083,
+      "started_utc": "2026-06-03T13:08:44Z",
+      "finished_utc": "2026-06-03T13:36:06Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase7_seed42.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed1",
+      "rc": 0,
+      "duration_s": 2132.4610039999825,
+      "started_utc": "2026-06-03T13:36:07Z",
+      "finished_utc": "2026-06-03T14:11:39Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase7_seed1.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed2",
+      "rc": 0,
+      "duration_s": 2830.631194000016,
+      "started_utc": "2026-06-03T14:11:40Z",
+      "finished_utc": "2026-06-03T14:58:50Z",
+      "log": "experiments\\lodo\\medbiot\\logs\\phase7_seed2.log",
+      "skipped": false
+    }
+  ],
+  "completed_utc": "2026-06-03T14:58:51Z"
+}

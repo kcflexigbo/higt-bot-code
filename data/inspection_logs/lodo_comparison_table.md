@@ -4,11 +4,11 @@ Test F1 (mean +/- std across seeds where applicable). Mixed-pool column from exi
 
 | Model | LODO-CTU13 | LODO-IoT23 | LODO-MedBIoT |
 |---|---|---|---|
-| RandomForest | -- | -- | -- |
-| XGBoost | -- | -- | -- |
-| GAT (flat) | -- | -- | -- |
-| GIN (flat) | -- | -- | -- |
-| GINE (flat) | -- | -- | -- |
-| T-GINE + skip | -- | -- | -- |
-| SAGPool (sparse) | -- | -- | -- |
-| GT-edge (final) | -- | -- | -- |
+| RandomForest | -- | -- | 0.8558 |
+| XGBoost | -- | -- | 0.9074 |
+| GAT (flat) | -- | -- | 0.8514 |
+| GIN (flat) | -- | -- | 0.8239 |
+| GINE (flat) | -- | -- | 0.9482 |
+| T-GINE + skip | -- | -- | 0.0868 |
+| SAGPool (sparse) | -- | -- | 0.0000 |
+| GT-edge (final) | -- | -- | 0.0000 +/- 0.0000 |

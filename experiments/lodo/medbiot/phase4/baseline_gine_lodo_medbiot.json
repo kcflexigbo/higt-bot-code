@@ -1,0 +1,79 @@
+{
+  "model": "gine",
+  "hidden": 64,
+  "heads": null,
+  "num_layers": 2,
+  "dropout": 0.3,
+  "lr": 0.001,
+  "weight_decay": 1e-05,
+  "batch_size": 32,
+  "patience": 20,
+  "seed": 42,
+  "device": "cuda",
+  "use_focal": false,
+  "focal_gamma": null,
+  "focal_alpha": null,
+  "drop_edge_p": 0.0,
+  "fit_seconds": 148.56301879999228,
+  "best_val_f1": 0.9620338223765259,
+  "val": {
+    "n": 55472,
+    "n_pos": 38745,
+    "accuracy": 0.9449992789154888,
+    "precision": 0.9288494809688581,
+    "recall": 0.9976771196283392,
+    "f1": 0.9620338223765259,
+    "pr_auc": 0.951697181264246,
+    "roc_auc": 0.9281765784090783,
+    "tn": 13766,
+    "fp": 2961,
+    "fn": 90,
+    "tp": 38655
+  },
+  "test": {
+    "n": 1965,
+    "n_pos": 1940,
+    "accuracy": 0.9027989821882951,
+    "precision": 1.0,
+    "recall": 0.9015463917525773,
+    "f1": 0.9482244510707509,
+    "pr_auc": 0.9996746676218722,
+    "roc_auc": 0.9747422680412371,
+    "tn": 25,
+    "fp": 0,
+    "fn": 191,
+    "tp": 1749
+  },
+  "test_per_scenario": {
+    "medbiot-bashlite_mal_CC_all": {
+      "n": 297.0,
+      "n_pos": 296.0,
+      "f1": 0.9949066213921901,
+      "pr_auc": 1.0
+    },
+    "medbiot-bashlite_mal_spread_all": {
+      "n": 1200.0,
+      "n_pos": 1176.0,
+      "f1": 0.9666080843585237,
+      "pr_auc": 0.9996744366007984
+    },
+    "medbiot-mirai_mal_CC_all": {
+      "n": 150.0,
+      "n_pos": 150.0,
+      "f1": 0.8142292490118577,
+      "pr_auc": 1.0
+    },
+    "medbiot-mirai_mal_spread_all": {
+      "n": 302.0,
+      "n_pos": 302.0,
+      "f1": 0.9077757685352622,
+      "pr_auc": 1.0
+    },
+    "medbiot-torii_mal_all": {
+      "n": 16.0,
+      "n_pos": 16.0,
+      "f1": 0.2222222222222222,
+      "pr_auc": 1.0
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# phase4_rf
+# started_utc=2026-06-03T11:35:01Z
+# cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_rf.py --split-config configs\split_lodo_medbiot.yaml --out experiments\lodo\medbiot\phase4\baseline_rf_lodo_medbiot.json
+
+Loading split vlodo-medbiot-v1 ...
+  train graphs=3921  val graphs=973  test graphs=43
+  nodes:  train=228,691  val=55,472  test=1,965
+  bot frac train=0.7049  val=0.6985  test=0.9873
+
+Fitting RandomForest(n=500, max_depth=None) ...
+  fit in 13.6s
+
+=== val ===
+  n           55,472    n_pos   38,745
+  accuracy  0.9487
+  precision 0.9359
+  recall    0.9947
+  F1        0.9644
+  PR-AUC    0.9587
+  ROC-AUC   0.9359
+  confusion [[tn=14088 fp=2639]
+             [fn=205 tp=38540]]
+
+=== test ===
+  n            1,965    n_pos    1,940
+  accuracy  0.7511
+  precision 1.0000
+  recall    0.7479
+  F1        0.8558
+  PR-AUC    1.0000
+  ROC-AUC   1.0000
+  confusion [[tn=25 fp=0]
+             [fn=489 tp=1451]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  medbiot-bashlite_mal_CC_all          297    296  0.2989   1.0000
+  medbiot-bashlite_mal_spread_all    1,200  1,176  0.9836   1.0000
+  medbiot-mirai_mal_CC_all             150    150  0.6486   1.0000
+  medbiot-mirai_mal_spread_all         302    302  0.7648   1.0000
+  medbiot-torii_mal_all                 16     16  0.2222   1.0000
+
+wrote experiments\lodo\medbiot\phase4\baseline_rf_lodo_medbiot.json

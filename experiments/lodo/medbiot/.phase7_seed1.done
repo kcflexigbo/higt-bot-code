@@ -1,0 +1,5 @@
+started_utc=2026-06-03T13:36:07Z
+finished_utc=2026-06-03T14:11:39Z
+duration_s=2132.5
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/train_phase7.py --gt-variant edge --seed 1 --split-config configs\split_lodo_medbiot.yaml --ckpt-dir experiments\lodo\medbiot\phase7 --results-dir data\inspection_logs --results-suffix _lodo_medbiot_edge_seed1 --emb-dir data\flow_embeddings_lodo\medbiot

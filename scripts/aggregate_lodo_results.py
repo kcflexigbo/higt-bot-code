@@ -10,6 +10,7 @@ Reads every data/inspection_logs/*lodo_*.json and writes:
 from __future__ import annotations
 
 import json
+import math
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean, stdev
@@ -44,11 +45,20 @@ def collect_by_holdout() -> dict[str, dict[str, list[dict]]]:
 
     A model can appear multiple times when seed replicates exist
     (only Phase 7 GT-edge does this).
+
+    Scans two locations:
+      - data/inspection_logs/*_lodo_*.json (Phase 5/6/7 trainers)
+      - experiments/lodo/<holdout>/phase4/*_lodo_*.json (Phase 4 baselines)
     """
     out: dict[str, dict[str, list[dict]]] = {
         h: defaultdict(list) for h in HOLDOUTS
     }
-    for jf in LOGS.glob("*_lodo_*.json"):
+
+    candidates: list[Path] = list(LOGS.glob("*_lodo_*.json"))
+    for h in HOLDOUTS:
+        candidates.extend((Path("experiments/lodo") / h / "phase4").glob("*_lodo_*.json"))
+
+    for jf in candidates:
         # Filename convention: <model_root>_lodo_<holdout>[_<extras>].json
         stem = jf.stem
         # Find which holdout this file is for.
@@ -61,13 +71,17 @@ def collect_by_holdout() -> dict[str, dict[str, list[dict]]]:
 
 
 def aggregate_metric(rows: list[dict], path: str) -> tuple[float, float | None]:
-    """Pull `rows[i]['test'][path]` (path uses dot notation). Return (mean, std-or-None)."""
+    """Pull `rows[i]['test'][path]` (path uses dot notation). Return (mean, std-or-None).
+
+    NaN values (e.g. PR-AUC/ROC-AUC when the model collapses to a single
+    predicted class) are dropped; statistics.stdev cannot consume NaN.
+    """
     vals = []
     for r in rows:
         cur = r.get("test", {})
         for key in path.split("."):
             cur = cur.get(key, {}) if isinstance(cur, dict) else cur
-        if isinstance(cur, (int, float)):
+        if isinstance(cur, (int, float)) and not math.isnan(cur):
             vals.append(float(cur))
     if not vals:
         return float("nan"), None
@@ -132,6 +146,11 @@ def write_per_scenario_breakdown(by_holdout: dict[str, dict[str, list[dict]]]) -
     return out
 
 
+def _fmt(v: float) -> str:
+    """Format a metric value as 4 decimals, or '--' if NaN."""
+    return "--" if math.isnan(v) else f"{v:.4f}"
+
+
 def write_per_holdout_summaries(by_holdout: dict[str, dict[str, list[dict]]]) -> list[Path]:
     paths = []
     for h in HOLDOUTS:
@@ -151,7 +170,7 @@ def write_per_holdout_summaries(by_holdout: dict[str, dict[str, list[dict]]]) ->
             f1, _ = aggregate_metric(rows, "f1")
             pr, _ = aggregate_metric(rows, "pr_auc")
             roc, _ = aggregate_metric(rows, "roc_auc")
-            lines.append(f"| {_model_pretty(model_root)} | {f1:.4f} | {pr:.4f} | {roc:.4f} |")
+            lines.append(f"| {_model_pretty(model_root)} | {_fmt(f1)} | {_fmt(pr)} | {_fmt(roc)} |")
         out = LOGS / f"lodo_{h}_summary.md"
         out.write_text("\n".join(lines) + "\n", encoding="utf-8")
         paths.append(out)

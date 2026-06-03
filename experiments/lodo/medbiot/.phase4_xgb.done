@@ -1,0 +1,5 @@
+started_utc=2026-06-03T11:35:38Z
+finished_utc=2026-06-03T11:35:46Z
+duration_s=8.3
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_xgb.py --split-config configs\split_lodo_medbiot.yaml --out experiments\lodo\medbiot\phase4\baseline_xgb_lodo_medbiot.json

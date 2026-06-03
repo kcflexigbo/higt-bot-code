@@ -1,0 +1,87 @@
+{
+  "fit_seconds": 2815.8475970000145,
+  "best_val_f1": 0.9675863447793273,
+  "params": 1355399,
+  "val": {
+    "n": 55472,
+    "n_pos": 38745,
+    "accuracy": 0.9532376694548601,
+    "precision": 0.9378436644623696,
+    "recall": 0.9992773261065944,
+    "f1": 0.9675863447793273,
+    "pr_auc": 0.9669393853685413,
+    "roc_auc": 0.9452393192238366,
+    "tn": 14161,
+    "fp": 2566,
+    "fn": 28,
+    "tp": 38717
+  },
+  "test": {
+    "n": 1965,
+    "n_pos": 1940,
+    "accuracy": 0.012213740458015267,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "pr_auc": NaN,
+    "roc_auc": NaN,
+    "tn": 24,
+    "fp": 1,
+    "fn": 1940,
+    "tp": 0
+  },
+  "test_per_scenario": {
+    "medbiot-bashlite_mal_CC_all": {
+      "n": 297.0,
+      "n_pos": 296.0,
+      "f1": 0.0,
+      "pr_auc": NaN
+    },
+    "medbiot-bashlite_mal_spread_all": {
+      "n": 1200.0,
+      "n_pos": 1176.0,
+      "f1": 0.0,
+      "pr_auc": NaN
+    },
+    "medbiot-mirai_mal_CC_all": {
+      "n": 150.0,
+      "n_pos": 150.0,
+      "f1": 0.0,
+      "pr_auc": NaN
+    },
+    "medbiot-mirai_mal_spread_all": {
+      "n": 302.0,
+      "n_pos": 302.0,
+      "f1": 0.0,
+      "pr_auc": NaN
+    },
+    "medbiot-torii_mal_all": {
+      "n": 16.0,
+      "n_pos": 16.0,
+      "f1": 0.0,
+      "pr_auc": NaN
+    }
+  },
+  "args": {
+    "config": "configs\\phase5.yaml",
+    "seed": 2,
+    "device": null,
+    "epochs": 100,
+    "patience": 15,
+    "batch_size": 4,
+    "grad_accum": 4,
+    "lr": 0.0005,
+    "hidden": 128,
+    "pool_ratio": 0.5,
+    "dropout": 0.3,
+    "gt_variant": "edge",
+    "gt_layers": 2,
+    "gt_heads": 4,
+    "no_amp": false,
+    "results_suffix": "_lodo_medbiot_edge_seed2",
+    "emb_dir": "data\\flow_embeddings_lodo\\medbiot",
+    "split_config": "configs\\split_lodo_medbiot.yaml",
+    "ckpt_dir": "experiments\\lodo\\medbiot\\phase7",
+    "results_dir": "data\\inspection_logs"
+  }
+}

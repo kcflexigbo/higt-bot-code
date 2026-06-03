@@ -1,0 +1,5 @@
+started_utc=2026-06-03T12:40:29Z
+finished_utc=2026-06-03T12:41:34Z
+duration_s=64.4
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/cache_embeddings.py --checkpoint experiments\lodo\medbiot\phase5\temporal_gine_lodo_medbiot_skip.pt --split-config configs\split_lodo_medbiot.yaml --out-dir data\flow_embeddings_lodo\medbiot
