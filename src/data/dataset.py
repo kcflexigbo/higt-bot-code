@@ -131,18 +131,43 @@ def load_split_files(
     spec: SplitSpec | None = None,
     graphs_dir: Path = GRAPHS_DIR,
 ) -> list[Path]:
-    """Paths to window_*.pt for one split (no I/O)."""
+    """Paths to window_*.pt for one split (no I/O).
+
+    Two modes:
+    - Mixed-pool (default, holdout_dataset is None): per-scenario chronological
+      train_frac/val_frac/test_frac split of train_scenarios; test additionally
+      includes the full window sequence of every holdout_test_scenario.
+    - LODO (holdout_dataset is set): per-scenario chronological train_frac/val_frac
+      split of train_scenarios (the dataset-X tail is unused — test comes from a
+      different pool); test = full window sequence of every lodo_test_scenario.
+      The holdout_test_scenarios field is ignored in LODO mode.
+    """
     if spec is None:
         spec = SplitSpec.load()
     files: list[Path] = []
-    for sc in spec.train_scenarios:
-        per_scenario = _chronological_split(
-            _list_window_files(sc, graphs_dir), spec.train_frac, spec.val_frac
-        )
-        files.extend(per_scenario[name])
-    if name == "test":
-        for sc in spec.holdout_test_scenarios:
-            files.extend(_list_window_files(sc, graphs_dir))
+    if spec.holdout_dataset is None:
+        # Mixed-pool: existing behavior, byte-identical.
+        for sc in spec.train_scenarios:
+            per_scenario = _chronological_split(
+                _list_window_files(sc, graphs_dir), spec.train_frac, spec.val_frac
+            )
+            files.extend(per_scenario[name])
+        if name == "test":
+            for sc in spec.holdout_test_scenarios:
+                files.extend(_list_window_files(sc, graphs_dir))
+        return files
+
+    # LODO mode.
+    if name in ("train", "val"):
+        for sc in spec.train_scenarios:
+            per_scenario = _chronological_split(
+                _list_window_files(sc, graphs_dir), spec.train_frac, spec.val_frac
+            )
+            files.extend(per_scenario[name])
+        return files
+    # name == "test"
+    for sc in spec.lodo_test_scenarios:
+        files.extend(_list_window_files(sc, graphs_dir))
     return files
 
 
