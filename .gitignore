@@ -29,7 +29,8 @@ data/graphs/*
 !data/inspection_logs/
 
 # Experiment artifacts
-experiments/
+experiments/*/
+!experiments/lodo/
 wandb/
 outputs/
 multirun/
