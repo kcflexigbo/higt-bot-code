@@ -25,11 +25,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import subprocess
 import sys
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 HOLDOUT_CHOICES = ("ctu13", "iot23", "medbiot")
@@ -90,11 +89,6 @@ def _ensure_dirs(paths: LodoPaths) -> None:
         d.mkdir(parents=True, exist_ok=True)
     for sub in ("phase4", "phase5", "phase6", "phase7"):
         (paths.ckpt_root / sub).mkdir(parents=True, exist_ok=True)
-
-
-def _done_marker(paths: LodoPaths, stage: str, seed: int | None = None) -> Path:
-    suffix = f"_seed{seed}" if seed is not None else ""
-    return paths.ckpt_root / f".{stage}{suffix}.done"
 
 
 def _result_suffix(paths: LodoPaths, seed: int | None = None) -> str:
@@ -312,8 +306,7 @@ def main() -> int:
     stage_plan = stages_for_holdout(paths, args.seeds)
     # Filter to requested stages - stage_label starts with one of phaseN/cache.
     plan = [(label, cmd, seed) for (label, cmd, seed) in stage_plan
-             if label.split("_")[0] in requested
-             or (label.startswith("cache") and "cache" in requested)]
+             if label.split("_")[0] in requested]
 
     print(f"[lodo:{args.holdout}] planned stages: {[p[0] for p in plan]}",
           flush=True)
