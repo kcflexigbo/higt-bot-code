@@ -1,0 +1,45 @@
+# LODO split: hold out CTU-13 entirely.
+# Train + val from IoT-23 + MedBIoT (per-scenario chronological 80/20).
+# Test = all CTU-13 scenarios above the excluded threshold.
+
+split_version: lodo-ctu13-v1
+seed: 42
+train_frac: 0.80
+val_frac: 0.20
+
+holdout_dataset: ctu13
+
+train:
+  - iot23-1-1
+  - iot23-3-1
+  - iot23-7-1
+  - iot23-8-1
+  - iot23-9-1
+  - iot23-17-1
+  - iot23-33-1
+  - iot23-35-1
+  - iot23-48-1
+  - medbiot-bashlite_mal_spread_all
+  - medbiot-bashlite_mal_CC_all
+  - medbiot-mirai_mal_spread_all
+  - medbiot-mirai_mal_CC_all
+  - medbiot-torii_mal_all
+
+lodo_test_scenarios:
+  - ctu13-1
+  - ctu13-2
+  - ctu13-3
+  - ctu13-4
+  - ctu13-6
+  - ctu13-8
+  - ctu13-9
+  - ctu13-10
+  - ctu13-13
+
+excluded:
+  - ctu13-5
+  - ctu13-7
+  - ctu13-11
+  - ctu13-12
+  - iot23-20-1
+  - iot23-21-1
