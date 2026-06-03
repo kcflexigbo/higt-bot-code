@@ -35,6 +35,8 @@ def main() -> None:
     ap.add_argument("--device", type=str, default=None)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--print-every", type=int, default=50)
+    ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
+                    help="path to split YAML; default matches canonical mixed-pool split")
     args = ap.parse_args()
 
     set_seed(args.seed)
@@ -62,7 +64,7 @@ def main() -> None:
     model.load_state_dict(blob["state_dict"])
     model.to(device).eval()
 
-    spec = SplitSpec.load()
+    spec = SplitSpec.load(args.split_config)
     files = (load_split_files("train", spec)
               + load_split_files("val", spec)
               + load_split_files("test", spec))
