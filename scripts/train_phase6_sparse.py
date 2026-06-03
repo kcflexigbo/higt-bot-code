@@ -91,6 +91,12 @@ def main() -> None:
     ap.add_argument("--results-suffix", type=str, default="")
     ap.add_argument("--emb-dir", type=Path, default=Path("data/flow_embeddings"),
                     help="cached embedding directory")
+    ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
+                    help="path to split YAML; default matches canonical mixed-pool split")
+    ap.add_argument("--ckpt-dir", type=Path, default=CKPT_DIR,
+                    help="checkpoint output directory; default experiments/phase6")
+    ap.add_argument("--results-dir", type=Path, default=RESULTS.parent,
+                    help="results JSON directory; default data/inspection_logs")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(args.config.read_text())
@@ -99,7 +105,7 @@ def main() -> None:
     use_amp = (not args.no_amp) and device.type == "cuda"
     print(f"device: {device}  amp={use_amp}  emb_dir={args.emb_dir}", flush=True)
 
-    spec = SplitSpec.load()
+    spec = SplitSpec.load(args.split_config)
     tr_files = load_split_files("train", spec)
     va_files = load_split_files("val", spec)
     te_files = load_split_files("test", spec)
@@ -208,14 +214,14 @@ def main() -> None:
     print(); print(val_res.pretty("val (hgt-sparse)"))
     print(); print(test_res.pretty("test (hgt-sparse)"))
 
-    CKPT_DIR.mkdir(parents=True, exist_ok=True)
-    ckpt = CKPT_DIR / f"hgt_sparse{args.results_suffix}.pt"
+    args.ckpt_dir.mkdir(parents=True, exist_ok=True)
+    ckpt = args.ckpt_dir / f"hgt_sparse{args.results_suffix}.pt"
     torch.save({"state_dict": model.state_dict(), "cfg": cfg,
                  "args": vars(args), "edge_scaler": (e_mean, e_std),
                  "node_scaler": (n_mean, n_std)}, ckpt)
     print(f"saved {ckpt}")
 
-    results_path = RESULTS.with_name(f"phase6_sparse{args.results_suffix}.json")
+    results_path = args.results_dir / f"phase6_sparse{args.results_suffix}.json"
     results_path.parent.mkdir(parents=True, exist_ok=True)
     results_path.write_text(json.dumps({
         "fit_seconds": fit_s, "best_val_f1": best_f1, "params": n_params,
