@@ -1,0 +1,48 @@
+# phase4_xgb
+# started_utc=2026-06-03T18:09:25Z
+# cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_xgb.py --split-config configs\split_lodo_iot23.yaml --out experiments\lodo\iot23\phase4\baseline_xgb_lodo_iot23.json
+
+Loading split vlodo-iot23-v1 ...
+  train graphs=1276  val graphs=314  test graphs=3351
+  nodes:  train=23,236  val=7,475  test=255,352
+  bot frac train=0.3780  val=0.4650  test=0.7417
+  scale_pos_weight = 1.6453
+
+Fitting XGBClassifier(n=500, depth=6, lr=0.1, early_stopping_rounds=20) ...
+  fit in 0.8s, best_iteration=496
+
+=== val ===
+  n            7,475    n_pos    3,476
+  accuracy  0.9652
+  precision 0.9639
+  recall    0.9612
+  F1        0.9625
+  PR-AUC    0.9955
+  ROC-AUC   0.9957
+  confusion [[tn=3874 fp=125]
+             [fn=135 tp=3341]]
+
+=== test ===
+  n          255,352    n_pos  189,406
+  accuracy  0.7426
+  precision 0.7430
+  recall    0.9983
+  F1        0.8519
+  PR-AUC    0.7754
+  ROC-AUC   0.2650
+  confusion [[tn=525 fp=65421]
+             [fn=316 tp=189090]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  iot23-1-1                         181,905  166,845  0.9569   0.9258
+  iot23-17-1                         2,318  1,745  0.8609   0.9775
+  iot23-3-1                            865    774  0.8684   0.9332
+  iot23-33-1                         1,184    749  0.7238   0.8805
+  iot23-35-1                        47,924     47  0.0015   0.0193
+  iot23-48-1                        18,379  18,126  0.9968   1.0000
+  iot23-7-1                            928    279  0.4775   0.9592
+  iot23-8-1                            879    642  0.8442   1.0000
+  iot23-9-1                            970    199  0.3612   0.6265
+
+wrote experiments\lodo\iot23\phase4\baseline_xgb_lodo_iot23.json

@@ -16,6 +16,20 @@ GT-edge results only (the headline model). Cells = F1 (mean across seeds).
 | ctu13-8 | 0.0450 | 3 |
 | ctu13-9 | 0.8334 | 3 |
 
+## LODO-IOT23
+
+| Scenario | F1 (mean) | seeds |
+|---|---|---|
+| iot23-1-1 | 0.9568 | 3 |
+| iot23-17-1 | 0.8381 | 3 |
+| iot23-3-1 | 0.9166 | 3 |
+| iot23-33-1 | 0.7279 | 3 |
+| iot23-35-1 | 0.0017 | 3 |
+| iot23-48-1 | 0.9692 | 3 |
+| iot23-7-1 | 0.4782 | 3 |
+| iot23-8-1 | 0.8442 | 3 |
+| iot23-9-1 | 0.3477 | 3 |
+
 ## LODO-MEDBIOT
 
 | Scenario | F1 (mean) | seeds |

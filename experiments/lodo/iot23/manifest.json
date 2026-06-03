@@ -1,0 +1,113 @@
+{
+  "holdout": "iot23",
+  "split_config": "configs\\split_lodo_iot23.yaml",
+  "ckpt_root": "experiments\\lodo\\iot23",
+  "emb_dir": "data\\flow_embeddings_lodo\\iot23",
+  "seeds": [
+    42,
+    1,
+    2
+  ],
+  "stages": [
+    {
+      "name": "phase4_rf",
+      "rc": 0,
+      "duration_s": 12.167027099989355,
+      "started_utc": "2026-06-03T18:09:13Z",
+      "finished_utc": "2026-06-03T18:09:25Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase4_rf.log",
+      "skipped": false
+    },
+    {
+      "name": "phase4_xgb",
+      "rc": 0,
+      "duration_s": 8.764250400010496,
+      "started_utc": "2026-06-03T18:09:25Z",
+      "finished_utc": "2026-06-03T18:09:34Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase4_xgb.log",
+      "skipped": false
+    },
+    {
+      "name": "phase4_gat",
+      "rc": 0,
+      "duration_s": 23.925837100017816,
+      "started_utc": "2026-06-03T18:09:35Z",
+      "finished_utc": "2026-06-03T18:09:59Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase4_gat.log",
+      "skipped": false
+    },
+    {
+      "name": "phase4_gin",
+      "rc": 0,
+      "duration_s": 41.896787100005895,
+      "started_utc": "2026-06-03T18:09:59Z",
+      "finished_utc": "2026-06-03T18:10:41Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase4_gin.log",
+      "skipped": false
+    },
+    {
+      "name": "phase4_gine",
+      "rc": 0,
+      "duration_s": 21.34431160002714,
+      "started_utc": "2026-06-03T18:10:41Z",
+      "finished_utc": "2026-06-03T18:11:03Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase4_gine.log",
+      "skipped": false
+    },
+    {
+      "name": "phase5",
+      "rc": 0,
+      "duration_s": 577.9751320999931,
+      "started_utc": "2026-06-03T18:11:03Z",
+      "finished_utc": "2026-06-03T18:20:41Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase5.log",
+      "skipped": false
+    },
+    {
+      "name": "cache",
+      "rc": 0,
+      "duration_s": 71.48690679995343,
+      "started_utc": "2026-06-03T18:20:42Z",
+      "finished_utc": "2026-06-03T18:21:53Z",
+      "log": "experiments\\lodo\\iot23\\logs\\cache.log",
+      "skipped": false
+    },
+    {
+      "name": "phase6",
+      "rc": 0,
+      "duration_s": 462.8316202000133,
+      "started_utc": "2026-06-03T18:21:54Z",
+      "finished_utc": "2026-06-03T18:29:37Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase6.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed42",
+      "rc": 0,
+      "duration_s": 729.9068665999803,
+      "started_utc": "2026-06-03T18:29:37Z",
+      "finished_utc": "2026-06-03T18:41:47Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase7_seed42.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed1",
+      "rc": 0,
+      "duration_s": 550.0859468000126,
+      "started_utc": "2026-06-03T18:41:48Z",
+      "finished_utc": "2026-06-03T18:50:58Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase7_seed1.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed2",
+      "rc": 0,
+      "duration_s": 753.1811053000274,
+      "started_utc": "2026-06-03T18:50:58Z",
+      "finished_utc": "2026-06-03T19:03:31Z",
+      "log": "experiments\\lodo\\iot23\\logs\\phase7_seed2.log",
+      "skipped": false
+    }
+  ],
+  "completed_utc": "2026-06-03T19:03:32Z"
+}

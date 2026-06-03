@@ -1,0 +1,5 @@
+started_utc=2026-06-03T18:09:13Z
+finished_utc=2026-06-03T18:09:25Z
+duration_s=12.2
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_rf.py --split-config configs\split_lodo_iot23.yaml --out experiments\lodo\iot23\phase4\baseline_rf_lodo_iot23.json

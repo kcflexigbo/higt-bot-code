@@ -1,0 +1,5 @@
+started_utc=2026-06-03T18:09:25Z
+finished_utc=2026-06-03T18:09:34Z
+duration_s=8.8
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_xgb.py --split-config configs\split_lodo_iot23.yaml --out experiments\lodo\iot23\phase4\baseline_xgb_lodo_iot23.json

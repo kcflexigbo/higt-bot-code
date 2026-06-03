@@ -1,0 +1,5 @@
+started_utc=2026-06-03T18:41:48Z
+finished_utc=2026-06-03T18:50:58Z
+duration_s=550.1
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/train_phase7.py --gt-variant edge --seed 1 --split-config configs\split_lodo_iot23.yaml --ckpt-dir experiments\lodo\iot23\phase7 --results-dir data\inspection_logs --results-suffix _lodo_iot23_edge_seed1 --emb-dir data\flow_embeddings_lodo\iot23

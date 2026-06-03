@@ -1,0 +1,95 @@
+# phase6
+# started_utc=2026-06-03T18:21:54Z
+# cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/train_phase6_sparse.py --split-config configs\split_lodo_iot23.yaml --ckpt-dir experiments\lodo\iot23\phase6 --results-dir data\inspection_logs --results-suffix _lodo_iot23_sparse --emb-dir data\flow_embeddings_lodo\iot23
+
+device: cuda  amp=True  emb_dir=data\flow_embeddings_lodo\iot23
+train=1276 val=314 test=3351
+fitting scalers + class weights ...
+d_model=64  raw_feat_dim=9  edge_dim=10
+HiGTBotSparsePool params: 211,335  pool_ratio=0.5
+focal loss gamma=2.0 alpha=[0.8039025664329529, 1.322632074356079]
+[sparse] epoch   1  ce 0.0582  val_F1 0.8902  best 0.8902  lr 5.0e-04  *  22.4s
+[sparse] epoch   2  ce 0.0141  val_F1 0.9350  best 0.9350  lr 5.0e-04  *  10.7s
+[sparse] epoch   3  ce 0.0107  val_F1 0.9208  best 0.9350  lr 5.0e-04     10.7s
+[sparse] epoch   4  ce 0.0124  val_F1 0.9297  best 0.9350  lr 5.0e-04     10.7s
+[sparse] epoch   5  ce 0.0087  val_F1 0.9682  best 0.9682  lr 5.0e-04  *  10.5s
+[sparse] epoch   6  ce 0.0073  val_F1 0.9709  best 0.9709  lr 5.0e-04  *  11.5s
+[sparse] epoch   7  ce 0.0053  val_F1 0.9700  best 0.9709  lr 5.0e-04     11.0s
+[sparse] epoch   8  ce 0.0052  val_F1 0.9657  best 0.9709  lr 5.0e-04     10.6s
+[sparse] epoch   9  ce 0.0057  val_F1 0.9599  best 0.9709  lr 5.0e-04     10.5s
+[sparse] epoch  10  ce 0.0045  val_F1 0.9911  best 0.9911  lr 5.0e-04  *  11.0s
+[sparse] epoch  11  ce 0.0042  val_F1 0.9764  best 0.9911  lr 5.0e-04     10.9s
+[sparse] epoch  12  ce 0.0055  val_F1 0.9910  best 0.9911  lr 5.0e-04     10.8s
+[sparse] epoch  13  ce 0.0036  val_F1 0.9517  best 0.9911  lr 5.0e-04     10.4s
+[sparse] epoch  14  ce 0.0047  val_F1 0.9742  best 0.9911  lr 5.0e-04     10.7s
+[sparse] epoch  15  ce 0.0045  val_F1 0.9717  best 0.9911  lr 5.0e-04     10.6s
+[sparse] epoch  16  ce 0.0035  val_F1 0.9952  best 0.9952  lr 5.0e-04  *  10.4s
+[sparse] epoch  17  ce 0.0037  val_F1 0.9618  best 0.9952  lr 5.0e-04     10.0s
+[sparse] epoch  18  ce 0.0043  val_F1 0.9869  best 0.9952  lr 5.0e-04     10.0s
+[sparse] epoch  19  ce 0.0040  val_F1 0.9540  best 0.9952  lr 5.0e-04     10.9s
+[sparse] epoch  20  ce 0.0034  val_F1 0.9702  best 0.9952  lr 5.0e-04     10.7s
+[sparse] epoch  21  ce 0.0033  val_F1 0.9930  best 0.9952  lr 5.0e-04     10.4s
+[sparse] epoch  22  ce 0.0033  val_F1 0.9928  best 0.9952  lr 2.5e-04     9.5s
+[sparse] epoch  23  ce 0.0026  val_F1 0.9808  best 0.9952  lr 2.5e-04     10.7s
+[sparse] epoch  24  ce 0.0027  val_F1 0.9938  best 0.9952  lr 2.5e-04     11.0s
+[sparse] epoch  25  ce 0.0023  val_F1 0.9921  best 0.9952  lr 2.5e-04     10.0s
+[sparse] epoch  26  ce 0.0028  val_F1 0.9832  best 0.9952  lr 2.5e-04     10.0s
+[sparse] epoch  27  ce 0.0022  val_F1 0.9946  best 0.9952  lr 2.5e-04     10.3s
+[sparse] epoch  28  ce 0.0020  val_F1 0.9914  best 0.9952  lr 1.3e-04     10.1s
+[sparse] epoch  29  ce 0.0018  val_F1 0.9938  best 0.9952  lr 1.3e-04     9.9s
+[sparse] epoch  30  ce 0.0020  val_F1 0.9947  best 0.9952  lr 1.3e-04     10.0s
+[sparse] epoch  31  ce 0.0019  val_F1 0.9927  best 0.9952  lr 1.3e-04     10.1s
+[sparse] early stop at epoch 31
+
+total fit 403.9s  best val F1 0.9952
+
+=== val (hgt-sparse) ===
+  n            7,475    n_pos    3,476
+  accuracy  0.9956
+  precision 0.9965
+  recall    0.9940
+  F1        0.9952
+  PR-AUC    0.9999
+  ROC-AUC   0.9999
+  confusion [[tn=3987 fp=12]
+             [fn=21 tp=3455]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              815    606  0.9967   0.9999
+  ctu13-10                             185     40  0.8500   0.9320
+  ctu13-13                             639    156  0.9968   1.0000
+  ctu13-2                              295    216  1.0000   1.0000
+  ctu13-3                            1,849     25  1.0000   1.0000
+  ctu13-4                              328     90  0.9831   0.9991
+  ctu13-6                              155     69  0.9857   1.0000
+  ctu13-8                              724     95  0.9948   1.0000
+  ctu13-9                            2,387  2,081  0.9983   1.0000
+  medbiot-bashlite_mal_CC_all           46     46  0.9663   1.0000
+  medbiot-mirai_mal_CC_all              12     12  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          40     40  1.0000   1.0000
+
+=== test (hgt-sparse) ===
+  n          255,352    n_pos  189,406
+  accuracy  0.7443
+  precision 0.7437
+  recall    0.9998
+  F1        0.8530
+  PR-AUC    nan
+  ROC-AUC   nan
+  confusion [[tn=690 fp=65256]
+             [fn=36 tp=189370]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  iot23-1-1                         181,905  166,845  0.9568   0.9302
+  iot23-17-1                         2,318  1,745  0.8590   0.8732
+  iot23-3-1                            865    774  0.9438   0.9081
+  iot23-33-1                         1,184    749  0.7657   0.6557
+  iot23-35-1                        47,924     47  0.0018      nan
+  iot23-48-1                        18,379  18,126  0.9936   0.9990
+  iot23-7-1                            928    279  0.4700   0.3947
+  iot23-8-1                            879    642  0.8442   0.9906
+  iot23-9-1                            970    199  0.3535   0.3843
+saved experiments\lodo\iot23\phase6\hgt_sparse_lodo_iot23_sparse.pt
+wrote data\inspection_logs\phase6_sparse_lodo_iot23_sparse.json

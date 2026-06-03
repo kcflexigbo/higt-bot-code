@@ -1,0 +1,5 @@
+started_utc=2026-06-03T18:10:41Z
+finished_utc=2026-06-03T18:11:03Z
+duration_s=21.3
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_gnn.py --model gine --split-config configs\split_lodo_iot23.yaml --out experiments\lodo\iot23\phase4\baseline_gine_lodo_iot23.json
