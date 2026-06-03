@@ -54,13 +54,15 @@ def main() -> None:
     ap.add_argument("--device", type=str, default=None, help="auto if unset (CUDA>MPS>CPU)")
     ap.add_argument("--out", type=Path, default=None,
                     help="results json path; default data/inspection_logs/baseline_<model>.json")
+    ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
+                    help="path to split YAML; default matches the canonical mixed-pool split")
     args = ap.parse_args()
 
     set_seed(args.seed)
     device = torch.device(args.device) if args.device else pick_device()
     print(f"device: {device}")
 
-    spec = SplitSpec.load()
+    spec = SplitSpec.load(args.split_config)
     print(f"Loading split v{spec.version} ...")
     tr = load_split("train", spec)
     va = load_split("val", spec)

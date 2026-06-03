@@ -42,9 +42,11 @@ def main() -> None:
     ap.add_argument("--lr", type=float, default=0.1, dest="learning_rate")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", type=Path, default=Path("data/inspection_logs/baseline_xgb.json"))
+    ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
+                    help="path to split YAML; default matches the canonical mixed-pool split")
     args = ap.parse_args()
 
-    spec = SplitSpec.load()
+    spec = SplitSpec.load(args.split_config)
     print(f"Loading split v{spec.version} ...")
     tr = load_split("train", spec)
     va = load_split("val", spec)
