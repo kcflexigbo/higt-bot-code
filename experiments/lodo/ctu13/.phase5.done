@@ -1,0 +1,5 @@
+started_utc=2026-06-03T15:07:55Z
+finished_utc=2026-06-03T16:09:41Z
+duration_s=3706.1
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/train_phase5.py --raw-feature-skip --split-config configs\split_lodo_ctu13.yaml --ckpt-dir experiments\lodo\ctu13\phase5 --results-dir data\inspection_logs --results-suffix _lodo_ctu13_skip

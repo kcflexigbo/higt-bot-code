@@ -1,0 +1,113 @@
+{
+  "holdout": "ctu13",
+  "split_config": "configs\\split_lodo_ctu13.yaml",
+  "ckpt_root": "experiments\\lodo\\ctu13",
+  "emb_dir": "data\\flow_embeddings_lodo\\ctu13",
+  "seeds": [
+    42,
+    1,
+    2
+  ],
+  "stages": [
+    {
+      "name": "phase4_rf",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase4_rf.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_xgb",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase4_xgb.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_gat",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase4_gat.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_gin",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase4_gin.log",
+      "skipped": true
+    },
+    {
+      "name": "phase4_gine",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase4_gine.log",
+      "skipped": true
+    },
+    {
+      "name": "phase5",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase5.log",
+      "skipped": true
+    },
+    {
+      "name": "cache",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\cache.log",
+      "skipped": true
+    },
+    {
+      "name": "phase6",
+      "rc": 0,
+      "duration_s": 0.0,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T16:59:30Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase6.log",
+      "skipped": true
+    },
+    {
+      "name": "phase7_seed42",
+      "rc": 0,
+      "duration_s": 873.7828968999675,
+      "started_utc": "2026-06-03T16:59:30Z",
+      "finished_utc": "2026-06-03T17:14:04Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase7_seed42.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed1",
+      "rc": 0,
+      "duration_s": 1448.5700346999802,
+      "started_utc": "2026-06-03T17:14:04Z",
+      "finished_utc": "2026-06-03T17:38:13Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase7_seed1.log",
+      "skipped": false
+    },
+    {
+      "name": "phase7_seed2",
+      "rc": 0,
+      "duration_s": 1768.4667161999969,
+      "started_utc": "2026-06-03T17:38:13Z",
+      "finished_utc": "2026-06-03T18:07:42Z",
+      "log": "experiments\\lodo\\ctu13\\logs\\phase7_seed2.log",
+      "skipped": false
+    }
+  ],
+  "completed_utc": "2026-06-03T18:07:42Z"
+}

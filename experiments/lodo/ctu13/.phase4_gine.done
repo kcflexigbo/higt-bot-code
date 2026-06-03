@@ -1,0 +1,5 @@
+started_utc=2026-06-03T15:06:59Z
+finished_utc=2026-06-03T15:07:54Z
+duration_s=55.3
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_gnn.py --model gine --split-config configs\split_lodo_ctu13.yaml --out experiments\lodo\ctu13\phase4\baseline_gine_lodo_ctu13.json

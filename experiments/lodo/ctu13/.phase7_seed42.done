@@ -1,0 +1,5 @@
+started_utc=2026-06-03T16:59:30Z
+finished_utc=2026-06-03T17:14:04Z
+duration_s=873.8
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/train_phase7.py --gt-variant edge --seed 42 --split-config configs\split_lodo_ctu13.yaml --ckpt-dir experiments\lodo\ctu13\phase7 --results-dir data\inspection_logs --results-suffix _lodo_ctu13_edge_seed42 --emb-dir data\flow_embeddings_lodo\ctu13

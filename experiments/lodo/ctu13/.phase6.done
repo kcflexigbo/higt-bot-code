@@ -1,0 +1,5 @@
+started_utc=2026-06-03T16:11:10Z
+finished_utc=2026-06-03T16:32:22Z
+duration_s=1271.7
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/train_phase6_sparse.py --split-config configs\split_lodo_ctu13.yaml --ckpt-dir experiments\lodo\ctu13\phase6 --results-dir data\inspection_logs --results-suffix _lodo_ctu13_sparse --emb-dir data\flow_embeddings_lodo\ctu13

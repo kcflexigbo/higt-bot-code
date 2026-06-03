@@ -1,0 +1,99 @@
+# phase4_gine
+# started_utc=2026-06-03T15:06:59Z
+# cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/baselines/run_gnn.py --model gine --split-config configs\split_lodo_ctu13.yaml --out experiments\lodo\ctu13\phase4\baseline_gine_lodo_ctu13.json
+
+device: cuda
+Loading split vlodo-ctu13-v1 ...
+  train graphs=2709  val graphs=671  test graphs=1560
+  node feature dim = 9  edge feature dim = 10
+  node scaler: mean range [0.00, 68554656.00]  std range [0.0486, 22121588736.00]
+  edge scaler: mean range [0.00, 10180056064.00]  std range [0.0022, 4669045735424.00]
+  model = GINE  hidden=64  params=39,173
+[gine] class weights (benign, bot) = (1.9628732468707586, 0.6708965561676492)
+[gine] epoch   1  train_loss 0.4434  val_F1 0.9343  best 0.9343  lr 1.0e-03  *  1.6s
+[gine] epoch   2  train_loss 0.3609  val_F1 0.9464  best 0.9464  lr 1.0e-03  *  1.2s
+[gine] epoch   3  train_loss 0.3280  val_F1 0.9432  best 0.9464  lr 1.0e-03     1.1s
+[gine] epoch   4  train_loss 0.3220  val_F1 0.9454  best 0.9464  lr 1.0e-03     1.1s
+[gine] epoch   5  train_loss 0.3144  val_F1 0.9556  best 0.9556  lr 1.0e-03  *  1.1s
+[gine] epoch   6  train_loss 0.3145  val_F1 0.9592  best 0.9592  lr 1.0e-03  *  1.2s
+[gine] epoch   7  train_loss 0.3026  val_F1 0.9592  best 0.9592  lr 1.0e-03  *  1.1s
+[gine] epoch   8  train_loss 0.3080  val_F1 0.9561  best 0.9592  lr 1.0e-03     1.5s
+[gine] epoch   9  train_loss 0.2972  val_F1 0.9594  best 0.9594  lr 1.0e-03  *  1.4s
+[gine] epoch  10  train_loss 0.3045  val_F1 0.9511  best 0.9594  lr 1.0e-03     1.4s
+[gine] epoch  11  train_loss 0.3006  val_F1 0.9590  best 0.9594  lr 1.0e-03     1.5s
+[gine] epoch  12  train_loss 0.3060  val_F1 0.9557  best 0.9594  lr 1.0e-03     1.2s
+[gine] epoch  13  train_loss 0.2919  val_F1 0.9594  best 0.9594  lr 1.0e-03  *  1.1s
+[gine] epoch  14  train_loss 0.3104  val_F1 0.9594  best 0.9594  lr 1.0e-03     1.2s
+[gine] epoch  15  train_loss 0.2969  val_F1 0.9592  best 0.9594  lr 5.0e-04     1.1s
+[gine] epoch  16  train_loss 0.2933  val_F1 0.9592  best 0.9594  lr 5.0e-04     1.1s
+[gine] epoch  17  train_loss 0.2821  val_F1 0.9559  best 0.9594  lr 5.0e-04     1.2s
+[gine] epoch  18  train_loss 0.3009  val_F1 0.9591  best 0.9594  lr 5.0e-04     1.1s
+[gine] epoch  19  train_loss 0.3050  val_F1 0.9559  best 0.9594  lr 5.0e-04     1.2s
+[gine] epoch  20  train_loss 0.2897  val_F1 0.9591  best 0.9594  lr 5.0e-04     1.1s
+[gine] epoch  21  train_loss 0.2857  val_F1 0.9592  best 0.9594  lr 2.5e-04     1.1s
+[gine] epoch  22  train_loss 0.2977  val_F1 0.9592  best 0.9594  lr 2.5e-04     1.1s
+[gine] epoch  23  train_loss 0.2866  val_F1 0.9592  best 0.9594  lr 2.5e-04     1.1s
+[gine] epoch  24  train_loss 0.2942  val_F1 0.9592  best 0.9594  lr 2.5e-04     1.2s
+[gine] epoch  25  train_loss 0.2867  val_F1 0.9592  best 0.9594  lr 2.5e-04     1.2s
+[gine] epoch  26  train_loss 0.2922  val_F1 0.9591  best 0.9594  lr 2.5e-04     1.2s
+[gine] epoch  27  train_loss 0.2849  val_F1 0.9594  best 0.9594  lr 1.3e-04     1.1s
+[gine] epoch  28  train_loss 0.2836  val_F1 0.9593  best 0.9594  lr 1.3e-04     1.1s
+[gine] epoch  29  train_loss 0.2808  val_F1 0.9592  best 0.9594  lr 1.3e-04     1.1s
+[gine] epoch  30  train_loss 0.2784  val_F1 0.9593  best 0.9594  lr 1.3e-04     1.2s
+[gine] epoch  31  train_loss 0.2801  val_F1 0.9593  best 0.9594  lr 1.3e-04     1.2s
+[gine] epoch  32  train_loss 0.2876  val_F1 0.9593  best 0.9594  lr 1.3e-04     1.1s
+[gine] epoch  33  train_loss 0.2895  val_F1 0.9594  best 0.9594  lr 6.3e-05     1.2s
+[gine] early stopping at epoch 33 (no val_F1 improvement for 20 epochs)
+
+total fit time 46.0s, best val F1 0.9594
+
+=== val (gine) ===
+  n           48,193    n_pos   35,465
+  accuracy  0.9379
+  precision 0.9231
+  recall    0.9987
+  F1        0.9594
+  PR-AUC    0.9402
+  ROC-AUC   0.8989
+  confusion [[tn=9779 fp=2949]
+             [fn=45 tp=35420]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  iot23-1-1                         33,823  31,107  0.9607   0.9432
+  iot23-17-1                           469    376  1.0000   1.0000
+  iot23-3-1                            150    150  0.9967   1.0000
+  iot23-33-1                           137    116  0.9455   1.0000
+  iot23-35-1                         9,625     31  0.0757   0.1288
+  iot23-48-1                         3,476  3,430  0.9990   1.0000
+  iot23-7-1                             91     12  0.8571   0.9257
+  iot23-8-1                            173    126  1.0000   1.0000
+  iot23-9-1                            151     19  0.8421   0.9194
+  medbiot-bashlite_mal_CC_all           46     46  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              12     12  0.9565   1.0000
+  medbiot-mirai_mal_spread_all          40     40  0.9474   1.0000
+
+=== test (gine) ===
+  n           29,316    n_pos   10,788
+  accuracy  0.3703
+  precision 0.3456
+  recall    0.7961
+  F1        0.4820
+  PR-AUC    0.6363
+  ROC-AUC   0.6219
+  confusion [[tn=2269 fp=16259]
+             [fn=2200 tp=8588]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                            3,546  2,308  0.3758   0.4882
+  ctu13-10                           1,048    147  0.1754   0.1904
+  ctu13-13                           3,123  1,384  0.5584   0.5059
+  ctu13-2                            1,381    920  0.7839   0.6320
+  ctu13-3                            7,639     29  0.0037   0.0023
+  ctu13-4                            1,352    133  0.1436   0.1136
+  ctu13-6                              832    460  0.7044   0.6175
+  ctu13-8                            4,110    513  0.1375   0.0749
+  ctu13-9                            6,285  4,894  0.8763   0.9705
+
+wrote experiments\lodo\ctu13\phase4\baseline_gine_lodo_ctu13.json

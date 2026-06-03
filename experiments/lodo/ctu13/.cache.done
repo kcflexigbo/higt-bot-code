@@ -1,0 +1,5 @@
+started_utc=2026-06-03T16:09:42Z
+finished_utc=2026-06-03T16:11:10Z
+duration_s=87.8
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/cache_embeddings.py --checkpoint experiments\lodo\ctu13\phase5\temporal_gine_lodo_ctu13_skip.pt --split-config configs\split_lodo_ctu13.yaml --out-dir data\flow_embeddings_lodo\ctu13
