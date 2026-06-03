@@ -95,6 +95,12 @@ def main() -> None:
     ap.add_argument("--no-amp", action="store_true")
     ap.add_argument("--results-suffix", type=str, default="")
     ap.add_argument("--emb-dir", type=Path, default=Path("data/flow_embeddings"))
+    ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
+                    help="path to split YAML; default matches canonical mixed-pool split")
+    ap.add_argument("--ckpt-dir", type=Path, default=CKPT_DIR,
+                    help="checkpoint output directory; default experiments/phase7")
+    ap.add_argument("--results-dir", type=Path, default=RESULTS.parent,
+                    help="results JSON directory; default data/inspection_logs")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(args.config.read_text())
@@ -105,7 +111,7 @@ def main() -> None:
           f"gt={args.gt_variant} layers={args.gt_layers} heads={args.gt_heads}",
           flush=True)
 
-    spec = SplitSpec.load()
+    spec = SplitSpec.load(args.split_config)
     tr_files = load_split_files("train", spec)
     va_files = load_split_files("val", spec)
     te_files = load_split_files("test", spec)
@@ -213,14 +219,14 @@ def main() -> None:
     print(); print(val_res.pretty(f"val (higt-{args.gt_variant})"))
     print(); print(test_res.pretty(f"test (higt-{args.gt_variant})"))
 
-    CKPT_DIR.mkdir(parents=True, exist_ok=True)
-    ckpt = CKPT_DIR / f"higt_bot{args.results_suffix}.pt"
+    args.ckpt_dir.mkdir(parents=True, exist_ok=True)
+    ckpt = args.ckpt_dir / f"higt_bot{args.results_suffix}.pt"
     torch.save({"state_dict": model.state_dict(), "cfg": cfg,
                  "args": vars(args), "edge_scaler": (e_mean, e_std),
                  "node_scaler": (n_mean, n_std)}, ckpt)
     print(f"saved {ckpt}")
 
-    results_path = RESULTS.with_name(f"phase7_higt_bot{args.results_suffix}.json")
+    results_path = args.results_dir / f"phase7_higt_bot{args.results_suffix}.json"
     results_path.parent.mkdir(parents=True, exist_ok=True)
     results_path.write_text(json.dumps({
         "fit_seconds": fit_s, "best_val_f1": best_f1, "params": n_params,
