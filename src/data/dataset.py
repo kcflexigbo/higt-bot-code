@@ -29,7 +29,7 @@ SplitName = Literal["train", "val", "test"]
 
 @dataclass
 class SplitSpec:
-    version: int
+    version: int | str            # accepts integer (legacy) or string (lodo-*-v1) labels
     seed: int
     train_frac: float
     val_frac: float
@@ -47,14 +47,22 @@ class SplitSpec:
     def load(cls, path: Path = DEFAULT_SPLIT) -> "SplitSpec":
         with path.open() as f:
             cfg = yaml.safe_load(f)
+        raw_version = cfg["split_version"]
+        # Preserve int coercion for legacy integer versions; pass strings through.
+        try:
+            version: int | str = int(raw_version)
+        except (TypeError, ValueError):
+            version = str(raw_version)
         return cls(
-            version=int(cfg["split_version"]),
+            version=version,
             seed=int(cfg["seed"]),
             train_frac=float(cfg["train_frac"]),
             val_frac=float(cfg["val_frac"]),
             train_scenarios=list(cfg["train"]),
             holdout_test_scenarios=list(cfg.get("holdout_test", [])),
             excluded=list(cfg.get("excluded", [])),
+            holdout_dataset=cfg.get("holdout_dataset"),
+            lodo_test_scenarios=list(cfg.get("lodo_test_scenarios", [])),
         )
 
 
