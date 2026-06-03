@@ -36,6 +36,8 @@ class SplitSpec:
     train_scenarios: list[str]
     holdout_test_scenarios: list[str]
     excluded: list[str] = field(default_factory=list)
+    holdout_dataset: str | None = None
+    lodo_test_scenarios: list[str] = field(default_factory=list)
 
     @property
     def test_frac(self) -> float:
