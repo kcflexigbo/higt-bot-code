@@ -188,3 +188,16 @@ def test_load_split_files_non_lodo_mode_unchanged(tmp_path: Path) -> None:
     assert len(tr) == 12
     assert len(va) == 4
     assert len(te) == 4 + 5
+
+
+def test_default_split_config_loads_with_no_lodo() -> None:
+    """Loading the canonical configs/split.yaml produces a mixed-pool spec.
+
+    Regression guard: the additive code changes must not turn the canonical
+    split into a LODO-mode spec by accident.
+    """
+    spec = SplitSpec.load(Path("configs/split.yaml"))
+    assert spec.holdout_dataset is None
+    assert spec.lodo_test_scenarios == []
+    # Canonical split version 1, integer-typed.
+    assert spec.version == 1
