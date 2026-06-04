@@ -1,0 +1,5 @@
+started_utc=2026-06-04T11:29:42Z
+finished_utc=2026-06-04T11:31:08Z
+duration_s=85.1
+rc=0
+cmd=C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Scripts\python.exe scripts/cache_embeddings.py --checkpoint experiments\lodo\iot23_fp32\phase5\temporal_gine_lodo_iot23_fp32_skip.pt --split-config configs/split_lodo_iot23.yaml --out-dir data\flow_embeddings_lodo\iot23_fp32

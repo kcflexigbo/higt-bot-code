@@ -69,6 +69,9 @@ def main() -> None:
                     help="checkpoint output directory; default experiments/phase5")
     ap.add_argument("--results-dir", type=Path, default=RESULTS.parent,
                     help="results JSON directory; default data/inspection_logs")
+    ap.add_argument("--no-amp", action="store_true",
+                    help="disable AMP/FP16 autocast for training and eval "
+                         "(default uses whatever cfg['train']['amp'] says)")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(args.config.read_text())
@@ -139,7 +142,7 @@ def main() -> None:
         use_focal=cfg["train"]["use_focal"], focal_gamma=cfg["train"]["focal_gamma"],
         focal_alpha=cfg["train"]["focal_alpha"],
         grad_accum_steps=int(cfg["train"].get("grad_accum_steps", 1)),
-        use_amp=bool(cfg["train"].get("amp", False)),
+        use_amp=False if args.no_amp else bool(cfg["train"].get("amp", False)),
         class_weight=class_weight,
     )
 

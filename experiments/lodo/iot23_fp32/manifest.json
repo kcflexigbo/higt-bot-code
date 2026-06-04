@@ -1,0 +1,39 @@
+{
+  "seeds": [
+    42,
+    1,
+    2
+  ],
+  "stages": [
+    {
+      "name": "phase5",
+      "rc": 0,
+      "duration_s": 658.1549922000268
+    },
+    {
+      "name": "cache",
+      "rc": 0,
+      "duration_s": 85.13427750003757
+    },
+    {
+      "name": "phase6",
+      "rc": 0,
+      "duration_s": 439.4544561000075
+    },
+    {
+      "name": "phase7_seed42",
+      "rc": 0,
+      "duration_s": 682.3457519999938
+    },
+    {
+      "name": "phase7_seed1",
+      "rc": 0,
+      "duration_s": 542.3997798000346
+    },
+    {
+      "name": "phase7_seed2",
+      "rc": 0,
+      "duration_s": 409.6143006000202
+    }
+  ]
+}
