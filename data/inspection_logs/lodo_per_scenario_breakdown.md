@@ -11,10 +11,10 @@ GT-edge results only (the headline model). Cells = F1 (mean across seeds).
 | ctu13-13 | 0.3551 | 3 |
 | ctu13-2 | 0.5375 | 3 |
 | ctu13-3 | 0.0003 | 3 |
-| ctu13-4 | 0.1327 | 3 |
+| ctu13-4 | 0.1318 | 3 |
 | ctu13-6 | 0.3545 | 3 |
 | ctu13-8 | 0.0450 | 3 |
-| ctu13-9 | 0.8334 | 3 |
+| ctu13-9 | 0.8336 | 3 |
 
 ## LODO-IOT23
 
@@ -34,9 +34,9 @@ GT-edge results only (the headline model). Cells = F1 (mean across seeds).
 
 | Scenario | F1 (mean) | seeds |
 |---|---|---|
-| medbiot-bashlite_mal_CC_all | 0.0000 | 3 |
-| medbiot-bashlite_mal_spread_all | 0.0000 | 3 |
-| medbiot-mirai_mal_CC_all | 0.0000 | 3 |
-| medbiot-mirai_mal_spread_all | 0.0000 | 3 |
-| medbiot-torii_mal_all | 0.0000 | 3 |
+| medbiot-bashlite_mal_CC_all | 0.8263 | 3 |
+| medbiot-bashlite_mal_spread_all | 0.9347 | 3 |
+| medbiot-mirai_mal_CC_all | 0.7531 | 3 |
+| medbiot-mirai_mal_spread_all | 0.8829 | 3 |
+| medbiot-torii_mal_all | 0.9231 | 3 |
 

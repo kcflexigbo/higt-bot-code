@@ -9,6 +9,6 @@ Held-out dataset: **iot23**. All models trained from scratch on the two remainin
 | GAT (flat) | 0.8474 | 0.6047 | 0.2779 |
 | GIN (flat) | 0.8494 | 0.6858 | 0.4008 |
 | GINE (flat) | 0.8522 | 0.5923 | 0.2378 |
-| T-GINE + skip | 0.8529 | -- | -- |
-| SAGPool (sparse) | 0.8530 | -- | -- |
-| GT-edge (final) | 0.8500 | -- | -- |
+| T-GINE + skip | 0.8524 | 0.7341 | 0.5420 |
+| SAGPool (sparse) | 0.8530 | 0.8367 | 0.7119 |
+| GT-edge (final) | 0.8500 | 0.8493 | 0.7285 |

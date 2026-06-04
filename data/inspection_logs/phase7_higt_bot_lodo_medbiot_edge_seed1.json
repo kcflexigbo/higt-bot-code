@@ -9,8 +9,8 @@
     "precision": 0.9379758498617914,
     "recall": 0.998425603303652,
     "f1": 0.9672571792916349,
-    "pr_auc": 0.9662500820440436,
-    "roc_auc": 0.9445574006224452,
+    "pr_auc": 0.9662531875143229,
+    "roc_auc": 0.9445534497677448,
     "tn": 14169,
     "fp": 2558,
     "fn": 61,
@@ -19,47 +19,47 @@
   "test": {
     "n": 1965,
     "n_pos": 1940,
-    "accuracy": 0.012213740458015267,
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1": 0.0,
-    "pr_auc": NaN,
-    "roc_auc": NaN,
-    "tn": 24,
-    "fp": 1,
-    "fn": 1940,
-    "tp": 0
+    "accuracy": 0.7567430025445293,
+    "precision": 0.9873333333333333,
+    "recall": 0.76340206185567,
+    "f1": 0.861046511627907,
+    "pr_auc": 0.995606083957338,
+    "roc_auc": 0.7097113402061855,
+    "tn": 6,
+    "fp": 19,
+    "fn": 459,
+    "tp": 1481
   },
   "test_per_scenario": {
     "medbiot-bashlite_mal_CC_all": {
       "n": 297.0,
       "n_pos": 296.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.5652173913043478,
+      "pr_auc": 0.9966540683702065
     },
     "medbiot-bashlite_mal_spread_all": {
       "n": 1200.0,
       "n_pos": 1176.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.9599303135888502,
+      "pr_auc": 0.9986285630957589
     },
     "medbiot-mirai_mal_CC_all": {
       "n": 150.0,
       "n_pos": 150.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.3425414364640884,
+      "pr_auc": 1.0
     },
     "medbiot-mirai_mal_spread_all": {
       "n": 302.0,
       "n_pos": 302.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.8451242829827916,
+      "pr_auc": 1.0
     },
     "medbiot-torii_mal_all": {
       "n": 16.0,
       "n_pos": 16.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.7692307692307693,
+      "pr_auc": 1.0
     }
   },
   "args": {
@@ -83,5 +83,12 @@
     "split_config": "configs\\split_lodo_medbiot.yaml",
     "ckpt_dir": "experiments\\lodo\\medbiot\\phase7",
     "results_dir": "data\\inspection_logs"
+  },
+  "fp32_reeval": {
+    "val_threshold_optimal": 0.417251256281407,
+    "val_f1_at_optimal": 0.9673895381538654,
+    "test_f1_at_val_optimal_threshold": 0.8791083166619034,
+    "test_precision_at_val_optimal": 0.986529826812059,
+    "test_recall_at_val_optimal": 0.7927835051546391
   }
 }

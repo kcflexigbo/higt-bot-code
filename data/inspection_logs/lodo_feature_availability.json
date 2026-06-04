@@ -1,0 +1,87 @@
+{
+  "per_scenario": [
+    {
+      "scenario": "ctu13-1",
+      "dataset": "CTU-13",
+      "n_flows": 2824636,
+      "mean_iat_ms": 1.0,
+      "std_iat_ms": 1.0,
+      "min_pkt_size": 1.0,
+      "max_pkt_size": 1.0
+    },
+    {
+      "scenario": "ctu13-13",
+      "dataset": "CTU-13",
+      "n_flows": 1925149,
+      "mean_iat_ms": 1.0,
+      "std_iat_ms": 1.0,
+      "min_pkt_size": 1.0,
+      "max_pkt_size": 1.0
+    },
+    {
+      "scenario": "iot23-1-1",
+      "dataset": "IoT-23",
+      "n_flows": 1008748,
+      "mean_iat_ms": 1.0,
+      "std_iat_ms": 1.0,
+      "min_pkt_size": 1.0,
+      "max_pkt_size": 1.0
+    },
+    {
+      "scenario": "iot23-48-1",
+      "dataset": "IoT-23",
+      "n_flows": 3394338,
+      "mean_iat_ms": 1.0,
+      "std_iat_ms": 1.0,
+      "min_pkt_size": 1.0,
+      "max_pkt_size": 1.0
+    },
+    {
+      "scenario": "medbiot-mirai_mal_CC_all",
+      "dataset": "MedBIoT",
+      "n_flows": 1193,
+      "mean_iat_ms": 0.037720033528918694,
+      "std_iat_ms": 0.037720033528918694,
+      "min_pkt_size": 0.0,
+      "max_pkt_size": 0.0
+    },
+    {
+      "scenario": "medbiot-bashlite_mal_spread_all",
+      "dataset": "MedBIoT",
+      "n_flows": 755484,
+      "mean_iat_ms": 0.00934764998332195,
+      "std_iat_ms": 0.00934764998332195,
+      "min_pkt_size": 0.0,
+      "max_pkt_size": 0.0
+    },
+    {
+      "scenario": "medbiot-torii_mal_all",
+      "dataset": "MedBIoT",
+      "n_flows": 102,
+      "mean_iat_ms": 0.0,
+      "std_iat_ms": 0.0,
+      "min_pkt_size": 0.0,
+      "max_pkt_size": 0.0
+    }
+  ],
+  "per_dataset_mean": {
+    "CTU-13": {
+      "mean_iat_ms": 1.0,
+      "std_iat_ms": 1.0,
+      "min_pkt_size": 1.0,
+      "max_pkt_size": 1.0
+    },
+    "MedBIoT": {
+      "mean_iat_ms": 0.0157,
+      "std_iat_ms": 0.0157,
+      "min_pkt_size": 0.0,
+      "max_pkt_size": 0.0
+    },
+    "IoT-23": {
+      "mean_iat_ms": 1.0,
+      "std_iat_ms": 1.0,
+      "min_pkt_size": 1.0,
+      "max_pkt_size": 1.0
+    }
+  }
+}

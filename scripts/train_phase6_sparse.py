@@ -207,8 +207,12 @@ def main() -> None:
     print(f"\ntotal fit {fit_s:.1f}s  best val F1 {best_f1:.4f}", flush=True)
 
     model.load_state_dict(best_state)
-    yv_t, yv_p, yv_pr, scen_v = predict(model, val_loader, device, use_amp=use_amp)
-    yt_t, yt_p, yt_pr, scen_t = predict(model, test_loader, device, use_amp=use_amp)
+    # Final eval uses FP32 (no AMP). AMP autocast in inference can saturate
+    # softmax under extreme test-distribution shifts, flipping argmax and
+    # emitting NaN probabilities. See train_phase7.py for the LODO-MedBIoT
+    # case that surfaced this. FP32 is the correct numerical choice here.
+    yv_t, yv_p, yv_pr, scen_v = predict(model, val_loader, device, use_amp=False)
+    yt_t, yt_p, yt_pr, scen_t = predict(model, test_loader, device, use_amp=False)
     val_res = evaluate(yv_t, yv_p, yv_pr, scenarios=scen_v)
     test_res = evaluate(yt_t, yt_p, yt_pr, scenarios=scen_t)
     print(); print(val_res.pretty("val (hgt-sparse)"))

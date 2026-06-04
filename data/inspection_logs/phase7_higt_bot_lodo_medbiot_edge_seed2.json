@@ -5,61 +5,61 @@
   "val": {
     "n": 55472,
     "n_pos": 38745,
-    "accuracy": 0.9532376694548601,
-    "precision": 0.9378436644623696,
+    "accuracy": 0.9532196423420825,
+    "precision": 0.9378209475825986,
     "recall": 0.9992773261065944,
-    "f1": 0.9675863447793273,
-    "pr_auc": 0.9669393853685413,
-    "roc_auc": 0.9452393192238366,
-    "tn": 14161,
-    "fp": 2566,
+    "f1": 0.9675742543328043,
+    "pr_auc": 0.9669486001678772,
+    "roc_auc": 0.9452398284142491,
+    "tn": 14160,
+    "fp": 2567,
     "fn": 28,
     "tp": 38717
   },
   "test": {
     "n": 1965,
     "n_pos": 1940,
-    "accuracy": 0.012213740458015267,
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1": 0.0,
-    "pr_auc": NaN,
-    "roc_auc": NaN,
-    "tn": 24,
-    "fp": 1,
-    "fn": 1940,
-    "tp": 0
+    "accuracy": 0.8020356234096692,
+    "precision": 0.9911336288790373,
+    "recall": 0.8067010309278351,
+    "f1": 0.8894572321682296,
+    "pr_auc": 0.9971121779211142,
+    "roc_auc": 0.7976494845360825,
+    "tn": 11,
+    "fp": 14,
+    "fn": 375,
+    "tp": 1565
   },
   "test_per_scenario": {
     "medbiot-bashlite_mal_CC_all": {
       "n": 297.0,
       "n_pos": 296.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.96875,
+      "pr_auc": 0.9987828297690264
     },
     "medbiot-bashlite_mal_spread_all": {
       "n": 1200.0,
       "n_pos": 1176.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.8556304138594802,
+      "pr_auc": 0.9944013940413541
     },
     "medbiot-mirai_mal_CC_all": {
       "n": 150.0,
       "n_pos": 150.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.9547038327526133,
+      "pr_auc": 0.9999999999999999
     },
     "medbiot-mirai_mal_spread_all": {
       "n": 302.0,
       "n_pos": 302.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 0.8937728937728938,
+      "pr_auc": 1.0
     },
     "medbiot-torii_mal_all": {
       "n": 16.0,
       "n_pos": 16.0,
-      "f1": 0.0,
-      "pr_auc": NaN
+      "f1": 1.0,
+      "pr_auc": 1.0
     }
   },
   "args": {
@@ -83,5 +83,12 @@
     "split_config": "configs\\split_lodo_medbiot.yaml",
     "ckpt_dir": "experiments\\lodo\\medbiot\\phase7",
     "results_dir": "data\\inspection_logs"
+  },
+  "fp32_reeval": {
+    "val_threshold_optimal": 0.47743216080402007,
+    "val_f1_at_optimal": 0.9675879648140744,
+    "test_f1_at_val_optimal_threshold": 0.8898353208404316,
+    "test_precision_at_val_optimal": 0.9905183312262958,
+    "test_recall_at_val_optimal": 0.8077319587628866
   }
 }

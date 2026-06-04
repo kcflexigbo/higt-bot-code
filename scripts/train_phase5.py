@@ -151,8 +151,11 @@ def main() -> None:
 
     val_loader = DataLoader(va_ds, batch_size=train_cfg.batch_size, shuffle=False, num_workers=0)
     test_loader = DataLoader(te_ds, batch_size=train_cfg.batch_size, shuffle=False, num_workers=0)
-    yv_t, yv_p, yv_pr, scen_v = predict(model, val_loader, device, use_amp=train_cfg.use_amp)
-    yt_t, yt_p, yt_pr, scen_t = predict(model, test_loader, device, use_amp=train_cfg.use_amp)
+    # Final eval forced to FP32 — AMP autocast can saturate softmax under
+    # distribution shift and emit NaN probas (LODO-MedBIoT case). See
+    # train_phase7.py for the original surface.
+    yv_t, yv_p, yv_pr, scen_v = predict(model, val_loader, device, use_amp=False)
+    yt_t, yt_p, yt_pr, scen_t = predict(model, test_loader, device, use_amp=False)
     val_res = evaluate(yv_t, yv_p, yv_pr, scenarios=scen_v)
     test_res = evaluate(yt_t, yt_p, yt_pr, scenarios=scen_t)
     print(); print(val_res.pretty("val (temporal-gine)"))

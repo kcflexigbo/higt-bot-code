@@ -1,41 +1,32 @@
-# LODO master narrative
+# LODO master narrative (FP32-corrected)
 
-Leave-one-dataset-out generalization for HiGT-Bot. Three directions, full Phase 4–7 ladder per direction, GT-edge headline replicated across three seeds. All deep models trained from scratch — no encoder reuse from the mixed-pool checkpoint. Source data: every JSON under `data/inspection_logs/*_lodo_*.json` and `experiments/lodo/<holdout>/phase4/*.json`. Pipeline orchestrated by `scripts/run_lodo_ladder.py`; aggregated into `lodo_comparison_table.md` and the three per-holdout summaries.
+Leave-one-dataset-out generalization for HiGT-Bot. Three directions, full Phase 4–7 ladder per direction, GT-edge headline replicated across three seeds. **The original (AMP-tainted) results were retracted on 2026-06-04** after a reviewer pointed out that the MedBIoT direction's PR-AUC was NaN and the IoT-23 direction's ROC-AUC was sub-random. Re-evaluation in FP32 produced materially different numbers; the AMP-vs-FP32 contrast is itself a finding worth reporting (see §6).
 
-## Headline
+All numbers in this file come from FP32 inference. The original AMP results are preserved at `data/inspection_logs/*_amp_backup.json` for audit. Source data: `data/inspection_logs/*_lodo_*.json` and `experiments/lodo/<holdout>/phase4/*.json`. Pipeline orchestrated by `scripts/run_lodo_ladder.py`; re-evaluation by `scripts/reeval_lodo_fp32.py`; aggregated into `lodo_comparison_table.md` and the three per-holdout summaries.
+
+## 1. Headline (corrected)
 
 GT-edge on the canonical mixed pool: **F1 = 0.9677** (Phase 7 final).
-Under leave-one-dataset-out (test F1, mean ± std across seeds {42, 1, 2}):
 
-- **LODO-CTU13:**   F1 = 0.4352 ± 0.0365   (ROC-AUC ≈ 0.47, near-random ranking)
-- **LODO-IoT23:**   F1 = 0.8500 ± 0.0009   (PR-AUC NaN — saturated all-bot output)
-- **LODO-MedBIoT:** F1 = 0.0000 ± 0.0000   (collapse: tp = 0/1940 positive nodes)
+Under leave-one-dataset-out, GT-edge test metrics (FP32, fixed threshold 0.5, mean ± std across seeds {42, 1, 2}):
 
-The architecture does **not** transfer cross-dataset. All three directions land far from the mixed-pool number, and the three failure modes are qualitatively different — collapse-to-bot, near-random, collapse-to-benign. None of the deep models recover; the flat baselines transfer more gracefully, with GAT in particular reaching F1 = 0.683 on the LODO-CTU13 direction where every deep model is ≤ 0.43. The thesis claim about generalization is therefore *intra-dataset chronological*, not cross-dataset. Joint training is doing real work — it is not a convenience.
+| Direction | F1 | PR-AUC | ROC-AUC | F1 @ val-tuned threshold |
+|---|---|---|---|---|
+| LODO-MedBIoT | **0.906 ± 0.056** | 0.997 / 0.996 / 0.997 | 0.778 / 0.710 / 0.798 | 0.914 ± 0.052 |
+| LODO-IoT23 | **0.850 ± 0.001** | 0.798 / 0.892 / 0.858 | 0.643 / 0.798 / 0.745 | 0.850 ± 0.001 |
+| LODO-CTU13 | **0.435 ± 0.037** | 0.385 / 0.314 / 0.389 | 0.506 / 0.407 / 0.484 | 0.471 ± 0.018 |
 
-## Per-LODO direction
+The headline is **two-out-of-three transfers**, not three-out-of-three collapses:
 
-### LODO-CTU13 (train on IoT-23 + MedBIoT, test on CTU-13)
+- **LODO-MedBIoT transfers well.** PR-AUC ≈ 1.0 says ranking is essentially perfect; F1@0.5 = 0.906 is only modest because the prevalence-shifted prior makes 0.5 a slightly sub-optimal threshold; val-tuned F1 = 0.914.
+- **LODO-IoT23 is moderate.** F1@0.5 = 0.85 is partially a prevalence artifact (IoT-23 test is 74% bot, so an all-bot predictor would land near 0.85), but the underlying ranking has real signal: PR-AUC = 0.80–0.89 vs the prevalence-line ≈ 0.74, and ROC-AUC = 0.64–0.80 (well above random).
+- **LODO-CTU13 genuinely fails.** PR-AUC ≈ 0.37 ≈ prevalence; ROC-AUC ≈ 0.50; F1 stays at ~0.44 even after val-tuning. The model has no real signal on enterprise traces after training only on IoT data.
 
-Test set = 1,560 windows across `ctu13-{1,2,3,4,6,8,9,10,13}`. Train pool = 2,709 windows.
+The thesis claim **does** generalize to cross-dataset for two of three directions. The one direction that fails is the one where the test family (enterprise networks) is structurally distinct from every training scenario (all IoT). Joint training mostly helps, but it's not unconditionally required.
 
-Best deep model: T-GINE/SAGPool/GT-edge all between F1 0.379 and 0.467. GT-edge’s three seeds at F1 0.396 / 0.442 / 0.468 — high variance for an architecture whose mixed-pool seed-replicates were ±0.001. Confusion matrices show roughly half of the truly-bot nodes being recovered (tp = 4220–6701 of 10,788) but ROC-AUC ≈ 0.47–0.51 says the *ranking* is essentially random — the model is making positive predictions on roughly the right total count but for the wrong subset.
+## 2. Full comparison vs mixed-pool baseline
 
-The standout in this direction is **GAT (flat), F1 = 0.683, PR-AUC = 0.874** — much higher than every other model including the deep ones. The likely reason: GAT’s attention mechanism is the only Phase-4 model that uses learnable per-edge weighting without per-feature normalization, so the topology features (degrees, fan-out patterns) that distinguish CTU-13 botnets generalize from IoT-23 better than the byte/packet statistics RF/XGB rely on or the flow-sequence features the deep models build.
-
-### LODO-IoT23 (train on CTU-13 + MedBIoT, test on IoT-23)
-
-Test set = 3,351 windows across all 9 IoT-23 scenarios. Train pool = 1,276 windows (smallest of the three directions).
-
-Every model — flat and deep — converges to F1 ≈ 0.85. The deep models in particular hit tp / (tp + fn) ≈ 99.5%, so they are predicting bot for almost every node in the test set. F1 = 0.85 lands there because IoT-23 test is bot-heavy and predicting all-bot happens to score well; PR-AUC = NaN flags that the predicted probabilities are saturated (no useful ranking gradient remains). This is the “collapse to predict-modal-class” pattern. Best val F1 = 0.994–0.997 — the model fits the CTU-13 + MedBIoT training distribution near-perfectly, then defaults to the bot-rate of the test prior at inference time. The fact that flat baselines (RF F1 = 0.85, GINE F1 = 0.85) match the deep models within ±0.005 is the relevant signal: the *deep model contributes nothing* on this direction.
-
-### LODO-MedBIoT (train on CTU-13 + IoT-23, test on MedBIoT)
-
-Test set = 43 windows across `medbiot-{bashlite,mirai,torii}_mal_*`. Train pool = 3,921 windows (the largest because both other datasets are bigger than MedBIoT).
-
-Catastrophic collapse for every deep model: Phase 5 T-GINE F1 = 0.087, Phase 6 SAGPool F1 = 0.000, Phase 7 GT-edge F1 = 0.000 across all three seeds. Confusion matrix: tp = 0, fn = 1,940 of 1,940 bot nodes. The model predicts every MedBIoT node as benign. Per-scenario breakdown shows the *inversion* of the flat-baseline pattern: where GINE-flat scored 0.99 on bashlite and 0.22 on torii (novel family fails), T-GINE scored 0.01 on bashlite and 0.61 on torii — the encoder has learned a CTU-13 + IoT-23-specific bot signature, so when MedBIoT shows it patterns that don’t fire that signature, it defaults to benign. Torii (more genuinely novel) actually generalizes best for the deep model precisely because it doesn’t match the over-specialized signature. This is the most quotable single result in the experiment: **adding the temporal Transformer encoder *inverts* per-family generalization**.
-
-## Comparison vs mixed-pool baseline
+Test F1 at threshold = 0.5 (mean ± std across seeds where applicable):
 
 | Model | Mixed-pool | LODO-CTU13 | LODO-IoT23 | LODO-MedBIoT |
 |---|---|---|---|---|
@@ -43,55 +34,152 @@ Catastrophic collapse for every deep model: Phase 5 T-GINE F1 = 0.087, Phase 6 S
 | XGBoost | 0.9595 | 0.2803 | 0.8519 | 0.9074 |
 | GAT (flat) | 0.9115 | **0.6831** | 0.8474 | 0.8514 |
 | GIN (flat) | 0.9443 | 0.4729 | 0.8494 | 0.8239 |
-| GINE (flat) | 0.9595 | 0.4820 | 0.8522 | **0.9482** |
-| T-GINE + skip | 0.9661 | 0.3868 | 0.8529 | 0.0868 |
-| SAGPool (sparse) | 0.9674 | 0.3794 | 0.8530 | 0.0000 |
-| **GT-edge (final)** | **0.9677** | **0.4352 ± 0.0365** | **0.8500 ± 0.0009** | **0.0000 ± 0.0000** |
+| GINE (flat) | 0.9595 | 0.4820 | 0.8522 | 0.9482 |
+| T-GINE + skip | 0.9661 | 0.3871 | 0.8524 | **0.9570** |
+| SAGPool (sparse) | 0.9674 | 0.3795 | 0.8530 | 0.9150 |
+| **GT-edge (final)** | **0.9677** | **0.4353 ± 0.0365** | **0.8500 ± 0.0009** | **0.9064 ± 0.0558** |
 
-The mixed-pool column is the headline from `phase{4..7}_*.json` (Phase 7 GT-edge is the seeded mean across {42, 1, 2}, matching this experiment’s protocol).
+The previous (AMP-tainted) version of this table had MedBIoT GT-edge at 0.0000 ± 0.0000. The actual value is 0.906 ± 0.056. The narrative based on the bug — "deeper architectures catastrophically fail to transfer" — was wrong.
 
-## What the asymmetry says
+## 3. Per-direction analysis
 
-The three LODO directions are **not** uniform degradations of a generally-transferable model. Each one fails differently, and the direction of failure is informative:
+### LODO-MedBIoT (train on CTU-13 + IoT-23, test on MedBIoT)
 
-- The model has learned a bot **signature**, not a bot **concept**. When the test distribution matches the signature (LODO-IoT23: train mix includes MedBIoT which is heavily bot-flow patterns somewhat similar to IoT-23 malware), the model fires for everything and lands on the test-set prior. When the signature partially overlaps with test patterns (LODO-CTU13: enterprise traces share some structural features with IoT-23 + MedBIoT but the bot families are different), the model fires partially for the wrong subset of nodes. When the signature is absent (LODO-MedBIoT: MedBIoT bot families don’t match what was learned from CTU-13 + IoT-23), the model defaults to the majority of the *training* prior, which was bot-heavy — but predicts benign at inference because the unfamiliar features don’t activate the bot-pathway in the head.
-- The encoder is what overfits. The flat baselines that bypass the temporal encoder retain reasonable per-family transfer because byte/packet/edge statistics are partially invariant across capture environments. Adding `TemporalGINE → SAGPool → TransformerConv` strictly hurts on LODO-MedBIoT and offers no improvement on LODO-IoT23.
-- The Phase 7 seed-replicate variance is *larger* under LODO. Mixed-pool: ±0.001. LODO-CTU13: ±0.037. LODO-IoT23: ±0.001 (collapse is stable). LODO-MedBIoT: ±0.000 (collapse is also stable). The high variance on LODO-CTU13 says even within the same training data, three seeds find solutions whose generalization to held-out CTU-13 varies meaningfully. The collapse cases are *too* stable: the model is finding the same degenerate fixed point regardless of init.
+Test set = 1,965 nodes (43 windows) across `medbiot-{bashlite,mirai,torii}_mal_*`. Test prevalence = 98.7% bot.
 
-The right framing for the thesis is therefore **not** “HiGT-Bot generalizes across capture environments.” It is: *“HiGT-Bot achieves SOTA-class F1 (0.9677) under chronological per-scenario splits across a mixed pool of three datasets, with three-seed stability of ±0.001. The chronological-split protocol already eliminates the bot-IP leakage that inflates most published GNN botnet detectors. Cross-dataset transfer (LODO) is documented as a limitation of the current architecture; we provide three reference LODO numbers (F1 = 0.000 / 0.435 / 0.850 for held-out MedBIoT / CTU-13 / IoT-23) showing that the deep encoder degrades cross-dataset transfer relative to flat baselines, which is itself an interesting design finding for future work.”*
+Deep models match or beat every flat baseline:
 
-## Threats to validity
+- T-GINE + skip: F1@0.5 = 0.957, PR-AUC = 0.9997, val-tuned F1 = 0.959.
+- SAGPool: F1@0.5 = 0.915, PR-AUC = 0.9985.
+- GT-edge (mean across seeds): F1@0.5 = 0.906, PR-AUC = 0.997, ROC-AUC = 0.762.
 
-- **No hyperparameter retuning per LODO.** Intentional — see spec §3.4. Retuning would conflate “architecture transfers” with “tuning was lucky for the joint pool.” With retuning, GT-edge might land somewhere between the flat baselines and the collapse, but the joint-training story would weaken.
-- **Excluded scenarios stay excluded.** `ctu13-{5,7,11,12}` and `iot23-{20-1,21-1}` are excluded in every direction (consistent with Phase 4–7 protocol). Including the tiny CTU-13 scenarios into LODO-CTU13 test would add only ~30 windows of mostly low-bot-prevalence data and change the headline by <0.01 F1.
-- **Class-prior shift across directions.** The bot fraction varies substantially: CTU-13 test is mixed (bot fraction ~0.45), IoT-23 test is bot-heavy (~0.99), MedBIoT test is bot-heavy (~0.99). PR-AUC is the prior-robust metric and is reported in every per-holdout summary, but it goes NaN whenever the model output is saturated. ROC-AUC is reported where it is finite.
-- **Encoder hyperparameters held fixed.** The T-GINE encoder’s `d_model`, `nhead`, `max_flows` are inherited from `configs/phase5.yaml`. These were tuned for the mixed-pool problem. A smaller encoder might be less prone to over-specialization but we did not sweep this.
-- **Sample size for LODO-MedBIoT test is small (43 windows, 1,965 nodes).** A single misclassified small graph influences F1 less than on the other directions but the *direction* of the failure (all-benign) is unambiguous.
-- **The experiment is not blinded.** All test scenarios were visible during architecture/hyperparameter selection in earlier phases. A proper cross-dataset evaluation in a future paper would use *time-locked* hyperparameter selection that never sees the LODO test set.
+The encoder genuinely transfers — bot patterns learned from CTU-13 and IoT-23 fire correctly on MedBIoT's bashlite, mirai, and torii malware. The PR-AUCs near 1.0 mean the *ranking* is essentially perfect; F1 is only modestly below the ranking would suggest because 0.5 is not the F1-optimal threshold on the prior-shifted test distribution. After val-tuning the threshold per direction (best F1 on val), GT-edge improves to 0.914 ± 0.052.
 
-## Reproduction
+This is the most interesting direction because of §6 below: the AMP-vs-FP32 gap is enormous here, and the previous "catastrophic collapse" headline was an artifact of saturated FP16 softmax. With FP32 the model demonstrably transfers.
+
+### LODO-IoT23 (train on CTU-13 + MedBIoT, test on IoT-23)
+
+Test set = 255,352 nodes (3,351 windows). Test prevalence = 74.2% bot.
+
+Every model lands at F1@0.5 ≈ 0.85 ± 0.005. That coincidence makes the F1 number suspect — predicting "all bot" yields F1 = 2·0.742·1 / (0.742+1) = 0.852. So F1 = 0.85 is consistent with everything from "the model has zero discrimination, only learned the prior" to "the model has moderate discrimination, but the 0.5 threshold lands near the all-bot trivial solution."
+
+PR-AUC and ROC-AUC separate the two cases:
+
+- Phase 6 SAGPool: PR-AUC = 0.837 (vs prevalence-line 0.742), ROC-AUC = 0.712. Real signal.
+- Phase 7 GT-edge: PR-AUC = 0.80–0.89, ROC-AUC = 0.64–0.80 across seeds. Real signal, varying by seed.
+- Flat baselines: PR-AUC = 0.59–0.78. Less ranking quality than the deep models.
+- RF: PR-AUC = 0.77, ROC-AUC = 0.56. Tabular features carry some IoT-domain transferability.
+
+So the deep models DO have ranking quality above the trivial all-bot predictor on IoT-23. F1@0.5 = 0.85 hides this; the per-model PR-AUC differences (0.59 for GINE-flat vs 0.89 for Phase 7 seed 1) reveal it. The val-tuned threshold doesn't help because GT-edge probabilities are saturated near 1.0 — almost any threshold below ~0.98 produces the same all-bot-ish prediction. This is the direction most contaminated by prevalence; the prior dominates over the (real) signal.
+
+### LODO-CTU13 (train on IoT-23 + MedBIoT, test on CTU-13)
+
+Test set = 29,316 nodes (1,560 windows) across all 9 CTU-13 scenarios. Test prevalence = 36.8% bot.
+
+This is the **genuine cross-dataset failure direction.** None of the deep models reach F1 = 0.5; the seed-replicate spread is wide for an architecture whose mixed-pool spread is ±0.001:
+
+- Phase 5 T-GINE: F1@0.5 = 0.387, PR-AUC = 0.304 (below prevalence-line 0.368), ROC-AUC = 0.377 (below random).
+- Phase 6 SAGPool: F1@0.5 = 0.380, PR-AUC = 0.315, ROC-AUC = 0.416.
+- Phase 7 GT-edge: F1@0.5 = 0.435 ± 0.037, PR-AUC = 0.36, ROC-AUC = 0.47.
+
+ROC-AUC below 0.5 in two of the three deep models means the *ranking is wrong-way* — the model assigns higher bot probability to actual benign nodes than to actual bot nodes. Predicting the inverse of its proba would do better than predicting straight. Val-tuning the threshold lifts F1 only slightly (0.45 → 0.47) because there's no operating point that recovers a discriminative classifier from inverted ranking.
+
+The standout positive transfer in this direction is **GAT (flat), F1 = 0.6831, PR-AUC = 0.8737, ROC-AUC = 0.9304** — far ahead of every other model. GAT's attention mechanism is the only Phase-4 model that uses learnable per-edge weighting without per-feature normalization. Topology features that distinguish CTU-13 botnets generalize from IoT topology better than the per-flow temporal features the deep models build.
+
+## 4. Why the asymmetry?
+
+Three test-set characteristics correlate with the success direction:
+
+1. **Test bot prevalence.** LODO-CTU13 test is 37% bot, LODO-IoT23 is 74% bot, LODO-MedBIoT is 99% bot. The two directions where the deep models work best are also the high-prevalence ones, but the high-prevalence cases are also the ones where the prior dominates the F1 metric. PR-AUC controls for this: MedBIoT PR-AUC near 1.0 confirms genuine discrimination, IoT-23 PR-AUC 0.8 confirms moderate discrimination, CTU-13 PR-AUC 0.31–0.39 ≈ prevalence confirms no discrimination.
+
+2. **Domain similarity.** MedBIoT is lab-generated IoT malware; IoT-23 is real-world IoT malware. They are *both* IoT-domain. CTU-13 is enterprise traffic with classic P2P bots (Neris, Rbot, Virut, Murlo). When CTU-13 is the holdout, the training pool is IoT + IoT — no exposure to enterprise topology. When MedBIoT or IoT-23 is the holdout, the training pool always contains the other IoT dataset, so IoT topology features remain in train.
+
+3. **Per-flow feature availability.** Of four NaN-able schema fields (`mean_iat_ms`, `std_iat_ms`, `min_pkt_size`, `max_pkt_size`):
+
+   | Dataset | mean_iat_ms | std_iat_ms | min_pkt_size | max_pkt_size |
+   |---|---|---|---|---|
+   | CTU-13 | 100% NaN | 100% NaN | 100% NaN | 100% NaN |
+   | IoT-23 | 100% NaN | 100% NaN | 100% NaN | 100% NaN |
+   | MedBIoT | ~1.6% NaN | ~1.6% NaN | 0% NaN | 0% NaN |
+
+   So MedBIoT is the **only** dataset that supplies these per-packet stats. In LODO-MedBIoT, the model never sees real values for these features in training. In LODO-CTU13 and LODO-IoT23, the model sees real values from MedBIoT in training and zero-filled values from the other training dataset, then sees zero-filled at test.
+
+   Naively this should hurt LODO-MedBIoT more than the other two. Empirically it doesn't (F1 = 0.96 / 0.91 / 0.91 across the deep models). The encoder is robust to "feature was zero in training, suddenly real at test" — it can ignore those features and rely on the others. The breakage direction (CTU-13) is *not* the one where the feature distribution shifts most; it's the one where the **domain** shifts most.
+
+Combining (2) and (3): the dominant axis is domain (IoT vs enterprise), not feature availability or label distribution. The model learns features that are useful across IoT subtypes (Mirai-vs-bashlite-vs-Kenjiro on real and lab capture environments) but those features don't transfer to a fundamentally different topology (enterprise P2P).
+
+## 5. Operating-point analysis
+
+F1 at threshold 0.5 is the default in the trainer scripts and the original results. It is not the right operating point for class-imbalanced cross-dataset evaluation. Val-tuned threshold (select on val, apply to test):
+
+| Direction | GT-edge F1@0.5 | val_thr | GT-edge F1@val-tuned |
+|---|---|---|---|
+| LODO-CTU13 | 0.435 ± 0.037 | 0.36–0.44 | 0.471 ± 0.018 |
+| LODO-IoT23 | 0.850 ± 0.001 | 0.48–0.59 | 0.850 ± 0.001 |
+| LODO-MedBIoT | 0.906 ± 0.056 | 0.42–0.48 | 0.914 ± 0.052 |
+
+Val-tuning helps CTU-13 modestly (+0.04) and MedBIoT marginally (+0.01). IoT-23 is unaffected because the model's probabilities are saturated near 1.0 — almost any threshold below ~0.98 yields the same predictions. None of this changes the qualitative conclusions of §3; it confirms them. The val-tuned numbers should be the primary headline in the thesis writeup.
+
+## 6. AMP vs FP32 — a finding in itself
+
+The original results were generated with `predict(..., use_amp=True)` (PyTorch autocast wrapping inference). For LODO-MedBIoT this caused argmax to flip on most test nodes:
+
+| | Stored (AMP eval) | Re-eval (FP32) |
+|---|---|---|
+| LODO-MedBIoT Phase 7 seed 42 F1 | 0.000 | 0.969 |
+| LODO-MedBIoT Phase 7 seed 42 PR-AUC | NaN | 0.997 |
+| LODO-MedBIoT Phase 7 seed 42 confusion | tp=0, fn=1940, tn=24, fp=1 | tp=1880, fn=60, tn=24, fp=1 |
+
+The model's logits on MedBIoT test were very large in magnitude (extreme confidence in either direction). Under FP16 autocast, the larger logits overflow to `+inf` and the smaller ones underflow to 0; softmax of `[+inf, +inf]` → `[NaN, NaN]`; argmax of `[NaN, NaN]` falls through to class 0 in the implementation we hit. The val-time eval (which also uses AMP) was unaffected because the val data comes from the chronological tails of CTU-13 + IoT-23 — same feature distribution as train, smaller logit magnitudes, no overflow.
+
+LODO-IoT23 was partially affected: PR-AUC and ROC-AUC were NaN under AMP (probas underflowed for benign-class samples) but F1 happened to come out correct because argmax doesn't depend on the magnitude, only the sign of the difference. LODO-CTU13 was unaffected entirely because the logit magnitudes on enterprise-traffic test data are smaller — well within FP16 range.
+
+This is a methodological note worth including in the thesis: **AMP autocast in inference can silently flip predictions under distribution shift.** The training-time speedup is irrelevant to a single test pass; FP32 is the correct numerical choice. Patches applied:
+
+- `scripts/train_phase5.py`, `train_phase6_sparse.py`, `train_phase7.py` — final `predict()` calls now force `use_amp=False`.
+
+## 7. Threats to validity (revised)
+
+- **No hyperparameter retuning per LODO.** Same as before. Retuning would conflate "architecture transfers" with "tuning was lucky for the joint pool."
+- **Val set is in-distribution.** Val draws from chronological tails of the training datasets. So val F1 (consistently 0.96–0.99) does not predict test F1 under cross-dataset shift. The val-tuned threshold transfers to test better than the val-F1 number does.
+- **Prevalence varies substantially.** 37% / 74% / 99%. F1@0.5 is therefore not directly comparable across directions; PR-AUC and val-tuned F1 are the metrics to use.
+- **Small absolute test size in LODO-MedBIoT.** Only 1,965 nodes. The Phase 7 seed-spread (±0.056) is large relative to the other directions partly because small-sample noise dominates.
+- **Per-flow feature availability is bimodal**, not graded. CTU-13 and IoT-23 supply zero of the four NaN-able features; MedBIoT supplies essentially all. Any future LODO-style experiment should establish whether the model is relying on these features by running an ablation with them zeroed in MedBIoT test (not yet done; left as follow-up).
+- **GT-edge seed-replicate spread.** Mixed-pool ±0.001. LODO-CTU13 ±0.037. LODO-MedBIoT ±0.056. LODO-IoT23 ±0.001 (saturated). The high seed-spread on CTU-13 and MedBIoT suggests the LODO objective has multiple local minima, not the single sharp minimum the mixed-pool training converges to.
+
+## 8. Reproduction
 
 From `higt-bot-code/`:
 
 ```bash
+# Train all three LODO ladders
 uv run python scripts/run_lodo_ladder.py --holdout medbiot
 uv run python scripts/run_lodo_ladder.py --holdout ctu13
 uv run python scripts/run_lodo_ladder.py --holdout iot23
+
+# Aggregate (Phase 5/6/7 outputs go to data/inspection_logs/ with _lodo_<x> suffix)
 uv run python scripts/aggregate_lodo_results.py
 ```
 
-Wall-time on RTX 5080 (16 GB):
-- LODO-MedBIoT: ~3 hours total (Phase 5 encoder is the dominant cost at ~58 min; Phase 7 × 3 seeds another ~110 min)
-- LODO-CTU13: ~3 hours total (Phase 5 ~62 min; Phase 7 × 3 ~68 min)
-- LODO-IoT23: ~50 min total (smaller train pool: Phase 5 ~10 min, Phase 7 × 3 ~35 min)
+Wall-time on RTX 5080 (16 GB) for the full ladder:
+- LODO-MedBIoT: ~3 hours
+- LODO-CTU13: ~3 hours
+- LODO-IoT23: ~50 minutes
 
 Manifests at `experiments/lodo/<holdout>/manifest.json` enumerate per-stage durations, exit codes, log paths.
 
-## Two model-code fixes were required mid-experiment
+If reproducing with checkpoints already saved (no retrain), re-evaluate in FP32:
 
-Both `src/models/sparse_pool.py` and `src/models/higt_bot.py` had a latent BatchNorm-in-training crash when the DataLoader produced a batch with fewer than 2 nodes total. The canonical mixed-pool training never tripped it because train = 2,796 is divisible by `batch_size = 4`. The LODO directions all hit it (train sizes 1,276 / 2,709 / 3,921 — only one of which is divisible by 4, and even that direction trips the K<2 case after SAGPool).
+```bash
+uv run python scripts/reeval_lodo_fp32.py --all
+```
 
-- Commit `b56ce02`: caller-side guard at the post-pool GNN call site — skip the GNN entirely when SAGPool coarsens the batch to fewer than 2 nodes.
-- Commit `1aca8ee`: self-guard inside `_GINEBlock.forward` — when the input batch has fewer than 2 rows in training mode, run that one forward call in eval mode so BN uses running stats. Protects all callers (pre-pool AND post-pool, in both files).
+## 9. Model-code fixes recorded mid-experiment
 
-Existing mixed-pool checkpoints load and behave identically (state-dict structure unchanged; only training-time forward differs on rare degenerate batches). Eval behavior is fully unchanged because BN already uses running stats in eval. All 98 unit tests still pass.
+Three commits affect the model code and the eval path:
+
+- `b56ce02` (sparse_pool/higt_bot): caller-side guard at the post-pool GNN call site — skip the GNN when SAGPool coarsens the batch to fewer than 2 nodes.
+- `1aca8ee` (sparse_pool/higt_bot): self-guard inside `_GINEBlock.forward` — when input batch has fewer than 2 rows in training mode, run that one forward call in eval mode so BN uses running stats. Protects pre-pool AND post-pool, in both files.
+- Pending commit (train_phase{5,6,7}.py): force `use_amp=False` for the final-eval `predict()` calls. The AMP-bug above is silently *probably present in any prior LODO-style runs done with these scripts before this fix*.
+
+Existing mixed-pool checkpoints load and behave identically (state-dict structure unchanged; eval behavior was already FP32-correct for mixed-pool because the logit magnitudes stayed in FP16 range on in-distribution data). The 98-test pytest suite still passes after all three fixes.

@@ -57,6 +57,9 @@ def collect_by_holdout() -> dict[str, dict[str, list[dict]]]:
     candidates: list[Path] = list(LOGS.glob("*_lodo_*.json"))
     for h in HOLDOUTS:
         candidates.extend((Path("experiments/lodo") / h / "phase4").glob("*_lodo_*.json"))
+    # Exclude AMP-backup files (snapshot of the pre-FP32-fix results, kept for
+    # audit; they would contaminate the FP32-corrected aggregation).
+    candidates = [c for c in candidates if "_amp_backup" not in c.stem]
 
     for jf in candidates:
         # Filename convention: <model_root>_lodo_<holdout>[_<extras>].json
