@@ -15,6 +15,7 @@ import json
 import time
 from pathlib import Path
 
+import numpy as np
 import torch
 from torch_geometric.loader import DataLoader
 
@@ -54,6 +55,11 @@ def main() -> None:
     ap.add_argument("--device", type=str, default=None, help="auto if unset (CUDA>MPS>CPU)")
     ap.add_argument("--out", type=Path, default=None,
                     help="results json path; default data/inspection_logs/baseline_<model>.json")
+    ap.add_argument("--save-preds", type=Path, default=None,
+                    help="optional .npz path for per-node test predictions (y, pred, proba, scenario)")
+    ap.add_argument("--save-emb", type=Path, default=None,
+                    help="optional .npz with each node's pre-head embedding for train/val/test "
+                         "(load_split order), for GNN-embedding + boosted-tree hybrids")
     ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
                     help="path to split YAML; default matches the canonical mixed-pool split")
     args = ap.parse_args()
@@ -121,6 +127,23 @@ def main() -> None:
     yv_t, yv_p, yv_pr, scen_v = predict(model, val_loader, device)
     yt_t, yt_p, yt_pr, scen_t = predict(model, test_loader, device)
 
+    if args.save_emb is not None:
+        grabbed = []
+        hook = model.head.register_forward_hook(lambda m, inp, out: grabbed.append(inp[0].detach().cpu()))
+        embs = {}
+        model.eval()
+        with torch.no_grad():
+            for name, graphs in (("train", tr), ("val", va), ("test", te)):
+                grabbed.clear()
+                for batch in DataLoader(graphs, batch_size=args.batch_size, shuffle=False):
+                    batch = batch.to(device)
+                    model(batch.x, batch.edge_index, edge_attr=getattr(batch, "edge_attr", None))
+                embs[name] = torch.cat(grabbed).numpy()
+        hook.remove()
+        args.save_emb.parent.mkdir(parents=True, exist_ok=True)
+        np.savez(args.save_emb, **embs)
+        print(f"wrote {args.save_emb}")
+
     val_res = evaluate(yv_t, yv_p, yv_pr, scenarios=scen_v)
     test_res = evaluate(yt_t, yt_p, yt_pr, scenarios=scen_t)
 
@@ -153,6 +176,13 @@ def main() -> None:
     }
     out.write_text(json.dumps(payload, indent=2))
     print(f"\nwrote {out}")
+    if args.save_preds is not None:
+        args.save_preds.parent.mkdir(parents=True, exist_ok=True)
+        np.savez(args.save_preds, y=yt_t, pred=yt_p, proba=yt_pr, scenario=np.asarray(scen_t).astype(str))
+        print(f"wrote {args.save_preds}")
+        vpath = args.save_preds.with_name(args.save_preds.stem + "_val.npz")
+        np.savez(vpath, y=yv_t, pred=yv_p, proba=yv_pr, scenario=np.asarray(scen_v).astype(str))
+        print(f"wrote {vpath}")
 
 
 if __name__ == "__main__":

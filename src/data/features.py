@@ -66,8 +66,10 @@ def compute_node_features(
     index = {ip: i for i, ip in enumerate(nodes)}
 
     # Group-by-src for outgoing stats, group-by-dst for incoming.
-    by_src = flows.groupby("src_ip", sort=False)
-    by_dst = flows.groupby("dst_ip", sort=False)
+    # Only groups keyed by a node are used below, so drop the rest before grouping
+    # (same result; avoids iterating over e.g. every scan target of a scanner).
+    by_src = flows[flows["src_ip"].isin(index)].groupby("src_ip", sort=False)
+    by_dst = flows[flows["dst_ip"].isin(index)].groupby("dst_ip", sort=False)
 
     for src, sub in by_src:
         i = index.get(src)

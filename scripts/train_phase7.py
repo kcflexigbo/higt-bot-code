@@ -92,6 +92,10 @@ def main() -> None:
                     choices=["edge", "global", "hybrid", "none"], default="edge")
     ap.add_argument("--gt-layers", type=int, default=2)
     ap.add_argument("--gt-heads", type=int, default=4)
+    ap.add_argument("--embed-layers", type=int, default=2,
+                    help="untied GINE layers before pooling (default 2 = published model)")
+    ap.add_argument("--embed-loops", type=int, default=0,
+                    help=">0: use one weight-shared GINE layer looped this many times instead")
     ap.add_argument("--no-amp", action="store_true")
     ap.add_argument("--results-suffix", type=str, default="")
     ap.add_argument("--emb-dir", type=Path, default=Path("data/flow_embeddings"))
@@ -141,6 +145,7 @@ def main() -> None:
         hidden=args.hidden, pool_ratio=args.pool_ratio,
         gt_variant=args.gt_variant, gt_layers=args.gt_layers, gt_heads=args.gt_heads,
         num_classes=2, dropout=args.dropout,
+        embed_layers=args.embed_layers, embed_loops=args.embed_loops,
     ).to(device)
     n_params = sum(p.numel() for p in model.parameters())
     print(f"HiGTBot params: {n_params:,}", flush=True)

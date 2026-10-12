@@ -34,6 +34,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import GINEConv, JumpingKnowledge, SAGPooling, global_max_pool, global_mean_pool
 
+from src.models.dir_gine import make_gine
+
 
 class _GINEBlock(nn.Module):
     """GINEConv stack with residual + JK; outputs [N, hidden] (jk=cat doubles)."""
@@ -49,7 +51,7 @@ class _GINEBlock(nn.Module):
                 nn.Linear(hidden, hidden), nn.BatchNorm1d(hidden), nn.ReLU(),
                 nn.Linear(hidden, hidden),
             )
-            self.convs.append(GINEConv(mlp, train_eps=True))
+            self.convs.append(make_gine(mlp, hidden))
         self.dropout = dropout
         self.jk = JumpingKnowledge(jk, channels=hidden, num_layers=num_layers) if jk else None
         self.out_dim = hidden * num_layers if jk == "cat" else hidden

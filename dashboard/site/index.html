@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HiGT-Bot Training</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --fg: #1d2330; --muted: #6b7280; --border: #e2e5ea;
+    --accent: #2563eb; --done: #15803d; --run: #b45309; --fail: #b91c1c; --pend: #9ca3af;
+    --done-bg: #dcfce7; --run-bg: #fef3c7; --fail-bg: #fee2e2; --pend-bg: #f3f4f6;
+    --ref-bg: #fff7d6; --pre-bg: #f3f4f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11141a; --card: #1a1f28; --fg: #e5e7eb; --muted: #9aa3b2; --border: #2b3240;
+      --accent: #60a5fa; --done: #4ade80; --run: #fbbf24; --fail: #f87171; --pend: #6b7280;
+      --done-bg: #14361f; --run-bg: #3a2c0b; --fail-bg: #3d1414; --pend-bg: #232934;
+      --ref-bg: #2e2a12; --pre-bg: #0d1016;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 2; background: var(--card); border-bottom: 1px solid var(--border);
+           padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  header h1 { font-size: 16px; margin: 0; }
+  #updated { margin-left: auto; }
+  main { max-width: 1200px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+  section > h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 8px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+  .muted { color: var(--muted); } .small { font-size: 12px; } .right { margin-left: auto; }
+  .stale { color: var(--fail); font-weight: 600; }
+  .err { color: var(--fail); }
+  code { font-family: ui-monospace, Consolas, monospace; }
+  .badge { display: inline-block; min-width: 72px; text-align: center; font-size: 11px; font-weight: 600; text-transform: uppercase;
+           padding: 1px 6px; border-radius: 4px; background: var(--pend-bg); color: var(--pend); }
+  .badge.done { background: var(--done-bg); color: var(--done); }
+  .badge.running { background: var(--run-bg); color: var(--run); }
+  .badge.failed, .badge.unfinished { background: var(--fail-bg); color: var(--fail); }
+  .pill { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--pend-bg); color: var(--muted); }
+  .pill.done { background: var(--done-bg); color: var(--done); } .pill.running { background: var(--run-bg); color: var(--run); }
+  .pill.failed, .pill.unfinished { background: var(--fail-bg); color: var(--fail); }
+  .pill.ref { background: var(--ref-bg); color: var(--run); }
+  #queue { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 2px; }
+  .step { display: flex; gap: 10px; align-items: center; padding: 4px 6px; border-radius: 4px; }
+  .step.running { background: var(--run-bg); }
+  .step.pending .sname { color: var(--muted); }
+  .sname { font-weight: 500; }
+  #logs { display: grid; gap: 8px; }
+  details.log summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; list-style: none; }
+  details.log summary::-webkit-details-marker { display: none; }
+  details.log summary::before { content: "▸"; color: var(--muted); }
+  details.log[open] summary::before { content: "▾"; }
+  details.log.running { border-color: var(--run); }
+  .stats { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-left: auto; font-size: 13px; }
+  .logbody { display: grid; grid-template-columns: 340px 1fr; gap: 12px; margin-top: 10px; }
+  .chartbox { min-width: 0; }
+  .chart { width: 100%; height: 90px; background: var(--pre-bg); border-radius: 4px; }
+  .chart .line { fill: none; stroke: var(--accent); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+  .chart .bestline { stroke: var(--done); stroke-dasharray: 3 3; stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .chart .dot { fill: var(--done); }
+  .axis { display: flex; justify-content: space-between; margin-top: 2px; }
+  pre { margin: 0; background: var(--pre-bg); border-radius: 4px; padding: 8px; overflow-x: auto; font: 11.5px/1.4 ui-monospace, Consolas, monospace; max-height: 260px; overflow-y: auto; min-width: 0; }
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; background: var(--card); }
+  th, td { padding: 5px 10px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.ref td { background: var(--ref-bg); }
+  .pos { color: var(--done); } .neg { color: var(--fail); }
+  #oldqueues { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+  ul.mini { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 2px; font-size: 12px; }
+  ul.mini .badge { min-width: 48px; }
+  .gpu-item { display: inline-flex; gap: 6px; align-items: center; }
+  .meter { display: inline-block; width: 70px; height: 8px; background: var(--pend-bg); border-radius: 4px; overflow: hidden; }
+  .meter span { display: block; height: 100%; background: var(--accent); }
+  @media (max-width: 760px) {
+    .logbody { grid-template-columns: 1fr; }
+    .hide-sm { display: none; }
+    .stats { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>HiGT-Bot training</h1>
+  <div id="gpu" class="small"></div>
+  <div id="updated" class="muted small">loading…</div>
+</header>
+<main>
+  <section>
+    <h2>Queue D — v2 labels + direction-aware model</h2>
+    <div class="card">
+      <div id="queue-meta"></div>
+      <ol id="queue"></ol>
+    </div>
+  </section>
+  <section>
+    <h2>Logs (relabel/)</h2>
+    <div id="logs"></div>
+  </section>
+  <section>
+    <h2>Test results (relabel/*.json)</h2>
+    <div class="card tablewrap" id="results"></div>
+  </section>
+  <section>
+    <h2>Older queues</h2>
+    <div id="oldqueues"></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

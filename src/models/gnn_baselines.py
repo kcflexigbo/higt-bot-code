@@ -11,6 +11,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import GATConv, GINConv, GINEConv, JumpingKnowledge
 
+from src.models.dir_gine import make_gine
+
 
 class GINBaseline(nn.Module):
     """3-layer GIN with epsilon learned, sum aggregation, residual + JK.
@@ -58,7 +60,7 @@ class GINBaseline(nn.Module):
                 nn.Linear(hidden, hidden),
             )
             if self.use_edge_features:
-                self.convs.append(GINEConv(mlp, train_eps=True))
+                self.convs.append(make_gine(mlp, hidden))
             else:
                 self.convs.append(GINConv(mlp, train_eps=True))
         self.dropout = dropout

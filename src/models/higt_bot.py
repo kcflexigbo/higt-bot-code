@@ -38,6 +38,8 @@ from torch_geometric.nn import (
 )
 from torch_geometric.utils import to_dense_batch
 
+from src.models.dir_gine import make_gine
+
 
 class _GINEBlock(nn.Module):
     def __init__(self, in_dim: int, hidden: int, edge_dim: int, num_layers: int = 2,
@@ -51,7 +53,7 @@ class _GINEBlock(nn.Module):
                 nn.Linear(hidden, hidden), nn.BatchNorm1d(hidden), nn.ReLU(),
                 nn.Linear(hidden, hidden),
             )
-            self.convs.append(GINEConv(mlp, train_eps=True))
+            self.convs.append(make_gine(mlp, hidden))
         self.dropout = dropout
         self.jk = JumpingKnowledge(jk, channels=hidden, num_layers=num_layers) if jk else None
         self.out_dim = hidden * num_layers if jk == "cat" else hidden
@@ -83,6 +85,55 @@ class _GINEBlock(nn.Module):
             outs.append(h)
         return self.jk(outs) if self.jk is not None else h
 
+
+
+class _LoopedGINEBlock(nn.Module):
+    """One weight-shared GINE layer applied `loops` times (recurrent depth).
+
+    Each iteration re-injects the projected input (h0) so repeated message
+    passing widens the receptive field without washing out node identity, and
+    a per-iteration LayerNorm relaxes strict tying cheaply. Iteration outputs
+    are combined by jumping-knowledge concatenation, like `_GINEBlock`.
+    `forward(..., loops=T)` can override the trained depth at test time.
+    """
+
+    def __init__(self, in_dim: int, hidden: int, edge_dim: int, loops: int = 4,
+                 dropout: float = 0.3, max_loops: int = 16) -> None:
+        super().__init__()
+        self.loops = loops
+        self.input_proj = nn.Linear(in_dim, hidden)
+        self.edge_proj = nn.Linear(edge_dim, hidden)
+        self.inject = nn.Linear(hidden, hidden)
+        mlp = nn.Sequential(nn.Linear(hidden, hidden), nn.BatchNorm1d(hidden), nn.ReLU(),
+                            nn.Linear(hidden, hidden))
+        self.conv = GINEConv(mlp, train_eps=True)
+        self.norms = nn.ModuleList([nn.LayerNorm(hidden) for _ in range(max_loops)])
+        self.dropout = dropout
+        self.out_dim = hidden * loops
+
+    def forward(self, x, edge_index, edge_attr, loops: int | None = None):
+        if x.size(0) < 2 and self.training:  # BatchNorm guard, as in _GINEBlock
+            self.eval()
+            try:
+                return self._forward_impl(x, edge_index, edge_attr, loops)
+            finally:
+                self.train()
+        return self._forward_impl(x, edge_index, edge_attr, loops)
+
+    def _forward_impl(self, x, edge_index, edge_attr, loops):
+        T = loops or self.loops
+        h0 = self.input_proj(x)
+        e = self.edge_proj(edge_attr)
+        inj = self.inject(h0)
+        h, outs = h0, []
+        for t in range(T):
+            h2 = F.relu(self.conv(self.norms[min(t, len(self.norms) - 1)](h) + inj, edge_index, e))
+            h = h + F.dropout(h2, p=self.dropout, training=self.training)
+            outs.append(h)
+        # JK-cat over the trained depth; when T differs at test time, pad/trim to keep the projection valid
+        if len(outs) < self.loops:
+            outs = outs + [outs[-1]] * (self.loops - len(outs))
+        return torch.cat(outs[-self.loops:], dim=-1)
 
 class _EdgeGTBlock(nn.Module):
     """Variant A: edge-aware Graph Transformer via PyG TransformerConv."""
@@ -158,6 +209,8 @@ class HiGTBot(nn.Module):
         gt_heads: int = 4,
         num_classes: int = 2,
         dropout: float = 0.3,
+        embed_layers: int = 2,
+        embed_loops: int = 0,
     ) -> None:
         super().__init__()
         if gt_variant not in {"edge", "global", "hybrid", "none"}:
@@ -167,7 +220,11 @@ class HiGTBot(nn.Module):
         self.gt_variant = gt_variant
         in_dim = d_model + raw_feat_dim
 
-        self.embed_gnn = _GINEBlock(in_dim, hidden, edge_dim, num_layers=2,
+        if embed_loops > 0:
+            self.embed_gnn = _LoopedGINEBlock(in_dim, hidden, edge_dim, loops=embed_loops,
+                                              dropout=dropout)
+        else:
+            self.embed_gnn = _GINEBlock(in_dim, hidden, edge_dim, num_layers=embed_layers,
                                      dropout=dropout, jk="cat")
         self.embed_proj = nn.Linear(self.embed_gnn.out_dim, hidden)
 

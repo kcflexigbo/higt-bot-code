@@ -1,8 +1,22 @@
 # HiGT-Bot
 
-**Hierarchical Graph-Transformer Learning for P2P Botnet Detection in IoT Networks**
+**Hierarchical Graph-Transformer Learning for Botnet Detection in IoT Networks**
 
 Master's thesis implementation. The full plan, including phase-by-phase gates and pain points, lives in [`../HiGT-Bot_Implementation_Plan.md`](../HiGT-Bot_Implementation_Plan.md). Read it before changing the model.
+
+## Corrected pipeline (October 2026) and HiGT-Bot v2
+
+The results in the paper and thesis use a corrected pipeline. Three faults in the original one were fixed:
+
+1. **Labels.** A host is a bot only if it *originates* malicious flows (not if it merely receives them); for MedBIoT only the testbed devices count. Relabel with `scripts/relabel_infected_src.py` (writes `data/graphs_src2`).
+2. **Host features.** The nine node features are computed from *all* of a host's flows in the window, not only flows kept in the pruned graph. Recompute with `scripts/refeature_graphs.py` (writes `data/graphs_v3`).
+3. **Message direction.** `HIGT_DIRECTED=1` switches the graph layers to a direction-aware GINE (`src/models/dir_gine.py`: ego, incoming and outgoing messages kept separate).
+
+Select the corrected graphs with `HIGT_GRAPHS_DIR=data/graphs_v3`; without these variables every script behaves as before.
+
+- **HiGT-Bot v2** (gradient-boosted trees on host features + in-window group similarity, `src/features/host_blocks.py`): `scripts/higt_v2_trees.py`
+- Summary tables: `scripts/summarise_v3.py`; paired bootstrap: `scripts/bootstrap_significance.py`; robustness and latency: `scripts/robustness_efficiency_v3.py`; leave-one-dataset-out: `scripts/lodo_v3.py`; figures: `scripts/make_v3_tables_figures.py`
+- Results (text/JSON) are under `data/inspection_logs/v3*`. Per-window prediction arrays, graphs and embeddings are not stored in the repository; the scripts regenerate them.
 
 ## Project layout
 

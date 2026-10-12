@@ -44,7 +44,8 @@ def _safe(fn, *a, **kw):
 @torch.no_grad()
 def predict(model, loader, device):
     model.eval()
-    ys, ps, prs = [], [], []
+    ys, ps, prs, gids, scens = [], [], [], [], []
+    g_offset = 0
     for batch in loader:
         batch = batch.to(device)
         out = model(batch)
@@ -54,6 +55,13 @@ def predict(model, loader, device):
         ys.append(batch.y.cpu().numpy())
         ps.append(pred.cpu().numpy())
         prs.append(proba.cpu().numpy())
+        bi = batch.batch.cpu().numpy()
+        gids.append(bi + g_offset)
+        g_offset += int(batch.num_graphs)
+        sc = batch.scenario if isinstance(batch.scenario, list) else [batch.scenario]
+        scens.append(np.array(sc, dtype=object)[bi])
+    predict.last_graph_ids = np.concatenate(gids)
+    predict.last_scenarios = np.concatenate(scens).astype(str)
     return np.concatenate(ys), np.concatenate(ps), np.concatenate(prs)
 
 
@@ -94,16 +102,22 @@ def proba_stats(y, pr):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--holdout", required=True, choices=["ctu13", "iot23", "medbiot"])
+    ap.add_argument("--run", default=None,
+                    help="LODO run dir under experiments/lodo (default: holdout; e.g. iot23_fp32)")
+    ap.add_argument("--seed", type=int, default=42, help="which GT-edge LODO checkpoint seed to load")
+    ap.add_argument("--save-preds", type=Path, default=None,
+                    help="optional .npz for val+test probabilities, labels, graph ids, scenarios")
     args = ap.parse_args()
     set_seed(42)
     device = pick_device()
 
     split_cfg = Path(f"configs/split_lodo_{args.holdout}.yaml")
+    run = args.run or args.holdout
     ckpt_path = Path(
-        f"experiments/lodo/{args.holdout}/phase7/"
-        f"higt_bot_lodo_{args.holdout}_edge_seed42.pt"
+        f"experiments/lodo/{run}/phase7/"
+        f"higt_bot_lodo_{run}_edge_seed{args.seed}.pt"
     )
-    emb_root = Path(f"data/flow_embeddings_lodo/{args.holdout}")
+    emb_root = Path(f"data/flow_embeddings_lodo/{run}")
 
     spec = SplitSpec.load(split_cfg)
     va_files = load_split_files("val", spec)
@@ -151,8 +165,15 @@ def main():
 
     print("inferring val ...", flush=True)
     yv, pv, prv = predict(model, val_loader, device)
+    gv, sv = predict.last_graph_ids, predict.last_scenarios
     print("inferring test ...", flush=True)
     yt, pt, prt = predict(model, test_loader, device)
+    gt, st = predict.last_graph_ids, predict.last_scenarios
+    if args.save_preds is not None:
+        args.save_preds.parent.mkdir(parents=True, exist_ok=True)
+        np.savez(args.save_preds, val_y=yv, val_proba=prv, val_graph=gv, val_scenario=sv,
+                 test_y=yt, test_proba=prt, test_graph=gt, test_scenario=st)
+        print(f"wrote {args.save_preds}", flush=True)
 
     val_stats = proba_stats(yv, prv)
     test_stats = proba_stats(yt, prt)
@@ -203,7 +224,8 @@ def main():
         "test": {**test_stats, **test_metrics},
         "threshold_tuning": tune,
     }
-    out = Path(f"data/inspection_logs/lodo_diagnose_{args.holdout}.json")
+    suffix = "" if args.seed == 42 else f"_seed{args.seed}"
+    out = Path(f"data/inspection_logs/lodo_diagnose_{run}{suffix}.json")
     out.write_text(json.dumps(payload, indent=2, default=str))
     print("=== SUMMARY ===")
     print(json.dumps(payload, indent=2, default=str))

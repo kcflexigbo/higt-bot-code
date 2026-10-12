@@ -43,8 +43,12 @@ def main() -> None:
     ap.add_argument("--max-depth", type=int, default=None)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--out", type=Path, default=Path("data/inspection_logs/baseline_rf.json"))
+    ap.add_argument("--save-preds", type=Path, default=None,
+                    help="optional .npz path for per-node test predictions (y, pred, proba, scenario)")
     ap.add_argument("--split-config", type=Path, default=Path("configs/split.yaml"),
                     help="path to split YAML; default matches the canonical mixed-pool split")
+    ap.add_argument("--tune-threshold", action="store_true",
+                    help="pick the decision threshold maximising validation F1 instead of 0.5")
     args = ap.parse_args()
 
     spec = SplitSpec.load(args.split_config)
@@ -75,6 +79,14 @@ def main() -> None:
 
     p_va = clf.predict(X_va); pp_va = clf.predict_proba(X_va)[:, 1]
     p_te = clf.predict(X_te); pp_te = clf.predict_proba(X_te)[:, 1]
+    threshold = 0.5
+    if args.tune_threshold:
+        grid = np.linspace(0.01, 0.99, 99)
+        f1s = [2 * np.sum((pp_va >= t) & (y_va == 1))
+               / max(np.sum(pp_va >= t) + np.sum(y_va == 1), 1) for t in grid]
+        threshold = float(grid[int(np.argmax(f1s))])
+        p_va = (pp_va >= threshold).astype(np.int64); p_te = (pp_te >= threshold).astype(np.int64)
+        print(f"  threshold tuned on val F1: {threshold:.2f}")
 
     val_res = evaluate(y_va, p_va, pp_va)
     test_res = evaluate(y_te, p_te, pp_te, scenarios=scen_te)
@@ -89,12 +101,17 @@ def main() -> None:
         "max_depth": args.max_depth,
         "seed": args.seed,
         "fit_seconds": fit_s,
+        "threshold": threshold,
         "val": val_res.as_row(),
         "test": test_res.as_row(),
         "test_per_scenario": test_res.per_scenario,
     }
     args.out.write_text(json.dumps(payload, indent=2))
     print(f"\nwrote {args.out}")
+    if args.save_preds is not None:
+        args.save_preds.parent.mkdir(parents=True, exist_ok=True)
+        np.savez(args.save_preds, y=y_te, pred=p_te, proba=pp_te, scenario=scen_te.astype(str))
+        print(f"wrote {args.save_preds}")
 
 
 if __name__ == "__main__":

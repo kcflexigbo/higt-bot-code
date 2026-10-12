@@ -40,3 +40,14 @@ multirun/
 
 # Notebook checkpoints
 .ipynb_checkpoints/
+
+# Regenerated graph variants and caches (rebuild with scripts/relabel_infected_src.py,
+# scripts/refeature_graphs.py, scripts/cache_embeddings*.py)
+data/graphs_src/
+data/graphs_src2/
+data/graphs_v3/
+data/flow_embeddings*/
+data/inspection_logs/**/cache_*.npz
+data/inspection_logs/**/emb/
+# Per-window prediction arrays (~1.3 GB): regenerate with the scripts, or archive separately (e.g. Zenodo)
+data/inspection_logs/**/*.npz

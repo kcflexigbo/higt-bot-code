@@ -13,6 +13,7 @@ Split rule (per-scenario chronological):
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Literal
@@ -21,7 +22,9 @@ import torch
 import yaml
 from torch_geometric.data import Data
 
-GRAPHS_DIR = Path("data/graphs")
+# HIGT_GRAPHS_DIR lets a run use relabelled graphs (e.g. data/graphs_src)
+# without touching any training script; unset = original behaviour.
+GRAPHS_DIR = Path(os.environ.get("HIGT_GRAPHS_DIR", "data/graphs"))
 DEFAULT_SPLIT = Path("configs/split.yaml")
 
 SplitName = Literal["train", "val", "test"]
