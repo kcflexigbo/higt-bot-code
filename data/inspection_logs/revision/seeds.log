@@ -1,0 +1,53 @@
+XGB[x]                 seed 42: val thr 0.77  test F1 0.9529
+XGB[x]                 seed 1: val thr 0.86  test F1 0.9481
+XGB[x]                 seed 2: val thr 0.91  test F1 0.9449
+XGB[x]                 seed 3: val thr 0.89  test F1 0.9470
+XGB[x]                 seed 4: val thr 0.94  test F1 0.9431
+v2 XGB[x+grp]          seed 42: val thr 0.68  test F1 0.9796
+v2 XGB[x+grp]          seed 1: val thr 0.56  test F1 0.9793
+v2 XGB[x+grp]          seed 2: val thr 0.67  test F1 0.9770
+v2 XGB[x+grp]          seed 3: val thr 0.62  test F1 0.9780
+v2 XGB[x+grp]          seed 4: val thr 0.72  test F1 0.9773
+RF tuned               seed 42: val thr 0.37  test F1 0.9445
+RF tuned               seed 1: val thr 0.39  test F1 0.9396
+RF tuned               seed 2: val thr 0.42  test F1 0.9273
+RF tuned               seed 3: val thr 0.42  test F1 0.9222
+RF tuned               seed 4: val thr 0.38  test F1 0.9478
+XGB[x+wnorm]           seed 42: val thr 0.49  test F1 0.9708
+XGB[x+wnorm]           seed 1: val thr 0.32  test F1 0.9715
+XGB[x+wnorm]           seed 2: val thr 0.52  test F1 0.9701
+XGB[x+wnorm]           seed 3: val thr 0.53  test F1 0.9698
+XGB[x+wnorm]           seed 4: val thr 0.62  test F1 0.9693
+XGB[x+grp_prof]        seed 42: val thr 0.61  test F1 0.9738
+XGB[x+grp_prof]        seed 1: val thr 0.44  test F1 0.9781
+XGB[x+grp_prof]        seed 2: val thr 0.36  test F1 0.9766
+XGB[x+grp_prof]        seed 3: val thr 0.43  test F1 0.9784
+XGB[x+grp_prof]        seed 4: val thr 0.64  test F1 0.9790
+XGB[x+grp_share]       seed 42: val thr 0.71  test F1 0.9738
+XGB[x+grp_share]       seed 1: val thr 0.87  test F1 0.9711
+XGB[x+grp_share]       seed 2: val thr 0.80  test F1 0.9662
+XGB[x+grp_share]       seed 3: val thr 0.94  test F1 0.9588
+XGB[x+grp_share]       seed 4: val thr 0.76  test F1 0.9740
+XGB[x+wnorm+grp]       seed 42: val thr 0.69  test F1 0.9751
+XGB[x+wnorm+grp]       seed 1: val thr 0.69  test F1 0.9686
+XGB[x+wnorm+grp]       seed 2: val thr 0.74  test F1 0.9723
+XGB[x+wnorm+grp]       seed 3: val thr 0.72  test F1 0.9714
+XGB[x+wnorm+grp]       seed 4: val thr 0.95  test F1 0.9726
+XGB[x+seq]             seed 42: val thr 0.58  test F1 0.9649
+XGB[x+seq]             seed 1: val thr 0.32  test F1 0.9655
+XGB[x+seq]             seed 2: val thr 0.22  test F1 0.9615
+XGB[x+seq+grp]         seed 42: val thr 0.65  test F1 0.9669
+XGB[x+seq+grp]         seed 1: val thr 0.36  test F1 0.9640
+XGB[x+seq+grp]         seed 2: val thr 0.47  test F1 0.9667
+XGB[x+emb]             seed 42: val thr 0.91  test F1 0.9411
+XGB[x+emb]             seed 1: val thr 0.89  test F1 0.9372
+XGB[x+emb]             seed 2: val thr 0.87  test F1 0.9461
+XGB[x+grp+emb]         seed 42: val thr 0.92  test F1 0.9513
+XGB[x+grp+emb]         seed 1: val thr 0.85  test F1 0.9504
+XGB[x+grp+emb]         seed 2: val thr 0.85  test F1 0.9508
+XGB[x+seq+grp+emb]     seed 42: val thr 0.57  test F1 0.9567
+XGB[x+seq+grp+emb]     seed 1: val thr 0.25  test F1 0.9580
+XGB[x+seq+grp+emb]     seed 2: val thr 0.34  test F1 0.9574
+XGB[x+nbr+seq+grp]     seed 42: val thr 0.48  test F1 0.9670
+XGB[x+nbr+seq+grp]     seed 1: val thr 0.30  test F1 0.9697
+XGB[x+nbr+seq+grp]     seed 2: val thr 0.50  test F1 0.9670

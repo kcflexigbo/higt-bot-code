@@ -1,0 +1,7 @@
+window=300s  max_flows=256  skip_existing=True  scenarios=1
+
+    ...50 flow_seqs saved (window 49)
+[iot23-39-1                      ]  windows   92   255.1s  [stream]
+window=300s  max_flows=256  skip_existing=True  scenarios=1
+
+[iot23-39-1                      ]  windows    0     0.0s  [stream]  skip=92

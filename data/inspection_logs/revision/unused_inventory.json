@@ -1,0 +1,138 @@
+[
+  {
+    "scenario": "ctu13-11",
+    "windows": 5,
+    "hosts": 52,
+    "bots": 5,
+    "bot_windows": 2,
+    "listed_excluded": true
+  },
+  {
+    "scenario": "ctu13-12",
+    "windows": 16,
+    "hosts": 471,
+    "bots": 28,
+    "bot_windows": 13,
+    "listed_excluded": true
+  },
+  {
+    "scenario": "ctu13-5",
+    "windows": 7,
+    "hosts": 252,
+    "bots": 5,
+    "bot_windows": 5,
+    "listed_excluded": true
+  },
+  {
+    "scenario": "ctu13-7",
+    "windows": 5,
+    "hosts": 89,
+    "bots": 2,
+    "bot_windows": 2,
+    "listed_excluded": true
+  },
+  {
+    "scenario": "iot23-20-1",
+    "windows": 33,
+    "hosts": 164,
+    "bots": 3,
+    "bot_windows": 3,
+    "listed_excluded": true
+  },
+  {
+    "scenario": "iot23-21-1",
+    "windows": 53,
+    "hosts": 140,
+    "bots": 2,
+    "bot_windows": 2,
+    "listed_excluded": true
+  },
+  {
+    "scenario": "iot23-34-1",
+    "windows": 79,
+    "hosts": 255,
+    "bots": 78,
+    "bot_windows": 78,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-36-1",
+    "windows": 289,
+    "hosts": 806,
+    "bots": 289,
+    "bot_windows": 289,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-39-1",
+    "windows": 92,
+    "hosts": 939,
+    "bots": 93,
+    "bot_windows": 92,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-42-1",
+    "windows": 32,
+    "hosts": 116,
+    "bots": 1,
+    "bot_windows": 1,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-43-1",
+    "windows": 14,
+    "hosts": 4826,
+    "bots": 15,
+    "bot_windows": 14,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-44-1",
+    "windows": 1,
+    "hosts": 4,
+    "bots": 1,
+    "bot_windows": 1,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-49-1",
+    "windows": 89,
+    "hosts": 192,
+    "bots": 89,
+    "bot_windows": 89,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "iot23-52-1",
+    "windows": 177,
+    "hosts": 217,
+    "bots": 177,
+    "bot_windows": 177,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "medbiot-bashlite_leg",
+    "windows": 936,
+    "hosts": 6774,
+    "bots": 0,
+    "bot_windows": 0,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "medbiot-mirai_leg",
+    "windows": 543,
+    "hosts": 3364,
+    "bots": 0,
+    "bot_windows": 0,
+    "listed_excluded": false
+  },
+  {
+    "scenario": "medbiot-torii_leg",
+    "windows": 648,
+    "hosts": 4036,
+    "bots": 0,
+    "bot_windows": 0,
+    "listed_excluded": false
+  }
+]

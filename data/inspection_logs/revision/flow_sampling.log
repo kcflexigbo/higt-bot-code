@@ -1,0 +1,38 @@
+ctu13-1 done, windows whose x was not reproduced: 0 of 16
+ctu13-2 done, windows whose x was not reproduced: 0 of 11
+ctu13-3 done, windows whose x was not reproduced: 0 of 162
+ctu13-4 done, windows whose x was not reproduced: 0 of 11
+ctu13-6 done, windows whose x was not reproduced: 0 of 6
+ctu13-8 done, windows whose x was not reproduced: 0 of 47
+ctu13-9 done, windows whose x was not reproduced: 0 of 14
+ctu13-13 done, windows whose x was not reproduced: 0 of 41
+iot23-1-1 done, windows whose x was not reproduced: 0 of 270
+iot23-3-1 done, windows whose x was not reproduced: 0 of 57
+iot23-7-1 done, windows whose x was not reproduced: 0 of 59
+iot23-9-1 done, windows whose x was not reproduced: 0 of 49
+iot23-17-1 done, windows whose x was not reproduced: 0 of 59
+iot23-33-1 done, windows whose x was not reproduced: 0 of 59
+iot23-35-1 done, windows whose x was not reproduced: 0 of 59
+iot23-48-1 done, windows whose x was not reproduced: 0 of 25
+medbiot-bashlite_mal_spread_all done, windows whose x was not reproduced: 0 of 2
+medbiot-bashlite_mal_CC_all done, windows whose x was not reproduced: 0 of 5
+medbiot-mirai_mal_spread_all done, windows whose x was not reproduced: 0 of 3
+medbiot-mirai_mal_CC_all done, windows whose x was not reproduced: 0 of 3
+ctu13-10 done, windows whose x was not reproduced: 0 of 58
+iot23-8-1 done, windows whose x was not reproduced: 0 of 214
+medbiot-torii_mal_all done, windows whose x was not reproduced: 0 of 2
+XGB[x] 42 done
+XGB[x] 1 done
+XGB[x] 2 done
+v2 XGB[x+grp] 42 done
+v2 XGB[x+grp] 1 done
+v2 XGB[x+grp] 2 done
+# Flow-record loss (records dropped before features and edges are computed; node set fixed)
+
+| Records dropped | XGB[x] F1 | v2 XGB[x+grp] F1 | XGB[x] PR-AUC | v2 XGB[x+grp] PR-AUC |
+|---|---|---|---|---|
+| 0% | 0.949 ± 0.004 | 0.979 ± 0.001 | 0.9957 | 0.9982 |
+| 5% | 0.946 ± 0.005 | 0.978 ± 0.001 | 0.9954 | 0.9982 |
+| 10% | 0.943 ± 0.007 | 0.975 ± 0.001 | 0.9948 | 0.9978 |
+| 20% | 0.919 ± 0.015 | 0.972 ± 0.001 | 0.9918 | 0.9964 |
+| 30% | 0.888 ± 0.016 | 0.962 ± 0.002 | 0.9887 | 0.9952 |

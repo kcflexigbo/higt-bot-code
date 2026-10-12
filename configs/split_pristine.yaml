@@ -1,0 +1,21 @@
+# Review item C1: graphs_v3 captures never used by configs/split.yaml, evaluated once
+# with frozen models (scripts/revision_gnn_pristine.py, scripts/revision_trees.py).
+# Everything is test; no training or validation scenarios.
+split_version: pristine-v1
+seed: 42
+train_frac: 0.60
+val_frac: 0.20
+train: []
+holdout_test:
+  - iot23-34-1
+  - iot23-36-1
+  - iot23-39-1
+  - iot23-42-1
+  - iot23-43-1
+  - iot23-44-1
+  - iot23-49-1
+  - iot23-52-1
+  - medbiot-bashlite_leg
+  - medbiot-mirai_leg
+  - medbiot-torii_leg
+excluded: []

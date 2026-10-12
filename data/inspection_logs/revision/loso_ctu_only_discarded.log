@@ -1,0 +1,4 @@
+ctu13-1 {"XGB[x]": {"pr_auc": 1.0, "f1_val_thr": 0.975, "val_thr": 0.19, "f1_oracle": 1.0, "recall_at_1pct_fpr": 1.0}, "v2 XGB[x+grp]": {"pr_auc": 1.0, "f1_val_thr": 0.967, "val_thr": 0.19, "f1_oracle": 1.0, "recall_at_1pct_fpr": 1.0}}
+ctu13-10 {"XGB[x]": {"pr_auc": 0.888, "f1_val_thr": 0.555, "val_thr": 0.4, "f1_oracle": 0.867, "recall_at_1pct_fpr": 0.593}, "v2 XGB[x+grp]": {"pr_auc": 0.744, "f1_val_thr": 0.476, "val_thr": 0.21, "f1_oracle": 0.618, "recall_at_1pct_fpr": 0.271}}
+ctu13-13 {"XGB[x]": {"pr_auc": 0.985, "f1_val_thr": 0.942, "val_thr": 0.1, "f1_oracle": 0.977, "recall_at_1pct_fpr": 0.995}, "v2 XGB[x+grp]": {"pr_auc": 0.975, "f1_val_thr": 0.817, "val_thr": 0.18, "f1_oracle": 0.972, "recall_at_1pct_fpr": 0.995}}
+ctu13-2 {"XGB[x]": {"pr_auc": 1.0, "f1_val_thr": 1.0, "val_thr": 0.35, "f1_oracle": 1.0, "recall_at_1pct_fpr": 1.0}, "v2 XGB[x+grp]": {"pr_auc": 1.0, "f1_val_thr": 1.0, "val_thr": 0.36, "f1_oracle": 1.0, "recall_at_1pct_fpr": 1.0}}
