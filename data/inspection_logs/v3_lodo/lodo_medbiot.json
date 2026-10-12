@@ -715,5 +715,86 @@
       "seed": 2,
       "fit_s": 4.2558066844940186
     }
+  ],
+  "Directed T-GINE": [
+    {
+      "all": {
+        "f1": 0.45558086560364464,
+        "fn": 477,
+        "fp": 1,
+        "tp": 200,
+        "threshold": 0.72,
+        "pr_auc": 0.9428569049631698,
+        "oracle_f1": 0.7044609665427509,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 1,
+          "tp": 0,
+          "threshold": 0.72,
+          "pr_auc": 0.9239090956726617,
+          "oracle_f1": 0.5243445692883895,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "tp": 114,
+          "threshold": 0.72,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 125,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.72,
+          "pr_auc": 0.9331037481568111,
+          "oracle_f1": 0.7572815533980582,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.546031746031746,
+          "fn": 143,
+          "fp": 0,
+          "tp": 86,
+          "threshold": 0.72,
+          "pr_auc": 0.905811414389585,
+          "oracle_f1": 0.6214689265536724,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.0,
+          "fn": 14,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.72,
+          "pr_auc": 1.0,
+          "oracle_f1": 0.6666666666666666,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9908433734939759,
+      "seed": 42,
+      "fp32": true
+    }
   ]
 }

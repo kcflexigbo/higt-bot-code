@@ -1,0 +1,98 @@
+{
+  "fit_seconds": 4504.2073244,
+  "best_val_f1": 0.9784037558685446,
+  "params": 181381,
+  "val": {
+    "n": 55472,
+    "n_pos": 1042,
+    "accuracy": 0.9991707528122296,
+    "precision": 0.9577205882352942,
+    "recall": 1.0,
+    "f1": 0.9784037558685446,
+    "pr_auc": 0.9993589205494552,
+    "roc_auc": 0.9999882396626282,
+    "tn": 54384,
+    "fp": 46,
+    "fn": 0,
+    "tp": 1042
+  },
+  "test": {
+    "n": 1965,
+    "n_pos": 677,
+    "accuracy": 0.7582697201017812,
+    "precision": 0.9719626168224299,
+    "recall": 0.3072378138847858,
+    "f1": 0.4668911335578002,
+    "pr_auc": 0.9428569049631698,
+    "roc_auc": 0.9727263135682633,
+    "tn": 1282,
+    "fp": 6,
+    "fn": 469,
+    "tp": 208
+  },
+  "test_per_scenario": {
+    "medbiot-bashlite_mal_CC_all": {
+      "n": 297.0,
+      "n_pos": 195.0,
+      "f1": 0.0,
+      "pr_auc": 0.9239090956726617
+    },
+    "medbiot-bashlite_mal_spread_all": {
+      "n": 1200.0,
+      "n_pos": 114.0,
+      "f1": 1.0,
+      "pr_auc": 1.0
+    },
+    "medbiot-mirai_mal_CC_all": {
+      "n": 150.0,
+      "n_pos": 125.0,
+      "f1": 0.0,
+      "pr_auc": 0.9331037481568111
+    },
+    "medbiot-mirai_mal_spread_all": {
+      "n": 302.0,
+      "n_pos": 229.0,
+      "f1": 0.5688073394495413,
+      "pr_auc": 0.905811414389585
+    },
+    "medbiot-torii_mal_all": {
+      "n": 16.0,
+      "n_pos": 14.0,
+      "f1": 0.13333333333333333,
+      "pr_auc": 1.0
+    }
+  },
+  "config": {
+    "encoder": {
+      "flow_feat_dim": 13,
+      "d_model": 64,
+      "nhead": 4,
+      "num_layers": 2,
+      "max_flows": 256,
+      "dropout": 0.1
+    },
+    "gin": {
+      "hidden": 64,
+      "num_layers": 3,
+      "dropout": 0.3
+    },
+    "train": {
+      "lr": 0.001,
+      "weight_decay": 1e-05,
+      "batch_size": 2,
+      "grad_accum_steps": 8,
+      "encoder_chunk_size": 64,
+      "amp": true,
+      "max_epochs": 120,
+      "patience": 20,
+      "grad_clip": 1.0,
+      "use_focal": true,
+      "focal_gamma": 2.0,
+      "focal_alpha": null
+    },
+    "data": {
+      "window_seconds": 300
+    }
+  },
+  "raw_feature_skip": true
+}

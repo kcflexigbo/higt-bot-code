@@ -25,5 +25,14 @@ class _DropLastTrain(DataLoader):
 
 loop_phase5.DataLoader = _DropLastTrain
 
+# Crash-safe training: if HIGT_TRAIN_STATE is set, the per-epoch training state is
+# written there and resumed after a crash (see train_one_model(state_path=...)).
+import functools  # noqa: E402
+import os  # noqa: E402
+
+if os.environ.get("HIGT_TRAIN_STATE"):
+    train_phase5.train_one_model = functools.partial(
+        loop_phase5.train_one_model, state_path=os.environ["HIGT_TRAIN_STATE"])
+
 if __name__ == "__main__":
     train_phase5.main()

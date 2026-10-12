@@ -59,7 +59,11 @@ def train_one_model(
     device: torch.device | str = "cpu",
     wandb_run=None,
     log_prefix: str = "",
+    state_path=None,
 ) -> dict:
+    """``state_path`` (optional): after every epoch the full training state is written
+    there, and an existing file is resumed from, so a machine crash costs at most one
+    epoch. Off by default; the state file is deleted when training finishes."""
     if cfg is None:
         cfg = TrainConfig()
     device = torch.device(device)
@@ -106,8 +110,24 @@ def train_one_model(
     best_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
     bad_epochs = 0
     history: list[dict] = []
+    start_epoch = 1
+    if state_path is not None:
+        from pathlib import Path
+        state_path = Path(state_path)
+        if state_path.exists():
+            st = torch.load(state_path, map_location=device, weights_only=False)
+            model.load_state_dict(st["model"]); optim.load_state_dict(st["optim"])
+            sched.load_state_dict(st["sched"]); scaler.load_state_dict(st["scaler"])
+            best_f1, best_state = st["best_f1"], st["best_state"]
+            bad_epochs, history = st["bad_epochs"], st["history"]
+            torch.set_rng_state(st["rng_cpu"])
+            if st.get("rng_cuda") is not None and device.type == "cuda":
+                torch.cuda.set_rng_state(st["rng_cuda"])
+            start_epoch = st["epoch"] + 1
+            print(f"{log_prefix}resumed from {state_path} after epoch {st['epoch']}  "
+                  f"best {best_f1:.4f}", flush=True)
 
-    for epoch in range(1, cfg.max_epochs + 1):
+    for epoch in range(start_epoch, cfg.max_epochs + 1):
         model.train()
         epoch_loss = 0.0
         n_batches = 0
@@ -164,10 +184,21 @@ def train_one_model(
                 "epoch": epoch,
             })
 
+        if state_path is not None:
+            tmp = state_path.with_suffix(".tmp")
+            torch.save({"epoch": epoch, "model": model.state_dict(), "optim": optim.state_dict(),
+                        "sched": sched.state_dict(), "scaler": scaler.state_dict(),
+                        "best_f1": best_f1, "best_state": best_state, "bad_epochs": bad_epochs,
+                        "history": history, "rng_cpu": torch.get_rng_state(),
+                        "rng_cuda": torch.cuda.get_rng_state() if device.type == "cuda" else None}, tmp)
+            tmp.replace(state_path)
+
         if bad_epochs >= cfg.patience:
             print(f"{log_prefix}early stopping at epoch {epoch} "
                   f"(no val_F1 improvement for {cfg.patience} epochs)")
             break
 
     model.load_state_dict(best_state)
+    if state_path is not None and state_path.exists():
+        state_path.unlink()
     return {"history": history, "best_val_f1": best_f1}

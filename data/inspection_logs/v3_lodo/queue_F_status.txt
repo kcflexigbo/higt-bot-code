@@ -7,3 +7,8 @@ ok tgine_iot23 13:27
 iot23 training process exited 13:27; ckpt: temporal_gine_lodo_iot23_skip.pt
 ok tgine_ctu13 14:54
 queue H (resume after restart) start Mon, Oct 12, 2026 10:20:13 PM
+queue I (resumable) start Mon, Oct 12, 2026 11:59:16 PM
+ok tgine_medbiot 01:15
+ok tgine_eval 01:16
+FAIL report 01:16
+DONE Tue, Oct 13, 2026  1:16:59 AM
