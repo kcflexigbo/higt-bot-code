@@ -1,0 +1,17 @@
+start Mon, Oct 12, 2026  1:02:34 AM
+ok rf_tuned 01:03
+ok dirgine_seed42 01:04
+ok dirgine_seed1 01:06
+ok dirgine_seed2 01:08
+ok gine_seed42 01:12
+ok phase5_dir 01:45
+ok cache_embeddings 01:46
+ok edge_seed1 02:22
+ok edge 02:34
+ok edge_undirected 03:09
+ok edge_seed2 03:33
+ok phase6_dir 03:49
+ok phase5_dir_seed1 04:47
+ok reeval 04:48
+ok trees_emb3 04:59
+DONE Mon, Oct 12, 2026  4:59:42 AM

@@ -1,0 +1,40 @@
+built train: 172374 nodes in 124s
+built val: 55049 nodes in 49s
+built test: 59210 nodes in 79s
+[split seed 42] x                        all PR 0.996 F1 0.967 | CTU PR 0.980 | held-out PR 0.972 F1 0.909
+[split seed 42] x+seq                    all PR 0.994 F1 0.968 | CTU PR 0.968 | held-out PR 0.956 F1 0.856
+[split seed 42] x+grp                    all PR 0.999 F1 0.980 | CTU PR 0.994 | held-out PR 0.990 F1 0.936
+[split seed 42] x+seq+grp                all PR 0.996 F1 0.961 | CTU PR 0.982 | held-out PR 0.972 F1 0.847
+[split seed 42] x+emb                    all PR 0.993 F1 0.942 | CTU PR 0.968 | held-out PR 0.964 F1 0.808
+[split seed 42] x+grp+emb                all PR 0.995 F1 0.951 | CTU PR 0.984 | held-out PR 0.976 F1 0.821
+[split seed 42] x+seq+grp+emb            all PR 0.996 F1 0.957 | CTU PR 0.990 | held-out PR 0.983 F1 0.861
+[split seed 42] x+nbr+seq+grp            all PR 0.998 F1 0.969 | CTU PR 0.987 | held-out PR 0.977 F1 0.863
+[split seed 42] ensemble(x, x+seq+grp)   all PR 0.997 F1 0.968 | CTU PR 0.982 | held-out PR 0.977 F1 0.867
+[split seed 1] x                        all PR 0.996 F1 0.953 | CTU PR 0.982 | held-out PR 0.979 F1 0.838
+[split seed 1] x+seq                    all PR 0.993 F1 0.964 | CTU PR 0.964 | held-out PR 0.952 F1 0.855
+[split seed 1] x+grp                    all PR 0.998 F1 0.979 | CTU PR 0.992 | held-out PR 0.989 F1 0.932
+[split seed 1] x+seq+grp                all PR 0.997 F1 0.962 | CTU PR 0.983 | held-out PR 0.973 F1 0.850
+[split seed 1] x+emb                    all PR 0.992 F1 0.940 | CTU PR 0.967 | held-out PR 0.963 F1 0.803
+[split seed 1] x+grp+emb                all PR 0.995 F1 0.951 | CTU PR 0.982 | held-out PR 0.976 F1 0.825
+[split seed 1] x+seq+grp+emb            all PR 0.996 F1 0.956 | CTU PR 0.989 | held-out PR 0.984 F1 0.856
+[split seed 1] x+nbr+seq+grp            all PR 0.998 F1 0.967 | CTU PR 0.988 | held-out PR 0.978 F1 0.861
+[split seed 1] ensemble(x, x+seq+grp)   all PR 0.997 F1 0.966 | CTU PR 0.984 | held-out PR 0.979 F1 0.866
+[split seed 2] x                        all PR 0.996 F1 0.945 | CTU PR 0.981 | held-out PR 0.973 F1 0.790
+[split seed 2] x+seq                    all PR 0.993 F1 0.968 | CTU PR 0.967 | held-out PR 0.955 F1 0.857
+[split seed 2] x+grp                    all PR 0.998 F1 0.974 | CTU PR 0.992 | held-out PR 0.987 F1 0.907
+[split seed 2] x+seq+grp                all PR 0.997 F1 0.963 | CTU PR 0.984 | held-out PR 0.975 F1 0.844
+[split seed 2] x+emb                    all PR 0.993 F1 0.942 | CTU PR 0.969 | held-out PR 0.964 F1 0.805
+[split seed 2] x+grp+emb                all PR 0.994 F1 0.950 | CTU PR 0.982 | held-out PR 0.976 F1 0.821
+[split seed 2] x+seq+grp+emb            all PR 0.996 F1 0.956 | CTU PR 0.989 | held-out PR 0.983 F1 0.855
+[split seed 2] x+nbr+seq+grp            all PR 0.998 F1 0.968 | CTU PR 0.988 | held-out PR 0.978 F1 0.860
+[split seed 2] ensemble(x, x+seq+grp)   all PR 0.997 F1 0.969 | CTU PR 0.983 | held-out PR 0.978 F1 0.867
+[loso] ctu13-1: x 1.000  x+seq+grp 0.995  ensemble(x, x+seq+grp) 1.000
+[loso] ctu13-10: x 0.847  x+seq+grp 0.741  ensemble(x, x+seq+grp) 0.804
+[loso] ctu13-13: x 0.987  x+seq+grp 1.000  ensemble(x, x+seq+grp) 1.000
+[loso] ctu13-2: x 1.000  x+seq+grp 1.000  ensemble(x, x+seq+grp) 1.000
+[loso] ctu13-3: x 0.999  x+seq+grp 0.997  ensemble(x, x+seq+grp) 0.999
+[loso] ctu13-4: x 0.850  x+seq+grp 0.924  ensemble(x, x+seq+grp) 0.890
+[loso] ctu13-6: x 0.994  x+seq+grp 1.000  ensemble(x, x+seq+grp) 1.000
+[loso] ctu13-8: x 0.471  x+seq+grp 0.856  ensemble(x, x+seq+grp) 0.760
+[loso] ctu13-9: x 0.998  x+seq+grp 0.992  ensemble(x, x+seq+grp) 1.000
+wrote data\inspection_logs\v3\higt_v2_trees.md

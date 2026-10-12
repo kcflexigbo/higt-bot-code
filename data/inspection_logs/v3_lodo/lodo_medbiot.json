@@ -1,0 +1,719 @@
+{
+  "RF tuned": [
+    {
+      "all": {
+        "f1": 0.3674911660777385,
+        "fn": 521,
+        "fp": 16,
+        "tp": 156,
+        "threshold": 0.41000000000000003,
+        "pr_auc": 0.9321477527925761,
+        "oracle_f1": 0.9442857142857143,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 5,
+          "tp": 0,
+          "threshold": 0.41000000000000003,
+          "pr_auc": 0.8182454138052171,
+          "oracle_f1": 0.906801007556675,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.41000000000000003,
+          "pr_auc": 0.9934382777793811,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015873015873015872,
+          "fn": 124,
+          "fp": 0,
+          "tp": 1,
+          "threshold": 0.41000000000000003,
+          "pr_auc": 0.8814715724944853,
+          "oracle_f1": 0.9689922480620154,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.25,
+          "fn": 195,
+          "fp": 9,
+          "tp": 34,
+          "threshold": 0.41000000000000003,
+          "pr_auc": 0.912979419544202,
+          "oracle_f1": 0.9617021276595744,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.6666666666666666,
+          "fn": 7,
+          "fp": 0,
+          "tp": 7,
+          "threshold": 0.41000000000000003,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.994703899855561,
+      "seed": 42,
+      "fit_s": 5.648645639419556
+    },
+    {
+      "all": {
+        "f1": 0.3976878612716763,
+        "fn": 505,
+        "fp": 16,
+        "tp": 172,
+        "threshold": 0.35000000000000003,
+        "pr_auc": 0.9299755663736391,
+        "oracle_f1": 0.9448028673835125,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 5,
+          "tp": 0,
+          "threshold": 0.35000000000000003,
+          "pr_auc": 0.8004443440128186,
+          "oracle_f1": 0.906801007556675,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.35000000000000003,
+          "pr_auc": 0.9907038312593062,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.031496062992125984,
+          "fn": 123,
+          "fp": 0,
+          "tp": 2,
+          "threshold": 0.35000000000000003,
+          "pr_auc": 0.8859941185020535,
+          "oracle_f1": 0.9689922480620154,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.3356643356643357,
+          "fn": 181,
+          "fp": 9,
+          "tp": 48,
+          "threshold": 0.35000000000000003,
+          "pr_auc": 0.9122956562626363,
+          "oracle_f1": 0.9617021276595744,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.7272727272727273,
+          "fn": 6,
+          "fp": 0,
+          "tp": 8,
+          "threshold": 0.35000000000000003,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9942252165543792,
+      "seed": 1,
+      "fit_s": 5.5627195835113525
+    },
+    {
+      "all": {
+        "f1": 0.3664302600472813,
+        "fn": 522,
+        "fp": 14,
+        "tp": 155,
+        "threshold": 0.42000000000000004,
+        "pr_auc": 0.9335181405764398,
+        "oracle_f1": 0.9494949494949495,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 4,
+          "tp": 0,
+          "threshold": 0.42000000000000004,
+          "pr_auc": 0.8181570144085247,
+          "oracle_f1": 0.9040404040404041,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.42000000000000004,
+          "pr_auc": 0.989635147142905,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015873015873015872,
+          "fn": 124,
+          "fp": 0,
+          "tp": 1,
+          "threshold": 0.42000000000000004,
+          "pr_auc": 0.9090980670612883,
+          "oracle_f1": 0.9689922480620154,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.25092250922509224,
+          "fn": 195,
+          "fp": 8,
+          "tp": 34,
+          "threshold": 0.42000000000000004,
+          "pr_auc": 0.9154391869457004,
+          "oracle_f1": 0.9596602972399151,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.6,
+          "fn": 8,
+          "fp": 0,
+          "tp": 6,
+          "threshold": 0.42000000000000004,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.994703899855561,
+      "seed": 2,
+      "fit_s": 5.314938306808472
+    }
+  ],
+  "XGB[x]": [
+    {
+      "all": {
+        "f1": 0.4123006833712984,
+        "fn": 496,
+        "fp": 20,
+        "tp": 181,
+        "threshold": 0.75,
+        "pr_auc": 0.9211252805409805,
+        "oracle_f1": 0.633175355450237,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 5,
+          "tp": 0,
+          "threshold": 0.75,
+          "pr_auc": 0.7985667631039326,
+          "oracle_f1": 0.0,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.75,
+          "pr_auc": 0.9985719435525251,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015625,
+          "fn": 124,
+          "fp": 2,
+          "tp": 1,
+          "threshold": 0.75,
+          "pr_auc": 0.8623683513186127,
+          "oracle_f1": 0.031007751937984496,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.43137254901960786,
+          "fn": 163,
+          "fp": 11,
+          "tp": 66,
+          "threshold": 0.75,
+          "pr_auc": 0.8869581055461868,
+          "oracle_f1": 0.9147982062780269,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.0,
+          "fn": 14,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.75,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9961538461538462,
+      "seed": 42,
+      "fit_s": 3.9353740215301514
+    },
+    {
+      "all": {
+        "f1": 0.39815880322209435,
+        "fn": 504,
+        "fp": 19,
+        "tp": 173,
+        "threshold": 0.81,
+        "pr_auc": 0.9230203412707806,
+        "oracle_f1": 0.6389413988657845,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 5,
+          "tp": 0,
+          "threshold": 0.81,
+          "pr_auc": 0.8222014204109604,
+          "oracle_f1": 0.0,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.81,
+          "pr_auc": 0.9984991343147798,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015625,
+          "fn": 124,
+          "fp": 2,
+          "tp": 1,
+          "threshold": 0.81,
+          "pr_auc": 0.8765274260109197,
+          "oracle_f1": 0.04477611940298507,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.39057239057239057,
+          "fn": 171,
+          "fp": 10,
+          "tp": 58,
+          "threshold": 0.81,
+          "pr_auc": 0.8900736561073672,
+          "oracle_f1": 0.9220489977728286,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.0,
+          "fn": 14,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.81,
+          "pr_auc": 0.9999999999999999,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9956709956709957,
+      "seed": 1,
+      "fit_s": 4.10801887512207
+    },
+    {
+      "all": {
+        "f1": 0.4073226544622426,
+        "fn": 499,
+        "fp": 19,
+        "tp": 178,
+        "threshold": 0.77,
+        "pr_auc": 0.9217320883849958,
+        "oracle_f1": 0.6389413988657845,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 5,
+          "tp": 0,
+          "threshold": 0.77,
+          "pr_auc": 0.8177884614452293,
+          "oracle_f1": 0.0,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.77,
+          "pr_auc": 0.9988783967651609,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015625,
+          "fn": 124,
+          "fp": 2,
+          "tp": 1,
+          "threshold": 0.77,
+          "pr_auc": 0.8756222498078627,
+          "oracle_f1": 0.04477611940298507,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.41721854304635764,
+          "fn": 166,
+          "fp": 10,
+          "tp": 63,
+          "threshold": 0.77,
+          "pr_auc": 0.8848780724674914,
+          "oracle_f1": 0.9220489977728286,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.0,
+          "fn": 14,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.77,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9961538461538462,
+      "seed": 2,
+      "fit_s": 3.8951222896575928
+    }
+  ],
+  "HiGT-Bot v2 (x+grp)": [
+    {
+      "all": {
+        "f1": 0.4032073310423826,
+        "fn": 501,
+        "fp": 20,
+        "tp": 176,
+        "threshold": 0.68,
+        "pr_auc": 0.930207558880741,
+        "oracle_f1": 0.8657187993680885,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 6,
+          "tp": 0,
+          "threshold": 0.68,
+          "pr_auc": 0.7950790424405696,
+          "oracle_f1": 0.8260869565217391,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.68,
+          "pr_auc": 1.0,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015625,
+          "fn": 124,
+          "fp": 2,
+          "tp": 1,
+          "threshold": 0.68,
+          "pr_auc": 0.9137688674985791,
+          "oracle_f1": 0.6349206349206349,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.4066666666666667,
+          "fn": 168,
+          "fp": 10,
+          "tp": 61,
+          "threshold": 0.68,
+          "pr_auc": 0.8768432628928544,
+          "oracle_f1": 0.9244444444444444,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.0,
+          "fn": 14,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.68,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9942473633748802,
+      "seed": 42,
+      "fit_s": 4.639285564422607
+    },
+    {
+      "all": {
+        "f1": 0.40778923253150057,
+        "fn": 499,
+        "fp": 18,
+        "tp": 178,
+        "threshold": 0.8300000000000001,
+        "pr_auc": 0.932139525313428,
+        "oracle_f1": 0.7616580310880829,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 6,
+          "tp": 0,
+          "threshold": 0.8300000000000001,
+          "pr_auc": 0.7996833384327162,
+          "oracle_f1": 0.43795620437956206,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.8300000000000001,
+          "pr_auc": 1.0,
+          "oracle_f1": 0.991304347826087,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015873015873015872,
+          "fn": 124,
+          "fp": 0,
+          "tp": 1,
+          "threshold": 0.8300000000000001,
+          "pr_auc": 0.9223584540338312,
+          "oracle_f1": 0.5901639344262295,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.41721854304635764,
+          "fn": 166,
+          "fp": 10,
+          "tp": 63,
+          "threshold": 0.8300000000000001,
+          "pr_auc": 0.8894054130349657,
+          "oracle_f1": 0.9004524886877828,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.0,
+          "fn": 14,
+          "fp": 0,
+          "tp": 0,
+          "threshold": 0.8300000000000001,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9942363112391931,
+      "seed": 1,
+      "fit_s": 4.396251440048218
+    },
+    {
+      "all": {
+        "f1": 0.4248587570621469,
+        "fn": 489,
+        "fp": 20,
+        "tp": 188,
+        "threshold": 0.65,
+        "pr_auc": 0.9326925241374453,
+        "oracle_f1": 0.6813996316758748,
+        "n": 1965,
+        "n_pos": 677,
+        "prevalence": 0.344529262086514
+      },
+      "per_scenario": {
+        "medbiot-bashlite_mal_CC_all": {
+          "f1": 0.0,
+          "fn": 195,
+          "fp": 6,
+          "tp": 0,
+          "threshold": 0.65,
+          "pr_auc": 0.7795489692320664,
+          "oracle_f1": 0.009259259259259259,
+          "n": 297,
+          "n_pos": 195,
+          "prevalence": 0.6565656565656566
+        },
+        "medbiot-bashlite_mal_spread_all": {
+          "f1": 0.991304347826087,
+          "fn": 0,
+          "fp": 2,
+          "tp": 114,
+          "threshold": 0.65,
+          "pr_auc": 1.0,
+          "oracle_f1": 0.9956331877729258,
+          "n": 1200,
+          "n_pos": 114,
+          "prevalence": 0.095
+        },
+        "medbiot-mirai_mal_CC_all": {
+          "f1": 0.015625,
+          "fn": 124,
+          "fp": 2,
+          "tp": 1,
+          "threshold": 0.65,
+          "pr_auc": 0.9243184950285486,
+          "oracle_f1": 0.40993788819875776,
+          "n": 150,
+          "n_pos": 125,
+          "prevalence": 0.8333333333333334
+        },
+        "medbiot-mirai_mal_spread_all": {
+          "f1": 0.44299674267100975,
+          "fn": 161,
+          "fp": 10,
+          "tp": 68,
+          "threshold": 0.65,
+          "pr_auc": 0.9077838671125661,
+          "oracle_f1": 0.9244444444444444,
+          "n": 302,
+          "n_pos": 229,
+          "prevalence": 0.7582781456953642
+        },
+        "medbiot-torii_mal_all": {
+          "f1": 0.5263157894736842,
+          "fn": 9,
+          "fp": 0,
+          "tp": 5,
+          "threshold": 0.65,
+          "pr_auc": 1.0,
+          "oracle_f1": 1.0,
+          "n": 16,
+          "n_pos": 14,
+          "prevalence": 0.875
+        }
+      },
+      "val_f1": 0.9942473633748802,
+      "seed": 2,
+      "fit_s": 4.2558066844940186
+    }
+  ]
+}

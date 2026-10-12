@@ -1,0 +1,36 @@
+[ctu13] train: 2709 windows, 208253 nodes, 2948 bots (67s)
+[ctu13] val: 671 windows, 48193 nodes, 707 bots (15s)
+[ctu13] test: 1560 windows, 29316 nodes, 1154 bots (52s)
+[ctu13] RF tuned               seed 42: F1 0.467 PR 0.269 FN 30 FP 2531 thr 0.10 oracle 0.476
+[ctu13] RF tuned               seed 1: F1 0.353 PR 0.264 FN 425 FP 2253 thr 0.45 oracle 0.476
+[ctu13] RF tuned               seed 2: F1 0.471 PR 0.278 FN 20 FP 2530 thr 0.12 oracle 0.476
+[ctu13] XGB[x]                 seed 42: F1 0.404 PR 0.201 FN 232 FP 2491 thr 0.03 oracle 0.413
+[ctu13] XGB[x]                 seed 1: F1 0.367 PR 0.202 FN 336 FP 2488 thr 0.03 oracle 0.413
+[ctu13] XGB[x]                 seed 2: F1 0.388 PR 0.206 FN 278 FP 2484 thr 0.03 oracle 0.419
+[ctu13] HiGT-Bot v2 (x+grp)    seed 42: F1 0.261 PR 0.214 FN 658 FP 2144 thr 0.77 oracle 0.376
+[ctu13] HiGT-Bot v2 (x+grp)    seed 1: F1 0.372 PR 0.217 FN 330 FP 2458 thr 0.05 oracle 0.380
+[ctu13] HiGT-Bot v2 (x+grp)    seed 2: F1 0.373 PR 0.220 FN 324 FP 2463 thr 0.04 oracle 0.381
+[iot23] train: 1276 windows, 23236 nodes, 1218 bots (43s)
+[iot23] val: 314 windows, 7475 nodes, 501 bots (10s)
+[iot23] test: 3351 windows, 255352 nodes, 3084 bots (82s)
+[iot23] RF tuned               seed 42: F1 0.529 PR 0.953 FN 1964 FP 27 thr 0.56 oracle 0.912
+[iot23] RF tuned               seed 1: F1 0.779 PR 0.960 FN 1020 FP 148 thr 0.40 oracle 0.914
+[iot23] RF tuned               seed 2: F1 0.789 PR 0.952 FN 971 FP 159 thr 0.38 oracle 0.914
+[iot23] XGB[x]                 seed 42: F1 0.917 PR 0.951 FN 355 FP 142 thr 0.90 oracle 0.930
+[iot23] XGB[x]                 seed 1: F1 0.926 PR 0.957 FN 295 FP 154 thr 0.75 oracle 0.926
+[iot23] XGB[x]                 seed 2: F1 0.914 PR 0.944 FN 377 FP 135 thr 0.89 oracle 0.930
+[iot23] HiGT-Bot v2 (x+grp)    seed 42: F1 0.695 PR 0.880 FN 1332 FP 208 thr 0.71 oracle 0.903
+[iot23] HiGT-Bot v2 (x+grp)    seed 1: F1 0.571 PR 0.921 FN 1822 FP 75 thr 0.78 oracle 0.896
+[iot23] HiGT-Bot v2 (x+grp)    seed 2: F1 0.238 PR 0.890 FN 2658 FP 64 thr 0.86 oracle 0.897
+[medbiot] train: 3921 windows, 228691 nodes, 3174 bots (108s)
+[medbiot] val: 973 windows, 55472 nodes, 1042 bots (24s)
+[medbiot] test: 43 windows, 1965 nodes, 677 bots (1s)
+[medbiot] RF tuned               seed 42: F1 0.367 PR 0.932 FN 521 FP 16 thr 0.41 oracle 0.944
+[medbiot] RF tuned               seed 1: F1 0.398 PR 0.930 FN 505 FP 16 thr 0.35 oracle 0.945
+[medbiot] RF tuned               seed 2: F1 0.366 PR 0.934 FN 522 FP 14 thr 0.42 oracle 0.949
+[medbiot] XGB[x]                 seed 42: F1 0.412 PR 0.921 FN 496 FP 20 thr 0.75 oracle 0.633
+[medbiot] XGB[x]                 seed 1: F1 0.398 PR 0.923 FN 504 FP 19 thr 0.81 oracle 0.639
+[medbiot] XGB[x]                 seed 2: F1 0.407 PR 0.922 FN 499 FP 19 thr 0.77 oracle 0.639
+[medbiot] HiGT-Bot v2 (x+grp)    seed 42: F1 0.403 PR 0.930 FN 501 FP 20 thr 0.68 oracle 0.866
+[medbiot] HiGT-Bot v2 (x+grp)    seed 1: F1 0.408 PR 0.932 FN 499 FP 18 thr 0.83 oracle 0.762
+[medbiot] HiGT-Bot v2 (x+grp)    seed 2: F1 0.425 PR 0.933 FN 489 FP 20 thr 0.65 oracle 0.681

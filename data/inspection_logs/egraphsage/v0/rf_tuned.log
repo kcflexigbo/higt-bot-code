@@ -1,0 +1,59 @@
+Loading split v1 ...
+  train graphs=2796  val graphs=926  test graphs=1232
+  nodes:  train=172,374  val=55,049  test=59,210
+  bot frac train=0.7056  val=0.7164  test=0.6935
+
+Fitting RandomForest(n=500, max_depth=None) ...
+  fit in 10.4s
+  threshold tuned on val F1: 0.24
+
+=== val ===
+  n           55,049    n_pos   39,439
+  accuracy  0.9484
+  precision 0.9355
+  recall    0.9968
+  F1        0.9652
+  PR-AUC    0.9591
+  ROC-AUC   0.9312
+  confusion [[tn=12900 fp=2710]
+             [fn=128 tp=39311]]
+
+=== test ===
+  n           59,210    n_pos   41,063
+  accuracy  0.9470
+  precision 0.9307
+  recall    0.9978
+  F1        0.9631
+  PR-AUC    0.9600
+  ROC-AUC   0.9391
+  confusion [[tn=15095 fp=3052]
+             [fn=89 tp=40974]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860    620  0.9655   0.9940
+  ctu13-10                           1,048    147  0.6122   0.6453
+  ctu13-13                             654    159  0.8596   0.9714
+  ctu13-2                              298    216  0.9594   0.9982
+  ctu13-3                            1,869     25  0.3654   0.2320
+  ctu13-4                              351     90  0.8072   0.9882
+  ctu13-6                              167     71  0.9200   0.9895
+  ctu13-8                              724     95  0.7705   0.9924
+  ctu13-9                            2,611  2,256  0.9852   0.9987
+  iot23-1-1                         34,069  31,339  0.9608   0.9239
+  iot23-17-1                           484    388  0.9974   1.0000
+  iot23-3-1                            152    152  0.9967   1.0000
+  iot23-33-1                           142    120  0.9833   0.9829
+  iot23-35-1                         9,905     31  0.6923   0.5436
+  iot23-48-1                         3,711  3,663  0.9999   1.0000
+  iot23-7-1                             93     12  0.8462   0.9833
+  iot23-8-1                            879    642  1.0000   1.0000
+  iot23-9-1                            153     21  0.8077   0.9936
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800    776  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              52     52  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116    116  1.0000   1.0000
+  medbiot-torii_mal_all                 16     16  1.0000   1.0000
+
+wrote data\inspection_logs\egraphsage\v0\rf_tuned.json
+wrote data\inspection_logs\egraphsage\v0\rf_tuned_preds.npz

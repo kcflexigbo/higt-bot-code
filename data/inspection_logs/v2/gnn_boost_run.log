@@ -1,0 +1,20 @@
+nodes 172374 55049 59210 bots 2409 899 1607
+seed 42 XGB [x]  F1 0.945 PR 0.986 FN 69 FP 109
+seed 42 XGB [x+nbr]  F1 0.966 PR 0.984 FN 48 FP 61
+seed 42 XGB [dirgnn]  F1 0.896 PR 0.979 FN 288 FP 19
+seed 42 XGB [x+dirgnn]  F1 0.896 PR 0.989 FN 292 FP 13
+seed 42 XGB [x+gnn (undirected ctrl)]  F1 0.933 PR 0.989 FN 165 FP 41
+seed 42 XGB [x+nbr+dirgnn]  F1 0.913 PR 0.992 FN 250 FP 9
+seed 1 XGB [x]  F1 0.946 PR 0.986 FN 63 FP 113
+seed 1 XGB [x+nbr]  F1 0.958 PR 0.985 FN 74 FP 62
+seed 1 XGB [dirgnn]  F1 0.950 PR 0.988 FN 98 FP 60
+seed 1 XGB [x+dirgnn]  F1 0.951 PR 0.990 FN 94 FP 63
+seed 1 XGB [x+gnn (undirected ctrl)]  F1 0.921 PR 0.987 FN 199 FP 42
+seed 1 XGB [x+nbr+dirgnn]  F1 0.951 PR 0.990 FN 88 FP 68
+seed 2 XGB [x]  F1 0.949 PR 0.987 FN 66 FP 98
+seed 2 XGB [x+nbr]  F1 0.969 PR 0.983 FN 25 FP 76
+seed 2 XGB [dirgnn]  F1 0.893 PR 0.983 FN 296 FP 17
+seed 2 XGB [x+dirgnn]  F1 0.896 PR 0.985 FN 287 FP 18
+seed 2 XGB [x+gnn (undirected ctrl)]  F1 0.947 PR 0.989 FN 115 FP 53
+seed 2 XGB [x+nbr+dirgnn]  F1 0.905 PR 0.989 FN 268 FP 14
+wrote data\inspection_logs\v2\gnn_boost\gnn_boost.md

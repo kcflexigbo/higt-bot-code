@@ -1,0 +1,18 @@
+# Edge-drop robustness and inference cost (corrected labels, v3 features)
+
+Edges dropped uniformly at random from the test graphs at inference (seed 42), no retraining. HiGT-Bot v2: grp recomputed from the perturbed graph, x unchanged (computed from flows). Directed HiGT-Bot: argmax decision as in phase8_robustness.py.
+
+| Edge drop | v2 F1 | v2 FN / FP | directed HiGT-Bot F1 | HiGT-Bot FN / FP |
+|---|---|---|---|---|
+| 0% | 0.9799 | 47 / 17 | 0.9379 | 156 / 36 |
+| 5% | 0.9786 | 49 / 19 | 0.9337 | 164 / 41 |
+| 10% | 0.9786 | 50 / 18 | 0.9259 | 182 / 46 |
+| 20% | 0.9773 | 54 / 18 | 0.9226 | 188 / 50 |
+| 30% | 0.9760 | 59 / 17 | 0.9187 | 189 / 62 |
+
+| Model | Size | Median ms / window | p95 ms / window | Device |
+|---|---|---|---|---|
+| HiGT-Bot v2 (grp block + trees) | 600 trees | 53.27 | 73.63 | CPU, 1 thread |
+| HiGT-Bot, directed (cached encoder) | 1,503,239 params | 18.24 | 23.27 | cuda |
+
+Both exclude the shared preprocessing (flow parsing, host features x; the encoder for HiGT-Bot).

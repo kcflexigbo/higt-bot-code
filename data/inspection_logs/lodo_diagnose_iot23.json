@@ -11,7 +11,7 @@
     "proba_mean": 0.4622139632701874,
     "proba_std": 0.47325876355171204,
     "proba_median": 0.11439426243305206,
-    "proba_unique_values_6dp": 6171,
+    "proba_unique_values_6dp": 6172,
     "hist_bins": [
       0.0,
       0.001,
@@ -46,7 +46,7 @@
     "proba_bot_std": 0.06278765201568604,
     "proba_bot_min": 0.16794155538082123,
     "proba_bot_max": 1.0,
-    "proba_benign_mean": 0.025745978578925133,
+    "proba_benign_mean": 0.025745976716279984,
     "proba_benign_median": 0.0034910899121314287,
     "proba_benign_std": 0.07454656064510345,
     "proba_benign_min": 0.00014659838052466512,
@@ -65,7 +65,7 @@
     "proba_mean": 0.9628382325172424,
     "proba_std": 0.06627750396728516,
     "proba_median": 0.9756714701652527,
-    "proba_unique_values_6dp": 33252,
+    "proba_unique_values_6dp": 33248,
     "hist_bins": [
       0.0,
       0.001,
@@ -97,7 +97,7 @@
     ],
     "proba_bot_mean": 0.9650251865386963,
     "proba_bot_median": 0.9761703610420227,
-    "proba_bot_std": 0.058509331196546555,
+    "proba_bot_std": 0.058509327471256256,
     "proba_bot_min": 0.0,
     "proba_bot_max": 0.9999995231628418,
     "proba_benign_mean": 0.956556499004364,
@@ -105,8 +105,8 @@
     "proba_benign_std": 0.08440179377794266,
     "proba_benign_min": 0.0,
     "proba_benign_max": 0.9998737573623657,
-    "pr_auc": 0.7980042392463184,
-    "roc_auc": 0.6429081626343157,
+    "pr_auc": 0.7980042171184724,
+    "roc_auc": 0.6429081607528961,
     "f1_at_0.5": 0.8501782571415678
   },
   "threshold_tuning": {

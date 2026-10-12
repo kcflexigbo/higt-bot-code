@@ -1,0 +1,186 @@
+{
+  "ctu13-1": {
+    "any_pairs": 10914,
+    "any_kept": 2308,
+    "src_pairs": 58,
+    "src_kept": 58,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 40961
+  },
+  "ctu13-2": {
+    "any_pairs": 4622,
+    "any_kept": 920,
+    "src_pairs": 43,
+    "src_kept": 43,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 20941
+  },
+  "ctu13-3": {
+    "any_pairs": 27024,
+    "any_kept": 191,
+    "src_pairs": 245,
+    "src_kept": 175,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 26822
+  },
+  "ctu13-4": {
+    "any_pairs": 838,
+    "any_kept": 136,
+    "src_pairs": 32,
+    "src_kept": 25,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 2580
+  },
+  "ctu13-6": {
+    "any_pairs": 2774,
+    "any_kept": 462,
+    "src_pairs": 27,
+    "src_kept": 25,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 4630
+  },
+  "ctu13-8": {
+    "any_pairs": 5373,
+    "any_kept": 519,
+    "src_pairs": 228,
+    "src_kept": 224,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 6127
+  },
+  "ctu13-9": {
+    "any_pairs": 34229,
+    "any_kept": 4896,
+    "src_pairs": 322,
+    "src_kept": 290,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 184987
+  },
+  "ctu13-13": {
+    "any_pairs": 7230,
+    "any_kept": 1384,
+    "src_pairs": 196,
+    "src_kept": 196,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 40003
+  },
+  "iot23-1-1": {
+    "any_pairs": 192787,
+    "any_kept": 166845,
+    "src_pairs": 1343,
+    "src_kept": 1343,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 539473
+  },
+  "iot23-3-1": {
+    "any_pairs": 64354,
+    "any_kept": 774,
+    "src_pairs": 432,
+    "src_kept": 282,
+    "src_pairs_in_unbuilt_windows": 149,
+    "bot_flows": 151567
+  },
+  "iot23-7-1": {
+    "any_pairs": 11333431,
+    "any_kept": 432,
+    "src_pairs": 287,
+    "src_kept": 287,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 11378759
+  },
+  "iot23-9-1": {
+    "any_pairs": 6355508,
+    "any_kept": 382,
+    "src_pairs": 234,
+    "src_kept": 234,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 6355745
+  },
+  "iot23-17-1": {
+    "any_pairs": 54588477,
+    "any_kept": 1745,
+    "src_pairs": 289,
+    "src_kept": 289,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 54628417
+  },
+  "iot23-33-1": {
+    "any_pairs": 53039287,
+    "any_kept": 749,
+    "src_pairs": 288,
+    "src_kept": 288,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 53073800
+  },
+  "iot23-35-1": {
+    "any_pairs": 61,
+    "any_kept": 53,
+    "src_pairs": 30,
+    "src_kept": 29,
+    "src_pairs_in_unbuilt_windows": 1,
+    "bot_flows": 2185398
+  },
+  "iot23-48-1": {
+    "any_pairs": 1728330,
+    "any_kept": 18126,
+    "src_pairs": 118,
+    "src_kept": 118,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 3390604
+  },
+  "medbiot-bashlite_mal_spread_all": {
+    "any_pairs": 478061,
+    "any_kept": 1200,
+    "src_pairs": 682,
+    "src_kept": 151,
+    "src_pairs_in_unbuilt_windows": 2,
+    "bot_flows": 755484
+  },
+  "medbiot-bashlite_mal_CC_all": {
+    "any_pairs": 658,
+    "any_kept": 297,
+    "src_pairs": 250,
+    "src_kept": 217,
+    "src_pairs_in_unbuilt_windows": 23,
+    "bot_flows": 3879
+  },
+  "medbiot-mirai_mal_spread_all": {
+    "any_pairs": 436,
+    "any_kept": 302,
+    "src_pairs": 272,
+    "src_kept": 245,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 35652
+  },
+  "medbiot-mirai_mal_CC_all": {
+    "any_pairs": 432,
+    "any_kept": 150,
+    "src_pairs": 260,
+    "src_kept": 133,
+    "src_pairs_in_unbuilt_windows": 126,
+    "bot_flows": 1193
+  },
+  "ctu13-10": {
+    "any_pairs": 314,
+    "any_kept": 156,
+    "src_pairs": 205,
+    "src_kept": 118,
+    "src_pairs_in_unbuilt_windows": 0,
+    "bot_flows": 106352
+  },
+  "iot23-8-1": {
+    "any_pairs": 827,
+    "any_kept": 642,
+    "src_pairs": 276,
+    "src_kept": 214,
+    "src_pairs_in_unbuilt_windows": 62,
+    "bot_flows": 8222
+  },
+  "medbiot-torii_mal_all": {
+    "any_pairs": 54,
+    "any_kept": 16,
+    "src_pairs": 34,
+    "src_kept": 14,
+    "src_pairs_in_unbuilt_windows": 20,
+    "bot_flows": 102
+  }
+}

@@ -1,0 +1,48 @@
+device: cuda
+train=3921 val=973 test=43
+fitting edge/node scalers + class weights (graphs only) ...
+lazy flow_seq datasets ready  raw_feat_dim=9
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+TemporalGINE params: 181,381  encoder_chunk=64
+[t-gine] class weights (benign, bot) = (0.5070371634954349, 36.02567737870196)
+[t-gine] grad_accum_steps=8  effective_batch=16
+[t-gine] using focal loss gamma=2.0  alpha=[0.5070371627807617, 36.02567672729492]
+[t-gine] epoch   1  train_loss 0.0274  val_F1 0.8755  best 0.8755  lr 1.0e-03  *  156.1s
+[t-gine] epoch   2  train_loss 0.0097  val_F1 0.7826  best 0.8755  lr 1.0e-03     156.1s
+[t-gine] epoch   3  train_loss 0.0061  val_F1 0.9029  best 0.9029  lr 1.0e-03  *  155.0s
+[t-gine] epoch   4  train_loss 0.0067  val_F1 0.9242  best 0.9242  lr 1.0e-03  *  153.0s
+[t-gine] epoch   5  train_loss 0.0046  val_F1 0.9582  best 0.9582  lr 1.0e-03  *  157.2s
+[t-gine] epoch   6  train_loss 0.0057  val_F1 0.9481  best 0.9582  lr 1.0e-03     155.4s
+[t-gine] epoch   7  train_loss 0.0037  val_F1 0.9720  best 0.9720  lr 1.0e-03  *  155.4s
+[t-gine] epoch   8  train_loss 0.0047  val_F1 0.9242  best 0.9720  lr 1.0e-03     157.3s
+[t-gine] epoch   9  train_loss 0.0039  val_F1 0.9698  best 0.9720  lr 1.0e-03     155.5s
+[t-gine] epoch  10  train_loss 0.0030  val_F1 0.9733  best 0.9733  lr 1.0e-03  *  157.3s
+[t-gine] epoch  11  train_loss 0.0025  val_F1 0.8879  best 0.9733  lr 1.0e-03     158.3s
+[t-gine] epoch  12  train_loss 0.0018  val_F1 0.9716  best 0.9733  lr 1.0e-03     166.3s
+[t-gine] epoch  13  train_loss 0.0043  val_F1 0.9747  best 0.9747  lr 1.0e-03  *  163.5s
+[t-gine] epoch  14  train_loss 0.0029  val_F1 0.9443  best 0.9747  lr 1.0e-03     164.0s
+[t-gine] epoch  15  train_loss 0.0034  val_F1 0.9525  best 0.9747  lr 1.0e-03     163.9s
+[t-gine] epoch  16  train_loss 0.0016  val_F1 0.9525  best 0.9747  lr 1.0e-03     164.1s
+[t-gine] epoch  17  train_loss 0.0035  val_F1 0.9229  best 0.9747  lr 1.0e-03     163.6s
+[t-gine] epoch  18  train_loss 0.0039  val_F1 0.9582  best 0.9747  lr 1.0e-03     162.9s
+[t-gine] epoch  19  train_loss 0.0016  val_F1 0.9525  best 0.9747  lr 5.0e-04     182.1s
+[t-gine] epoch  20  train_loss 0.0010  val_F1 0.9734  best 0.9747  lr 5.0e-04     163.6s
+[t-gine] epoch  21  train_loss 0.0017  val_F1 0.9524  best 0.9747  lr 5.0e-04     163.2s
+[t-gine] epoch  22  train_loss 0.0010  val_F1 0.9648  best 0.9747  lr 5.0e-04     164.5s
+[t-gine] epoch  23  train_loss 0.0012  val_F1 0.9752  best 0.9752  lr 5.0e-04  *  164.6s
+[t-gine] epoch  24  train_loss 0.0012  val_F1 0.9729  best 0.9752  lr 5.0e-04     164.2s
+[t-gine] epoch  25  train_loss 0.0009  val_F1 0.9729  best 0.9752  lr 5.0e-04     160.1s
+[t-gine] epoch  26  train_loss 0.0026  val_F1 0.9747  best 0.9752  lr 5.0e-04     153.8s
+[t-gine] epoch  27  train_loss 0.0009  val_F1 0.9720  best 0.9752  lr 5.0e-04     149.2s
+[t-gine] epoch  28  train_loss 0.0012  val_F1 0.9480  best 0.9752  lr 5.0e-04     147.5s
+[t-gine] epoch  29  train_loss 0.0011  val_F1 0.9635  best 0.9752  lr 2.5e-04     148.6s
+[t-gine] epoch  30  train_loss 0.0009  val_F1 0.9747  best 0.9752  lr 2.5e-04     133.4s
+[t-gine] epoch  31  train_loss 0.0005  val_F1 0.9707  best 0.9752  lr 2.5e-04     94.3s
+[t-gine] epoch  32  train_loss 0.0005  val_F1 0.9761  best 0.9761  lr 2.5e-04  *  94.6s
+[t-gine] epoch  33  train_loss 0.0005  val_F1 0.9765  best 0.9765  lr 2.5e-04  *  95.5s
+[t-gine] epoch  34  train_loss 0.0006  val_F1 0.9765  best 0.9765  lr 2.5e-04     95.3s
+[t-gine] epoch  35  train_loss 0.0008  val_F1 0.9757  best 0.9765  lr 2.5e-04     120.5s
+[t-gine] epoch  36  train_loss 0.0007  val_F1 0.9757  best 0.9765  lr 2.5e-04     96.7s
+[t-gine] epoch  37  train_loss 0.0007  val_F1 0.9784  best 0.9784  lr 2.5e-04  *  96.6s
+[t-gine] epoch  38  train_loss 0.0011  val_F1 0.9711  best 0.9784  lr 2.5e-04     96.0s

@@ -1,0 +1,110 @@
+device: cuda
+train=2796 val=926 test=1232
+fitting edge/node scalers + class weights (graphs only) ...
+lazy flow_seq datasets ready  raw_feat_dim=9
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+TemporalGINE params: 181,381  encoder_chunk=64
+[t-gine] class weights (benign, bot) = (0.5070867531550614, 35.77708592777086)
+[t-gine] AMP enabled
+[t-gine] grad_accum_steps=8  effective_batch=16
+[t-gine] using focal loss gamma=2.0  alpha=[0.5070867538452148, 35.77708435058594]
+[t-gine] epoch   1  train_loss 0.0655  val_F1 0.8183  best 0.8183  lr 1.0e-03  *  101.9s
+[t-gine] epoch   2  train_loss 0.0126  val_F1 0.9525  best 0.9525  lr 1.0e-03  *  53.2s
+[t-gine] epoch   3  train_loss 0.0068  val_F1 0.9439  best 0.9525  lr 1.0e-03     53.3s
+[t-gine] epoch   4  train_loss 0.0080  val_F1 0.9536  best 0.9536  lr 1.0e-03  *  54.2s
+[t-gine] epoch   5  train_loss 0.0068  val_F1 0.7835  best 0.9536  lr 1.0e-03     54.0s
+[t-gine] epoch   6  train_loss 0.0053  val_F1 0.9075  best 0.9536  lr 1.0e-03     53.7s
+[t-gine] epoch   7  train_loss 0.0086  val_F1 0.9129  best 0.9536  lr 1.0e-03     57.5s
+[t-gine] epoch   8  train_loss 0.0053  val_F1 0.8825  best 0.9536  lr 1.0e-03     52.6s
+[t-gine] epoch   9  train_loss 0.0078  val_F1 0.9470  best 0.9536  lr 1.0e-03     53.9s
+[t-gine] epoch  10  train_loss 0.0040  val_F1 0.9199  best 0.9536  lr 5.0e-04     54.6s
+[t-gine] epoch  11  train_loss 0.0029  val_F1 0.9230  best 0.9536  lr 5.0e-04     53.5s
+[t-gine] epoch  12  train_loss 0.0038  val_F1 0.9434  best 0.9536  lr 5.0e-04     53.7s
+[t-gine] epoch  13  train_loss 0.0020  val_F1 0.9444  best 0.9536  lr 5.0e-04     54.3s
+[t-gine] epoch  14  train_loss 0.0031  val_F1 0.9516  best 0.9536  lr 5.0e-04     56.2s
+[t-gine] epoch  15  train_loss 0.0028  val_F1 0.9505  best 0.9536  lr 5.0e-04     53.7s
+[t-gine] epoch  16  train_loss 0.0032  val_F1 0.9373  best 0.9536  lr 2.5e-04     53.9s
+[t-gine] epoch  17  train_loss 0.0022  val_F1 0.9470  best 0.9536  lr 2.5e-04     53.0s
+[t-gine] epoch  18  train_loss 0.0056  val_F1 0.9434  best 0.9536  lr 2.5e-04     54.1s
+[t-gine] epoch  19  train_loss 0.0016  val_F1 0.9511  best 0.9536  lr 2.5e-04     53.4s
+[t-gine] epoch  20  train_loss 0.0023  val_F1 0.9516  best 0.9536  lr 2.5e-04     53.9s
+[t-gine] epoch  21  train_loss 0.0027  val_F1 0.9378  best 0.9536  lr 2.5e-04     52.9s
+[t-gine] epoch  22  train_loss 0.0022  val_F1 0.9429  best 0.9536  lr 1.3e-04     52.5s
+[t-gine] epoch  23  train_loss 0.0020  val_F1 0.9471  best 0.9536  lr 1.3e-04     52.7s
+[t-gine] epoch  24  train_loss 0.0020  val_F1 0.9409  best 0.9536  lr 1.3e-04     50.0s
+[t-gine] early stopping at epoch 24 (no val_F1 improvement for 20 epochs)
+
+total fit 1509.4s  best val F1 0.9536
+
+=== val (temporal-gine) ===
+  n           55,049    n_pos      899
+  accuracy  0.9984
+  precision 0.9151
+  recall    0.9956
+  F1        0.9536
+  PR-AUC    0.9955
+  ROC-AUC   0.9999
+  confusion [[tn=54067 fp=83]
+             [fn=4 tp=895]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991     14  0.9655   1.0000
+  ctu13-13                             456     39  1.0000   1.0000
+  ctu13-2                              269     10  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314      7  0.7273   0.7708
+  ctu13-6                              136      5  1.0000   1.0000
+  ctu13-8                              518     47  0.9792   1.0000
+  ctu13-9                            2,463    120  0.9524   0.9999
+  iot23-1-1                         33,847    268  1.0000   1.0000
+  iot23-17-1                           499     57  1.0000   1.0000
+  iot23-3-1                            212     56  1.0000   1.0000
+  iot23-33-1                           236     57  1.0000   1.0000
+  iot23-35-1                         9,297      1  0.0345   0.5000
+  iot23-48-1                         4,028     23  1.0000   1.0000
+  iot23-7-1                            113     57  0.9913   1.0000
+  iot23-9-1                            137     48  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           37     33  0.9429   1.0000
+  medbiot-mirai_mal_CC_all              26     25  0.9804   1.0000
+  medbiot-mirai_mal_spread_all          43     32  0.9118   0.8974
+
+=== test (temporal-gine) ===
+  n           59,210    n_pos    1,607
+  accuracy  0.9973
+  precision 0.9408
+  recall    0.9596
+  F1        0.9501
+  PR-AUC    0.9852
+  ROC-AUC   0.9996
+  confusion [[tn=57506 fp=97]
+             [fn=65 tp=1542]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860     15  0.9091   1.0000
+  ctu13-10                           1,048    118  0.5567   0.6100
+  ctu13-13                             654     40  0.9877   1.0000
+  ctu13-2                              298     10  1.0000   1.0000
+  ctu13-3                            1,869    142  0.9930   1.0000
+  ctu13-4                              351      8  1.0000   1.0000
+  ctu13-6                              167      6  0.8571   1.0000
+  ctu13-8                              724     46  1.0000   1.0000
+  ctu13-9                            2,611    132  0.9813   0.9996
+  iot23-1-1                         34,069    270  1.0000   1.0000
+  iot23-17-1                           484     59  1.0000   1.0000
+  iot23-3-1                            152     57  1.0000   1.0000
+  iot23-33-1                           142     59  1.0000   1.0000
+  iot23-35-1                         9,905     16  0.4211   0.4825
+  iot23-48-1                         3,711     25  1.0000   1.0000
+  iot23-7-1                             93     59  0.9916   1.0000
+  iot23-8-1                            879    214  1.0000   1.0000
+  iot23-9-1                            153     49  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           56     51  0.9533   1.0000
+  medbiot-bashlite_mal_spread_all      800     76  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              52     48  0.9796   1.0000
+  medbiot-mirai_mal_spread_all         116     93  0.9538   0.9385
+  medbiot-torii_mal_all                 16     14  0.9333   1.0000
+saved experiments\v2\phase5\temporal_gine_skip.pt
+wrote data\inspection_logs\v2\phase5_temporal_gine_skip.json

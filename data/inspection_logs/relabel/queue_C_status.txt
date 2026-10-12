@@ -1,0 +1,16 @@
+start Sun, Oct 11, 2026  1:42:15 PM
+relabel done 13:45
+ok rf 13:46
+ok gine_seed2 13:49
+ok gine_seed42 13:50
+ok gine_seed1 13:52
+ok phase5_skip 15:28
+ok cache_embeddings 15:30
+ok phase6_sparse 15:57
+ok phase5_skip_seed2 16:06
+ok phase5_skip_seed1 16:11
+ok phase7_edge 16:25
+ok phase7_edge_seed1 16:42
+ok phase7_edge_seed2 17:29
+FAIL reeval 17:29
+DONE Sun, Oct 11, 2026  5:29:43 PM

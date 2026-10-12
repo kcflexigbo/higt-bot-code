@@ -1,0 +1,59 @@
+device: cuda
+canonical test set: 1232 graphs
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+
+=== Phase 5: TemporalGINE +skip ===
+  wrote data\inspection_logs\v2\predictions\t_gine_skip.npz
+  mixed-pool                        FP32 f1=0.9501  stored=0.9501  delta=+0.0000
+  mixed-pool                        FP32 pr_auc=0.9852  stored=0.9852  delta=-0.0000
+  mixed-pool                        FP32 roc_auc=0.9996  stored=0.9996  delta=+0.0000
+  mixed-pool                        FP32 accuracy=0.9973  stored=0.9973  delta=+0.0000
+  mixed-pool                        FP32 precision=0.9408  stored=0.9408  delta=+0.0000
+  mixed-pool                        FP32 recall=0.9596  stored=0.9596  delta=+0.0000
+
+=== Phase 6: SAGPool (hgt_sparse_baseline) ===
+  wrote data\inspection_logs\v2\predictions\sagpool.npz
+  mixed-pool                        FP32 f1=0.9418  stored=0.9418  delta=+0.0000
+  mixed-pool                        FP32 pr_auc=0.9242  stored=0.9242  delta=-0.0000
+  mixed-pool                        FP32 roc_auc=0.9408  stored=0.9408  delta=-0.0000
+  mixed-pool                        FP32 accuracy=0.9969  stored=0.9969  delta=+0.0000
+  mixed-pool                        FP32 precision=0.9747  stored=0.9747  delta=+0.0000
+  mixed-pool                        FP32 recall=0.9110  stored=0.9110  delta=+0.0000
+
+=== Phase 7: higt_bot_edge.pt ===
+  wrote data\inspection_logs\v2\predictions\higt_bot_edge.npz
+  mixed-pool higt_bot_edge.pt       FP32 f1=0.9517  stored=0.9517  delta=+0.0000
+  mixed-pool higt_bot_edge.pt       FP32 pr_auc=0.9488  stored=0.9488  delta=+0.0000
+  mixed-pool higt_bot_edge.pt       FP32 roc_auc=0.9716  stored=0.9716  delta=+0.0000
+  mixed-pool higt_bot_edge.pt       FP32 accuracy=0.9974  stored=0.9974  delta=+0.0000
+  mixed-pool higt_bot_edge.pt       FP32 precision=0.9660  stored=0.9660  delta=+0.0000
+  mixed-pool higt_bot_edge.pt       FP32 recall=0.9378  stored=0.9378  delta=+0.0000
+
+=== Phase 7: higt_bot_edge_seed1.pt ===
+  wrote data\inspection_logs\v2\predictions\higt_bot_edge_seed1.npz
+  mixed-pool higt_bot_edge_seed1.pt  FP32 f1=0.9300  stored=0.9300  delta=+0.0000
+  mixed-pool higt_bot_edge_seed1.pt  FP32 pr_auc=0.9410  stored=0.9410  delta=+0.0000
+  mixed-pool higt_bot_edge_seed1.pt  FP32 roc_auc=0.9701  stored=0.9701  delta=+0.0000
+  mixed-pool higt_bot_edge_seed1.pt  FP32 accuracy=0.9963  stored=0.9963  delta=+0.0000
+  mixed-pool higt_bot_edge_seed1.pt  FP32 precision=0.9608  stored=0.9608  delta=+0.0000
+  mixed-pool higt_bot_edge_seed1.pt  FP32 recall=0.9011  stored=0.9011  delta=+0.0000
+
+=== Phase 7: higt_bot_edge_seed2.pt ===
+  wrote data\inspection_logs\v2\predictions\higt_bot_edge_seed2.npz
+  mixed-pool higt_bot_edge_seed2.pt  FP32 f1=0.9300  stored=0.9300  delta=+0.0000
+  mixed-pool higt_bot_edge_seed2.pt  FP32 pr_auc=0.9399  stored=0.9399  delta=+0.0000
+  mixed-pool higt_bot_edge_seed2.pt  FP32 roc_auc=0.9628  stored=0.9628  delta=+0.0000
+  mixed-pool higt_bot_edge_seed2.pt  FP32 accuracy=0.9963  stored=0.9963  delta=+0.0000
+  mixed-pool higt_bot_edge_seed2.pt  FP32 precision=0.9477  stored=0.9477  delta=+0.0000
+  mixed-pool higt_bot_edge_seed2.pt  FP32 recall=0.9129  stored=0.9129  delta=+0.0000
+validation set: 926 graphs
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+  wrote data\inspection_logs\v2\predictions\t_gine_skip_val.npz
+  wrote data\inspection_logs\v2\predictions\sagpool_val.npz
+  wrote data\inspection_logs\v2\predictions\higt_bot_edge_val.npz
+  wrote data\inspection_logs\v2\predictions\higt_bot_edge_seed1_val.npz
+  wrote data\inspection_logs\v2\predictions\higt_bot_edge_seed2_val.npz
+
+wrote data\inspection_logs\v2\mixed_pool_fp32_audit.json

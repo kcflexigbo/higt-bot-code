@@ -1,0 +1,40 @@
+ok rf v0 19:33
+ok rf v1 19:35
+ok rf v2 19:35
+start v0 node seed42 gpu_mem=1062MiB 19:35
+ok v0 node seed42 19:36
+start v0 node seed1 gpu_mem=1068MiB 19:36
+ok v0 node seed1 19:37
+start v0 node seed2 gpu_mem=1070MiB 19:37
+ok v0 node seed2 19:38
+start v0 edge2node seed42 gpu_mem=1252MiB 19:38
+ok v0 edge2node seed42 19:39
+start v0 edge2node seed1 gpu_mem=1246MiB 19:39
+ok v0 edge2node seed1 19:40
+start v0 edge2node seed2 gpu_mem=1417MiB 19:40
+ok v0 edge2node seed2 19:41
+start v1 node seed42 gpu_mem=1249MiB 19:41
+ok v1 node seed42 19:43
+start v1 node seed1 gpu_mem=1078MiB 19:43
+ok v1 node seed1 19:45
+start v1 node seed2 gpu_mem=1420MiB 19:45
+ok v1 node seed2 19:47
+start v1 edge2node seed42 gpu_mem=1428MiB 19:47
+ok v1 edge2node seed42 19:50
+start v1 edge2node seed1 gpu_mem=1431MiB 19:50
+ok v1 edge2node seed1 19:56
+start v1 edge2node seed2 gpu_mem=1411MiB 19:56
+ok v1 edge2node seed2 19:58
+start v2 node seed42 gpu_mem=1415MiB 19:58
+ok v2 node seed42 20:01
+start v2 node seed1 gpu_mem=1252MiB 20:01
+ok v2 node seed1 20:05
+start v2 node seed2 gpu_mem=1261MiB 20:05
+ok v2 node seed2 20:09
+start v2 edge2node seed42 gpu_mem=1273MiB 20:09
+ok v2 edge2node seed42 20:11
+start v2 edge2node seed1 gpu_mem=1260MiB 20:11
+ok v2 edge2node seed1 20:12
+start v2 edge2node seed2 gpu_mem=901MiB 20:12
+ok v2 edge2node seed2 20:13
+DONE 20:13

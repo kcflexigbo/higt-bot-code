@@ -1,0 +1,124 @@
+device: cuda   graphs dir: data\graphs_src (HIGT_GRAPHS_DIR=data/graphs_src)
+  train graphs=2796  val graphs=926  test graphs=1232
+  train: bot nodes=2,213  bot nodes without outgoing edge=0
+  val: bot nodes=814  bot nodes without outgoing edge=0
+  test: bot nodes=1,380  bot nodes without outgoing edge=0
+  model = E-GraphSAGE[node]  params=71,426
+[egs-node] class weights (benign, bot) = (0.5065026651230305, 38.945774966109354)
+[egs-node] epoch   1  train_loss 0.5388  val_F1 0.4026  best 0.4026  lr 1.0e-03  *  3.4s
+[egs-node] epoch   2  train_loss 0.2513  val_F1 0.5307  best 0.5307  lr 1.0e-03  *  1.4s
+[egs-node] epoch   3  train_loss 0.1287  val_F1 0.4009  best 0.5307  lr 1.0e-03     1.4s
+[egs-node] epoch   4  train_loss 0.1222  val_F1 0.4714  best 0.5307  lr 1.0e-03     1.4s
+[egs-node] epoch   5  train_loss 0.0844  val_F1 0.6049  best 0.6049  lr 1.0e-03  *  1.4s
+[egs-node] epoch   6  train_loss 0.0931  val_F1 0.5019  best 0.6049  lr 1.0e-03     1.4s
+[egs-node] epoch   7  train_loss 0.0800  val_F1 0.5152  best 0.6049  lr 1.0e-03     1.5s
+[egs-node] epoch   8  train_loss 0.0704  val_F1 0.6065  best 0.6065  lr 1.0e-03  *  1.4s
+[egs-node] epoch   9  train_loss 0.0744  val_F1 0.5048  best 0.6065  lr 1.0e-03     1.4s
+[egs-node] epoch  10  train_loss 0.0710  val_F1 0.6654  best 0.6654  lr 1.0e-03  *  1.4s
+[egs-node] epoch  11  train_loss 0.0762  val_F1 0.5136  best 0.6654  lr 1.0e-03     1.4s
+[egs-node] epoch  12  train_loss 0.0584  val_F1 0.5607  best 0.6654  lr 1.0e-03     1.4s
+[egs-node] epoch  13  train_loss 0.0664  val_F1 0.4831  best 0.6654  lr 1.0e-03     1.4s
+[egs-node] epoch  14  train_loss 0.0606  val_F1 0.5856  best 0.6654  lr 1.0e-03     1.4s
+[egs-node] epoch  15  train_loss 0.0533  val_F1 0.6833  best 0.6833  lr 1.0e-03  *  1.4s
+[egs-node] epoch  16  train_loss 0.0660  val_F1 0.5865  best 0.6833  lr 1.0e-03     1.5s
+[egs-node] epoch  17  train_loss 0.0553  val_F1 0.5882  best 0.6833  lr 1.0e-03     1.4s
+[egs-node] epoch  18  train_loss 0.0561  val_F1 0.7713  best 0.7713  lr 1.0e-03  *  1.4s
+[egs-node] epoch  19  train_loss 0.0568  val_F1 0.0981  best 0.7713  lr 1.0e-03     1.4s
+[egs-node] epoch  20  train_loss 0.0580  val_F1 0.6605  best 0.7713  lr 1.0e-03     1.4s
+[egs-node] epoch  21  train_loss 0.0470  val_F1 0.5935  best 0.7713  lr 1.0e-03     1.4s
+[egs-node] epoch  22  train_loss 0.0503  val_F1 0.0959  best 0.7713  lr 1.0e-03     1.4s
+[egs-node] epoch  23  train_loss 0.0537  val_F1 0.5929  best 0.7713  lr 1.0e-03     1.4s
+[egs-node] epoch  24  train_loss 0.0459  val_F1 0.6771  best 0.7713  lr 5.0e-04     1.3s
+[egs-node] epoch  25  train_loss 0.0386  val_F1 0.6688  best 0.7713  lr 5.0e-04     1.4s
+[egs-node] epoch  26  train_loss 0.0361  val_F1 0.6400  best 0.7713  lr 5.0e-04     1.4s
+[egs-node] epoch  27  train_loss 0.0343  val_F1 0.5997  best 0.7713  lr 5.0e-04     1.4s
+[egs-node] epoch  28  train_loss 0.0317  val_F1 0.6733  best 0.7713  lr 5.0e-04     1.3s
+[egs-node] epoch  29  train_loss 0.0380  val_F1 0.7676  best 0.7713  lr 5.0e-04     1.4s
+[egs-node] epoch  30  train_loss 0.0341  val_F1 0.6676  best 0.7713  lr 2.5e-04     1.4s
+[egs-node] epoch  31  train_loss 0.0311  val_F1 0.6752  best 0.7713  lr 2.5e-04     1.5s
+[egs-node] epoch  32  train_loss 0.0310  val_F1 0.6761  best 0.7713  lr 2.5e-04     1.4s
+[egs-node] epoch  33  train_loss 0.0296  val_F1 0.6657  best 0.7713  lr 2.5e-04     1.4s
+[egs-node] epoch  34  train_loss 0.0279  val_F1 0.6746  best 0.7713  lr 2.5e-04     1.5s
+[egs-node] epoch  35  train_loss 0.0298  val_F1 0.6758  best 0.7713  lr 2.5e-04     1.4s
+[egs-node] epoch  36  train_loss 0.0277  val_F1 0.6825  best 0.7713  lr 1.3e-04     1.6s
+[egs-node] epoch  37  train_loss 0.0267  val_F1 0.7423  best 0.7713  lr 1.3e-04     1.4s
+[egs-node] epoch  38  train_loss 0.0268  val_F1 0.7323  best 0.7713  lr 1.3e-04     1.5s
+[egs-node] early stopping at epoch 38 (no val_F1 improvement for 20 epochs)
+
+total fit time 69.7s, best val F1 0.7713
+
+=== val (E-GraphSAGE node, t=0.5) ===
+  n           55,049    n_pos      814
+  accuracy  0.9924
+  precision 0.6967
+  recall    0.8636
+  F1        0.7713
+  PR-AUC    0.7498
+  ROC-AUC   0.9715
+  confusion [[tn=53929 fp=306]
+             [fn=111 tp=703]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991     14  0.4561   0.3201
+  ctu13-13                             456     39  0.9630   1.0000
+  ctu13-2                              269     10  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314      7  0.1212   0.0551
+  ctu13-6                              136      5  0.8889   0.8526
+  ctu13-8                              518     47  0.6861   0.6449
+  ctu13-9                            2,463    120  0.8081   0.8985
+  iot23-1-1                         33,847    268  0.7964   0.6767
+  iot23-17-1                           499     57  1.0000   1.0000
+  iot23-3-1                            212     56  0.5104   0.4324
+  iot23-33-1                           236     57  0.9231   0.9596
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028     23  1.0000   1.0000
+  iot23-7-1                            113     14  0.8462   0.8120
+  iot23-9-1                            137      1  0.1667   1.0000
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     33  0.9697   0.9383
+
+=== test (E-GraphSAGE node, t=0.5) ===
+  n           59,210    n_pos    1,380
+  accuracy  0.9867
+  precision 0.6867
+  recall    0.7862
+  F1        0.7331
+  PR-AUC    0.7216
+  ROC-AUC   0.9328
+  confusion [[tn=57335 fp=495]
+             [fn=295 tp=1085]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860     15  0.5172   0.3972
+  ctu13-10                           1,048    118  0.3515   0.4432
+  ctu13-13                             654     40  0.8081   0.8167
+  ctu13-2                              298     10  0.9524   1.0000
+  ctu13-3                            1,869     11  0.0690   0.0299
+  ctu13-4                              351      7  0.4516   0.8687
+  ctu13-6                              167      6  0.5714   0.6923
+  ctu13-8                              724     46  0.5576   0.5091
+  ctu13-9                            2,611    132  0.8075   0.9464
+  iot23-1-1                         34,069    270  0.6260   0.4709
+  iot23-17-1                           484     59  0.9748   0.9987
+  iot23-3-1                            152     57  0.5938   0.4023
+  iot23-33-1                           142     59  0.6923   0.7506
+  iot23-35-1                         9,905     15  0.7097   0.7926
+  iot23-48-1                         3,711     25  0.9796   0.9796
+  iot23-7-1                             93      6  0.7143   0.6846
+  iot23-8-1                            879    214  1.0000   1.0000
+  iot23-9-1                            153     10  0.5000   0.6356
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800     61  0.7194   0.6123
+  medbiot-mirai_mal_CC_all              52     51  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116     98  0.8555   0.9920
+  medbiot-torii_mal_all                 16     14  0.5714   0.8161
+
+val-tuned threshold 0.78: test F1 0.7536  fn=340 fp=340
+
+wrote data\inspection_logs\egraphsage\v1\node_seed1.json
+wrote data\inspection_logs\egraphsage\v1\node_seed1_preds.npz
+wrote data\inspection_logs\egraphsage\v1\node_seed1_preds_val.npz

@@ -1,0 +1,10 @@
+nodes 172374 55049 59210 bots 2409 899 1607
+RF   x          all: F1 0.936 PR 0.959 FN 67 FP 144  excl. bashlite_spread: F1 0.945 PR 0.960 FN 37 FP 137
+XGB  x          all: F1 0.947 PR 0.986 FN 66 FP 107  excl. bashlite_spread: F1 0.963 PR 0.990 FN 24 FP 92
+RF   x+nbr      all: F1 0.888 PR 0.947 FN 0 FP 407  excl. bashlite_spread: F1 0.892 PR 0.946 FN 0 FP 370
+XGB  x+nbr      all: F1 0.964 PR 0.984 FN 49 FP 66  excl. bashlite_spread: F1 0.964 PR 0.984 FN 47 FP 66
+RF   x+emb      all: F1 0.925 PR 0.990 FN 199 FP 28  excl. bashlite_spread: F1 0.928 PR 0.993 FN 199 FP 9
+XGB  x+emb      all: F1 0.951 PR 0.993 FN 142 FP 9  excl. bashlite_spread: F1 0.949 PR 0.994 FN 142 FP 9
+RF   x+nbr+emb  all: F1 0.963 PR 0.993 FN 101 FP 14  excl. bashlite_spread: F1 0.962 PR 0.994 FN 101 FP 12
+XGB  x+nbr+emb  all: F1 0.967 PR 0.996 FN 89 FP 14  excl. bashlite_spread: F1 0.967 PR 0.997 FN 89 FP 9
+wrote data\inspection_logs\v2\hybrid_trees.md

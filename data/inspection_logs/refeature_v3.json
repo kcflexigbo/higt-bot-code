@@ -1,0 +1,322 @@
+{
+  "ctu13-10": {
+    "windows": 58,
+    "nodes": 1048,
+    "nodes_changed": 220,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-3": {
+    "windows": 803,
+    "nodes": 7639,
+    "nodes_changed": 1124,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 162,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-1": {
+    "windows": 74,
+    "nodes": 3546,
+    "nodes_changed": 285,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-11": {
+    "windows": 5,
+    "nodes": 52,
+    "nodes_changed": 15,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-12": {
+    "windows": 16,
+    "nodes": 471,
+    "nodes_changed": 82,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 17,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-13": {
+    "windows": 198,
+    "nodes": 3123,
+    "nodes_changed": 492,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-2": {
+    "windows": 51,
+    "nodes": 1381,
+    "nodes_changed": 121,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-4": {
+    "windows": 51,
+    "nodes": 1352,
+    "nodes_changed": 189,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 1,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-5": {
+    "windows": 7,
+    "nodes": 252,
+    "nodes_changed": 29,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-6": {
+    "windows": 27,
+    "nodes": 832,
+    "nodes_changed": 99,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-7": {
+    "windows": 5,
+    "nodes": 89,
+    "nodes_changed": 20,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-8": {
+    "windows": 235,
+    "nodes": 4110,
+    "nodes_changed": 498,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 3,
+    "bots_fan_out_zero_after": 0
+  },
+  "ctu13-9": {
+    "windows": 63,
+    "nodes": 6285,
+    "nodes_changed": 490,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-1-1": {
+    "windows": 1343,
+    "nodes": 181905,
+    "nodes_changed": 1343,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-17-1": {
+    "windows": 289,
+    "nodes": 2318,
+    "nodes_changed": 289,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-20-1": {
+    "windows": 33,
+    "nodes": 164,
+    "nodes_changed": 25,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-21-1": {
+    "windows": 53,
+    "nodes": 140,
+    "nodes_changed": 53,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-3-1": {
+    "windows": 282,
+    "nodes": 865,
+    "nodes_changed": 280,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-33-1": {
+    "windows": 288,
+    "nodes": 1184,
+    "nodes_changed": 288,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-34-1": {
+    "windows": 79,
+    "nodes": 255,
+    "nodes_changed": 79,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-35-1": {
+    "windows": 288,
+    "nodes": 47924,
+    "nodes_changed": 288,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-36-1": {
+    "windows": 289,
+    "nodes": 806,
+    "nodes_changed": 289,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-39-1": {
+    "windows": 92,
+    "nodes": 939,
+    "nodes_changed": 92,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 1,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-42-1": {
+    "windows": 32,
+    "nodes": 116,
+    "nodes_changed": 32,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-43-1": {
+    "windows": 14,
+    "nodes": 4826,
+    "nodes_changed": 14,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-44-1": {
+    "windows": 1,
+    "nodes": 4,
+    "nodes_changed": 1,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-48-1": {
+    "windows": 118,
+    "nodes": 18379,
+    "nodes_changed": 118,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-49-1": {
+    "windows": 89,
+    "nodes": 192,
+    "nodes_changed": 89,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 1,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-52-1": {
+    "windows": 177,
+    "nodes": 217,
+    "nodes_changed": 177,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 141,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-7-1": {
+    "windows": 288,
+    "nodes": 928,
+    "nodes_changed": 291,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 45,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-8-1": {
+    "windows": 214,
+    "nodes": 879,
+    "nodes_changed": 214,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "iot23-9-1": {
+    "windows": 241,
+    "nodes": 970,
+    "nodes_changed": 241,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 22,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-bashlite_leg": {
+    "windows": 936,
+    "nodes": 6774,
+    "nodes_changed": 2481,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-bashlite_mal_CC_all": {
+    "windows": 22,
+    "nodes": 297,
+    "nodes_changed": 12,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-bashlite_mal_spread_all": {
+    "windows": 3,
+    "nodes": 1200,
+    "nodes_changed": 114,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 79,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-mirai_leg": {
+    "windows": 543,
+    "nodes": 3364,
+    "nodes_changed": 1145,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-mirai_mal_CC_all": {
+    "windows": 8,
+    "nodes": 150,
+    "nodes_changed": 6,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-mirai_mal_spread_all": {
+    "windows": 8,
+    "nodes": 302,
+    "nodes_changed": 39,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 3,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-torii_leg": {
+    "windows": 648,
+    "nodes": 4036,
+    "nodes_changed": 1546,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  },
+  "medbiot-torii_mal_all": {
+    "windows": 2,
+    "nodes": 16,
+    "nodes_changed": 0,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 0,
+    "bots_fan_out_zero_after": 0
+  }
+}

@@ -1,0 +1,120 @@
+device: cuda  amp=True  emb_dir=data\flow_embeddings_relabel  gt=edge layers=2 heads=4
+train=2796 val=926 test=1232
+fitting scalers + class weights ...
+HiGTBot params: 1,355,399
+focal loss gamma=2.0 alpha=[0.5065026879310608, 38.94577407836914]
+[higt-edge] epoch   1  ce 0.0319  val_F1 0.8008  best 0.8008  lr 5.0e-04  *  102.6s
+[higt-edge] epoch   2  ce 0.0700  val_F1 0.6540  best 0.8008  lr 5.0e-04     75.8s
+[higt-edge] epoch   3  ce 0.0070  val_F1 0.8936  best 0.8936  lr 5.0e-04  *  76.4s
+[higt-edge] epoch   4  ce 0.0098  val_F1 0.9273  best 0.9273  lr 5.0e-04  *  76.7s
+[higt-edge] epoch   5  ce 0.0053  val_F1 0.9478  best 0.9478  lr 5.0e-04  *  76.8s
+[higt-edge] epoch   6  ce 0.0043  val_F1 0.9428  best 0.9478  lr 5.0e-04     76.3s
+[higt-edge] epoch   7  ce 0.0038  val_F1 0.9049  best 0.9478  lr 5.0e-04     75.1s
+[higt-edge] epoch   8  ce 0.0036  val_F1 0.9359  best 0.9478  lr 5.0e-04     67.6s
+[higt-edge] epoch   9  ce 0.0029  val_F1 0.9484  best 0.9484  lr 5.0e-04  *  65.9s
+[higt-edge] epoch  10  ce 0.0021  val_F1 0.8800  best 0.9484  lr 5.0e-04     67.9s
+[higt-edge] epoch  11  ce 0.0056  val_F1 0.9104  best 0.9484  lr 5.0e-04     69.5s
+[higt-edge] epoch  12  ce 0.0016  val_F1 0.9540  best 0.9540  lr 5.0e-04  *  69.7s
+[higt-edge] epoch  13  ce 0.0019  val_F1 0.9545  best 0.9545  lr 5.0e-04  *  70.7s
+[higt-edge] epoch  14  ce 0.0020  val_F1 0.9511  best 0.9545  lr 5.0e-04     69.8s
+[higt-edge] epoch  15  ce 0.0033  val_F1 0.9219  best 0.9545  lr 5.0e-04     72.9s
+[higt-edge] epoch  16  ce 0.0016  val_F1 0.9556  best 0.9556  lr 5.0e-04  *  68.2s
+[higt-edge] epoch  17  ce 0.0023  val_F1 0.9446  best 0.9556  lr 5.0e-04     66.3s
+[higt-edge] epoch  18  ce 0.0018  val_F1 0.9222  best 0.9556  lr 5.0e-04     67.2s
+[higt-edge] epoch  19  ce 0.0018  val_F1 0.9478  best 0.9556  lr 5.0e-04     65.6s
+[higt-edge] epoch  20  ce 0.0038  val_F1 0.6694  best 0.9556  lr 5.0e-04     66.4s
+[higt-edge] epoch  21  ce 0.0014  val_F1 0.9557  best 0.9557  lr 5.0e-04  *  66.1s
+[higt-edge] epoch  22  ce 0.0033  val_F1 0.7539  best 0.9557  lr 2.5e-04     66.1s
+[higt-edge] epoch  23  ce 0.0023  val_F1 0.7827  best 0.9557  lr 2.5e-04     64.9s
+[higt-edge] epoch  24  ce 0.0012  val_F1 0.9546  best 0.9557  lr 2.5e-04     65.6s
+[higt-edge] epoch  25  ce 0.0010  val_F1 0.9812  best 0.9812  lr 2.5e-04  *  65.8s
+[higt-edge] epoch  26  ce 0.0024  val_F1 0.8895  best 0.9812  lr 2.5e-04     58.4s
+[higt-edge] epoch  27  ce 0.0016  val_F1 0.9454  best 0.9812  lr 2.5e-04     54.7s
+[higt-edge] epoch  28  ce 0.0017  val_F1 0.9205  best 0.9812  lr 2.5e-04     52.9s
+[higt-edge] epoch  29  ce 0.0013  val_F1 0.9500  best 0.9812  lr 2.5e-04     52.8s
+[higt-edge] epoch  30  ce 0.0017  val_F1 0.9434  best 0.9812  lr 2.5e-04     37.5s
+[higt-edge] epoch  31  ce 0.0010  val_F1 0.9489  best 0.9812  lr 1.3e-04     40.8s
+[higt-edge] epoch  32  ce 0.0023  val_F1 0.9314  best 0.9812  lr 1.3e-04     65.2s
+[higt-edge] epoch  33  ce 0.0009  val_F1 0.9516  best 0.9812  lr 1.3e-04     64.8s
+[higt-edge] epoch  34  ce 0.0014  val_F1 0.9207  best 0.9812  lr 1.3e-04     64.6s
+[higt-edge] epoch  35  ce 0.0008  val_F1 0.9369  best 0.9812  lr 1.3e-04     64.4s
+[higt-edge] epoch  36  ce 0.0011  val_F1 0.9440  best 0.9812  lr 1.3e-04     64.1s
+[higt-edge] epoch  37  ce 0.0008  val_F1 0.9528  best 0.9812  lr 6.3e-05     62.8s
+[higt-edge] epoch  38  ce 0.0007  val_F1 0.9523  best 0.9812  lr 6.3e-05     69.4s
+[higt-edge] epoch  39  ce 0.0008  val_F1 0.9557  best 0.9812  lr 6.3e-05     68.1s
+[higt-edge] epoch  40  ce 0.0006  val_F1 0.9523  best 0.9812  lr 6.3e-05     60.7s
+[higt-edge] early stop at epoch 40
+
+total fit 3264.4s  best val F1 0.9812
+
+=== val (higt-edge) ===
+  n           55,049    n_pos      814
+  accuracy  0.9994
+  precision 0.9711
+  recall    0.9914
+  F1        0.9812
+  PR-AUC    0.9963
+  ROC-AUC   0.9999
+  confusion [[tn=54211 fp=24]
+             [fn=7 tp=807]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991     14  0.9032   0.9128
+  ctu13-13                             456     39  1.0000   1.0000
+  ctu13-2                              269     10  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314      7  0.3636   0.5831
+  ctu13-6                              136      5  1.0000   1.0000
+  ctu13-8                              518     47  0.9792   0.9915
+  ctu13-9                            2,463    120  0.9959   1.0000
+  iot23-1-1                         33,847    268  1.0000   1.0000
+  iot23-17-1                           499     57  1.0000   1.0000
+  iot23-3-1                            212     56  1.0000   1.0000
+  iot23-33-1                           236     57  0.9913   1.0000
+  iot23-35-1                         9,297      0  0.0000      nan
+  iot23-48-1                         4,028     23  0.9545   1.0000
+  iot23-7-1                            113     14  1.0000   1.0000
+  iot23-9-1                            137      1  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           37     37  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     26  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     33  0.9851   1.0000
+
+=== test (higt-edge) ===
+  n           59,210    n_pos    1,380
+  accuracy  0.9852
+  precision 0.6201
+  recall    0.9449
+  F1        0.7488
+  PR-AUC    0.9177
+  ROC-AUC   0.9939
+  confusion [[tn=57031 fp=799]
+             [fn=76 tp=1304]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860     15  0.8667   0.9771
+  ctu13-10                           1,048    118  0.5550   0.4350
+  ctu13-13                             654     40  0.9877   1.0000
+  ctu13-2                              298     10  1.0000   1.0000
+  ctu13-3                            1,869     11  0.8000   0.8286
+  ctu13-4                              351      7  0.8571   0.9821
+  ctu13-6                              167      6  0.8571   0.9762
+  ctu13-8                              724     46  0.9892   1.0000
+  ctu13-9                            2,611    132  0.9562   0.9983
+  iot23-1-1                         34,069    270  1.0000   1.0000
+  iot23-17-1                           484     59  1.0000   1.0000
+  iot23-3-1                            152     57  1.0000   1.0000
+  iot23-33-1                           142     59  0.9915   1.0000
+  iot23-35-1                         9,905     15  0.7097   0.6644
+  iot23-48-1                         3,711     25  0.9362   1.0000
+  iot23-7-1                             93      6  0.9091   0.8889
+  iot23-8-1                            879    214  1.0000   1.0000
+  iot23-9-1                            153     10  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           56     56  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800     61  0.1417   0.7224
+  medbiot-mirai_mal_CC_all              52     51  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116     98  0.9949   1.0000
+  medbiot-torii_mal_all                 16     14  0.9333   0.9722
+saved experiments\relabel\phase7\higt_bot_edge.pt
+wrote data\inspection_logs\relabel\phase7_higt_bot_edge.json

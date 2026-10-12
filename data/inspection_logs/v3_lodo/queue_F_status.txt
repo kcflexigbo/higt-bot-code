@@ -1,0 +1,9 @@
+start Mon, Oct 12, 2026 12:59:17 PM
+FAIL trees 13:00
+FAIL tgine_ctu13 13:08
+trees_rerun_exit 0
+queue G start Mon, Oct 12, 2026  1:20:44 PM
+ok tgine_iot23 13:27
+iot23 training process exited 13:27; ckpt: temporal_gine_lodo_iot23_skip.pt
+ok tgine_ctu13 14:54
+queue H (resume after restart) start Mon, Oct 12, 2026 10:20:13 PM

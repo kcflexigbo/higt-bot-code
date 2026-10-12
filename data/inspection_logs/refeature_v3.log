@@ -1,0 +1,68 @@
+ctu13-1                            win=   74 nodes=   3546 changed=   285 mismatch=0 bots_fanout0 0->0
+ctu13-10                           already done
+ctu13-11                           win=    5 nodes=     52 changed=    15 mismatch=0 bots_fanout0 0->0
+ctu13-12                           win=   16 nodes=    471 changed=    82 mismatch=0 bots_fanout0 17->0
+ctu13-13                           win=  198 nodes=   3123 changed=   492 mismatch=0 bots_fanout0 0->0
+ctu13-2                            win=   51 nodes=   1381 changed=   121 mismatch=0 bots_fanout0 0->0
+ctu13-3                            already done
+ctu13-4                            win=   51 nodes=   1352 changed=   189 mismatch=0 bots_fanout0 1->0
+ctu13-5                            win=    7 nodes=    252 changed=    29 mismatch=0 bots_fanout0 0->0
+ctu13-6                            win=   27 nodes=    832 changed=    99 mismatch=0 bots_fanout0 0->0
+ctu13-7                            win=    5 nodes=     89 changed=    20 mismatch=0 bots_fanout0 0->0
+ctu13-8                            win=  235 nodes=   4110 changed=   498 mismatch=0 bots_fanout0 3->0
+ctu13-9                            win=   63 nodes=   6285 changed=   490 mismatch=0 bots_fanout0 0->0
+iot23-1-1                          win= 1343 nodes= 181905 changed=  1343 mismatch=0 bots_fanout0 0->0
+ctu13-1                            already done
+ctu13-10                           already done
+ctu13-11                           already done
+ctu13-12                           already done
+ctu13-13                           already done
+ctu13-2                            already done
+ctu13-3                            already done
+ctu13-4                            already done
+ctu13-5                            already done
+ctu13-6                            already done
+ctu13-7                            already done
+ctu13-8                            already done
+ctu13-9                            already done
+iot23-1-1                          already done
+ctu13-1                            already done
+ctu13-10                           already done
+ctu13-11                           already done
+ctu13-12                           already done
+ctu13-13                           already done
+ctu13-2                            already done
+ctu13-3                            already done
+ctu13-4                            already done
+ctu13-5                            already done
+ctu13-6                            already done
+ctu13-7                            already done
+ctu13-8                            already done
+ctu13-9                            already done
+iot23-1-1                          already done
+iot23-17-1                         win=  289 nodes=   2318 changed=   289 mismatch=0 bots_fanout0 0->0
+iot23-20-1                         win=   33 nodes=    164 changed=    25 mismatch=0 bots_fanout0 0->0
+iot23-21-1                         win=   53 nodes=    140 changed=    53 mismatch=0 bots_fanout0 0->0
+iot23-3-1                          win=  282 nodes=    865 changed=   280 mismatch=0 bots_fanout0 0->0
+iot23-33-1                         win=  288 nodes=   1184 changed=   288 mismatch=0 bots_fanout0 0->0
+iot23-34-1                         win=   79 nodes=    255 changed=    79 mismatch=0 bots_fanout0 0->0
+iot23-35-1                         win=  288 nodes=  47924 changed=   288 mismatch=0 bots_fanout0 0->0
+iot23-36-1                         win=  289 nodes=    806 changed=   289 mismatch=0 bots_fanout0 0->0
+iot23-39-1                         win=   92 nodes=    939 changed=    92 mismatch=0 bots_fanout0 1->0
+iot23-42-1                         win=   32 nodes=    116 changed=    32 mismatch=0 bots_fanout0 0->0
+iot23-43-1                         win=   14 nodes=   4826 changed=    14 mismatch=0 bots_fanout0 0->0
+iot23-44-1                         win=    1 nodes=      4 changed=     1 mismatch=0 bots_fanout0 0->0
+iot23-48-1                         win=  118 nodes=  18379 changed=   118 mismatch=0 bots_fanout0 0->0
+iot23-49-1                         win=   89 nodes=    192 changed=    89 mismatch=0 bots_fanout0 1->0
+iot23-52-1                         win=  177 nodes=    217 changed=   177 mismatch=0 bots_fanout0 141->0
+iot23-7-1                          win=  288 nodes=    928 changed=   291 mismatch=0 bots_fanout0 45->0
+iot23-8-1                          win=  214 nodes=    879 changed=   214 mismatch=0 bots_fanout0 0->0
+iot23-9-1                          win=  241 nodes=    970 changed=   241 mismatch=0 bots_fanout0 22->0
+medbiot-bashlite_leg               win=  936 nodes=   6774 changed=  2481 mismatch=0 bots_fanout0 0->0
+medbiot-bashlite_mal_CC_all        win=   22 nodes=    297 changed=    12 mismatch=0 bots_fanout0 0->0
+medbiot-bashlite_mal_spread_all    win=    3 nodes=   1200 changed=   114 mismatch=0 bots_fanout0 79->0
+medbiot-mirai_leg                  win=  543 nodes=   3364 changed=  1145 mismatch=0 bots_fanout0 0->0
+medbiot-mirai_mal_CC_all           win=    8 nodes=    150 changed=     6 mismatch=0 bots_fanout0 0->0
+medbiot-mirai_mal_spread_all       win=    8 nodes=    302 changed=    39 mismatch=0 bots_fanout0 3->0
+medbiot-torii_leg                  win=  648 nodes=   4036 changed=  1546 mismatch=0 bots_fanout0 0->0
+medbiot-torii_mal_all              win=    2 nodes=     16 changed=     0 mismatch=0 bots_fanout0 0->0

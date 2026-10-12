@@ -1,0 +1,180 @@
+device: cuda  amp=True  emb_dir=data\flow_embeddings_v2
+train=2796 val=926 test=1232
+fitting scalers + class weights ...
+d_model=64  raw_feat_dim=9  edge_dim=10
+HiGTBotSparsePool params: 359,175  pool_ratio=0.5
+focal loss gamma=2.0 alpha=[0.5070867538452148, 35.77708435058594]
+[sparse] epoch   1  ce 0.0367  val_F1 0.6618  best 0.6618  lr 5.0e-04  *  48.3s
+[sparse] epoch   2  ce 0.0098  val_F1 0.9404  best 0.9404  lr 5.0e-04  *  37.9s
+[sparse] epoch   3  ce 0.0084  val_F1 0.9139  best 0.9404  lr 5.0e-04     58.0s
+[sparse] epoch   4  ce 0.0050  val_F1 0.8600  best 0.9404  lr 5.0e-04     55.1s
+[sparse] epoch   5  ce 0.0037  val_F1 0.8112  best 0.9404  lr 5.0e-04     55.1s
+[sparse] epoch   6  ce 0.0022  val_F1 0.8999  best 0.9404  lr 5.0e-04     25.9s
+[sparse] epoch   7  ce 0.0043  val_F1 0.9386  best 0.9404  lr 5.0e-04     29.3s
+[sparse] epoch   8  ce 0.0033  val_F1 0.9333  best 0.9404  lr 2.5e-04     33.3s
+[sparse] epoch   9  ce 0.0028  val_F1 0.9356  best 0.9404  lr 2.5e-04     35.3s
+[sparse] epoch  10  ce 0.0024  val_F1 0.9304  best 0.9404  lr 2.5e-04     34.4s
+[sparse] epoch  11  ce 0.0021  val_F1 0.9466  best 0.9466  lr 2.5e-04  *  32.4s
+[sparse] epoch  12  ce 0.0020  val_F1 0.8977  best 0.9466  lr 2.5e-04     28.0s
+[sparse] epoch  13  ce 0.0019  val_F1 0.9566  best 0.9566  lr 2.5e-04  *  41.3s
+[sparse] epoch  14  ce 0.0024  val_F1 0.9194  best 0.9566  lr 2.5e-04     42.9s
+[sparse] epoch  15  ce 0.0027  val_F1 0.9492  best 0.9566  lr 2.5e-04     48.3s
+[sparse] epoch  16  ce 0.0014  val_F1 0.9628  best 0.9628  lr 2.5e-04  *  50.4s
+[sparse] epoch  17  ce 0.0019  val_F1 0.9372  best 0.9628  lr 2.5e-04     44.5s
+[sparse] epoch  18  ce 0.0021  val_F1 0.9213  best 0.9628  lr 2.5e-04     44.9s
+[sparse] epoch  19  ce 0.0016  val_F1 0.9451  best 0.9628  lr 2.5e-04     48.7s
+[sparse] epoch  20  ce 0.0024  val_F1 0.9593  best 0.9628  lr 2.5e-04     47.6s
+[sparse] epoch  21  ce 0.0026  val_F1 0.9593  best 0.9628  lr 2.5e-04     48.2s
+[sparse] epoch  22  ce 0.0025  val_F1 0.9481  best 0.9628  lr 1.3e-04     79.1s
+[sparse] epoch  23  ce 0.0018  val_F1 0.9442  best 0.9628  lr 1.3e-04     76.1s
+[sparse] epoch  24  ce 0.0062  val_F1 0.9516  best 0.9628  lr 1.3e-04     66.0s
+[sparse] epoch  25  ce 0.0018  val_F1 0.9367  best 0.9628  lr 1.3e-04     68.5s
+[sparse] epoch  26  ce 0.0013  val_F1 0.9624  best 0.9628  lr 1.3e-04     66.6s
+[sparse] epoch  27  ce 0.0012  val_F1 0.9638  best 0.9638  lr 1.3e-04  *  69.9s
+[sparse] epoch  28  ce 0.0016  val_F1 0.9582  best 0.9638  lr 1.3e-04     66.2s
+[sparse] epoch  29  ce 0.0014  val_F1 0.9608  best 0.9638  lr 1.3e-04     71.4s
+[sparse] epoch  30  ce 0.0011  val_F1 0.9506  best 0.9638  lr 1.3e-04     66.2s
+[sparse] epoch  31  ce 0.0012  val_F1 0.9593  best 0.9638  lr 1.3e-04     62.0s
+[sparse] epoch  32  ce 0.0009  val_F1 0.9521  best 0.9638  lr 1.3e-04     67.6s
+[sparse] epoch  33  ce 0.0012  val_F1 0.9613  best 0.9638  lr 6.3e-05     72.9s
+[sparse] epoch  34  ce 0.0015  val_F1 0.9613  best 0.9638  lr 6.3e-05     72.7s
+[sparse] epoch  35  ce 0.0011  val_F1 0.9634  best 0.9638  lr 6.3e-05     71.1s
+[sparse] epoch  36  ce 0.0008  val_F1 0.9634  best 0.9638  lr 6.3e-05     68.3s
+[sparse] epoch  37  ce 0.0008  val_F1 0.9649  best 0.9649  lr 6.3e-05  *  70.9s
+[sparse] epoch  38  ce 0.0013  val_F1 0.9592  best 0.9649  lr 6.3e-05     54.6s
+[sparse] epoch  39  ce 0.0011  val_F1 0.9561  best 0.9649  lr 6.3e-05     39.0s
+[sparse] epoch  40  ce 0.0039  val_F1 0.9639  best 0.9649  lr 6.3e-05     38.8s
+[sparse] epoch  41  ce 0.0009  val_F1 0.9639  best 0.9649  lr 6.3e-05     38.9s
+[sparse] epoch  42  ce 0.0008  val_F1 0.9760  best 0.9760  lr 6.3e-05  *  38.2s
+[sparse] epoch  43  ce 0.0009  val_F1 0.9696  best 0.9760  lr 6.3e-05     35.9s
+[sparse] epoch  44  ce 0.0011  val_F1 0.9553  best 0.9760  lr 6.3e-05     26.4s
+[sparse] epoch  45  ce 0.0010  val_F1 0.9618  best 0.9760  lr 6.3e-05     26.9s
+[sparse] epoch  46  ce 0.0007  val_F1 0.9776  best 0.9776  lr 6.3e-05  *  26.4s
+[sparse] epoch  47  ce 0.0009  val_F1 0.9787  best 0.9787  lr 6.3e-05  *  26.6s
+[sparse] epoch  48  ce 0.0019  val_F1 0.9808  best 0.9808  lr 6.3e-05  *  27.0s
+[sparse] epoch  49  ce 0.0013  val_F1 0.9660  best 0.9808  lr 6.3e-05     27.6s
+[sparse] epoch  50  ce 0.0010  val_F1 0.9561  best 0.9808  lr 6.3e-05     27.1s
+[sparse] epoch  51  ce 0.0008  val_F1 0.9644  best 0.9808  lr 6.3e-05     27.3s
+[sparse] epoch  52  ce 0.0007  val_F1 0.9717  best 0.9808  lr 6.3e-05     27.1s
+[sparse] epoch  53  ce 0.0008  val_F1 0.9670  best 0.9808  lr 6.3e-05     27.2s
+[sparse] epoch  54  ce 0.0007  val_F1 0.9628  best 0.9808  lr 3.1e-05     27.6s
+[sparse] epoch  55  ce 0.0008  val_F1 0.9808  best 0.9808  lr 3.1e-05     27.6s
+[sparse] epoch  56  ce 0.0011  val_F1 0.9776  best 0.9808  lr 3.1e-05     27.2s
+[sparse] epoch  57  ce 0.0014  val_F1 0.9675  best 0.9808  lr 3.1e-05     28.0s
+[sparse] epoch  58  ce 0.0010  val_F1 0.9712  best 0.9808  lr 3.1e-05     27.9s
+[sparse] epoch  59  ce 0.0010  val_F1 0.9587  best 0.9808  lr 3.1e-05     27.3s
+[sparse] epoch  60  ce 0.0007  val_F1 0.9644  best 0.9808  lr 1.6e-05     27.8s
+[sparse] epoch  61  ce 0.0005  val_F1 0.9765  best 0.9808  lr 1.6e-05     27.5s
+[sparse] epoch  62  ce 0.0006  val_F1 0.9744  best 0.9808  lr 1.6e-05     27.6s
+[sparse] epoch  63  ce 0.0007  val_F1 0.9846  best 0.9846  lr 1.6e-05  *  26.7s
+[sparse] epoch  64  ce 0.0014  val_F1 0.9845  best 0.9846  lr 1.6e-05     24.8s
+[sparse] epoch  65  ce 0.0006  val_F1 0.9846  best 0.9846  lr 1.6e-05     25.0s
+[sparse] epoch  66  ce 0.0006  val_F1 0.9878  best 0.9878  lr 1.6e-05  *  24.5s
+[sparse] epoch  67  ce 0.0007  val_F1 0.9787  best 0.9878  lr 1.6e-05     24.5s
+[sparse] epoch  68  ce 0.0006  val_F1 0.9675  best 0.9878  lr 1.6e-05     23.2s
+[sparse] epoch  69  ce 0.0008  val_F1 0.9873  best 0.9878  lr 1.6e-05     23.9s
+[sparse] epoch  70  ce 0.0006  val_F1 0.9878  best 0.9878  lr 1.6e-05  *  23.6s
+[sparse] epoch  71  ce 0.0007  val_F1 0.9650  best 0.9878  lr 1.6e-05     24.1s
+[sparse] epoch  72  ce 0.0007  val_F1 0.9781  best 0.9878  lr 7.8e-06     23.8s
+[sparse] epoch  73  ce 0.0005  val_F1 0.9797  best 0.9878  lr 7.8e-06     24.1s
+[sparse] epoch  74  ce 0.0006  val_F1 0.9889  best 0.9889  lr 7.8e-06  *  24.0s
+[sparse] epoch  75  ce 0.0007  val_F1 0.9840  best 0.9889  lr 7.8e-06     24.6s
+[sparse] epoch  76  ce 0.0007  val_F1 0.9770  best 0.9889  lr 7.8e-06     24.5s
+[sparse] epoch  77  ce 0.0005  val_F1 0.9884  best 0.9889  lr 7.8e-06     23.8s
+[sparse] epoch  78  ce 0.0006  val_F1 0.9846  best 0.9889  lr 7.8e-06     23.8s
+[sparse] epoch  79  ce 0.0038  val_F1 0.9889  best 0.9889  lr 7.8e-06     23.8s
+[sparse] epoch  80  ce 0.0005  val_F1 0.9884  best 0.9889  lr 3.9e-06     23.6s
+[sparse] epoch  81  ce 0.0015  val_F1 0.9862  best 0.9889  lr 3.9e-06     23.6s
+[sparse] epoch  82  ce 0.0007  val_F1 0.9840  best 0.9889  lr 3.9e-06     23.5s
+[sparse] epoch  83  ce 0.0005  val_F1 0.9792  best 0.9889  lr 3.9e-06     24.4s
+[sparse] epoch  84  ce 0.0006  val_F1 0.9733  best 0.9889  lr 3.9e-06     23.8s
+[sparse] epoch  85  ce 0.0020  val_F1 0.9895  best 0.9895  lr 3.9e-06  *  24.3s
+[sparse] epoch  86  ce 0.0007  val_F1 0.9728  best 0.9895  lr 3.9e-06     23.6s
+[sparse] epoch  87  ce 0.0031  val_F1 0.9878  best 0.9895  lr 3.9e-06     23.5s
+[sparse] epoch  88  ce 0.0005  val_F1 0.9906  best 0.9906  lr 3.9e-06  *  31.5s
+[sparse] epoch  89  ce 0.0005  val_F1 0.9643  best 0.9906  lr 3.9e-06     63.3s
+[sparse] epoch  90  ce 0.0006  val_F1 0.9906  best 0.9906  lr 3.9e-06     25.9s
+[sparse] epoch  91  ce 0.0006  val_F1 0.9821  best 0.9906  lr 3.9e-06     23.2s
+[sparse] epoch  92  ce 0.0008  val_F1 0.9739  best 0.9906  lr 3.9e-06     24.0s
+[sparse] epoch  93  ce 0.0013  val_F1 0.9824  best 0.9906  lr 3.9e-06     24.0s
+[sparse] epoch  94  ce 0.0010  val_F1 0.9868  best 0.9906  lr 2.0e-06     24.1s
+[sparse] epoch  95  ce 0.0005  val_F1 0.9856  best 0.9906  lr 2.0e-06     23.6s
+[sparse] epoch  96  ce 0.0011  val_F1 0.9862  best 0.9906  lr 2.0e-06     23.7s
+[sparse] epoch  97  ce 0.0005  val_F1 0.9711  best 0.9906  lr 2.0e-06     24.6s
+[sparse] epoch  98  ce 0.0006  val_F1 0.9862  best 0.9906  lr 2.0e-06     23.2s
+[sparse] epoch  99  ce 0.0006  val_F1 0.9807  best 0.9906  lr 2.0e-06     23.8s
+[sparse] epoch 100  ce 0.0005  val_F1 0.9612  best 0.9906  lr 9.8e-07     23.2s
+
+total fit 4740.9s  best val F1 0.9906
+
+=== val (hgt-sparse) ===
+  n           55,049    n_pos      899
+  accuracy  0.9997
+  precision 0.9889
+  recall    0.9922
+  F1        0.9906
+  PR-AUC    0.9930
+  ROC-AUC   0.9935
+  confusion [[tn=54140 fp=10]
+             [fn=7 tp=892]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              991     14  0.9655   1.0000
+  ctu13-13                             456     39  1.0000   1.0000
+  ctu13-2                              269     10  1.0000   1.0000
+  ctu13-3                            1,427      0  0.0000      nan
+  ctu13-4                              314      7  0.6000   0.4388
+  ctu13-6                              136      5  1.0000   1.0000
+  ctu13-8                              518     47  0.9895   1.0000
+  ctu13-9                            2,463    120  1.0000   1.0000
+  iot23-1-1                         33,847    268  1.0000   1.0000
+  iot23-17-1                           499     57  1.0000   1.0000
+  iot23-3-1                            212     56  1.0000   1.0000
+  iot23-33-1                           236     57  1.0000   1.0000
+  iot23-35-1                         9,297      1  0.2000   0.1250
+  iot23-48-1                         4,028     23  1.0000   1.0000
+  iot23-7-1                            113     57  1.0000   1.0000
+  iot23-9-1                            137     48  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           37     33  1.0000   1.0000
+  medbiot-mirai_mal_CC_all              26     25  1.0000   1.0000
+  medbiot-mirai_mal_spread_all          43     32  0.9508   0.9926
+
+=== test (hgt-sparse) ===
+  n           59,210    n_pos    1,607
+  accuracy  0.9969
+  precision 0.9747
+  recall    0.9110
+  F1        0.9418
+  PR-AUC    0.9242
+  ROC-AUC   0.9408
+  confusion [[tn=57565 fp=38]
+             [fn=143 tp=1464]]
+
+per-scenario:
+  scenario                               n    pos      F1   PR-AUC
+  ctu13-1                              860     15  0.9677   1.0000
+  ctu13-10                           1,048    118  0.4831   0.3564
+  ctu13-13                             654     40  0.9756   1.0000
+  ctu13-2                              298     10  1.0000   1.0000
+  ctu13-3                            1,869    142  0.9965   1.0000
+  ctu13-4                              351      8  0.8889   1.0000
+  ctu13-6                              167      6  0.8571   1.0000
+  ctu13-8                              724     46  0.9892   1.0000
+  ctu13-9                            2,611    132  0.9962   1.0000
+  iot23-1-1                         34,069    270  1.0000   1.0000
+  iot23-17-1                           484     59  1.0000   1.0000
+  iot23-3-1                            152     57  1.0000   1.0000
+  iot23-33-1                           142     59  1.0000   1.0000
+  iot23-35-1                         9,905     16  0.3704   0.4864
+  iot23-48-1                         3,711     25  1.0000   1.0000
+  iot23-7-1                             93     59  0.9916   1.0000
+  iot23-8-1                            879    214  1.0000   1.0000
+  iot23-9-1                            153     49  1.0000   1.0000
+  medbiot-bashlite_mal_CC_all           56     51  1.0000   1.0000
+  medbiot-bashlite_mal_spread_all      800     76  0.4167   0.9194
+  medbiot-mirai_mal_CC_all              52     48  1.0000   1.0000
+  medbiot-mirai_mal_spread_all         116     93  0.9738   0.9962
+  medbiot-torii_mal_all                 16     14  1.0000   1.0000
+saved experiments\v2\phase6\hgt_sparse_baseline.pt
+wrote data\inspection_logs\v2\phase6_sparse_baseline.json

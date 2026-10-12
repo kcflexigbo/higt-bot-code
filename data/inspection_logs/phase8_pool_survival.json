@@ -1,0 +1,17 @@
+{
+  "n_nodes": 59210,
+  "bot_survival": 0.49501984755132356,
+  "benign_survival": 0.5246046178431697,
+  "bots_kept": {
+    "n": 20327,
+    "detected": 20296,
+    "recall": 0.9984749348157623
+  },
+  "bots_dropped": {
+    "n": 20736,
+    "detected": 20681,
+    "recall": 0.9973476080246914
+  },
+  "benign_kept_fp": 1328,
+  "benign_dropped_fp": 1324
+}

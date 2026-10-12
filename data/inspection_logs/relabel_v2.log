@@ -1,0 +1,42 @@
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\.venv\Lib\site-packages\torch\__config__.py:9: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 1: invalid argument (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10\cuda\CUDAFunctions.cpp:119.)
+  return torch._C._show_config()
+ctu13-1                            win=   74 nodes=   3546 bot_any=  2308 bot_src=    58 ips=   1 mismatch=0
+ctu13-10                           win=   58 nodes=   1048 bot_any=   147 bot_src=   118 ips=  10 mismatch=0
+ctu13-11                           win=    5 nodes=     52 bot_any=     8 bot_src=     5 ips=   3 mismatch=0
+ctu13-12                           win=   16 nodes=    471 bot_any=    74 bot_src=    28 ips=   3 mismatch=0
+ctu13-13                           win=  198 nodes=   3123 bot_any=  1384 bot_src=   196 ips=   1 mismatch=0
+ctu13-2                            win=   51 nodes=   1381 bot_any=   920 bot_src=    43 ips=   1 mismatch=0
+ctu13-3                            win=  803 nodes=   7639 bot_any=    29 bot_src=   175 ips=   1 mismatch=0
+ctu13-4                            win=   51 nodes=   1352 bot_any=   133 bot_src=    25 ips=   1 mismatch=0
+ctu13-5                            win=    7 nodes=    252 bot_any=    49 bot_src=     5 ips=   1 mismatch=0
+ctu13-6                            win=   27 nodes=    832 bot_any=   460 bot_src=    25 ips=   1 mismatch=0
+ctu13-7                            win=    5 nodes=     89 bot_any=     7 bot_src=     2 ips=   1 mismatch=0
+ctu13-8                            win=  235 nodes=   4110 bot_any=   513 bot_src=   224 ips=   1 mismatch=0
+ctu13-9                            win=   63 nodes=   6285 bot_any=  4894 bot_src=   290 ips=  10 mismatch=0
+iot23-1-1                          win= 1343 nodes= 181905 bot_any=166845 bot_src=  1343 ips=   1 mismatch=0
+iot23-17-1                         win=  289 nodes=   2318 bot_any=  1745 bot_src=   289 ips=   1 mismatch=0
+iot23-20-1                         win=   33 nodes=    164 bot_any=     6 bot_src=     3 ips=   1 mismatch=0
+iot23-21-1                         win=   53 nodes=    140 bot_any=     4 bot_src=     2 ips=   1 mismatch=0
+iot23-3-1                          win=  282 nodes=    865 bot_any=   774 bot_src=   282 ips=   1 mismatch=0
+iot23-33-1                         win=  288 nodes=   1184 bot_any=   749 bot_src=   288 ips=   1 mismatch=0
+iot23-34-1                         win=   79 nodes=    255 bot_any=   157 bot_src=    78 ips=   1 mismatch=0
+iot23-35-1                         win=  288 nodes=  47924 bot_any=    47 bot_src=    29 ips=   1 mismatch=0
+iot23-36-1                         win=  289 nodes=    806 bot_any=   583 bot_src=   289 ips=   1 mismatch=0
+iot23-39-1                         win=   92 nodes=    939 bot_any=   635 bot_src=    93 ips=   2 mismatch=0
+iot23-42-1                         win=   32 nodes=    116 bot_any=     2 bot_src=     1 ips=   1 mismatch=0
+iot23-43-1                         win=   14 nodes=   4826 bot_any=  4777 bot_src=    15 ips=   2 mismatch=0
+iot23-44-1                         win=    1 nodes=      4 bot_any=     2 bot_src=     1 ips=   1 mismatch=0
+iot23-48-1                         win=  118 nodes=  18379 bot_any= 18126 bot_src=   118 ips=   1 mismatch=0
+iot23-49-1                         win=   89 nodes=    192 bot_any=   186 bot_src=    89 ips=   1 mismatch=0
+iot23-52-1                         win=  177 nodes=    217 bot_any=    23 bot_src=   177 ips=   1 mismatch=0
+iot23-7-1                          win=  288 nodes=    928 bot_any=   279 bot_src=   287 ips=   1 mismatch=0
+iot23-8-1                          win=  214 nodes=    879 bot_any=   642 bot_src=   214 ips=   1 mismatch=0
+iot23-9-1                          win=  241 nodes=    970 bot_any=   199 bot_src=   234 ips=   1 mismatch=0
+medbiot-bashlite_leg               win=  936 nodes=   6774 bot_any=     0 bot_src=     0 ips=   0 mismatch=0
+medbiot-bashlite_mal_CC_all        win=   22 nodes=    297 bot_any=   296 bot_src=   195 ips=  47 mismatch=0
+medbiot-bashlite_mal_spread_all    win=    3 nodes=   1200 bot_any=  1176 bot_src=   114 ips=  38 mismatch=0
+medbiot-mirai_leg                  win=  543 nodes=   3364 bot_any=     0 bot_src=     0 ips=   0 mismatch=0
+medbiot-mirai_mal_CC_all           win=    8 nodes=    150 bot_any=   150 bot_src=   125 ips=  27 mismatch=0
+medbiot-mirai_mal_spread_all       win=    8 nodes=    302 bot_any=   302 bot_src=   229 ips=  35 mismatch=0
+medbiot-torii_leg                  win=  648 nodes=   4036 bot_any=     0 bot_src=     0 ips=   0 mismatch=0
+medbiot-torii_mal_all              win=    2 nodes=     16 bot_any=    16 bot_src=    14 ips=   7 mismatch=0
