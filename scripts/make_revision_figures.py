@@ -5,6 +5,8 @@ fig5_1_errors_v3.png: missed bots / false alarms per model on the v3 test set; t
   models the runs of scripts/make_v3_tables_figures.py (three seeds where available).
 fig6_loso_heatmap.png: CTU-13 leave-one-scenario-out with the group scaler refitted per fold,
   mean over three seeds (revision/loso_refit.json): PR-AUC and F1 at the validation threshold.
+fig6_bootstrap_forest_holm.png: ΔF1 of HiGT-Bot v2 over each comparator with 95% intervals from the
+  seed x window bootstrap (v3/bootstrap_seeds_holm.json); green = Holm-corrected p < 0.05.
 
     uv run python -m scripts.make_revision_figures
 """
@@ -74,6 +76,26 @@ def fig_loso():
     fig.savefig(OUT / "fig6_loso_heatmap.png"); plt.close(fig)
 
 
+def fig_forest():
+    d = json.loads((LOGS / "v3/bootstrap_seeds_holm.json").read_text())
+    subsets = [("all", "All test windows"), ("held-out", "Held-out scenarios")]
+    fig, axes = plt.subplots(1, 2, figsize=(9, 3.2), sharey=True, constrained_layout=True)
+    for ax, (key, title) in zip(axes, subsets):
+        C = [c for c in d[key]["comparisons"] if c["metric"] == "f1"]
+        for i, c in enumerate(C):
+            sig = c["p_holm"] < 0.05
+            lo, hi = c["ci95"]
+            ax.errorbar(c["delta"], i, xerr=[[c["delta"] - lo], [hi - c["delta"]]], fmt="o", capsize=3,
+                        color="#2e7d32" if sig else "#888888")
+        ax.axvline(0, color="k", lw=0.8)
+        ax.set_yticks(range(len(C)), [c["comparator"] for c in C], fontsize=8)
+        ax.set_xlabel("ΔF1 (HiGT-Bot v2 − comparator)", fontsize=8)
+        ax.set_title(title, fontsize=9); ax.invert_yaxis()
+        ax.spines[["top", "right"]].set_visible(False)
+    fig.savefig(OUT / "fig6_bootstrap_forest_holm.png"); plt.close(fig)
+
+
 if __name__ == "__main__":
     fig_errors()
     fig_loso()
+    fig_forest()
