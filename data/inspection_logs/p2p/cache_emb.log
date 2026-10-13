@@ -1,0 +1,23 @@
+device: cuda
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+total graphs: 5856
+  [4700/5856] written=20 skipped=4680
+  [4750/5856] written=70 skipped=4680
+  [4800/5856] written=120 skipped=4680
+  [4850/5856] written=170 skipped=4680
+  [4900/5856] written=220 skipped=4680
+  [4950/5856] written=270 skipped=4680
+  [5000/5856] written=320 skipped=4680
+  [5050/5856] written=370 skipped=4680
+  [5100/5856] written=420 skipped=4680
+  [5150/5856] written=470 skipped=4680
+  [5200/5856] written=520 skipped=4680
+  [5250/5856] written=570 skipped=4680
+  [5300/5856] written=620 skipped=4680
+  [5350/5856] written=670 skipped=4680
+  [5400/5856] written=720 skipped=4680
+  [5450/5856] written=770 skipped=4680
+  [5500/5856] written=820 skipped=4680
+  [5550/5856] written=870 skipped=4680
+done -- written=902 skipped=4954 dir=data\flow_embeddings_v3

@@ -1,0 +1,39 @@
+  ...5,000,000 packets, 72,917 flows so far
+  ...10,000,000 packets, 78,265 flows so far
+  ...15,000,000 packets, 118,628 flows so far
+  ...20,000,000 packets, 147,304 flows so far
+  ...25,000,000 packets, 172,222 flows so far
+  ...30,000,000 packets, 188,083 flows so far
+  ...35,000,000 packets, 191,864 flows so far
+  ...40,000,000 packets, 218,098 flows so far
+  ...45,000,000 packets, 232,459 flows so far
+  ...50,000,000 packets, 272,852 flows so far
+  ...55,000,000 packets, 323,253 flows so far
+  ...60,000,000 packets, 340,455 flows so far
+  ...65,000,000 packets, 385,472 flows so far
+  ...70,000,000 packets, 409,403 flows so far
+  ...75,000,000 packets, 448,125 flows so far
+  ...80,000,000 packets, 502,285 flows so far
+  ...85,000,000 packets, 515,999 flows so far
+  ...90,000,000 packets, 566,304 flows so far
+  ...95,000,000 packets, 595,096 flows so far
+  ...100,000,000 packets, 608,314 flows so far
+  ...105,000,000 packets, 627,343 flows so far
+  ...110,000,000 packets, 677,472 flows so far
+  ...115,000,000 packets, 718,804 flows so far
+  ...120,000,000 packets, 764,506 flows so far
+  ...125,000,000 packets, 834,871 flows so far
+  ...130,000,000 packets, 848,241 flows so far
+  ...135,000,000 packets, 871,095 flows so far
+  ...140,000,000 packets, 907,097 flows so far
+  ...145,000,000 packets, 972,180 flows so far
+  ...150,000,000 packets, 1,025,486 flows so far
+  ...155,000,000 packets, 1,044,093 flows so far
+  ...160,000,000 packets, 1,059,183 flows so far
+wrote data\processed\isot-2010.tmp.parquet: 1,062,519 flows, bot flows 53,028
+                         count  nunique
+detailed_label                         
+Storm-UDP-P2P            19680      960
+Storm/Waledac-SMTP-spam  33320      375
+Zeus                        10        1
+Zeus-CC                     18        5

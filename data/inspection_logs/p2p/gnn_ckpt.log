@@ -1,0 +1,8 @@
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+[transfer ctu13-12] Directed T-GINE      F1 0.000 PR 0.318 FN 28 FP 2
+[transfer ctu13-12] HiGT-Bot directed    F1 0.286 PR 0.595 FN 23 FP 2
+C:\Users\Kenneth Igbo\Documents\Yakub_thesis\higt-bot-code\src\models\temporal.py:80: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.encoder = nn.TransformerEncoder(enc_layer, num_layers=num_layers)
+[transfer isot-2010] Directed T-GINE      F1 0.001 PR 0.000 FN 11 FP 56923
+[transfer isot-2010] HiGT-Bot directed    F1 0.002 PR 0.001 FN 14 FP 26353

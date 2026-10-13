@@ -105,8 +105,19 @@ def build_for_parquet_streaming(
     t0_wall = time.perf_counter()
     idx = 0
 
+    # Sorted flow start times (one column, small) let windows with no flows nearby be skipped
+    # without a parquet scan; merged captures (e.g. ISOT) span years with long empty gaps.
+    # The +-1 day margin keeps the skip conservative under any timezone handling.
+    starts = pq.read_table(parquet, columns=["start_time"]).column("start_time")
+    starts = pc.cast(pc.cast(starts, pa.timestamp("ns")), pa.int64()).to_numpy()
+    starts.sort()
+    margin = pd.Timedelta(days=1).value
+
     for _, t_start in iter_window_starts(t_min, t_max, win_cfg):
         t_end = t_start + win_delta
+        lo, hi = t_start.value - margin, t_end.value + margin
+        if starts.searchsorted(hi) == starts.searchsorted(lo):
+            continue
         table = dataset.to_table(
             filter=_window_filter(t_start, t_end, drop_background=drop_background),
             columns=FLOW_COLUMNS,

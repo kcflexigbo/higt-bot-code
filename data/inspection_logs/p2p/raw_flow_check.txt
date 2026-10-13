@@ -1,0 +1,24 @@
+ctu13-12: bot flows 2,168 | bot-src IPs 9 | distinct dst 1,462 | flows bot->another bot-src 25
+   top srcs {'147.32.84.165': 807, '147.32.84.191': 766, '147.32.84.192': 570, '222.160.227.154': 5}
+   top dst ports {80: 354, 53: 210, 7600: 182, 16001: 24, 6881: 23} {'udp': 1788, 'tcp': 361, 'icmp': 16}
+   detailed {'flow=From-Botnet-V51-1-UDP-Established': 362, 'flow=From-Botnet-V51-2-UDP-Attempt': 292, 'flow=From-Botnet-V51-2-UDP-Established': 277, 'flow=From-Botnet-V51-1-UDP-Attempt': 249, 'flow=From-Botnet-V51-3-UDP-Established': 194}
+iot23-1-1: bot flows 539,473 | bot-src IPs 1 | distinct dst 182,544 | flows bot->another bot-src 0
+   top srcs {'192.168.100.103': 539473}
+   top dst ports {23: 271561, 8080: 135382, 2323: 88184, 9527: 44338, 2407: 8} {'tcp': 539439, 'udp': 34}
+   detailed {'PartOfAHorizontalPortScan': 539465, 'C&C': 8}
+iot23-9-1: bot flows 6,355,745 | bot-src IPs 1 | distinct dst 5,208,658 | flows bot->another bot-src 0
+   top srcs {'192.168.100.111': 6355745}
+   top dst ports {23: 3783766, 81: 2571979} {'tcp': 6355745}
+   detailed {'PartOfAHorizontalPortScan': 6355745}
+ctu13-1: bot flows 40,961 | bot-src IPs 1 | distinct dst 4,190 | flows bot->another bot-src 0
+   top srcs {'147.32.84.165': 40961}
+   top dst ports {53: 29197, 25: 8105, 80: 1243, 6667: 974, 4506: 827} {'udp': 29203, 'tcp': 11756, 'icmp': 2}
+   detailed {'flow=From-Botnet-V42-UDP-DNS': 26140, 'flow=From-Botnet-V42-TCP-Attempt-SPAM': 8105, 'flow=From-Botnet-V42-UDP-Attempt-DNS': 3057, 'flow=From-Botnet-V42-TCP-Attempt': 1881, 'flow=From-Botnet-V42-TCP-Established-HTTP-Ad-63': 352}
+ctu13-10: bot flows 106,352 | bot-src IPs 10 | distinct dst 34 | flows bot->another bot-src 0
+   top srcs {'147.32.84.205': 11874, '147.32.84.206': 11287, '147.32.84.204': 11159, '147.32.84.208': 11118}
+   top dst ports {0: 101185, 53: 173, 161: 120, 80: 62, 123: 50} {'icmp': 105977, 'udp': 293, 'tcp': 82}
+   detailed {'flow=From-Botnet-V51-6-ICMP': 11836, 'flow=From-Botnet-V51-7-ICMP': 11252, 'flow=From-Botnet-V51-5-ICMP': 11125, 'flow=From-Botnet-V51-9-ICMP': 11081, 'flow=From-Botnet-V51-8-ICMP': 10541}
+ctu13-9: bot flows 184,987 | bot-src IPs 10 | distinct dst 14,396 | flows bot->another bot-src 0
+   top srcs {'147.32.84.165': 22792, '147.32.84.192': 20305, '147.32.84.204': 18783, '147.32.84.191': 18774}
+   top dst ports {53: 107789, 25: 41900, 80: 11997, 443: 10356, 6667: 7944} {'udp': 107826, 'tcp': 77146, 'icmp': 15}
+   detailed {'flow=From-Botnet-V50-1-UDP-DNS': 15115, 'flow=From-Botnet-V50-7-UDP-DNS': 12588, 'flow=From-Botnet-V50-3-UDP-DNS': 11429, 'flow=From-Botnet-V50-2-UDP-DNS': 10961, 'flow=From-Botnet-V50-4-UDP-DNS': 10707}

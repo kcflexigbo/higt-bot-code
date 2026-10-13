@@ -64,11 +64,14 @@ def main() -> None:
                          "(only flows between selected nodes)")
     ap.add_argument("--medbiot-devices-only", action="store_true",
                     help="MedBIoT positives = 192.168.10.x devices minus C&C servers")
+    ap.add_argument("--only", nargs="*", default=None, help="restrict to these scenarios (default: all)")
     args = ap.parse_args()
 
     summary: dict[str, dict] = {}
     for sc_dir in sorted(p for p in SRC.iterdir() if p.is_dir()):
         sc = sc_dir.name
+        if args.only is not None and sc not in args.only:
+            continue
         files = sorted(sc_dir.glob("window_*.pt"))
         if not files:
             continue

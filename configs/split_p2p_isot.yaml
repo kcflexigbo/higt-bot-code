@@ -1,0 +1,10 @@
+# Within-ISOT protocol: per-scenario chronological 60/20/20 split of the ISOT 2010 P2P
+# botnet trace (Storm/Waledac/Zeus replayed onto background hosts), nothing else.
+split_version: 1
+seed: 42
+train_frac: 0.60
+val_frac: 0.20
+train:
+  - isot-2010
+holdout_test: []
+excluded: []

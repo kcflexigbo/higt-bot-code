@@ -1,0 +1,21 @@
+start Tue, Oct 13, 2026 12:02:50 AM
+FAIL download 00:11
+restart after corrupt resumed download (prefix written before the 15:09 crash) Tue, Oct 13, 2026 12:12:08 AM
+start Tue, Oct 13, 2026 12:12:09 AM
+ok download 00:22
+ok extract 00:23
+ok parse_isot 00:58
+FAIL graphs_isot 09:52
+restart after graph-builder fix (skip empty windows) Tue, Oct 13, 2026  9:52:16 AM
+start Tue, Oct 13, 2026  9:52:17 AM
+ok graphs_isot 10:06
+ok relabel_isot 10:06
+ok refeature_isot 10:15
+ok flowseqs 10:23
+ok graph_stats 10:24
+ok trees 10:26
+ok cache_emb 10:26
+ok gnn_ckpt 10:27
+within-ISOT GINE runs disabled 10:27: chronological 60/20/20 split puts all 35 bot host-windows in the test part (placeholders listed in .placeholders)
+ok dirgine_transfer_seed42 10:29
+DONE Tue, Oct 13, 2026 10:29:18 AM

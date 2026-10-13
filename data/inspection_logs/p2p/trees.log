@@ -1,0 +1,8 @@
+ctu13-12: 16 windows, 471 host-windows, 28 bot
+[transfer_ctu13-12] XGB[x]                 F1 0.399±0.072 PR 0.783 FN 20.7 FP 1.0
+[transfer_ctu13-12] HiGT-Bot v2 (x+grp)    F1 0.393±0.010 PR 0.802 FN 21.0 FP 0.7
+[transfer_ctu13-12] RF                     F1 0.133±0.000 PR 0.800 FN 26.0 FP 0.0
+isot-2010: 886 windows, 102636 host-windows, 35 bot
+[transfer_isot-2010] XGB[x]                 F1 0.003±0.002 PR 0.013 FN 15.3 FP 14816.3
+[transfer_isot-2010] HiGT-Bot v2 (x+grp)    F1 0.002±0.000 PR 0.040 FN 12.0 FP 21180.7
+[transfer_isot-2010] RF                     F1 0.003±0.000 PR 0.013 FN 14.0 FP 12746.0

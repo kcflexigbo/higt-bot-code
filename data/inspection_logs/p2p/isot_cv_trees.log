@@ -1,0 +1,13 @@
+isot-2010: 886 windows, 35 bot host-windows
+[trees seed 42] x          F1 0.486 PR 0.590 FN 17 FP 21
+[trees seed 42] x+grp      F1 0.594 PR 0.545 FN 16 FP 10
+[trees seed 42] x+nbr      F1 0.849 PR 0.893 FN 4 FP 7
+[trees seed 42] x+nbr+grp  F1 0.787 PR 0.728 FN 11 FP 2
+[trees seed 1] x          F1 0.581 PR 0.551 FN 17 FP 9
+[trees seed 1] x+grp      F1 0.632 PR 0.550 FN 17 FP 4
+[trees seed 1] x+nbr      F1 0.795 PR 0.864 FN 6 FP 9
+[trees seed 1] x+nbr+grp  F1 0.590 PR 0.564 FN 17 FP 8
+[trees seed 2] x          F1 0.535 PR 0.550 FN 16 FP 17
+[trees seed 2] x+grp      F1 0.576 PR 0.592 FN 18 FP 7
+[trees seed 2] x+nbr      F1 0.780 PR 0.877 FN 12 FP 1
+[trees seed 2] x+nbr+grp  F1 0.644 PR 0.598 FN 16 FP 5

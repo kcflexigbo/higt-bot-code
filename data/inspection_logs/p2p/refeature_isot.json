@@ -1,0 +1,10 @@
+{
+  "isot-2010": {
+    "windows": 886,
+    "nodes": 102636,
+    "nodes_changed": 21601,
+    "reproduce_mismatch_windows": 0,
+    "bots_fan_out_zero_before": 2,
+    "bots_fan_out_zero_after": 0
+  }
+}

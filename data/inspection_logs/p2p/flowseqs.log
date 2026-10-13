@@ -1,0 +1,4 @@
+window=300s  max_flows=256  skip_existing=True  scenarios=2
+
+[ctu13-12                        ]  windows   16     2.2s  [mem]
+[isot-2010                       ]  windows  886   443.2s  [mem]

@@ -1,0 +1,450 @@
+isot-2010: 886 windows, 35 bot host-windows
+[dirgine s42 f0] class weights (benign, bot) = (0.5001177874799762, 2122.9666666666667)
+[dirgine s42 f0] using focal loss gamma=2.0  alpha=[0.5001177787780762, 2122.966552734375]
+[dirgine s42 f0] DropEdge enabled, p=0.2
+[dirgine s42 f0] epoch   1  train_loss 0.4825  val_F1 0.2400  best 0.2400  lr 1.0e-03  *  2.4s
+[dirgine s42 f0] epoch   2  train_loss 0.4303  val_F1 0.2759  best 0.2759  lr 1.0e-03  *  0.4s
+[dirgine s42 f0] epoch   3  train_loss 0.0875  val_F1 0.1600  best 0.2759  lr 1.0e-03     0.2s
+[dirgine s42 f0] epoch   4  train_loss 0.0460  val_F1 0.1875  best 0.2759  lr 1.0e-03     0.2s
+[dirgine s42 f0] epoch   5  train_loss 0.0476  val_F1 0.1481  best 0.2759  lr 1.0e-03     0.3s
+[dirgine s42 f0] epoch   6  train_loss 0.0768  val_F1 0.1875  best 0.2759  lr 1.0e-03     0.3s
+[dirgine s42 f0] epoch   7  train_loss 0.0428  val_F1 0.0845  best 0.2759  lr 1.0e-03     0.3s
+[dirgine s42 f0] epoch   8  train_loss 0.0224  val_F1 0.1765  best 0.2759  lr 5.0e-04     0.3s
+[dirgine s42 f0] epoch   9  train_loss 0.0227  val_F1 0.1846  best 0.2759  lr 5.0e-04     0.3s
+[dirgine s42 f0] epoch  10  train_loss 0.0154  val_F1 0.1875  best 0.2759  lr 5.0e-04     0.2s
+[dirgine s42 f0] epoch  11  train_loss 0.0177  val_F1 0.1905  best 0.2759  lr 5.0e-04     0.2s
+[dirgine s42 f0] epoch  12  train_loss 0.0460  val_F1 0.1905  best 0.2759  lr 5.0e-04     0.3s
+[dirgine s42 f0] epoch  13  train_loss 0.1424  val_F1 0.1905  best 0.2759  lr 5.0e-04     0.2s
+[dirgine s42 f0] epoch  14  train_loss 0.0205  val_F1 0.1786  best 0.2759  lr 2.5e-04     0.3s
+[dirgine s42 f0] epoch  15  train_loss 0.0770  val_F1 0.1587  best 0.2759  lr 2.5e-04     0.2s
+[dirgine s42 f0] epoch  16  train_loss 0.0502  val_F1 0.1613  best 0.2759  lr 2.5e-04     0.3s
+[dirgine s42 f0] epoch  17  train_loss 0.0183  val_F1 0.0699  best 0.2759  lr 2.5e-04     0.3s
+[dirgine s42 f0] epoch  18  train_loss 0.0149  val_F1 0.0730  best 0.2759  lr 2.5e-04     0.4s
+[dirgine s42 f0] epoch  19  train_loss 0.0118  val_F1 0.1613  best 0.2759  lr 2.5e-04     0.3s
+[dirgine s42 f0] epoch  20  train_loss 0.0109  val_F1 0.1935  best 0.2759  lr 1.3e-04     0.3s
+[dirgine s42 f0] epoch  21  train_loss 0.0409  val_F1 0.1667  best 0.2759  lr 1.3e-04     0.2s
+[dirgine s42 f0] epoch  22  train_loss 0.0080  val_F1 0.1667  best 0.2759  lr 1.3e-04     0.3s
+[dirgine s42 f0] early stopping at epoch 22 (no val_F1 improvement for 20 epochs)
+[dirgine s42 f1] class weights (benign, bot) = (0.5001475636465307, 1694.6842105263158)
+[dirgine s42 f1] using focal loss gamma=2.0  alpha=[0.5001475811004639, 1694.6842041015625]
+[dirgine s42 f1] DropEdge enabled, p=0.2
+[dirgine s42 f1] epoch   1  train_loss 1.4219  val_F1 0.2963  best 0.2963  lr 1.0e-03  *  0.2s
+[dirgine s42 f1] epoch   2  train_loss 0.3716  val_F1 0.0729  best 0.2963  lr 1.0e-03     0.3s
+[dirgine s42 f1] epoch   3  train_loss 0.0963  val_F1 0.0769  best 0.2963  lr 1.0e-03     0.3s
+[dirgine s42 f1] epoch   4  train_loss 0.0137  val_F1 0.0796  best 0.2963  lr 1.0e-03     0.3s
+[dirgine s42 f1] epoch   5  train_loss 0.0785  val_F1 0.0528  best 0.2963  lr 1.0e-03     0.3s
+[dirgine s42 f1] epoch   6  train_loss 0.0621  val_F1 0.0847  best 0.2963  lr 1.0e-03     0.3s
+[dirgine s42 f1] epoch   7  train_loss 0.0084  val_F1 0.0792  best 0.2963  lr 5.0e-04     0.3s
+[dirgine s42 f1] epoch   8  train_loss 0.0397  val_F1 0.0681  best 0.2963  lr 5.0e-04     0.3s
+[dirgine s42 f1] epoch   9  train_loss 0.0075  val_F1 0.0717  best 0.2963  lr 5.0e-04     0.3s
+[dirgine s42 f1] epoch  10  train_loss 0.0052  val_F1 0.0721  best 0.2963  lr 5.0e-04     0.3s
+[dirgine s42 f1] epoch  11  train_loss 0.0035  val_F1 0.0847  best 0.2963  lr 5.0e-04     0.2s
+[dirgine s42 f1] epoch  12  train_loss 0.0055  val_F1 0.0856  best 0.2963  lr 5.0e-04     0.3s
+[dirgine s42 f1] epoch  13  train_loss 0.0027  val_F1 0.0741  best 0.2963  lr 2.5e-04     0.2s
+[dirgine s42 f1] epoch  14  train_loss 0.0028  val_F1 0.0800  best 0.2963  lr 2.5e-04     0.2s
+[dirgine s42 f1] epoch  15  train_loss 0.0034  val_F1 0.0769  best 0.2963  lr 2.5e-04     0.3s
+[dirgine s42 f1] epoch  16  train_loss 0.0018  val_F1 0.0842  best 0.2963  lr 2.5e-04     0.2s
+[dirgine s42 f1] epoch  17  train_loss 0.0568  val_F1 0.0851  best 0.2963  lr 2.5e-04     0.3s
+[dirgine s42 f1] epoch  18  train_loss 0.0018  val_F1 0.0870  best 0.2963  lr 2.5e-04     0.3s
+[dirgine s42 f1] epoch  19  train_loss 0.0014  val_F1 0.0870  best 0.2963  lr 1.3e-04     0.2s
+[dirgine s42 f1] epoch  20  train_loss 0.0034  val_F1 0.0865  best 0.2963  lr 1.3e-04     0.2s
+[dirgine s42 f1] epoch  21  train_loss 0.0475  val_F1 0.0865  best 0.2963  lr 1.3e-04     0.3s
+[dirgine s42 f1] early stopping at epoch 21 (no val_F1 improvement for 20 epochs)
+[dirgine s42 f2] class weights (benign, bot) = (0.5001842505807899, 1357.3478260869565)
+[dirgine s42 f2] using focal loss gamma=2.0  alpha=[0.5001842379570007, 1357.3477783203125]
+[dirgine s42 f2] DropEdge enabled, p=0.2
+[dirgine s42 f2] epoch   1  train_loss 1.0147  val_F1 0.2069  best 0.2069  lr 1.0e-03  *  0.3s
+[dirgine s42 f2] epoch   2  train_loss 0.3108  val_F1 0.1250  best 0.2069  lr 1.0e-03     0.3s
+[dirgine s42 f2] epoch   3  train_loss 0.0523  val_F1 0.0382  best 0.2069  lr 1.0e-03     0.3s
+[dirgine s42 f2] epoch   4  train_loss 0.0337  val_F1 0.1538  best 0.2069  lr 1.0e-03     0.2s
+[dirgine s42 f2] epoch   5  train_loss 0.0459  val_F1 0.1765  best 0.2069  lr 1.0e-03     0.3s
+[dirgine s42 f2] epoch   6  train_loss 0.0481  val_F1 0.1765  best 0.2069  lr 1.0e-03     0.3s
+[dirgine s42 f2] epoch   7  train_loss 0.0216  val_F1 0.1538  best 0.2069  lr 5.0e-04     0.3s
+[dirgine s42 f2] epoch   8  train_loss 0.0823  val_F1 0.1500  best 0.2069  lr 5.0e-04     0.3s
+[dirgine s42 f2] epoch   9  train_loss 0.0231  val_F1 0.1463  best 0.2069  lr 5.0e-04     0.3s
+[dirgine s42 f2] epoch  10  train_loss 0.0192  val_F1 0.1304  best 0.2069  lr 5.0e-04     0.3s
+[dirgine s42 f2] epoch  11  train_loss 0.0205  val_F1 0.1364  best 0.2069  lr 5.0e-04     0.3s
+[dirgine s42 f2] epoch  12  train_loss 0.0155  val_F1 0.1395  best 0.2069  lr 5.0e-04     0.2s
+[dirgine s42 f2] epoch  13  train_loss 0.0174  val_F1 0.1622  best 0.2069  lr 2.5e-04     0.2s
+[dirgine s42 f2] epoch  14  train_loss 0.0468  val_F1 0.1579  best 0.2069  lr 2.5e-04     0.2s
+[dirgine s42 f2] epoch  15  train_loss 0.0292  val_F1 0.1538  best 0.2069  lr 2.5e-04     0.3s
+[dirgine s42 f2] epoch  16  train_loss 0.0226  val_F1 0.1714  best 0.2069  lr 2.5e-04     0.3s
+[dirgine s42 f2] epoch  17  train_loss 0.0250  val_F1 0.1765  best 0.2069  lr 2.5e-04     0.2s
+[dirgine s42 f2] epoch  18  train_loss 0.0164  val_F1 0.1765  best 0.2069  lr 2.5e-04     0.3s
+[dirgine s42 f2] epoch  19  train_loss 0.0161  val_F1 0.1765  best 0.2069  lr 1.3e-04     0.2s
+[dirgine s42 f2] epoch  20  train_loss 0.0201  val_F1 0.1765  best 0.2069  lr 1.3e-04     0.3s
+[dirgine s42 f2] epoch  21  train_loss 0.0137  val_F1 0.1765  best 0.2069  lr 1.3e-04     0.2s
+[dirgine s42 f2] early stopping at epoch 21 (no val_F1 improvement for 20 epochs)
+[dirgine s42 f3] class weights (benign, bot) = (0.5002471239880699, 1012.1379310344828)
+[dirgine s42 f3] using focal loss gamma=2.0  alpha=[0.5002471208572388, 1012.137939453125]
+[dirgine s42 f3] DropEdge enabled, p=0.2
+[dirgine s42 f3] epoch   1  train_loss 0.4468  val_F1 0.3750  best 0.3750  lr 1.0e-03  *  0.3s
+[dirgine s42 f3] epoch   2  train_loss 0.1221  val_F1 0.0561  best 0.3750  lr 1.0e-03     0.3s
+[dirgine s42 f3] epoch   3  train_loss 0.0795  val_F1 0.0411  best 0.3750  lr 1.0e-03     0.3s
+[dirgine s42 f3] epoch   4  train_loss 0.0426  val_F1 0.2000  best 0.3750  lr 1.0e-03     0.3s
+[dirgine s42 f3] epoch   5  train_loss 0.0265  val_F1 0.3158  best 0.3750  lr 1.0e-03     0.3s
+[dirgine s42 f3] epoch   6  train_loss 0.0597  val_F1 0.3158  best 0.3750  lr 1.0e-03     0.3s
+[dirgine s42 f3] epoch   7  train_loss 0.0503  val_F1 0.0526  best 0.3750  lr 5.0e-04     0.3s
+[dirgine s42 f3] epoch   8  train_loss 0.0368  val_F1 0.4286  best 0.4286  lr 5.0e-04  *  0.3s
+[dirgine s42 f3] epoch   9  train_loss 0.0253  val_F1 0.4286  best 0.4286  lr 5.0e-04     0.2s
+[dirgine s42 f3] epoch  10  train_loss 0.0330  val_F1 0.3750  best 0.4286  lr 5.0e-04     0.2s
+[dirgine s42 f3] epoch  11  train_loss 0.0360  val_F1 0.3750  best 0.4286  lr 5.0e-04     0.4s
+[dirgine s42 f3] epoch  12  train_loss 0.0333  val_F1 0.3158  best 0.4286  lr 5.0e-04     0.3s
+[dirgine s42 f3] epoch  13  train_loss 0.0263  val_F1 0.3000  best 0.4286  lr 5.0e-04     0.3s
+[dirgine s42 f3] epoch  14  train_loss 0.0207  val_F1 0.3333  best 0.4286  lr 2.5e-04     0.4s
+[dirgine s42 f3] epoch  15  train_loss 0.0165  val_F1 0.3158  best 0.4286  lr 2.5e-04     0.5s
+[dirgine s42 f3] epoch  16  train_loss 0.0287  val_F1 0.3158  best 0.4286  lr 2.5e-04     0.5s
+[dirgine s42 f3] epoch  17  train_loss 0.0281  val_F1 0.3000  best 0.4286  lr 2.5e-04     0.4s
+[dirgine s42 f3] epoch  18  train_loss 0.0192  val_F1 0.3000  best 0.4286  lr 2.5e-04     0.5s
+[dirgine s42 f3] epoch  19  train_loss 0.0217  val_F1 0.3333  best 0.4286  lr 2.5e-04     0.3s
+[dirgine s42 f3] epoch  20  train_loss 0.0138  val_F1 0.3158  best 0.4286  lr 1.3e-04     0.3s
+[dirgine s42 f3] epoch  21  train_loss 0.0168  val_F1 0.3158  best 0.4286  lr 1.3e-04     0.3s
+[dirgine s42 f3] epoch  22  train_loss 0.0210  val_F1 0.3158  best 0.4286  lr 1.3e-04     0.3s
+[dirgine s42 f3] epoch  23  train_loss 0.0125  val_F1 0.3000  best 0.4286  lr 1.3e-04     0.3s
+[dirgine s42 f3] epoch  24  train_loss 0.0176  val_F1 0.3000  best 0.4286  lr 1.3e-04     0.2s
+[dirgine s42 f3] epoch  25  train_loss 0.0130  val_F1 0.3333  best 0.4286  lr 1.3e-04     0.2s
+[dirgine s42 f3] epoch  26  train_loss 0.0243  val_F1 0.2308  best 0.4286  lr 6.3e-05     0.3s
+[dirgine s42 f3] epoch  27  train_loss 0.0117  val_F1 0.2400  best 0.4286  lr 6.3e-05     0.3s
+[dirgine s42 f3] epoch  28  train_loss 0.0824  val_F1 0.2308  best 0.4286  lr 6.3e-05     0.3s
+[dirgine s42 f3] early stopping at epoch 28 (no val_F1 improvement for 20 epochs)
+[dirgine s42 f4] class weights (benign, bot) = (0.5001619502216161, 1544.1842105263158)
+[dirgine s42 f4] using focal loss gamma=2.0  alpha=[0.5001619458198547, 1544.1842041015625]
+[dirgine s42 f4] DropEdge enabled, p=0.2
+[dirgine s42 f4] epoch   1  train_loss 0.3926  val_F1 0.4000  best 0.4000  lr 1.0e-03  *  0.3s
+[dirgine s42 f4] epoch   2  train_loss 0.1804  val_F1 0.5200  best 0.5200  lr 1.0e-03  *  0.2s
+[dirgine s42 f4] epoch   3  train_loss 0.0650  val_F1 0.3467  best 0.5200  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch   4  train_loss 0.1028  val_F1 0.3467  best 0.5200  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch   5  train_loss 0.0705  val_F1 0.4815  best 0.5200  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch   6  train_loss 0.0441  val_F1 0.3171  best 0.5200  lr 1.0e-03     0.2s
+[dirgine s42 f4] epoch   7  train_loss 0.0645  val_F1 0.2796  best 0.5200  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch   8  train_loss 0.0437  val_F1 0.5306  best 0.5306  lr 1.0e-03  *  0.3s
+[dirgine s42 f4] epoch   9  train_loss 0.0858  val_F1 0.2149  best 0.5306  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch  10  train_loss 0.0480  val_F1 0.2549  best 0.5306  lr 1.0e-03     0.2s
+[dirgine s42 f4] epoch  11  train_loss 0.0343  val_F1 0.2321  best 0.5306  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch  12  train_loss 0.0273  val_F1 0.3250  best 0.5306  lr 1.0e-03     0.2s
+[dirgine s42 f4] epoch  13  train_loss 0.0216  val_F1 0.4262  best 0.5306  lr 1.0e-03     0.3s
+[dirgine s42 f4] epoch  14  train_loss 0.0270  val_F1 0.3514  best 0.5306  lr 5.0e-04     0.2s
+[dirgine s42 f4] epoch  15  train_loss 0.0569  val_F1 0.3939  best 0.5306  lr 5.0e-04     0.2s
+[dirgine s42 f4] epoch  16  train_loss 0.0142  val_F1 0.3714  best 0.5306  lr 5.0e-04     0.2s
+[dirgine s42 f4] epoch  17  train_loss 0.0119  val_F1 0.2921  best 0.5306  lr 5.0e-04     0.2s
+[dirgine s42 f4] epoch  18  train_loss 0.0139  val_F1 0.4262  best 0.5306  lr 5.0e-04     0.2s
+[dirgine s42 f4] epoch  19  train_loss 0.0580  val_F1 0.1970  best 0.5306  lr 5.0e-04     0.3s
+[dirgine s42 f4] epoch  20  train_loss 0.1127  val_F1 0.1769  best 0.5306  lr 2.5e-04     0.3s
+[dirgine s42 f4] epoch  21  train_loss 0.0161  val_F1 0.2653  best 0.5306  lr 2.5e-04     0.2s
+[dirgine s42 f4] epoch  22  train_loss 0.0366  val_F1 0.3514  best 0.5306  lr 2.5e-04     0.2s
+[dirgine s42 f4] epoch  23  train_loss 0.0134  val_F1 0.3133  best 0.5306  lr 2.5e-04     0.2s
+[dirgine s42 f4] epoch  24  train_loss 0.0111  val_F1 0.3824  best 0.5306  lr 2.5e-04     0.2s
+[dirgine s42 f4] epoch  25  train_loss 0.0145  val_F1 0.3768  best 0.5306  lr 2.5e-04     0.2s
+[dirgine s42 f4] epoch  26  train_loss 0.0122  val_F1 0.3291  best 0.5306  lr 1.3e-04     0.2s
+[dirgine s42 f4] epoch  27  train_loss 0.0113  val_F1 0.3562  best 0.5306  lr 1.3e-04     0.2s
+[dirgine s42 f4] epoch  28  train_loss 0.0119  val_F1 0.3768  best 0.5306  lr 1.3e-04     0.2s
+[dirgine s42 f4] early stopping at epoch 28 (no val_F1 improvement for 20 epochs)
+[dirgine seed 42] F1 0.476 PR 0.341 FN 20 FP 13
+[dirgine s1 f0] class weights (benign, bot) = (0.5000998585337438, 2504.0416666666665)
+[dirgine s1 f0] using focal loss gamma=2.0  alpha=[0.5000998377799988, 2504.041748046875]
+[dirgine s1 f0] DropEdge enabled, p=0.2
+[dirgine s1 f0] epoch   1  train_loss 0.4187  val_F1 0.2286  best 0.2286  lr 1.0e-03  *  0.3s
+[dirgine s1 f0] epoch   2  train_loss 0.0581  val_F1 0.6829  best 0.6829  lr 1.0e-03  *  0.3s
+[dirgine s1 f0] epoch   3  train_loss 0.0724  val_F1 0.6818  best 0.6829  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch   4  train_loss 0.0113  val_F1 0.5085  best 0.6829  lr 1.0e-03     0.2s
+[dirgine s1 f0] epoch   5  train_loss 0.0042  val_F1 0.6383  best 0.6829  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch   6  train_loss 0.0030  val_F1 0.0935  best 0.6829  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch   7  train_loss 0.0020  val_F1 0.3000  best 0.6829  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch   8  train_loss 0.0020  val_F1 0.6977  best 0.6977  lr 1.0e-03  *  0.3s
+[dirgine s1 f0] epoch   9  train_loss 0.0003  val_F1 0.9091  best 0.9091  lr 1.0e-03  *  0.3s
+[dirgine s1 f0] epoch  10  train_loss 0.1515  val_F1 0.6250  best 0.9091  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch  11  train_loss 0.0027  val_F1 0.7143  best 0.9091  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch  12  train_loss 0.0017  val_F1 0.7317  best 0.9091  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch  13  train_loss 0.0018  val_F1 0.6667  best 0.9091  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch  14  train_loss 0.0062  val_F1 0.0980  best 0.9091  lr 1.0e-03     0.3s
+[dirgine s1 f0] epoch  15  train_loss 0.0028  val_F1 0.1215  best 0.9091  lr 5.0e-04     0.3s
+[dirgine s1 f0] epoch  16  train_loss 0.0032  val_F1 0.1190  best 0.9091  lr 5.0e-04     0.3s
+[dirgine s1 f0] epoch  17  train_loss 0.0015  val_F1 0.1493  best 0.9091  lr 5.0e-04     0.4s
+[dirgine s1 f0] epoch  18  train_loss 0.0103  val_F1 0.1485  best 0.9091  lr 5.0e-04     0.4s
+[dirgine s1 f0] epoch  19  train_loss 0.0012  val_F1 0.1429  best 0.9091  lr 5.0e-04     0.3s
+[dirgine s1 f0] epoch  20  train_loss 0.0040  val_F1 0.6522  best 0.9091  lr 5.0e-04     0.4s
+[dirgine s1 f0] epoch  21  train_loss 0.0015  val_F1 0.6667  best 0.9091  lr 2.5e-04     0.4s
+[dirgine s1 f0] epoch  22  train_loss 0.0017  val_F1 0.6818  best 0.9091  lr 2.5e-04     0.3s
+[dirgine s1 f0] epoch  23  train_loss 0.0012  val_F1 0.7143  best 0.9091  lr 2.5e-04     0.3s
+[dirgine s1 f0] epoch  24  train_loss 0.0011  val_F1 0.7143  best 0.9091  lr 2.5e-04     0.3s
+[dirgine s1 f0] epoch  25  train_loss 0.0284  val_F1 0.1493  best 0.9091  lr 2.5e-04     0.3s
+[dirgine s1 f0] epoch  26  train_loss 0.0015  val_F1 0.1493  best 0.9091  lr 2.5e-04     0.3s
+[dirgine s1 f0] epoch  27  train_loss 0.0011  val_F1 0.1493  best 0.9091  lr 1.3e-04     0.3s
+[dirgine s1 f0] epoch  28  train_loss 0.0010  val_F1 0.1493  best 0.9091  lr 1.3e-04     0.3s
+[dirgine s1 f0] epoch  29  train_loss 0.0009  val_F1 0.1493  best 0.9091  lr 1.3e-04     0.3s
+[dirgine s1 f0] early stopping at epoch 29 (no val_F1 improvement for 20 epochs)
+[dirgine s1 f1] class weights (benign, bot) = (0.5001206330824165, 2072.9)
+[dirgine s1 f1] using focal loss gamma=2.0  alpha=[0.5001206398010254, 2072.89990234375]
+[dirgine s1 f1] DropEdge enabled, p=0.2
+[dirgine s1 f1] epoch   1  train_loss 0.5047  val_F1 0.4000  best 0.4000  lr 1.0e-03  *  0.2s
+[dirgine s1 f1] epoch   2  train_loss 0.0928  val_F1 0.2581  best 0.4000  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch   3  train_loss 0.1264  val_F1 0.4706  best 0.4706  lr 1.0e-03  *  0.3s
+[dirgine s1 f1] epoch   4  train_loss 0.0843  val_F1 0.0727  best 0.4706  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch   5  train_loss 0.0821  val_F1 0.0541  best 0.4706  lr 1.0e-03     0.2s
+[dirgine s1 f1] epoch   6  train_loss 0.0542  val_F1 0.1509  best 0.4706  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch   7  train_loss 0.0539  val_F1 0.6154  best 0.6154  lr 1.0e-03  *  0.3s
+[dirgine s1 f1] epoch   8  train_loss 0.0284  val_F1 0.2222  best 0.6154  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch   9  train_loss 0.0460  val_F1 0.2286  best 0.6154  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch  10  train_loss 0.0981  val_F1 0.2051  best 0.6154  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch  11  train_loss 0.0382  val_F1 0.0734  best 0.6154  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch  12  train_loss 0.0238  val_F1 0.1111  best 0.6154  lr 1.0e-03     0.3s
+[dirgine s1 f1] epoch  13  train_loss 0.0331  val_F1 0.0690  best 0.6154  lr 5.0e-04     0.3s
+[dirgine s1 f1] epoch  14  train_loss 0.0249  val_F1 0.0734  best 0.6154  lr 5.0e-04     0.3s
+[dirgine s1 f1] epoch  15  train_loss 0.0192  val_F1 0.0825  best 0.6154  lr 5.0e-04     0.3s
+[dirgine s1 f1] epoch  16  train_loss 0.0130  val_F1 0.4444  best 0.6154  lr 5.0e-04     0.3s
+[dirgine s1 f1] epoch  17  train_loss 0.0164  val_F1 0.5333  best 0.6154  lr 5.0e-04     0.3s
+[dirgine s1 f1] epoch  18  train_loss 0.0297  val_F1 0.6154  best 0.6154  lr 5.0e-04     0.3s
+[dirgine s1 f1] epoch  19  train_loss 0.0270  val_F1 0.5714  best 0.6154  lr 2.5e-04     0.3s
+[dirgine s1 f1] epoch  20  train_loss 0.0153  val_F1 0.0879  best 0.6154  lr 2.5e-04     0.3s
+[dirgine s1 f1] epoch  21  train_loss 0.0098  val_F1 0.1194  best 0.6154  lr 2.5e-04     0.4s
+[dirgine s1 f1] epoch  22  train_loss 0.0136  val_F1 0.5000  best 0.6154  lr 2.5e-04     0.3s
+[dirgine s1 f1] epoch  23  train_loss 0.0107  val_F1 0.4000  best 0.6154  lr 2.5e-04     0.3s
+[dirgine s1 f1] epoch  24  train_loss 0.0080  val_F1 0.4444  best 0.6154  lr 2.5e-04     0.4s
+[dirgine s1 f1] epoch  25  train_loss 0.0774  val_F1 0.0784  best 0.6154  lr 1.3e-04     0.4s
+[dirgine s1 f1] epoch  26  train_loss 0.0099  val_F1 0.0851  best 0.6154  lr 1.3e-04     0.3s
+[dirgine s1 f1] epoch  27  train_loss 0.0114  val_F1 0.1778  best 0.6154  lr 1.3e-04     0.3s
+[dirgine s1 f1] early stopping at epoch 27 (no val_F1 improvement for 20 epochs)
+[dirgine s1 f2] class weights (benign, bot) = (0.5002067758867504, 1209.5384615384614)
+[dirgine s1 f2] using focal loss gamma=2.0  alpha=[0.5002067685127258, 1209.5384521484375]
+[dirgine s1 f2] DropEdge enabled, p=0.2
+[dirgine s1 f2] epoch   1  train_loss 0.1983  val_F1 0.0183  best 0.0183  lr 1.0e-03  *  0.3s
+[dirgine s1 f2] epoch   2  train_loss 0.0557  val_F1 0.2941  best 0.2941  lr 1.0e-03  *  0.3s
+[dirgine s1 f2] epoch   3  train_loss 0.0921  val_F1 0.0433  best 0.2941  lr 1.0e-03     0.3s
+[dirgine s1 f2] epoch   4  train_loss 0.0377  val_F1 0.1471  best 0.2941  lr 1.0e-03     0.3s
+[dirgine s1 f2] epoch   5  train_loss 0.0573  val_F1 0.0352  best 0.2941  lr 1.0e-03     0.3s
+[dirgine s1 f2] epoch   6  train_loss 0.0352  val_F1 0.1754  best 0.2941  lr 1.0e-03     0.3s
+[dirgine s1 f2] epoch   7  train_loss 0.0527  val_F1 0.1471  best 0.2941  lr 1.0e-03     0.3s
+[dirgine s1 f2] epoch   8  train_loss 0.0243  val_F1 0.0662  best 0.2941  lr 5.0e-04     0.3s
+[dirgine s1 f2] epoch   9  train_loss 0.0375  val_F1 0.0781  best 0.2941  lr 5.0e-04     0.3s
+[dirgine s1 f2] epoch  10  train_loss 0.0482  val_F1 0.1235  best 0.2941  lr 5.0e-04     0.3s
+[dirgine s1 f2] epoch  11  train_loss 0.0201  val_F1 0.1471  best 0.2941  lr 5.0e-04     0.3s
+[dirgine s1 f2] epoch  12  train_loss 0.0209  val_F1 0.0694  best 0.2941  lr 5.0e-04     0.3s
+[dirgine s1 f2] epoch  13  train_loss 0.0154  val_F1 0.1887  best 0.2941  lr 5.0e-04     0.3s
+[dirgine s1 f2] epoch  14  train_loss 0.0481  val_F1 0.2083  best 0.2941  lr 2.5e-04     0.3s
+[dirgine s1 f2] epoch  15  train_loss 0.0447  val_F1 0.2273  best 0.2941  lr 2.5e-04     0.3s
+[dirgine s1 f2] epoch  16  train_loss 0.0619  val_F1 0.1075  best 0.2941  lr 2.5e-04     0.3s
+[dirgine s1 f2] epoch  17  train_loss 0.0158  val_F1 0.1220  best 0.2941  lr 2.5e-04     0.3s
+[dirgine s1 f2] epoch  18  train_loss 0.0203  val_F1 0.1351  best 0.2941  lr 2.5e-04     0.3s
+[dirgine s1 f2] epoch  19  train_loss 0.0146  val_F1 0.1351  best 0.2941  lr 2.5e-04     0.3s
+[dirgine s1 f2] epoch  20  train_loss 0.0220  val_F1 0.2000  best 0.2941  lr 1.3e-04     0.3s
+[dirgine s1 f2] epoch  21  train_loss 0.0177  val_F1 0.2381  best 0.2941  lr 1.3e-04     0.3s
+[dirgine s1 f2] epoch  22  train_loss 0.0131  val_F1 0.1493  best 0.2941  lr 1.3e-04     0.3s
+[dirgine s1 f2] early stopping at epoch 22 (no val_F1 improvement for 20 epochs)
+[dirgine s1 f3] class weights (benign, bot) = (0.5002199485157548, 1137.1296296296296)
+[dirgine s1 f3] using focal loss gamma=2.0  alpha=[0.5002199411392212, 1137.129638671875]
+[dirgine s1 f3] DropEdge enabled, p=0.2
+[dirgine s1 f3] epoch   1  train_loss 0.3369  val_F1 0.1333  best 0.1333  lr 1.0e-03  *  0.3s
+[dirgine s1 f3] epoch   2  train_loss 0.1369  val_F1 0.0896  best 0.1333  lr 1.0e-03     0.3s
+[dirgine s1 f3] epoch   3  train_loss 0.1173  val_F1 0.2609  best 0.2609  lr 1.0e-03  *  0.3s
+[dirgine s1 f3] epoch   4  train_loss 0.0364  val_F1 0.2727  best 0.2727  lr 1.0e-03  *  0.3s
+[dirgine s1 f3] epoch   5  train_loss 0.1041  val_F1 0.0952  best 0.2727  lr 1.0e-03     0.3s
+[dirgine s1 f3] epoch   6  train_loss 0.0353  val_F1 0.0870  best 0.2727  lr 1.0e-03     0.3s
+[dirgine s1 f3] epoch   7  train_loss 0.1209  val_F1 0.2500  best 0.2727  lr 1.0e-03     0.3s
+[dirgine s1 f3] epoch   8  train_loss 0.0650  val_F1 0.0714  best 0.2727  lr 1.0e-03     0.3s
+[dirgine s1 f3] epoch   9  train_loss 0.0266  val_F1 0.0652  best 0.2727  lr 1.0e-03     0.3s
+[dirgine s1 f3] epoch  10  train_loss 0.0292  val_F1 0.0870  best 0.2727  lr 5.0e-04     0.3s
+[dirgine s1 f3] epoch  11  train_loss 0.0476  val_F1 0.0882  best 0.2727  lr 5.0e-04     0.3s
+[dirgine s1 f3] epoch  12  train_loss 0.0193  val_F1 0.1277  best 0.2727  lr 5.0e-04     0.3s
+[dirgine s1 f3] epoch  13  train_loss 0.0273  val_F1 0.0882  best 0.2727  lr 5.0e-04     0.3s
+[dirgine s1 f3] epoch  14  train_loss 0.0192  val_F1 0.0857  best 0.2727  lr 5.0e-04     0.3s
+[dirgine s1 f3] epoch  15  train_loss 0.0172  val_F1 0.2143  best 0.2727  lr 5.0e-04     0.3s
+[dirgine s1 f3] epoch  16  train_loss 0.0160  val_F1 0.2222  best 0.2727  lr 2.5e-04     0.3s
+[dirgine s1 f3] epoch  17  train_loss 0.0190  val_F1 0.2069  best 0.2727  lr 2.5e-04     0.3s
+[dirgine s1 f3] epoch  18  train_loss 0.0145  val_F1 0.2143  best 0.2727  lr 2.5e-04     0.3s
+[dirgine s1 f3] epoch  19  train_loss 0.0357  val_F1 0.2222  best 0.2727  lr 2.5e-04     0.3s
+[dirgine s1 f3] epoch  20  train_loss 0.0188  val_F1 0.1000  best 0.2727  lr 2.5e-04     0.3s
+[dirgine s1 f3] epoch  21  train_loss 0.0144  val_F1 0.0759  best 0.2727  lr 2.5e-04     0.3s
+[dirgine s1 f3] epoch  22  train_loss 0.0158  val_F1 0.0800  best 0.2727  lr 1.3e-04     0.2s
+[dirgine s1 f3] epoch  23  train_loss 0.0269  val_F1 0.1765  best 0.2727  lr 1.3e-04     0.3s
+[dirgine s1 f3] epoch  24  train_loss 0.0176  val_F1 0.1818  best 0.2727  lr 1.3e-04     0.3s
+[dirgine s1 f3] early stopping at epoch 24 (no val_F1 improvement for 20 epochs)
+[dirgine s1 f4] class weights (benign, bot) = (0.5002039218245293, 1226.46)
+[dirgine s1 f4] using focal loss gamma=2.0  alpha=[0.5002039074897766, 1226.4599609375]
+[dirgine s1 f4] DropEdge enabled, p=0.2
+[dirgine s1 f4] epoch   1  train_loss 0.2653  val_F1 0.0265  best 0.0265  lr 1.0e-03  *  0.3s
+[dirgine s1 f4] epoch   2  train_loss 0.1076  val_F1 0.1463  best 0.1463  lr 1.0e-03  *  0.3s
+[dirgine s1 f4] epoch   3  train_loss 0.0415  val_F1 0.0745  best 0.1463  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch   4  train_loss 0.0285  val_F1 0.1600  best 0.1600  lr 1.0e-03  *  0.3s
+[dirgine s1 f4] epoch   5  train_loss 0.0791  val_F1 0.1579  best 0.1600  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch   6  train_loss 0.0184  val_F1 0.1154  best 0.1600  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch   7  train_loss 0.0842  val_F1 0.1644  best 0.1644  lr 1.0e-03  *  0.3s
+[dirgine s1 f4] epoch   8  train_loss 0.0217  val_F1 0.1053  best 0.1644  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch   9  train_loss 0.0252  val_F1 0.0938  best 0.1644  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch  10  train_loss 0.0365  val_F1 0.1212  best 0.1644  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch  11  train_loss 0.0139  val_F1 0.1519  best 0.1644  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch  12  train_loss 0.0153  val_F1 0.0992  best 0.1644  lr 1.0e-03     0.3s
+[dirgine s1 f4] epoch  13  train_loss 0.0463  val_F1 0.1081  best 0.1644  lr 5.0e-04     0.3s
+[dirgine s1 f4] epoch  14  train_loss 0.0161  val_F1 0.1143  best 0.1644  lr 5.0e-04     0.3s
+[dirgine s1 f4] epoch  15  train_loss 0.0122  val_F1 0.1143  best 0.1644  lr 5.0e-04     0.3s
+[dirgine s1 f4] epoch  16  train_loss 0.0108  val_F1 0.1644  best 0.1644  lr 5.0e-04     0.3s
+[dirgine s1 f4] epoch  17  train_loss 0.0355  val_F1 0.1579  best 0.1644  lr 5.0e-04     0.3s
+[dirgine s1 f4] epoch  18  train_loss 0.0099  val_F1 0.1043  best 0.1644  lr 5.0e-04     0.3s
+[dirgine s1 f4] epoch  19  train_loss 0.0113  val_F1 0.1101  best 0.1644  lr 2.5e-04     0.3s
+[dirgine s1 f4] epoch  20  train_loss 0.0422  val_F1 0.1071  best 0.1644  lr 2.5e-04     0.3s
+[dirgine s1 f4] epoch  21  train_loss 0.0113  val_F1 0.1395  best 0.1644  lr 2.5e-04     0.3s
+[dirgine s1 f4] epoch  22  train_loss 0.0191  val_F1 0.1043  best 0.1644  lr 2.5e-04     0.3s
+[dirgine s1 f4] epoch  23  train_loss 0.0149  val_F1 0.1600  best 0.1644  lr 2.5e-04     0.3s
+[dirgine s1 f4] epoch  24  train_loss 0.0167  val_F1 0.1237  best 0.1644  lr 2.5e-04     0.3s
+[dirgine s1 f4] epoch  25  train_loss 0.0112  val_F1 0.1579  best 0.1644  lr 1.3e-04     0.3s
+[dirgine s1 f4] epoch  26  train_loss 0.0261  val_F1 0.1101  best 0.1644  lr 1.3e-04     0.3s
+[dirgine s1 f4] epoch  27  train_loss 0.0094  val_F1 0.1071  best 0.1644  lr 1.3e-04     0.3s
+[dirgine s1 f4] early stopping at epoch 27 (no val_F1 improvement for 20 epochs)
+[dirgine seed 1] F1 0.784 PR 0.632 FN 6 FP 10
+[dirgine s2 f0] class weights (benign, bot) = (0.5001807426881367, 1383.6818181818182)
+[dirgine s2 f0] using focal loss gamma=2.0  alpha=[0.500180721282959, 1383.6817626953125]
+[dirgine s2 f0] DropEdge enabled, p=0.2
+[dirgine s2 f0] epoch   1  train_loss 1.3450  val_F1 0.1284  best 0.1284  lr 1.0e-03  *  0.3s
+[dirgine s2 f0] epoch   2  train_loss 0.0495  val_F1 0.0636  best 0.1284  lr 1.0e-03     0.3s
+[dirgine s2 f0] epoch   3  train_loss 0.0395  val_F1 0.0660  best 0.1284  lr 1.0e-03     0.3s
+[dirgine s2 f0] epoch   4  train_loss 0.0333  val_F1 0.0645  best 0.1284  lr 1.0e-03     0.3s
+[dirgine s2 f0] epoch   5  train_loss 0.0499  val_F1 0.0654  best 0.1284  lr 1.0e-03     0.3s
+[dirgine s2 f0] epoch   6  train_loss 0.0369  val_F1 0.0622  best 0.1284  lr 1.0e-03     0.3s
+[dirgine s2 f0] epoch   7  train_loss 0.0404  val_F1 0.0765  best 0.1284  lr 5.0e-04     0.3s
+[dirgine s2 f0] epoch   8  train_loss 0.0469  val_F1 0.0773  best 0.1284  lr 5.0e-04     0.3s
+[dirgine s2 f0] epoch   9  train_loss 0.0674  val_F1 0.0778  best 0.1284  lr 5.0e-04     0.3s
+[dirgine s2 f0] epoch  10  train_loss 0.0479  val_F1 0.0660  best 0.1284  lr 5.0e-04     0.3s
+[dirgine s2 f0] epoch  11  train_loss 0.0268  val_F1 0.0660  best 0.1284  lr 5.0e-04     0.3s
+[dirgine s2 f0] epoch  12  train_loss 0.0238  val_F1 0.0718  best 0.1284  lr 5.0e-04     0.3s
+[dirgine s2 f0] epoch  13  train_loss 0.0180  val_F1 0.0773  best 0.1284  lr 2.5e-04     0.3s
+[dirgine s2 f0] epoch  14  train_loss 0.0190  val_F1 0.0782  best 0.1284  lr 2.5e-04     0.3s
+[dirgine s2 f0] epoch  15  train_loss 0.0171  val_F1 0.0778  best 0.1284  lr 2.5e-04     0.3s
+[dirgine s2 f0] epoch  16  train_loss 0.0168  val_F1 0.0778  best 0.1284  lr 2.5e-04     0.3s
+[dirgine s2 f0] epoch  17  train_loss 0.0136  val_F1 0.0757  best 0.1284  lr 2.5e-04     0.3s
+[dirgine s2 f0] epoch  18  train_loss 0.0198  val_F1 0.0753  best 0.1284  lr 2.5e-04     0.3s
+[dirgine s2 f0] epoch  19  train_loss 0.0133  val_F1 0.0725  best 0.1284  lr 1.3e-04     0.3s
+[dirgine s2 f0] epoch  20  train_loss 0.0102  val_F1 0.0761  best 0.1284  lr 1.3e-04     0.3s
+[dirgine s2 f0] epoch  21  train_loss 0.0139  val_F1 0.0769  best 0.1284  lr 1.3e-04     0.3s
+[dirgine s2 f0] early stopping at epoch 21 (no val_F1 improvement for 20 epochs)
+[dirgine s2 f1] class weights (benign, bot) = (0.50009788407263, 2554.5416666666665)
+[dirgine s2 f1] using focal loss gamma=2.0  alpha=[0.5000978708267212, 2554.541748046875]
+[dirgine s2 f1] DropEdge enabled, p=0.2
+[dirgine s2 f1] epoch   1  train_loss 0.2983  val_F1 0.2286  best 0.2286  lr 1.0e-03  *  0.2s
+[dirgine s2 f1] epoch   2  train_loss 0.1566  val_F1 0.2105  best 0.2286  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch   3  train_loss 0.0929  val_F1 0.2222  best 0.2286  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch   4  train_loss 0.2612  val_F1 0.2105  best 0.2286  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch   5  train_loss 0.0135  val_F1 0.3590  best 0.3590  lr 1.0e-03  *  0.2s
+[dirgine s2 f1] epoch   6  train_loss 0.1088  val_F1 0.3544  best 0.3590  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch   7  train_loss 0.0089  val_F1 0.3182  best 0.3590  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch   8  train_loss 0.0027  val_F1 0.7368  best 0.7368  lr 1.0e-03  *  0.3s
+[dirgine s2 f1] epoch   9  train_loss 0.0202  val_F1 0.7179  best 0.7368  lr 1.0e-03     0.3s
+[dirgine s2 f1] epoch  10  train_loss 0.0014  val_F1 0.7179  best 0.7368  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch  11  train_loss 0.0011  val_F1 0.7179  best 0.7368  lr 1.0e-03     0.3s
+[dirgine s2 f1] epoch  12  train_loss 0.0041  val_F1 0.6222  best 0.7368  lr 1.0e-03     0.3s
+[dirgine s2 f1] epoch  13  train_loss 0.1055  val_F1 0.7179  best 0.7368  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch  14  train_loss 0.0021  val_F1 0.7568  best 0.7568  lr 1.0e-03  *  0.2s
+[dirgine s2 f1] epoch  15  train_loss 0.0126  val_F1 0.2333  best 0.7568  lr 1.0e-03     0.3s
+[dirgine s2 f1] epoch  16  train_loss 0.0030  val_F1 0.3218  best 0.7568  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch  17  train_loss 0.0037  val_F1 0.3111  best 0.7568  lr 1.0e-03     0.3s
+[dirgine s2 f1] epoch  18  train_loss 0.0029  val_F1 0.3011  best 0.7568  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch  19  train_loss 0.0018  val_F1 0.3415  best 0.7568  lr 1.0e-03     0.2s
+[dirgine s2 f1] epoch  20  train_loss 0.0131  val_F1 0.3218  best 0.7568  lr 5.0e-04     0.2s
+[dirgine s2 f1] epoch  21  train_loss 0.0033  val_F1 0.3218  best 0.7568  lr 5.0e-04     0.3s
+[dirgine s2 f1] epoch  22  train_loss 0.0030  val_F1 0.3218  best 0.7568  lr 5.0e-04     0.2s
+[dirgine s2 f1] epoch  23  train_loss 0.0020  val_F1 0.3333  best 0.7568  lr 5.0e-04     0.2s
+[dirgine s2 f1] epoch  24  train_loss 0.0061  val_F1 0.3294  best 0.7568  lr 5.0e-04     0.3s
+[dirgine s2 f1] epoch  25  train_loss 0.0021  val_F1 0.3294  best 0.7568  lr 5.0e-04     0.2s
+[dirgine s2 f1] epoch  26  train_loss 0.0015  val_F1 0.3373  best 0.7568  lr 2.5e-04     0.2s
+[dirgine s2 f1] epoch  27  train_loss 0.0022  val_F1 0.3373  best 0.7568  lr 2.5e-04     0.2s
+[dirgine s2 f1] epoch  28  train_loss 0.0011  val_F1 0.3457  best 0.7568  lr 2.5e-04     0.2s
+[dirgine s2 f1] epoch  29  train_loss 0.0018  val_F1 0.3373  best 0.7568  lr 2.5e-04     0.3s
+[dirgine s2 f1] epoch  30  train_loss 0.0010  val_F1 0.3457  best 0.7568  lr 2.5e-04     0.2s
+[dirgine s2 f1] epoch  31  train_loss 0.0009  val_F1 0.3544  best 0.7568  lr 2.5e-04     0.3s
+[dirgine s2 f1] epoch  32  train_loss 0.0008  val_F1 0.3544  best 0.7568  lr 1.3e-04     0.2s
+[dirgine s2 f1] epoch  33  train_loss 0.0008  val_F1 0.3544  best 0.7568  lr 1.3e-04     0.2s
+[dirgine s2 f1] epoch  34  train_loss 0.0005  val_F1 0.3544  best 0.7568  lr 1.3e-04     0.3s
+[dirgine s2 f1] early stopping at epoch 34 (no val_F1 improvement for 20 epochs)
+[dirgine s2 f2] class weights (benign, bot) = (0.5001341836895778, 1863.6176470588234)
+[dirgine s2 f2] using focal loss gamma=2.0  alpha=[0.5001341700553894, 1863.61767578125]
+[dirgine s2 f2] DropEdge enabled, p=0.2
+[dirgine s2 f2] epoch   1  train_loss 0.2262  val_F1 0.1765  best 0.1765  lr 1.0e-03  *  0.3s
+[dirgine s2 f2] epoch   2  train_loss 0.2507  val_F1 0.2400  best 0.2400  lr 1.0e-03  *  0.3s
+[dirgine s2 f2] epoch   3  train_loss 0.1341  val_F1 0.0674  best 0.2400  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch   4  train_loss 0.0513  val_F1 0.0282  best 0.2400  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch   5  train_loss 0.0407  val_F1 0.2857  best 0.2857  lr 1.0e-03  *  0.3s
+[dirgine s2 f2] epoch   6  train_loss 0.1035  val_F1 0.0462  best 0.2857  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch   7  train_loss 0.0415  val_F1 0.0531  best 0.2857  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch   8  train_loss 0.0372  val_F1 0.3333  best 0.3333  lr 1.0e-03  *  0.3s
+[dirgine s2 f2] epoch   9  train_loss 0.0310  val_F1 0.0923  best 0.3333  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch  10  train_loss 0.0530  val_F1 0.3000  best 0.3333  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch  11  train_loss 0.0378  val_F1 0.0571  best 0.3333  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch  12  train_loss 0.0202  val_F1 0.0561  best 0.3333  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch  13  train_loss 0.0233  val_F1 0.2609  best 0.3333  lr 1.0e-03     0.3s
+[dirgine s2 f2] epoch  14  train_loss 0.0187  val_F1 0.2308  best 0.3333  lr 5.0e-04     0.2s
+[dirgine s2 f2] epoch  15  train_loss 0.0120  val_F1 0.1935  best 0.3333  lr 5.0e-04     0.4s
+[dirgine s2 f2] epoch  16  train_loss 0.0137  val_F1 0.0952  best 0.3333  lr 5.0e-04     0.3s
+[dirgine s2 f2] epoch  17  train_loss 0.0631  val_F1 0.2400  best 0.3333  lr 5.0e-04     0.3s
+[dirgine s2 f2] epoch  18  train_loss 0.0163  val_F1 0.0566  best 0.3333  lr 5.0e-04     0.3s
+[dirgine s2 f2] epoch  19  train_loss 0.0111  val_F1 0.3000  best 0.3333  lr 5.0e-04     0.2s
+[dirgine s2 f2] epoch  20  train_loss 0.0100  val_F1 0.1224  best 0.3333  lr 2.5e-04     0.2s
+[dirgine s2 f2] epoch  21  train_loss 0.0126  val_F1 0.1765  best 0.3333  lr 2.5e-04     0.2s
+[dirgine s2 f2] epoch  22  train_loss 0.0091  val_F1 0.2500  best 0.3333  lr 2.5e-04     0.3s
+[dirgine s2 f2] epoch  23  train_loss 0.0078  val_F1 0.2857  best 0.3333  lr 2.5e-04     0.3s
+[dirgine s2 f2] epoch  24  train_loss 0.0069  val_F1 0.2857  best 0.3333  lr 2.5e-04     0.3s
+[dirgine s2 f2] epoch  25  train_loss 0.0052  val_F1 0.3158  best 0.3333  lr 2.5e-04     0.3s
+[dirgine s2 f2] epoch  26  train_loss 0.0185  val_F1 0.1333  best 0.3333  lr 1.3e-04     0.2s
+[dirgine s2 f2] epoch  27  train_loss 0.0058  val_F1 0.2222  best 0.3333  lr 1.3e-04     0.2s
+[dirgine s2 f2] epoch  28  train_loss 0.0330  val_F1 0.3000  best 0.3333  lr 1.3e-04     0.3s
+[dirgine s2 f2] early stopping at epoch 28 (no val_F1 improvement for 20 epochs)
+[dirgine s2 f3] class weights (benign, bot) = (0.5002263723825693, 1104.875)
+[dirgine s2 f3] using focal loss gamma=2.0  alpha=[0.5002263784408569, 1104.875]
+[dirgine s2 f3] DropEdge enabled, p=0.2
+[dirgine s2 f3] epoch   1  train_loss 0.2023  val_F1 0.2667  best 0.2667  lr 1.0e-03  *  0.3s
+[dirgine s2 f3] epoch   2  train_loss 0.0509  val_F1 0.1379  best 0.2667  lr 1.0e-03     0.3s
+[dirgine s2 f3] epoch   3  train_loss 0.0869  val_F1 0.1311  best 0.2667  lr 1.0e-03     0.3s
+[dirgine s2 f3] epoch   4  train_loss 0.0313  val_F1 0.3200  best 0.3200  lr 1.0e-03  *  0.2s
+[dirgine s2 f3] epoch   5  train_loss 0.0312  val_F1 0.1212  best 0.3200  lr 1.0e-03     0.3s
+[dirgine s2 f3] epoch   6  train_loss 0.0292  val_F1 0.3810  best 0.3810  lr 1.0e-03  *  0.3s
+[dirgine s2 f3] epoch   7  train_loss 0.1066  val_F1 0.3200  best 0.3810  lr 1.0e-03     0.2s
+[dirgine s2 f3] epoch   8  train_loss 0.0266  val_F1 0.1143  best 0.3810  lr 1.0e-03     0.2s
+[dirgine s2 f3] epoch   9  train_loss 0.0263  val_F1 0.1176  best 0.3810  lr 1.0e-03     0.2s
+[dirgine s2 f3] epoch  10  train_loss 0.0477  val_F1 0.3333  best 0.3810  lr 1.0e-03     0.3s
+[dirgine s2 f3] epoch  11  train_loss 0.0229  val_F1 0.1067  best 0.3810  lr 1.0e-03     0.3s
+[dirgine s2 f3] epoch  12  train_loss 0.0158  val_F1 0.0584  best 0.3810  lr 5.0e-04     0.3s
+[dirgine s2 f3] epoch  13  train_loss 0.0323  val_F1 0.1818  best 0.3810  lr 5.0e-04     0.3s
+[dirgine s2 f3] epoch  14  train_loss 0.0369  val_F1 0.3333  best 0.3810  lr 5.0e-04     0.2s
+[dirgine s2 f3] epoch  15  train_loss 0.0305  val_F1 0.0889  best 0.3810  lr 5.0e-04     0.2s
+[dirgine s2 f3] epoch  16  train_loss 0.0134  val_F1 0.3333  best 0.3810  lr 5.0e-04     0.2s
+[dirgine s2 f3] epoch  17  train_loss 0.0157  val_F1 0.2581  best 0.3810  lr 5.0e-04     0.2s
+[dirgine s2 f3] epoch  18  train_loss 0.0116  val_F1 0.0769  best 0.3810  lr 2.5e-04     0.3s
+[dirgine s2 f3] epoch  19  train_loss 0.0148  val_F1 0.2051  best 0.3810  lr 2.5e-04     0.2s
+[dirgine s2 f3] epoch  20  train_loss 0.0419  val_F1 0.2162  best 0.3810  lr 2.5e-04     0.2s
+[dirgine s2 f3] epoch  21  train_loss 0.0091  val_F1 0.1067  best 0.3810  lr 2.5e-04     0.2s
+[dirgine s2 f3] epoch  22  train_loss 0.0061  val_F1 0.3333  best 0.3810  lr 2.5e-04     0.2s
+[dirgine s2 f3] epoch  23  train_loss 0.0172  val_F1 0.1231  best 0.3810  lr 2.5e-04     0.2s
+[dirgine s2 f3] epoch  24  train_loss 0.0107  val_F1 0.1905  best 0.3810  lr 1.3e-04     0.4s
+[dirgine s2 f3] epoch  25  train_loss 0.0071  val_F1 0.3478  best 0.3810  lr 1.3e-04     0.3s
+[dirgine s2 f3] epoch  26  train_loss 0.0123  val_F1 0.0976  best 0.3810  lr 1.3e-04     0.3s
+[dirgine s2 f3] early stopping at epoch 26 (no val_F1 improvement for 20 epochs)
+[dirgine s2 f4] class weights (benign, bot) = (0.5002150359771731, 1163.0961538461538)
+[dirgine s2 f4] using focal loss gamma=2.0  alpha=[0.5002150535583496, 1163.09619140625]
+[dirgine s2 f4] DropEdge enabled, p=0.2
+[dirgine s2 f4] epoch   1  train_loss 0.1309  val_F1 0.2128  best 0.2128  lr 1.0e-03  *  0.3s
+[dirgine s2 f4] epoch   2  train_loss 0.0669  val_F1 0.2000  best 0.2128  lr 1.0e-03     0.2s
+[dirgine s2 f4] epoch   3  train_loss 0.1245  val_F1 0.2326  best 0.2326  lr 1.0e-03  *  0.2s
+[dirgine s2 f4] epoch   4  train_loss 0.0391  val_F1 0.2381  best 0.2381  lr 1.0e-03  *  0.3s
+[dirgine s2 f4] epoch   5  train_loss 0.0610  val_F1 0.2439  best 0.2439  lr 1.0e-03  *  0.3s
+[dirgine s2 f4] epoch   6  train_loss 0.0482  val_F1 0.0488  best 0.2439  lr 1.0e-03     0.2s
+[dirgine s2 f4] epoch   7  train_loss 0.0562  val_F1 0.1075  best 0.2439  lr 1.0e-03     0.2s
+[dirgine s2 f4] epoch   8  train_loss 0.0267  val_F1 0.2632  best 0.2632  lr 1.0e-03  *  0.3s
+[dirgine s2 f4] epoch   9  train_loss 0.0244  val_F1 0.1389  best 0.2632  lr 1.0e-03     0.3s
+[dirgine s2 f4] epoch  10  train_loss 0.0255  val_F1 0.2564  best 0.2632  lr 1.0e-03     0.2s
+[dirgine s2 f4] epoch  11  train_loss 0.0459  val_F1 0.1111  best 0.2632  lr 1.0e-03     0.2s
+[dirgine s2 f4] epoch  12  train_loss 0.0244  val_F1 0.1961  best 0.2632  lr 1.0e-03     0.2s
+[dirgine s2 f4] epoch  13  train_loss 0.0233  val_F1 0.1852  best 0.2632  lr 1.0e-03     0.3s
+[dirgine s2 f4] epoch  14  train_loss 0.0177  val_F1 0.1042  best 0.2632  lr 5.0e-04     0.3s
+[dirgine s2 f4] epoch  15  train_loss 0.0171  val_F1 0.0943  best 0.2632  lr 5.0e-04     0.2s
+[dirgine s2 f4] epoch  16  train_loss 0.0123  val_F1 0.1408  best 0.2632  lr 5.0e-04     0.2s
+[dirgine s2 f4] epoch  17  train_loss 0.0161  val_F1 0.2564  best 0.2632  lr 5.0e-04     0.2s
+[dirgine s2 f4] epoch  18  train_loss 0.0183  val_F1 0.0794  best 0.2632  lr 5.0e-04     0.3s
+[dirgine s2 f4] epoch  19  train_loss 0.0160  val_F1 0.1124  best 0.2632  lr 5.0e-04     0.3s
+[dirgine s2 f4] epoch  20  train_loss 0.0149  val_F1 0.2381  best 0.2632  lr 2.5e-04     0.3s
+[dirgine s2 f4] epoch  21  train_loss 0.0112  val_F1 0.2439  best 0.2632  lr 2.5e-04     0.2s
+[dirgine s2 f4] epoch  22  train_loss 0.0182  val_F1 0.2041  best 0.2632  lr 2.5e-04     0.3s
+[dirgine s2 f4] epoch  23  train_loss 0.0085  val_F1 0.2128  best 0.2632  lr 2.5e-04     0.2s
+[dirgine s2 f4] epoch  24  train_loss 0.0086  val_F1 0.2128  best 0.2632  lr 2.5e-04     0.2s
+[dirgine s2 f4] epoch  25  train_loss 0.0139  val_F1 0.1613  best 0.2632  lr 2.5e-04     0.2s
+[dirgine s2 f4] epoch  26  train_loss 0.0100  val_F1 0.0781  best 0.2632  lr 1.3e-04     0.3s
+[dirgine s2 f4] epoch  27  train_loss 0.0068  val_F1 0.1449  best 0.2632  lr 1.3e-04     0.3s
+[dirgine s2 f4] epoch  28  train_loss 0.0108  val_F1 0.1220  best 0.2632  lr 1.3e-04     0.3s
+[dirgine s2 f4] early stopping at epoch 28 (no val_F1 improvement for 20 epochs)
+[dirgine seed 2] F1 0.753 PR 0.716 FN 6 FP 13
